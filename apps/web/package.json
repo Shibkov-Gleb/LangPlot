@@ -1,0 +1,6 @@
+{
+  "name": "@langplot/web", "private": true,
+  "scripts": { "dev": "next dev --hostname 127.0.0.1", "build": "next build", "start": "next start --hostname 127.0.0.1", "typecheck": "tsc --noEmit" },
+  "dependencies": { "@langplot/shared": "workspace:*", "@fontsource-variable/manrope": "5.2.8", "next": "16.4.5", "react": "19.2.4", "react-dom": "19.2.4", "lucide-react": "0.577.0", "zod": "3.25.76" },
+  "devDependencies": { "@tailwindcss/postcss": "4.2.1", "tailwindcss": "4.2.1", "@types/react": "19.2.14", "@types/react-dom": "19.2.3" }
+}

@@ -1,0 +1,20 @@
+name: langplot
+services:
+  postgres:
+    image: postgres:17.7-alpine
+    environment:
+      POSTGRES_USER: langplot
+      POSTGRES_PASSWORD: langplot_local
+      POSTGRES_DB: langplot
+    ports:
+      - '127.0.0.1:54329:5432'
+    volumes:
+      - langplot-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U langplot -d langplot']
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+volumes:
+  langplot-data:

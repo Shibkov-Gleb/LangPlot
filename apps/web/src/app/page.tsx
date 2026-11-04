@@ -1,40 +1,398 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, ArrowRight, ArrowDown, Headphones, MessagesSquare, GitBranch, Sparkles, BookOpen, Globe2, Check } from 'lucide-react';
+import {
+  ArrowUpRight,
+  ArrowRight,
+  ArrowDown,
+  Headphones,
+  MessagesSquare,
+  GitBranch,
+  Sparkles,
+  BookOpen,
+  Globe2,
+  Check,
+} from 'lucide-react';
 import { Brand } from '@/components/brand';
 import { RevealController } from '@/components/reveal';
 
 const faqs = [
-  ['Что такое LangPlot?', 'Мы создаём браузерную игру для изучения языков в формате визуальной новеллы. Диалоги, выборы и переписка станут частью одной истории — вместе с лексикой и грамматикой.'],
-  ['Можно ли уже начать учиться?', 'Сейчас доступна локальная демоверсия интерфейса. В ней можно выбрать язык и уровень, посмотреть кабинет и технический игровой экран. Полноценные истории и курсы ещё готовятся.'],
-  ['Какие языки и уровни планируются?', 'Начинаем с английского и немецкого для русскоязычной аудитории. Каждый язык — отдельный мир, а уровни от A1 до C2 — его будущие части. Состав и даты выхода курсов пока не объявлены.'],
-  ['Как будет работать персонализация?', 'Планируем учитывать учебные попытки отдельно от сюжетных выборов. Темы, которые требуют практики, будут возвращаться в подходящих сценах. В текущей демоверсии учебная оценка ещё не проводится.'],
-  ['Нужно ли что-то устанавливать?', 'Играть планируется прямо в браузере на компьютере или телефоне. Сейчас проект работает локально; демоверсия не требует оплаты или подключения внешних моделей.']
+  [
+    'Что такое LangPlot?',
+    'Мы создаём браузерную игру для изучения языков в формате визуальной новеллы. Диалоги, выборы и переписка станут частью одной истории — вместе с лексикой и грамматикой.',
+  ],
+  [
+    'Можно ли уже начать учиться?',
+    'Сейчас доступна локальная демоверсия интерфейса. В ней можно выбрать язык и уровень, посмотреть кабинет и технический игровой экран. Полноценные истории и курсы ещё готовятся.',
+  ],
+  [
+    'Какие языки и уровни планируются?',
+    'Начинаем с английского и немецкого для русскоязычной аудитории. Каждый язык — отдельный мир, а уровни от A1 до C2 — его будущие части. Состав и даты выхода курсов пока не объявлены.',
+  ],
+  [
+    'Как будет работать персонализация?',
+    'Планируем учитывать учебные попытки отдельно от сюжетных выборов. Темы, которые требуют практики, будут возвращаться в подходящих сценах. В текущей демоверсии учебная оценка ещё не проводится.',
+  ],
+  [
+    'Нужно ли что-то устанавливать?',
+    'Играть планируется прямо в браузере на компьютере или телефоне. Сейчас проект работает локально; демоверсия не требует оплаты или подключения внешних моделей.',
+  ],
 ];
 export default function HomePage() {
-  return <><RevealController/><header className="landing-nav wrap"><Brand/><nav aria-label="Основная навигация"><a href="#how">Как это работает</a><a href="#worlds">Языковые миры</a><a href="#faq">Вопросы</a></nav><Link href="/login" className="nav-login">Войти <ArrowUpRight size={17}/></Link></header>
-    <main id="main">
-      <section className="hero">
-        <div className="hero-art"><Image src="/images/english-world.webp" alt="Вечерняя станция: тёплый свет фонарей, мокрые рельсы и девушка с телефоном" fill priority sizes="100vw" quality={90}/></div><div className="hero-shade"/>
-        <div className="hero-content wrap"><div className="eyebrow"><span className="live-dot"/> НОВЫЙ СПОСОБ ПРОЖИТЬ ЯЗЫК</div><h1>Ещё одна глава.<br/>Ещё ближе<br/>к <span>свободе речи.</span></h1><p>Истории, из которых не хочется выходить.<br className="desktop-only"/> Язык, который хочется понимать.</p><Link className="button primary" href="/login">Выбрать язык <ArrowUpRight size={21}/></Link><div className="hero-note"><span>EN / DE</span><i/> Браузерная игра · Проект в разработке</div></div>
-        <div className="hero-caption"><span className="tiny-line"/> У КАЖДОГО ЯЗЫКА СВОЯ ИСТОРИЯ</div>
-        <a href="#how" className="scroll-link wrap">Листайте, чтобы познакомиться <ArrowDown size={17}/></a>
-      </section>
-      <div className="promise-strip"><div className="wrap"><span><Headphones size={17}/> Слушайте живые диалоги</span><span><GitBranch size={17}/> Меняйте ход истории</span><span><MessagesSquare size={17}/> Находите свои слова</span><span><Sparkles size={17}/> Учитесь в своём ритме</span></div></div>
-      <section id="how" className="section wrap mechanics">
-        <div className="section-heading" data-reveal><div><div className="eyebrow muted">01 / ЯЗЫК СТАНОВИТСЯ ПРИКЛЮЧЕНИЕМ</div><h2>Не просто запомнить.<br/><span className="soft">Почувствовать смысл.</span></h2></div><p>Когда важно понять собеседника,<br/>слова перестают быть списком.<br/>Они становятся частью вашей истории.</p></div>
-        <div className="mechanic-grid">
-          <article className="feature-story" data-reveal><Image src="/images/german-world.webp" alt="Уютная улица университетского города с освещённой книжной лавкой" fill sizes="(max-width: 768px) 100vw, 55vw"/><div className="feature-overlay"/><div className="card-topline"><span className="tag">ПОГРУЖЕНИЕ</span><span>01</span></div><div className="feature-copy"><Headphones size={25}/><h3>Сначала — любопытство.<br/>Потом — понимание.</h3><p>Слушайте персонажей, замечайте детали<br/>и открывайте язык в контексте.</p></div></article>
-          <article className="feature-choice" data-reveal><div className="card-topline"><span className="tag">ВАШ ВЫБОР</span><span>02</span></div><div className="branch-visual" aria-hidden="true"><span/><div><i/><i className="active"/><i/></div></div><h3>У слов есть последствия.</h3><p>Решения меняют отношения и направление истории. Хочется узнать, что будет дальше.</p><div className="choice-preview"><span><span className="keycap">A</span> Задать вопрос</span><span className="selected"><span className="keycap">B</span> Продолжить разговор <Check size={15}/></span></div><small>Иллюстрация будущей механики</small></article>
-          <article className="feature-phone" data-reveal><div className="card-topline"><span className="tag">ПЕРЕПИСКА</span><span>03</span></div><div className="phone-concept" aria-hidden="true"><div className="phone-speaker"/><span className="phone-time">09:41 <MessagesSquare size={13}/></span><div className="concept-avatar">L<span/></div><span className="concept-name">Ваш собеседник</span><div className="bubble incoming">Как бы вы начали разговор?</div><div className="bubble outgoing">Своими словами.</div><div className="typing-dots"><i/><i/><i/></div></div><div className="phone-feature-copy"><h3>Найдите<br/>свои слова.</h3><p>Пишите персонажам<br/>во встроенном телефоне.<br/>Разговор продолжает историю.</p></div></article>
-          <article className="feature-personal" data-reveal><div className="card-topline"><span className="tag">ВАШ ТЕМП</span><span>04</span></div><Sparkles className="feature-icon" size={32}/><h3>История общая.<br/>Путь — только ваш.</h3><p>Сложные темы будут возвращаться в новых ситуациях. Знакомые — оставлять больше места для следующего открытия.</p><div className="skill-tags"><span>Лексика</span><span>Аудирование</span><span>Грамматика</span><span>Письмо</span></div></article>
+  return (
+    <>
+      <RevealController />
+      <header className="landing-nav wrap">
+        <Brand />
+        <nav aria-label="Основная навигация">
+          <a href="#how">Как это работает</a>
+          <a href="#worlds">Языковые миры</a>
+          <a href="#faq">Вопросы</a>
+        </nav>
+        <Link href="/login" className="nav-login">
+          Войти <ArrowUpRight size={17} />
+        </Link>
+      </header>
+      <main id="main">
+        <section className="hero">
+          <div className="hero-art">
+            <Image
+              src="/images/english-world.webp"
+              alt="Вечерняя станция: тёплый свет фонарей, мокрые рельсы и девушка с телефоном"
+              fill
+              preload
+              sizes="100vw"
+              quality={90}
+            />
+          </div>
+          <div className="hero-shade" />
+          <div className="hero-content wrap">
+            <div className="eyebrow">
+              <span className="live-dot" /> НОВЫЙ СПОСОБ ПРОЖИТЬ ЯЗЫК
+            </div>
+            <h1>
+              Ещё одна глава.
+              <br />
+              Ещё ближе
+              <br />к <span>свободе речи.</span>
+            </h1>
+            <p>
+              Истории, из которых не хочется выходить.
+              <br className="desktop-only" /> Изучайте язык через диалоги и ваши решения.
+            </p>
+            <Link className="button primary" href="/login">
+              Выбрать язык <ArrowUpRight size={21} />
+            </Link>
+            <div className="hero-note">
+              <span>EN / DE</span>
+              <i /> Браузерная игра · Проект в разработке
+            </div>
+          </div>
+          <div className="hero-caption">
+            <span className="tiny-line" /> У КАЖДОГО ЯЗЫКА СВОЯ ИСТОРИЯ
+          </div>
+          <a href="#how" className="scroll-link wrap">
+            Листайте, чтобы познакомиться <ArrowDown size={17} />
+          </a>
+        </section>
+        <div className="promise-strip">
+          <div className="wrap">
+            <span>
+              <Headphones size={17} /> Слушайте живые диалоги
+            </span>
+            <span>
+              <GitBranch size={17} /> Меняйте ход истории
+            </span>
+            <span>
+              <MessagesSquare size={17} /> Находите свои слова
+            </span>
+            <span>
+              <Sparkles size={17} /> Учитесь в своём ритме
+            </span>
+          </div>
         </div>
-      </section>
-      <section id="worlds" className="section worlds-section"><div className="wrap"><div className="section-heading" data-reveal><div><div className="eyebrow muted">02 / ВЫБЕРИТЕ СВОЙ МИР</div><h2>Новый язык.<br/><span className="soft">Другая вселенная.</span></h2></div><p>От первых слов до тонких смыслов.<br/>Каждый уровень — новая часть пути.<br/><span className="small muted-text">Направления готовятся к запуску.</span></p></div><div className="world-grid">
-        {[{code:'EN',name:'Английский',sub:'Откройте больше, чем новый язык.',image:'english-world',lang:'en'}, {code:'DE',name:'Немецкий',sub:'У каждого открытия свой характер.',image:'german-world',lang:'de'}].map(world => <Link href={`/login?language=${world.lang}`} className="world-card" key={world.code} data-reveal><Image src={`/images/${world.image}.webp`} alt="" fill sizes="(max-width: 768px) 100vw, 50vw"/><div className="world-overlay"/><div className="world-top"><span className="world-code">{world.code}</span><span className="tag">В РАЗРАБОТКЕ</span></div><div className="world-bottom"><div><span className="world-levels">A1 — C2 · БУДУЩИЕ ЧАСТИ</span><h3>{world.name}</h3><p>{world.sub}</p></div><span className="round-arrow"><ArrowUpRight size={24}/></span></div></Link>)}
-      </div></div></section>
-      <section className="section wrap learning-section" data-reveal><div className="learning-visual"><span className="orbit orbit-one"/><span className="orbit orbit-two"/><div className="learning-core"><BookOpen size={37}/></div><span className="orbit-label label-one"><Headphones size={16}/> Понимаю на слух</span><span className="orbit-label label-two"><MessagesSquare size={16}/> Выражаю мысли</span><span className="orbit-label label-three"><Sparkles size={16}/> Закрепляю новое</span><span className="orbit-dot"/></div><div><div className="eyebrow muted">03 / УЧЁБА, КОТОРАЯ РЯДОМ</div><h2>Продолжение истории.<br/><span className="soft">Продолжение вас.</span></h2><p className="section-intro">Мы строим обучение, которое замечает ваш прогресс. Слова и конструкции появляются в нужный момент — чтобы вы могли применить их, а не только узнать.</p><div className="learning-note"><BookOpen size={21}/><p>Важное останется под рукой.<br/><span>Лексика, правила и заметки — в личной коллекции материалов.</span></p></div></div></section>
-      <section id="faq" className="section wrap faq-section"><div data-reveal><div className="eyebrow muted">ЕЩЁ НЕМНОГО О ПРОЕКТЕ</div><h2>Перед первой<br/><span className="soft">главой.</span></h2><p className="muted-text">Всё начинается с любопытства.</p></div><div className="faq-list" data-reveal>{faqs.map(([question, answer]) => <details key={question}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}</div></section>
-      <section className="wrap closing" data-reveal><Globe2 size={30}/><div className="eyebrow">ВАША ИСТОРИЯ НАЧИНАЕТСЯ ЗДЕСЬ</div><h2>А что, если следующая глава<br/>будет на другом языке?</h2><Link className="button primary" href="/login">Открыть свои миры <ArrowUpRight size={20}/></Link><p>Познакомьтесь с демоверсией LangPlot.</p></section>
-    </main><footer className="wrap footer"><Brand/><span>Языки. Истории. Вы.</span><span>© {new Date().getFullYear()} LangPlot · Локальная демоверсия</span><a href="#main" aria-label="В начало страницы"><ArrowUpRight size={20}/></a></footer></>;
+        <section id="how" className="section wrap mechanics">
+          <div className="section-heading" data-reveal>
+            <div>
+              <div className="eyebrow muted">01 / ЯЗЫК СТАНОВИТСЯ ПРИКЛЮЧЕНИЕМ</div>
+              <h2>
+                Не просто запомнить.
+                <br />
+                <span className="soft">Почувствовать смысл.</span>
+              </h2>
+            </div>
+            <p>
+              Когда важно понять собеседника,
+              <br />
+              слова перестают быть списком.
+              <br />
+              Они становятся частью вашей истории.
+            </p>
+          </div>
+          <div className="mechanic-grid">
+            <article className="feature-story" data-reveal>
+              <Image
+                src="/images/german-world.webp"
+                alt="Уютная улица университетского города с освещённой книжной лавкой"
+                fill
+                sizes="(max-width: 768px) 100vw, 55vw"
+              />
+              <div className="feature-overlay" />
+              <div className="card-topline">
+                <span className="tag">ПОГРУЖЕНИЕ</span>
+                <span>01</span>
+              </div>
+              <div className="feature-copy">
+                <Headphones size={25} />
+                <h3>
+                  Сначала — любопытство.
+                  <br />
+                  Потом — понимание.
+                </h3>
+                <p>
+                  Слушайте персонажей, замечайте детали
+                  <br />и открывайте язык в контексте.
+                </p>
+              </div>
+            </article>
+            <article className="feature-choice" data-reveal>
+              <div className="card-topline">
+                <span className="tag">ВАШ ВЫБОР</span>
+                <span>02</span>
+              </div>
+              <div className="branch-visual" aria-hidden="true">
+                <span />
+                <div>
+                  <i />
+                  <i className="active" />
+                  <i />
+                </div>
+              </div>
+              <h3>У слов есть последствия.</h3>
+              <p>
+                Решения меняют отношения и направление истории. Хочется узнать, что будет дальше.
+              </p>
+              <div className="choice-preview">
+                <span>
+                  <span className="keycap">A</span> Задать вопрос
+                </span>
+                <span className="selected">
+                  <span className="keycap">B</span> Продолжить разговор <Check size={15} />
+                </span>
+              </div>
+              <small>Иллюстрация будущей механики</small>
+            </article>
+            <article className="feature-phone" data-reveal>
+              <div className="card-topline">
+                <span className="tag">ПЕРЕПИСКА</span>
+                <span>03</span>
+              </div>
+              <div className="phone-concept" aria-hidden="true">
+                <div className="phone-speaker" />
+                <span className="phone-time">
+                  09:41 <MessagesSquare size={13} />
+                </span>
+                <div className="concept-avatar">
+                  L<span />
+                </div>
+                <span className="concept-name">Ваш собеседник</span>
+                <div className="bubble incoming">Как бы вы начали разговор?</div>
+                <div className="bubble outgoing">Своими словами.</div>
+                <div className="typing-dots">
+                  <i />
+                  <i />
+                  <i />
+                </div>
+              </div>
+              <div className="phone-feature-copy">
+                <h3>
+                  Найдите
+                  <br />
+                  свои слова.
+                </h3>
+                <p>
+                  Пишите персонажам
+                  <br />
+                  во встроенном телефоне.
+                  <br />
+                  Разговор продолжает историю.
+                </p>
+              </div>
+            </article>
+            <article className="feature-personal" data-reveal>
+              <div className="card-topline">
+                <span className="tag">ВАШ ТЕМП</span>
+                <span>04</span>
+              </div>
+              <Sparkles className="feature-icon" size={32} />
+              <h3>
+                История общая.
+                <br />
+                Путь — только ваш.
+              </h3>
+              <p>
+                Сложные темы будут возвращаться в новых ситуациях. Знакомые — оставлять больше места
+                для следующего открытия.
+              </p>
+              <div className="skill-tags">
+                <span>Лексика</span>
+                <span>Аудирование</span>
+                <span>Грамматика</span>
+                <span>Письмо</span>
+              </div>
+            </article>
+          </div>
+        </section>
+        <section id="worlds" className="section worlds-section">
+          <div className="wrap">
+            <div className="section-heading" data-reveal>
+              <div>
+                <div className="eyebrow muted">02 / ВЫБЕРИТЕ СВОЙ МИР</div>
+                <h2>
+                  Новый язык.
+                  <br />
+                  <span className="soft">Другая вселенная.</span>
+                </h2>
+              </div>
+              <p>
+                От первых слов до тонких смыслов.
+                <br />
+                Каждый уровень — новая часть пути.
+                <br />
+                <span className="small muted-text">Направления готовятся к запуску.</span>
+              </p>
+            </div>
+            <div className="world-grid">
+              {[
+                {
+                  code: 'EN',
+                  name: 'Английский',
+                  sub: 'Откройте больше, чем новый язык.',
+                  image: 'english-world',
+                  lang: 'en',
+                },
+                {
+                  code: 'DE',
+                  name: 'Немецкий',
+                  sub: 'У каждого открытия свой характер.',
+                  image: 'german-world',
+                  lang: 'de',
+                },
+              ].map((world) => (
+                <Link
+                  href={`/login?language=${world.lang}`}
+                  className="world-card"
+                  key={world.code}
+                  data-reveal
+                >
+                  <Image
+                    src={`/images/${world.image}.webp`}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                  <div className="world-overlay" />
+                  <div className="world-top">
+                    <span className="world-code">{world.code}</span>
+                    <span className="tag">В РАЗРАБОТКЕ</span>
+                  </div>
+                  <div className="world-bottom">
+                    <div>
+                      <span className="world-levels">A1 — C2 · БУДУЩИЕ ЧАСТИ</span>
+                      <h3>{world.name}</h3>
+                      <p>{world.sub}</p>
+                    </div>
+                    <span className="round-arrow">
+                      <ArrowUpRight size={24} />
+                    </span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+        <section className="section wrap learning-section" data-reveal>
+          <div className="learning-visual">
+            <span className="orbit orbit-one" />
+            <span className="orbit orbit-two" />
+            <div className="learning-core">
+              <BookOpen size={37} />
+            </div>
+            <span className="orbit-label label-one">
+              <Headphones size={16} /> Понимаю на слух
+            </span>
+            <span className="orbit-label label-two">
+              <MessagesSquare size={16} /> Выражаю мысли
+            </span>
+            <span className="orbit-label label-three">
+              <Sparkles size={16} /> Закрепляю новое
+            </span>
+            <span className="orbit-dot" />
+          </div>
+          <div>
+            <div className="eyebrow muted">03 / УЧЁБА, КОТОРАЯ РЯДОМ</div>
+            <h2>
+              Продолжение истории.
+              <br />
+              <span className="soft">Продолжение вас.</span>
+            </h2>
+            <p className="section-intro">
+              Мы строим обучение, которое замечает ваш прогресс. Слова и конструкции появляются в
+              нужный момент — чтобы вы могли применить их, а не только узнать.
+            </p>
+            <div className="learning-note">
+              <BookOpen size={21} />
+              <p>
+                Важное останется под рукой.
+                <br />
+                <span>Лексика, правила и заметки — в личной коллекции материалов.</span>
+              </p>
+            </div>
+          </div>
+        </section>
+        <section id="faq" className="section wrap faq-section">
+          <div data-reveal>
+            <div className="eyebrow muted">ЕЩЁ НЕМНОГО О ПРОЕКТЕ</div>
+            <h2>
+              Перед первой
+              <br />
+              <span className="soft">главой.</span>
+            </h2>
+            <p className="muted-text">Всё начинается с любопытства.</p>
+          </div>
+          <div className="faq-list" data-reveal>
+            {faqs.map(([question, answer]) => (
+              <details key={question}>
+                <summary>
+                  {question}
+                  <span>+</span>
+                </summary>
+                <p>{answer}</p>
+              </details>
+            ))}
+          </div>
+        </section>
+        <section className="wrap closing" data-reveal>
+          <Globe2 size={30} />
+          <div className="eyebrow">ВАША ИСТОРИЯ НАЧИНАЕТСЯ ЗДЕСЬ</div>
+          <h2>
+            А что, если следующая глава
+            <br />
+            будет на другом языке?
+          </h2>
+          <Link className="button primary" href="/login">
+            Открыть свои миры <ArrowUpRight size={20} />
+          </Link>
+          <p>Познакомьтесь с демоверсией LangPlot.</p>
+        </section>
+      </main>
+      <footer className="wrap footer">
+        <Brand />
+        <span>Языки. Истории. Вы.</span>
+        <span>© {new Date().getFullYear()} LangPlot · Локальная демоверсия</span>
+        <a href="#main" aria-label="В начало страницы">
+          <ArrowUpRight size={20} />
+        </a>
+      </footer>
+    </>
+  );
 }

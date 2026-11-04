@@ -11,7 +11,16 @@ registerCoreRoutes();
 registerChatRoutes();
 registerStudioRoutes();
 finishRoutes();
-const server = app.listen(config.PORT, config.HOST, () => console.log(`LangPlot API: http://${config.HOST}:${config.PORT}`));
-async function shutdown() { server.close(); await db.$disconnect(); process.exit(0); }
+const server = app.listen(config.PORT, config.HOST);
+server.on('listening', () => console.log(`LangPlot API: http://${config.HOST}:${config.PORT}`));
+server.on('error', (error) => {
+  console.error('Не удалось запустить LangPlot API:', error.message);
+  void db.$disconnect().finally(() => process.exit(1));
+});
+async function shutdown() {
+  server.close();
+  await db.$disconnect();
+  process.exit(0);
+}
 process.on('SIGTERM', shutdown);
 process.on('SIGINT', shutdown);

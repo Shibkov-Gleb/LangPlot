@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "manifest": {
+    "id": "draft.example",
+    "version": "0.1.0",
+    "title": "Новый учебный мир",
+    "language": "en",
+    "level": "A1",
+    "status": "draft",
+    "description": "Пустой каркас для локальной работы над будущим пакетом."
+  },
+  "entrySceneId": null,
+  "characters": [],
+  "scenes": [],
+  "learningObjectives": [],
+  "resources": []
+}

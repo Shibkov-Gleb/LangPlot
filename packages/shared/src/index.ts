@@ -1,3 +1,3 @@
-export * from './contracts.js';
-export * from './content.js';
-export * from './engine.js';
+export * from './contracts';
+export * from './content';
+export * from './engine';

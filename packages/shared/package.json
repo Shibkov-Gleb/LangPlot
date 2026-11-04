@@ -1,1 +1,12 @@
-{ "name": "@langplot/shared", "private": true, "type": "module", "exports": "./src/index.ts", "scripts": { "typecheck": "tsc --noEmit" }, "dependencies": { "zod": "3.25.76" } }
+{
+  "name": "@langplot/shared",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "3.25.76"
+  }
+}

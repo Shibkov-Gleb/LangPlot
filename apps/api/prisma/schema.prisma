@@ -1,0 +1,121 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model User {
+  id             String @id @default(uuid())
+  demoKey        String? @unique
+  name           String @default("Исследователь")
+  nativeLanguage String @default("ru")
+  sound          Boolean @default(true)
+  subtitles      Boolean @default(true)
+  reducedMotion  Boolean @default(false)
+  language       String @default("en")
+  level          String @default("A1")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  sessions       Session[]
+  playthroughs   Playthrough[]
+  skills         SkillState[]
+  attempts       LearningAttempt[]
+  jobs           StudioJob[]
+}
+model Session {
+  id        String @id @default(uuid())
+  tokenHash String @unique
+  userId    String
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+  @@index([expiresAt])
+}
+model ContentVersion {
+  id        String @id @default(uuid())
+  packageId String
+  version   String
+  language  String
+  level     String
+  status    String @default("draft")
+  data      Json
+  createdAt DateTime @default(now())
+  plays     Playthrough[]
+  @@unique([packageId, version])
+}
+model Playthrough {
+  id               String @id @default(uuid())
+  userId           String
+  user             User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  contentVersionId String
+  contentVersion   ContentVersion @relation(fields: [contentVersionId], references: [id])
+  language         String
+  revision         Int @default(0)
+  state            Json
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  events           PlayEvent[]
+  exchanges        ChatExchange[]
+  @@unique([userId, contentVersionId])
+}
+model PlayEvent {
+  id            String @id @default(uuid())
+  playthroughId String
+  playthrough   Playthrough @relation(fields: [playthroughId], references: [id], onDelete: Cascade)
+  requestId     String
+  kind          String
+  input         Json
+  result        Json
+  createdAt     DateTime @default(now())
+  @@unique([playthroughId, requestId])
+}
+model ChatExchange {
+  id            String @id @default(uuid())
+  playthroughId String
+  playthrough   Playthrough @relation(fields: [playthroughId], references: [id], onDelete: Cascade)
+  requestId     String
+  text          String
+  reply         String?
+  status        String @default("pending")
+  result        Json?
+  errorCode     String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  @@unique([playthroughId, requestId])
+}
+model LearningAttempt {
+  id            String @id @default(uuid())
+  userId        String
+  user          User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  language      String
+  sourceId      String @unique
+  observations  Json
+  createdAt     DateTime @default(now())
+}
+model SkillState {
+  id         String @id @default(uuid())
+  userId     String
+  user       User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  language   String
+  skillId    String
+  successes  Int @default(0)
+  attempts   Int @default(0)
+  updatedAt  DateTime @updatedAt
+  @@unique([userId, language, skillId])
+}
+model StudioJob {
+  id        String @id @default(uuid())
+  userId    String
+  user      User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  brief     String
+  language  String
+  level     String
+  status    String @default("queued")
+  stage     String @default("brief")
+  output    Json?
+  report    Json?
+  error     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

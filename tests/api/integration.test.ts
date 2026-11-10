@@ -437,6 +437,69 @@ describe.sequential('PostgreSQL API integration', () => {
       413,
     );
   });
+  it('limits guests to their own first lesson and claims their run only after valid authentication', async () => {
+    const sessionCookie = (headers: Headers) =>
+      headers
+        .getSetCookie()
+        .find((value) => value.startsWith('langplot_session='))!
+        .split(';')[0]!;
+    const start = async () => {
+      const res = await request('/guest/start', 'POST', { source: 'guest-entry' }, '');
+      expect(res.data).toEqual({ guest: true });
+      return sessionCookie(res.headers);
+    };
+    const guest = await start(),
+      other = await start();
+    const reg = {
+      email: 'guest-claim@example.test',
+      name: 'Путешественник',
+      password: 'learner-guest-password',
+    };
+    const as = (token: string, path: string, method = 'GET', input?: unknown) =>
+      request(path, method, input, token);
+    expect((await as(guest, '/profile')).status).toBe(401);
+    expect((await as(guest, '/session')).data.user).toBeNull();
+    expect((await as(guest, '/lessons/another-lesson/plays', 'POST', {})).status).toBe(403);
+    expect((await as(guest, '/guest/start', 'POST', {})).headers.get('set-cookie')).toBeNull();
+    const play = (await as(guest, '/lessons/last-row/plays', 'POST', {})).data.play;
+    const route = '/plays/' + play.id;
+    expect((await as(other, route)).status).toBe(403);
+    expect((await as(other, route + '/messages')).status).toBe(403);
+    expect((await as(guest, route + '/replay', 'POST', {})).status).toBe(401);
+    const next = { requestId: randomUUID(), choiceId: 'next', revision: play.revision };
+    expect((await as(guest, route + '/actions', 'POST', next)).data.play.revision).toBe(1);
+    const counts = async () => {
+      const report = await request('/admin/reports/overview?source=guest-entry');
+      return Object.fromEntries(
+        report.data.metrics.map((m: { key: string; count: number }) => [m.key, m.count]),
+      );
+    };
+    expect(await counts()).toMatchObject({ visits: 2, registered: 0, started: 1 });
+    const signed = await as(guest, '/session/register', 'POST', reg);
+    expect(signed.status).toBe(200);
+    const account = sessionCookie(signed.headers);
+    expect(await counts()).toMatchObject({ visits: 2, registered: 1, started: 1 });
+    expect((await as(account, '/guest/start', 'POST', {})).data.guest).toBe(false);
+    expect((await as(account, '/lessons/last-row/plays', 'POST', {})).data.play).toMatchObject({
+      id: play.id,
+      revision: 1,
+    });
+    expect((await as(guest, route)).status).toBe(401);
+
+    const second = (await as(other, '/lessons/last-row/plays', 'POST', {})).data.play;
+    await as(other, '/plays/' + second.id + '/actions', 'POST', next);
+    const credentials = { email: reg.email, password: reg.password };
+    expect((await as(other, '/session/register', 'POST', reg)).status).toBe(409);
+    expect(
+      (await as(other, '/session/login', 'POST', { ...credentials, password: 'wrong' })).status,
+    ).toBe(401);
+    expect((await as(other, '/plays/' + second.id)).data.play.revision).toBe(1);
+    const login = await as(other, '/session/login', 'POST', credentials);
+    expect(login.status).toBe(200);
+    const list = (await as(sessionCookie(login.headers), '/lessons/last-row/runs')).data.runs;
+    expect(list.map((r: { id: string }) => r.id).sort()).toEqual([play.id, second.id].sort());
+    expect((await as(other, '/plays/' + second.id)).status).toBe(401);
+  });
   it('lists the course without starting a run or unlocking another profile’s materials', async () => {
     const count = await db.playthrough.count();
     const course = CourseResponse.parse((await request('/courses/en/a2')).data);

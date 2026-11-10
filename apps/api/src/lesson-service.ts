@@ -15,6 +15,7 @@ import {
 import { app } from './app.js';
 import { db } from './db.js';
 import { ApiError } from './errors.js';
+import { requireLessonPlayer } from './guest-lesson.js';
 import { requireUser } from './session.js';
 import { ownedPlay, playDto } from './play-service.js';
 import {
@@ -150,7 +151,7 @@ export function registerLessonRoutes() {
       }),
     );
   });
-  app.post('/api/lessons/:slug/plays', requireUser, async (req, res) => {
+  app.post('/api/lessons/:slug/plays', requireLessonPlayer, async (req, res) => {
     const lesson = getLesson(String(req.params.slug));
     const latest = await db.playthrough.findFirst({
       where: { userId: req.user!.id, contentVersion: { packageId: lesson.content.manifest.id } },
@@ -165,7 +166,7 @@ export function registerLessonRoutes() {
     const play = await newRun(req.user!.id, v.id, 1, PlayablePackage.parse(v.data));
     res.json(PlayResponse.parse({ play: playDto(play) }));
   });
-  app.get('/api/lessons/:slug/runs', requireUser, async (req, res) => {
+  app.get('/api/lessons/:slug/runs', requireLessonPlayer, async (req, res) => {
     const lesson = getLesson(String(req.params.slug));
     const plays = await db.playthrough.findMany({
       where: { userId: req.user!.id, contentVersion: { packageId: lesson.content.manifest.id } },

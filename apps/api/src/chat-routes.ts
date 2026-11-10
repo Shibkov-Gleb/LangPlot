@@ -16,7 +16,7 @@ import { db } from './db.js';
 import { config } from './config.js';
 import { ApiError } from './errors.js';
 import { ownedPlay } from './play-service.js';
-import { requireUser } from './session.js';
+import { requireLessonPlayer } from './guest-lesson.js';
 const controllers = new Map<string, { attempt: number; controller: AbortController }>();
 const chain = createCharacterChat(new LocalChatProvider());
 export const exchangeDto = (m: ChatExchange) => ({
@@ -36,7 +36,7 @@ export async function recoverChats() {
   });
 }
 export function registerChatRoutes() {
-  app.get('/api/plays/:id/messages', requireUser, async (req, res) => {
+  app.get('/api/plays/:id/messages', requireLessonPlayer, async (req, res) => {
     const play = await ownedPlay(String(req.params.id), req.user!.id);
     const content = ContentPackage.parse(play.contentVersion.data);
     const opening =
@@ -50,7 +50,7 @@ export function registerChatRoutes() {
     });
     res.json(MessagesResponse.parse({ opening, messages: messages.reverse().map(exchangeDto) }));
   });
-  app.post('/api/plays/:id/messages', requireUser, async (req, res) => {
+  app.post('/api/plays/:id/messages', requireLessonPlayer, async (req, res) => {
     const input = ChatInput.parse(req.body);
     const play = await ownedPlay(String(req.params.id), req.user!.id);
     const key = { playthroughId: play.id, requestId: input.requestId };
@@ -233,7 +233,7 @@ export function registerChatRoutes() {
     const saved = await db.chatExchange.findUniqueOrThrow({ where: { id: exchange.id } });
     if (!res.destroyed) res.json(ChatResponse.parse({ exchange: exchangeDto(saved) }));
   });
-  app.post('/api/plays/:id/messages/:requestId/cancel', requireUser, async (req, res) => {
+  app.post('/api/plays/:id/messages/:requestId/cancel', requireLessonPlayer, async (req, res) => {
     const play = await ownedPlay(String(req.params.id), req.user!.id);
     const exchange = await db.chatExchange.findUnique({
       where: {

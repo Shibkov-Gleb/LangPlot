@@ -22,6 +22,7 @@ import { registerAccountRoutes } from './admin-routes.js';
 import { app } from './app.js';
 import { db } from './db.js';
 import { ApiError } from './errors.js';
+import { requireLessonPlayer } from './guest-lesson.js';
 import { profile, requireUser } from './session.js';
 import { ownedPlay, playDto } from './play-service.js';
 import { recordLessonAttempt, registerLessonRoutes } from './lesson-service.js';
@@ -71,12 +72,12 @@ export function registerCoreRoutes() {
     const user = await db.user.update({ where: { id: req.user!.id }, data });
     res.json(ProfileResponse.parse({ user: profile(user) }));
   });
-  app.get('/api/plays/:id', requireUser, async (req, res) => {
+  app.get('/api/plays/:id', requireLessonPlayer, async (req, res) => {
     res.json(
       PlayResponse.parse({ play: playDto(await ownedPlay(String(req.params.id), req.user!.id)) }),
     );
   });
-  app.post('/api/plays/:id/actions', requireUser, async (req, res) => {
+  app.post('/api/plays/:id/actions', requireLessonPlayer, async (req, res) => {
     const input = ActionInput.parse(req.body);
     const id = String(req.params.id);
     const current = await ownedPlay(id, req.user!.id);

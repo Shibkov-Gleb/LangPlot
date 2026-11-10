@@ -48,6 +48,7 @@ export const Profile = ProfileSettings.merge(Selection).extend({
 });
 export type Profile = z.infer<typeof Profile>;
 export const SessionResponse = z.object({ user: Profile.nullable(), localMode: z.boolean() });
+export const GuestSessionResponse = z.object({ guest: z.boolean() });
 export const ProfileResponse = z.object({ user: Profile });
 export const OkResponse = z.object({ ok: z.literal(true) });
 export const ErrorResponse = z.object({

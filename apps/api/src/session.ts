@@ -1,4 +1,4 @@
-import { createHash, randomBytes, scrypt, timingSafeEqual } from 'node:crypto';
+import { createHash, randomBytes, randomUUID, scrypt, timingSafeEqual } from 'node:crypto';
 import type { Request, Response, NextFunction } from 'express';
 import { Prisma, type User } from '@prisma/client';
 import {
@@ -8,6 +8,7 @@ import {
   isStaff,
   OkResponse,
   ProfileResponse,
+  GuestSessionResponse,
 } from '@langplot/shared';
 import { config } from './config.js';
 import { db } from './db.js';
@@ -16,10 +17,12 @@ declare global {
   namespace Express {
     interface Request {
       user?: User;
+      guest?: User;
     }
   }
 }
-import { attributeAccount } from './visits.js';
+import { guestPrefix, isLessonGuest, lockGuest, mergeGuest } from './guest-lesson.js';
+import { attributeAccount, ensureVisit } from './visits.js';
 const cookieName =
   config.UI_VARIANT === 'original' ? 'langplot_session' : 'langplot_session_first_scene';
 export const tokenHash = (token: string) => createHash('sha256').update(token).digest('hex');
@@ -55,6 +58,8 @@ export async function session(req: Request, _res: Response, next: NextFunction) 
       entry.user.passwordHash
     )
       req.user = entry.user;
+    else if (entry && entry.expiresAt > new Date() && isLessonGuest(entry.user))
+      req.guest = entry.user;
   }
   next();
 }
@@ -112,10 +117,31 @@ async function issueSession(req: Request, res: Response, tx: Prisma.TransactionC
   await tx.session.create({
     data: { userId: user.id, tokenHash: tokenHash(token), expiresAt: expires },
   });
-  return () =>
-    res
-      .cookie(cookieName, token, { ...cookieOptions, expires })
-      .json(ProfileResponse.parse({ user: profile(user) }));
+  return () => res.cookie(cookieName, token, { ...cookieOptions, expires });
+}
+export async function startGuest(req: Request, res: Response) {
+  if (req.user || req.guest) {
+    res.json(GuestSessionResponse.parse({ guest: !!req.guest }));
+    return;
+  }
+  const visitId = await ensureVisit(req, res);
+  const send = await db.$transaction(async (tx) => {
+    const guest = await tx.user.create({
+      data: {
+        demoKey: guestPrefix + randomUUID(),
+        name: 'Гость',
+        language: 'en',
+        level: 'A2',
+        excludedFromAnalytics: req.headers['x-langplot-qa'] === '1',
+      },
+    });
+    await tx.productVisit.updateMany({
+      where: { id: visitId, userId: null },
+      data: { userId: guest.id },
+    });
+    return issueSession(req, res, tx, guest);
+  });
+  send().json(GuestSessionResponse.parse({ guest: true }));
 }
 export async function createAccount(req: Request, res: Response, owner = false) {
   const invitation = owner ? OwnerInput.parse(req.body) : null;
@@ -138,20 +164,27 @@ export async function createAccount(req: Request, res: Response, owner = false) 
             'Ссылка недействительна или срок её действия истёк.',
           );
       }
-      const user = await tx.user.create({
-        data: {
-          name: input.name,
-          email: input.email,
-          passwordHash,
-          excludedFromAnalytics:
-            req.headers['x-langplot-qa'] === '1' || input.email.endsWith('.invalid'),
-          role: owner ? 'SUPERADMIN' : 'USER',
-          level: 'A2',
-          lastLoginAt: new Date(),
-        },
-      });
+      const data: Prisma.UserCreateInput = {
+        name: input.name,
+        email: input.email,
+        passwordHash,
+        excludedFromAnalytics:
+          req.headers['x-langplot-qa'] === '1' || input.email.endsWith('.invalid'),
+        role: owner ? 'SUPERADMIN' : 'USER',
+        level: 'A2',
+        lastLoginAt: new Date(),
+      };
+      const guest = !owner && req.guest;
+      if (guest) await lockGuest(tx, guest);
+      const user = guest
+        ? await tx.user.update({
+            where: { id: guest.id },
+            data: { ...data, demoKey: null, createdAt: new Date() },
+          })
+        : await tx.user.create({ data });
       await attributeAccount(tx, req, user, true);
-      return issueSession(req, res, tx, user);
+      const setCookie = await issueSession(req, res, tx, user);
+      return () => setCookie().json(ProfileResponse.parse({ user: profile(user) }));
     });
     send();
   } catch (error) {
@@ -172,8 +205,10 @@ export async function login(req: Request, res: Response) {
       where: { id: user.id },
       data: { lastLoginAt: new Date() },
     });
+    if (req.guest) await mergeGuest(tx, req.guest, current.id);
     await attributeAccount(tx, req, current, false);
-    return issueSession(req, res, tx, current);
+    const setCookie = await issueSession(req, res, tx, current);
+    return () => setCookie().json(ProfileResponse.parse({ user: profile(current) }));
   });
   send();
 }

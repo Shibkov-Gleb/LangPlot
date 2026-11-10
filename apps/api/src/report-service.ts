@@ -1,3 +1,4 @@
+import { guestPrefix } from './guest-lesson.js';
 import { Prisma } from '@prisma/client';
 import { DAY, moscowDay, type ReportFilter, type CrmFilter } from '@langplot/shared';
 import { db } from './db.js';
@@ -11,6 +12,17 @@ export const eligible: Prisma.UserWhereInput = {
   excludedFromAnalytics: false,
   role: { in: ['USER', 'SUBSCRIBER'] },
   NOT: { email: { endsWith: '.invalid' } },
+};
+const learningActor: Prisma.UserWhereInput = {
+  OR: [
+    eligible,
+    {
+      demoKey: { startsWith: guestPrefix },
+      role: 'USER',
+      email: null,
+      excludedFromAnalytics: false,
+    },
+  ],
 };
 const first = getLesson('last-row').content.manifest.id;
 const byPackage = new Map([...readyLessons.values()].map((l) => [l.content.manifest.id, l]));
@@ -41,7 +53,7 @@ async function activity(tx: Tx, where: Prisma.PlayEventWhereInput) {
       fromScene: { not: null },
       playthrough: {
         ...(where.playthrough as Prisma.PlaythroughWhereInput),
-        user: eligible,
+        user: learningActor,
         contentVersion: { packageId: { in: [...byPackage.keys()] } },
       },
     },
@@ -144,13 +156,13 @@ async function cohort(tx: Tx, q: ReportFilter, span: ReturnType<typeof period>) 
       firstAt: { gte: span.start, lt: span.end },
       source: q.source,
       variant: q.variant,
-      OR: [{ userId: null }, { user: eligible }],
+      OR: [{ userId: null }, { user: learningActor }],
     },
     select: {
       firstAt: true,
       userId: true,
       guestDays: true,
-      user: { select: { createdAt: true, subscribedAt: true, payment: true } },
+      user: { select: { email: true, createdAt: true, subscribedAt: true, payment: true } },
     },
   });
   const f = facts(
@@ -167,8 +179,8 @@ async function cohort(tx: Tx, q: ReportFilter, span: ReturnType<typeof period>) 
     return {
       day: moscowDay(v.firstAt),
       at: v.firstAt,
-      userId: v.userId,
-      registered: v.user?.createdAt ?? null,
+      userId: v.user?.email ? v.userId : null,
+      registered: v.user?.email ? v.user.createdAt : null,
       subscribed: v.user?.subscribedAt ?? null,
       paid: v.user?.payment?.paidAt ?? null,
       started: starts.length ? new Date(Math.min(...starts.map((d) => d.getTime()))) : null,
@@ -192,7 +204,7 @@ export async function overview(tx: Tx, q: ReportFilter, now: Date) {
     cohort(tx, q, prev),
     tx.reportSetup.findUniqueOrThrow({ where: { id: 'visits' } }),
     tx.productVisit.findMany({
-      where: { excluded: false, OR: [{ userId: null }, { user: eligible }] },
+      where: { excluded: false, OR: [{ userId: null }, { user: learningActor }] },
       distinct: ['source'],
       select: { source: true },
       orderBy: { source: 'asc' },
@@ -223,7 +235,7 @@ export async function lessonReport(tx: Tx, q: ReportFilter, now: Date) {
       ? { visit: { variant: q.variant, source: q.source, excluded: false } }
       : {};
   const ids = await tx.user.findMany({
-    where: { ...eligible, ...attributed },
+    where: { ...learningActor, ...attributed },
     select: { id: true },
   });
   const events = await activity(tx, {

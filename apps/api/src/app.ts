@@ -7,7 +7,15 @@ import { ProfileResponse, SessionResponse } from '@langplot/shared';
 import { config, localMode } from './config.js';
 import { db } from './db.js';
 import { ApiError, errorHandler } from './errors.js';
-import { createAccount, login, logout, profile, requireUser, session } from './session.js';
+import {
+  createAccount,
+  login,
+  logout,
+  profile,
+  requireUser,
+  session,
+  startGuest,
+} from './session.js';
 
 export const app = express();
 app.disable('x-powered-by');
@@ -64,6 +72,7 @@ const authLimit = rateLimit({
     },
   },
 });
+app.post('/api/guest/start', startGuest);
 app.post('/api/session/register', authLimit, (req, res) => createAccount(req, res));
 app.post('/api/session/owner', authLimit, (req, res) => createAccount(req, res, true));
 app.post('/api/session/login', authLimit, login);

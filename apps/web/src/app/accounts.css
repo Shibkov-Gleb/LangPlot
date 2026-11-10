@@ -1,3 +1,23 @@
+.entry-actions {
+  display: grid;
+  gap: 12px;
+  margin-top: 28px;
+}
+.login-content .entry-actions .button {
+  margin: 0;
+  white-space: normal;
+  height: auto;
+  min-height: 48px;
+  text-align: center;
+}
+.guest-alternative {
+  display: block;
+  width: fit-content;
+  margin: 16px auto 0;
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
 .account-form {
   max-width: 29rem;
   margin-block: auto;

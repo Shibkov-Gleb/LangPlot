@@ -34,7 +34,7 @@ const faqs = [
   ],
   [
     'Нужно ли что-то устанавливать?',
-    'Игра открывается прямо в браузере. Создайте аккаунт, чтобы сохранять прохождение.',
+    'Первый урок можно пройти в браузере без регистрации. После него создайте аккаунт, чтобы сохранить результат и продолжить курс.',
   ],
 ];
 export default function HomePage() {
@@ -48,7 +48,7 @@ export default function HomePage() {
           <a href="#worlds">Языковые миры</a>
           <a href="#faq">Вопросы</a>
         </nav>
-        <Link href="/login" className="nav-login">
+        <Link href="/login?mode=login" className="nav-login">
           Войти <ArrowUpRight size={17} />
         </Link>
       </header>

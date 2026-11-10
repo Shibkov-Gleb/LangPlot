@@ -53,6 +53,33 @@ const chapterPhaseNames: Record<string, string> = {
 type Runs = ReturnType<typeof RunList.parse>['runs'];
 export function LessonPlayer({ slug }: { slug: string }) {
   const { user, setUser } = useProfile();
+  async function toggleSound() {
+    const { name, nativeLanguage, subtitles, reducedMotion } = user;
+    const res = await api('/profile', ProfileResponse, {
+      method: 'PATCH',
+      body: body({ name, nativeLanguage, subtitles, reducedMotion, sound: !user.sound }),
+    });
+    setUser(res.user);
+  }
+  return <Player slug={slug} sound={user.sound} toggleSound={toggleSound} />;
+}
+export function GuestLessonPlayer() {
+  const [sound, setSound] = useState(true);
+  return (
+    <Player slug="last-row" guest sound={sound} toggleSound={() => setSound((value) => !value)} />
+  );
+}
+function Player({
+  slug,
+  guest = false,
+  sound,
+  toggleSound,
+}: {
+  slug: string;
+  guest?: boolean;
+  sound: boolean;
+  toggleSound: () => void | Promise<void>;
+}) {
   const [play, setPlay] = useState<Play | null>(null),
     [runs, setRuns] = useState<Runs>([]),
     [course, setCourse] = useState<ReturnType<typeof RunList.parse>['course']>(),
@@ -69,7 +96,7 @@ export function LessonPlayer({ slug }: { slug: string }) {
       choiceId: string;
       requestId: string;
     } | null>(null);
-  const arm = useSceneSound(user.sound, play?.state.sceneId, play?.view?.ambience, play?.view?.cue);
+  const arm = useSceneSound(sound, play?.state.sceneId, play?.view?.ambience, play?.view?.cue);
   const refreshRuns = useCallback(
     async (selectedId?: string) => {
       const r = await api(
@@ -105,12 +132,7 @@ export function LessonPlayer({ slug }: { slug: string }) {
   async function changeSound() {
     arm();
     try {
-      const { name, nativeLanguage, subtitles, reducedMotion } = user;
-      const res = await api('/profile', ProfileResponse, {
-        method: 'PATCH',
-        body: body({ name, nativeLanguage, subtitles, reducedMotion, sound: !user.sound }),
-      });
-      setUser(res.user);
+      await toggleSound();
     } catch (e) {
       setError(errorText(e));
     }
@@ -254,8 +276,8 @@ export function LessonPlayer({ slug }: { slug: string }) {
   const phaseLabel = (id: string, label: string) =>
     classic ? label : (chapterPhaseNames[id] ?? label);
   const contactName = view?.contact?.name ?? 'Мэй';
-  const back = course ? coursePath(course.language, course.level) : '/dashboard';
-  const theoryOpen = layout === 'end' || runs.some((r) => r.finished);
+  const back = guest ? '/' : course ? coursePath(course.language, course.level) : '/dashboard';
+  const theoryOpen = !guest && (layout === 'end' || runs.some((r) => r.finished));
   const showJournal = () => {
     setPanel('journal');
     void refreshRuns().catch((e) => setError(errorText(e)));
@@ -266,9 +288,12 @@ export function LessonPlayer({ slug }: { slug: string }) {
         <div className="lr-bar-left">
           <Brand />
           <span className="lr-divider" />
-          <Link href={back} aria-label={course ? 'К урокам курса' : 'Мои миры'}>
+          <Link
+            href={back}
+            aria-label={guest ? 'На главную' : course ? 'К урокам курса' : 'Мои миры'}
+          >
             <ArrowLeft size={15} />
-            <span>{course ? 'К курсу' : 'Мои миры'}</span>
+            <span>{guest ? 'На главную' : course ? 'К курсу' : 'Мои миры'}</span>
           </Link>
         </div>
         <div className="lr-bar-right">
@@ -278,10 +303,10 @@ export function LessonPlayer({ slug }: { slug: string }) {
           <button
             className="lr-tool"
             onClick={() => void changeSound()}
-            aria-label={user.sound ? 'Выключить звук' : 'Включить звук'}
-            aria-pressed={user.sound}
+            aria-label={sound ? 'Выключить звук' : 'Включить звук'}
+            aria-pressed={sound}
           >
-            {user.sound ? <Volume2 size={18} /> : <VolumeX size={18} />}
+            {sound ? <Volume2 size={18} /> : <VolumeX size={18} />}
           </button>
           <button
             className="lr-tool lr-journal-button"
@@ -384,6 +409,16 @@ export function LessonPlayer({ slug }: { slug: string }) {
                     >
                       Завершить урок <Check size={16} />
                     </button>
+                  ) : guest ? (
+                    <div className="lr-guest-finish">
+                      <p>Создайте аккаунт, чтобы сохранить этот рейс и перейти ко второму уроку.</p>
+                      <Link className="lr-primary" href="/login?guest=complete">
+                        Сохранить урок и зарегистрироваться <ArrowRight size={16} />
+                      </Link>
+                      <Link className="lr-subtle" href="/login?guest=complete&mode=login">
+                        Уже есть аккаунт? Войти
+                      </Link>
+                    </div>
                   ) : (
                     <>
                       {course?.nextLesson && (

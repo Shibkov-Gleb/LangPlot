@@ -1,6 +1,21 @@
 .workspace-lesson .workspace-header {
   display: none;
 }
+.lr-guest-finish {
+  margin-top: 20px;
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+}
+.lr-finale-copy .lr-guest-finish a {
+  margin: 0;
+}
+.lr-guest-finish .lr-primary {
+  height: auto;
+  min-height: 44px;
+  padding-block: 10px;
+  white-space: normal;
+}
 .lr-page {
   --cream: #f4eee0;
   --gold: #e3b87f;

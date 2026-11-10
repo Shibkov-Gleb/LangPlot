@@ -42,6 +42,7 @@ test('ученик выбирает курс, активирует подпис�
     }
     await page.getByRole('button', { name: 'Выйти', exact: true }).click();
     await page.goto('/courses/en/a2');
+    await page.getByRole('button', { name: 'Уже есть аккаунт? Войти' }).click();
     await page.getByLabel('Электронная почта').fill(email);
     await page.getByLabel('Пароль').fill(password);
     await page.getByRole('button', { name: 'Войти', exact: true }).click();

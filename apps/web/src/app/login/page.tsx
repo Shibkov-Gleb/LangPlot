@@ -11,6 +11,7 @@ import { api, body, errorText } from '@/lib/api';
 import { studyReturnPath } from '@/lib/course-paths';
 function destination() {
   const query = new URLSearchParams(window.location.search);
+  if (query.get('guest') === 'complete') return '/courses/en/a2';
   return (
     studyReturnPath(query.get('next')) ??
     (query.get('lesson') === 'last-row' ? '/play/last-row' : '/dashboard')
@@ -18,7 +19,8 @@ function destination() {
 }
 export default function LoginPage() {
   const router = useRouter();
-  const [mode, setMode] = useState<'login' | 'register' | 'owner'>('login');
+  const [mode, setMode] = useState<'choose' | 'login' | 'register' | 'owner'>('choose');
+  const [afterLesson, setAfterLesson] = useState(false);
   const [invite, setInvite] = useState('');
   const [ready, setReady] = useState(false),
     [pending, setPending] = useState(false),
@@ -31,6 +33,10 @@ export default function LoginPage() {
       setReady(true);
       return;
     }
+    const query = new URLSearchParams(window.location.search);
+    const finished = query.get('guest') === 'complete';
+    setAfterLesson(finished);
+    setMode(query.get('mode') === 'login' ? 'login' : finished ? 'register' : 'choose');
     let live = true;
     api('/session', SessionResponse)
       .then((session) => {
@@ -101,65 +107,99 @@ export default function LoginPage() {
           <ArrowLeft size={16} /> На главную
         </Link>
         <div className="login-content account-form">
-          <h1>
-            {mode === 'owner'
-              ? 'Главный администратор'
-              : register
-                ? 'Создать аккаунт'
-                : 'Вход в LangPlot'}
-          </h1>
-          <p>
-            {mode === 'owner'
-              ? 'Задайте имя, адрес и пароль для управления сервисом.'
-              : register
-                ? 'Ваш аккаунт сохранит выборы, пройденные главы и учебные материалы.'
-                : 'Войдите, чтобы продолжить свою историю.'}
-          </p>
-          <form onSubmit={submit}>
-            {register && (
-              <label className="field">
-                Имя
-                <input name="name" autoComplete="nickname" maxLength={60} required />
-              </label>
-            )}
-            <label className="field">
-              Электронная почта
-              <input name="email" type="email" autoComplete="email" maxLength={254} required />
-            </label>
-            <label className="field">
-              Пароль
-              <input
-                name="password"
-                type="password"
-                autoComplete={register ? 'new-password' : 'current-password'}
-                minLength={register ? 10 : 1}
-                maxLength={128}
-                required
-              />
-              {register && <small>От 10 символов</small>}
-            </label>
-            {error && (
-              <p role="alert" className="error-box">
-                {error}
+          {!ready ? (
+            <p role="status">Открываем LangPlot…</p>
+          ) : mode === 'choose' ? (
+            <>
+              <h1>Как начнём?</h1>
+              <p>
+                Создайте аккаунт сразу или попробуйте «Последний ряд» — первый урок английского A2.
+                В конце урока вы сможете сохранить результат в аккаунте.
               </p>
-            )}
-            <button className="button primary full" disabled={!ready || pending}>
-              {pending ? <LoaderCircle className="spin" size={18} /> : <ArrowRight size={18} />}{' '}
-              {register ? 'Зарегистрироваться' : 'Войти'}
-            </button>
-          </form>
-          {mode !== 'owner' && (
-            <button
-              type="button"
-              className="auth-switch"
-              disabled={pending}
-              onClick={() => {
-                setError('');
-                setMode(register ? 'login' : 'register');
-              }}
-            >
-              {register ? 'Уже есть аккаунт? Войти' : 'Создать аккаунт'}
-            </button>
+              <div className="entry-actions">
+                <button className="button primary full" onClick={() => setMode('register')}>
+                  Создать аккаунт <ArrowRight size={18} />
+                </button>
+                <Link className="button secondary full" href="/guest/last-row">
+                  Пройти первый урок без регистрации
+                </Link>
+              </div>
+              <button className="auth-switch" onClick={() => setMode('login')}>
+                Уже есть аккаунт? Войти
+              </button>
+            </>
+          ) : (
+            <>
+              <h1>
+                {mode === 'owner'
+                  ? 'Главный администратор'
+                  : register
+                    ? afterLesson
+                      ? 'Сохранить пройденный урок'
+                      : 'Создать аккаунт'
+                    : 'Вход в LangPlot'}
+              </h1>
+              <p>
+                {mode === 'owner'
+                  ? 'Задайте имя, адрес и пароль для управления сервисом.'
+                  : afterLesson
+                    ? 'Ваш выбор, переписка с Мэй и ответы на задания перейдут в аккаунт. Следующий урок откроется в курсе.'
+                    : register
+                      ? 'Ваш аккаунт сохранит выборы, пройденные главы и учебные материалы.'
+                      : 'Войдите, чтобы продолжить свою историю.'}
+              </p>
+              <form onSubmit={submit}>
+                {register && (
+                  <label className="field">
+                    Имя
+                    <input name="name" autoComplete="nickname" maxLength={60} required />
+                  </label>
+                )}
+                <label className="field">
+                  Электронная почта
+                  <input name="email" type="email" autoComplete="email" maxLength={254} required />
+                </label>
+                <label className="field">
+                  Пароль
+                  <input
+                    name="password"
+                    type="password"
+                    autoComplete={register ? 'new-password' : 'current-password'}
+                    minLength={register ? 10 : 1}
+                    maxLength={128}
+                    required
+                  />
+                  {register && <small>От 10 символов</small>}
+                </label>
+                {error && (
+                  <p role="alert" className="error-box">
+                    {error}
+                  </p>
+                )}
+                <button className="button primary full" disabled={!ready || pending}>
+                  {pending ? <LoaderCircle className="spin" size={18} /> : <ArrowRight size={18} />}{' '}
+                  {register ? 'Зарегистрироваться' : 'Войти'}
+                </button>
+              </form>
+              {mode !== 'owner' && (
+                <button
+                  type="button"
+                  className="auth-switch"
+                  disabled={pending}
+                  onClick={() => {
+                    setError('');
+                    setMode(register ? 'login' : 'register');
+                  }}
+                >
+                  {register ? 'Уже есть аккаунт? Войти' : 'Создать аккаунт'}
+                </button>
+              )}
+              {mode !== 'owner' && !afterLesson && (
+                <Link className="guest-alternative" href="/guest/last-row">
+                  Пройти первый урок без регистрации
+                </Link>
+              )}
+            </>
           )}
         </div>
       </div>

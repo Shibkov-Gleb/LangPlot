@@ -5,8 +5,10 @@ import { registerCoreRoutes } from './routes.js';
 import { recoverChats, registerChatRoutes } from './chat-routes.js';
 import { recoverJobs, registerStudioRoutes } from './studio-routes.js';
 await db.$connect();
-await recoverChats();
-await recoverJobs();
+if (config.UI_VARIANT === 'original') {
+  await recoverChats();
+  await recoverJobs();
+}
 registerCoreRoutes();
 registerChatRoutes();
 registerStudioRoutes();

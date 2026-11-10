@@ -1,4 +1,5 @@
 import express from 'express';
+import { ensureVisit } from './visits.js';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
@@ -46,6 +47,10 @@ app.get('/api/health', async (_req, res) => {
   res.json({ ok: true, localMode });
 });
 app.use('/api', session);
+app.post('/api/visit', async (req, res) => {
+  await ensureVisit(req, res);
+  res.json({ ok: true });
+});
 const authLimit = rateLimit({
   windowMs: 15 * 60 * 1000,
   limit: 30,

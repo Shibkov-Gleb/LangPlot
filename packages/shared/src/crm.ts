@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { DateFilters, Segment } from './reports';
 import { Language, Level, Role } from './contracts';
 export const ContactStage = z.enum(['NEW', 'CONTACTED', 'FOLLOW_UP', 'RESOLVED']);
 export const stageNames = {
@@ -7,15 +8,14 @@ export const stageNames = {
   FOLLOW_UP: 'Нужен контакт',
   RESOLVED: 'Вопрос решён',
 } as const;
-export const CrmFilter = z
-  .object({
-    search: z.string().trim().max(200).default(''),
-    role: Role.optional(),
-    stage: ContactStage.optional(),
-    due: z.literal('true').optional(),
-    page: z.coerce.number().int().min(1).max(100000).default(1),
-  })
-  .strict();
+export const CrmFilter = DateFilters.extend({
+  segment: Segment.optional(),
+  search: z.string().trim().max(200).default(''),
+  role: Role.optional(),
+  stage: ContactStage.optional(),
+  due: z.literal('true').optional(),
+  page: z.coerce.number().int().min(1).max(100000).default(1),
+}).strict();
 export const ContactUpdate = z
   .object({ stage: ContactStage, followUp: z.string().date().nullable() })
   .strict();
@@ -56,3 +56,5 @@ export const CrmDetail = z.object({
   ),
 });
 export type CrmDetail = z.infer<typeof CrmDetail>;
+
+export type CrmFilter = z.infer<typeof CrmFilter>;

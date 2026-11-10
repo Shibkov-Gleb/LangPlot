@@ -36,7 +36,11 @@ async function pump() {
         orderBy: { createdAt: 'asc' },
       });
       if (!job) break;
-      await db.studioJob.update({ where: { id: job.id }, data: { status: 'running' } });
+      const claimed = await db.studioJob.updateMany({
+        where: { id: job.id, status: 'queued' },
+        data: { status: 'running' },
+      });
+      if (!claimed.count) continue;
       try {
         const graph = createCourseGraph(new LocalCourseProvider(), async (stage) => {
           await db.studioJob.update({ where: { id: job.id }, data: { stage } });

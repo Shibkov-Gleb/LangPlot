@@ -7,6 +7,7 @@ export default defineConfig({
   expect: { timeout: 12000 },
   reporter: [['list'], ['html', { open: 'never' }]],
   use: {
+    extraHTTPHeaders: { 'X-LangPlot-QA': '1' },
     baseURL: process.env.PLAYWRIGHT_BASE_URL || 'http://localhost:3000',
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',

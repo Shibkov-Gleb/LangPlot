@@ -1,3 +1,4 @@
+import { VisitTracker } from '@/components/visit';
 import type { Metadata } from 'next';
 import '@fontsource-variable/manrope';
 import './globals.css';
@@ -18,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="ru" data-scroll-behavior="smooth">
       <body>
+        <VisitTracker />
         <a className="skip-link" href="#main">
           К содержимому
         </a>

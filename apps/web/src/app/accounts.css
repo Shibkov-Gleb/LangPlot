@@ -385,3 +385,70 @@
     font-size: 1.6rem;
   }
 }
+
+.report-tabs,
+.report-exports,
+.report-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 0.7rem;
+}
+.report-tabs {
+  border-bottom: 1px solid #304149;
+  gap: 1.2rem;
+}
+.report-tabs a {
+  padding: 0.7rem 0.3rem;
+  color: #abbfc1;
+}
+.report-tabs [aria-current] {
+  color: var(--mint);
+  border-bottom: 2px solid var(--mint);
+}
+.report-filters .field {
+  margin: 0;
+  min-width: 7rem;
+  flex: 1 1 8rem;
+}
+.report-filters input,
+.report-filters select {
+  width: 100%;
+  min-width: 0;
+}
+.report-note {
+  padding: 0.5rem 1rem 1rem;
+  color: #aec2c2;
+  font-size: 0.83rem;
+}
+.crm-directory > .report-note + div > .button,
+.crm-directory > div > .button {
+  margin: 0.5rem 1rem;
+}
+.crm .report-table th {
+  font-weight: 550;
+}
+.report-table th small {
+  display: block;
+  font-weight: 400;
+}
+.report-table a {
+  color: var(--mint);
+  text-decoration: underline;
+}
+.crm .report-table td:last-child,
+.crm .report-table th:last-child {
+  display: table-cell;
+}
+@media (max-width: 650px) {
+  .report-table {
+    min-width: 530px;
+  }
+  .report-filters .field {
+    max-width: 100%;
+  }
+  .crm .report-table th,
+  .crm .report-table td {
+    font-size: 0.8rem;
+  }
+}

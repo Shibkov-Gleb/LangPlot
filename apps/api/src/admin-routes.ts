@@ -12,6 +12,8 @@ import {
   roleNames,
   stageNames,
 } from '@langplot/shared';
+import { reportRoutes, studentQuery } from './report-routes.js';
+import { snapshot } from './report-service.js';
 import { app } from './app.js';
 import { db } from './db.js';
 import { ApiError } from './errors.js';
@@ -68,6 +70,7 @@ export function registerAccountRoutes() {
     res.json(ProfileResponse.parse({ user: profile(user) }));
   });
   app.use('/api/admin', requireUser, requireStaff);
+  reportRoutes();
   app.get('/api/admin/metrics', async (_req, res) => {
     const [count, subscribed, recentLogins, due] = await db.$transaction([
       db.user.count({ where: accounts }),
@@ -81,26 +84,21 @@ export function registerAccountRoutes() {
   });
   app.get('/api/admin/users', async (req, res) => {
     const query = CrmFilter.parse(req.query);
-    const term = { contains: query.search, mode: 'insensitive' as const };
-    const where: Prisma.UserWhereInput = {
-      ...accounts,
-      role: query.role,
-      contactStage: query.stage,
-      ...(query.due && { followUpAt: { lte: new Date() } }),
-      ...(query.search && { OR: [{ name: term }, { email: term }] }),
-    };
-    const pageSize = 20;
-    const [total, users] = await db.$transaction([
-      db.user.count({ where }),
-      db.user.findMany({
+    const result = await snapshot(async (tx) => {
+      const where = await studentQuery(tx, query, new Date());
+      const pageSize = 20,
+        total = await tx.user.count({ where });
+      const page = Math.min(query.page, Math.max(1, Math.ceil(total / pageSize)));
+      const users = await tx.user.findMany({
         where,
         select: fields,
         orderBy: [{ createdAt: 'desc' }, { id: 'asc' }],
         take: pageSize,
-        skip: (query.page - 1) * pageSize,
-      }),
-    ]);
-    res.json(CrmList.parse({ total, users: users.map(contact), page: query.page, pageSize }));
+        skip: (page - 1) * pageSize,
+      });
+      return { total, users: users.map(contact), page, pageSize };
+    });
+    res.json(CrmList.parse(result));
   });
   app.get('/api/admin/users/:id', async (req, res) => {
     const user = await findContact(String(req.params.id));

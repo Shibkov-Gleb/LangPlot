@@ -19,7 +19,9 @@ declare global {
     }
   }
 }
-const cookieName = 'langplot_session';
+import { attributeAccount } from './visits.js';
+const cookieName =
+  config.UI_VARIANT === 'original' ? 'langplot_session' : 'langplot_session_first_scene';
 export const tokenHash = (token: string) => createHash('sha256').update(token).digest('hex');
 const cookieOptions = {
   httpOnly: true,
@@ -141,11 +143,14 @@ export async function createAccount(req: Request, res: Response, owner = false) 
           name: input.name,
           email: input.email,
           passwordHash,
+          excludedFromAnalytics:
+            req.headers['x-langplot-qa'] === '1' || input.email.endsWith('.invalid'),
           role: owner ? 'SUPERADMIN' : 'USER',
           level: 'A2',
           lastLoginAt: new Date(),
         },
       });
+      await attributeAccount(tx, req, user, true);
       return issueSession(req, res, tx, user);
     });
     send();
@@ -167,6 +172,7 @@ export async function login(req: Request, res: Response) {
       where: { id: user.id },
       data: { lastLoginAt: new Date() },
     });
+    await attributeAccount(tx, req, current, false);
     return issueSession(req, res, tx, current);
   });
   send();

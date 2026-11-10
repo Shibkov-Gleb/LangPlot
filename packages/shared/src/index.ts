@@ -7,3 +7,5 @@ export * from './courses';
 export * from './study-guide';
 
 export * from './crm';
+
+export * from './reports';

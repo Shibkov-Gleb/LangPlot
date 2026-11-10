@@ -2,6 +2,8 @@ import { z } from 'zod';
 
 const schema = z.object({
   DATABASE_URL: z.string().url(),
+  UI_VARIANT: z.enum(['original', 'first-scene']).default('original'),
+  PAYMENTS_ENABLED: z.enum(['true', 'false']).default('false'),
   PORT: z.coerce.number().default(4000),
   HOST: z.literal('127.0.0.1').default('127.0.0.1'),
   WEB_ORIGIN: z.string().url().default('http://localhost:3000'),

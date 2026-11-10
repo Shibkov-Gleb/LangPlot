@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft, ArrowRight, LoaderCircle } from 'lucide-react';
 import { ProfileResponse, SessionResponse } from '@langplot/shared';
+import { trackVisit } from '@/components/visit';
 import { Brand } from '@/components/brand';
 import { api, body, errorText } from '@/lib/api';
 import { studyReturnPath } from '@/lib/course-paths';
@@ -60,6 +61,7 @@ export default function LoginPage() {
               name: fields.get('name'),
               ...(mode === 'owner' ? { token: invite } : {}),
             };
+      await trackVisit();
       await api('/session/' + mode, ProfileResponse, { method: 'POST', body: body(input) });
       const target = destination(),
         course = target.match(/^\/courses\/(en|de)\/(a1|a2|b1|b2|c1|c2)$/);

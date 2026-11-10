@@ -166,6 +166,9 @@ describe.sequential('PostgreSQL API integration', () => {
       200,
     );
     expect((await call('/studio/jobs')).status).toBe(200);
+    expect((await call('/admin/exports', 'POST', { type: 'contacts', filters: {} })).status).toBe(
+      403,
+    );
     expect((await call('/admin/users/' + id + '/role', 'PATCH', { admin: false })).status).toBe(
       403,
     );
@@ -199,6 +202,100 @@ describe.sequential('PostgreSQL API integration', () => {
     expect((await call('/session', 'DELETE', {})).status).toBe(200);
     expect((await call('/profile')).status).toBe(401);
   });
+  it('reports mature cohorts, real learning events and all filtered CSV rows', async () => {
+    const now = Date.now(),
+      day = 86400000,
+      old = new Date(now - 10 * day),
+      yesterday = new Date(now - day);
+    const ids = Array.from({ length: 40 }, () => randomUUID());
+    await db.user.createMany({
+      data: ids.map((id, i) => ({
+        id,
+        email: id + '@example.test',
+        name: i === 0 ? '=опасно; "да"\nстрока' : 'Когорта',
+        createdAt: old,
+      })),
+    });
+    await db.productVisit.createMany({
+      data: ids.map((userId) => ({
+        id: randomUUID(),
+        userId,
+        source: 'fixture',
+        variant: 'original',
+        firstAt: old,
+      })),
+    });
+    await db.productVisit.createMany({
+      data: [
+        { id: randomUUID(), source: 'fixture', variant: 'original', firstAt: yesterday },
+        { id: randomUUID(), source: 'fixture', variant: 'original', firstAt: old, excluded: true },
+      ],
+    });
+    const pkg = await db.contentVersion.create({
+      data: {
+        packageId: lessonPackage.manifest.id,
+        version: 'test-report',
+        language: 'en',
+        level: 'A2',
+        data: lessonPackage,
+      },
+    });
+    for (const id of ids.slice(0, 8)) {
+      const run = await db.playthrough.create({
+        data: { userId: id, contentVersionId: pkg.id, language: 'en', state: {} },
+      });
+      await db.playEvent.createMany({
+        data: [1, 7].map((n) => ({
+          playthroughId: run.id,
+          requestId: randomUUID(),
+          kind: 'choice',
+          input: {},
+          result: {},
+          fromScene: 'arrival',
+          toScene: n === 1 ? 'line-1' : 'end',
+          terminal: n === 7,
+          createdAt: new Date(old.getTime() + n * day),
+        })),
+      });
+    }
+    const q = 'source=fixture&variant=original';
+    const ov = (await request('/admin/reports/overview?' + q)).data;
+    const metric = (key: string) => ov.metrics.find((m: { key: string }) => m.key === key);
+    expect(metric('completed7')).toMatchObject({ count: 8, base: 40, pending: 1 });
+    expect(metric('visits').count).toBe(41);
+    expect(metric('d7').count).toBe(8);
+    expect(metric('paid30').enabled).toBe(false);
+    const l = (await request('/admin/reports/lessons?' + q)).data;
+    expect(l.lessons[0]).toMatchObject({ started: 8, finished: 8, replays: 0 });
+    const filters = { source: 'fixture', variant: 'original' };
+    const list = (await request('/admin/users?' + q)).data;
+    expect(list.total).toBe(40);
+    expect(list.users).toHaveLength(20);
+    const prepare = async (type: string, f: Record<string, string> = filters) =>
+      (await request('/admin/exports', 'POST', { type, filters: f })).data;
+    const pre = await prepare('contacts');
+    expect(pre.count).toBe(40);
+    const bytes = Buffer.from(
+      await (
+        await fetch(base + '/admin/exports/' + pre.id, { headers: { Cookie: cookie } })
+      ).arrayBuffer(),
+    );
+    expect([...bytes.subarray(0, 3)]).toEqual([239, 187, 191]);
+    expect(bytes.toString()).toContain(`"'=опасно; ""да""\nстрока"`);
+    expect(await db.contactExport.count({ where: { rows: 40 } })).toBe(1);
+    const pseudo = await prepare('students', { ...filters, segment: 'completed7' });
+    expect(pseudo.count).toBe(8);
+    expect(
+      await (
+        await fetch(base + '/admin/exports/' + pseudo.id, { headers: { Cookie: cookie } })
+      ).text(),
+    ).not.toContain('@example.test');
+    const { confirmFirstPayment } = await import('../../apps/api/src/visits.js');
+    await confirmFirstPayment(ids[0]!, 'verified-test', yesterday);
+    await confirmFirstPayment(ids[0]!, 'verified-test', yesterday);
+    expect(await db.firstPayment.count({ where: { userId: ids[0] } })).toBe(1);
+    await db.user.deleteMany({ where: { id: { in: ids } } });
+  }, 30000);
   it('saves settings and language across database reconnection', async () => {
     expect(
       (await request('/profile/selection', 'PUT', { language: 'de', level: 'B2' })).status,

@@ -49,6 +49,16 @@ test('ученик выбирает курс, активирует подпис�
     await db.user.update({ where: { email }, data: { role: 'ADMIN' } });
     await page.goto('/admin');
     await expect(page.getByRole('heading', { name: 'Администрирование' })).toBeVisible();
+    await expect(page.getByText('Данные об оплатах ещё не собираются').first()).toBeVisible();
+    await page.getByRole('button', { name: 'CSV по когортам' }).click();
+    await expect(page.getByRole('dialog')).toContainText('Столбцы');
+    const download = page.waitForEvent('download');
+    await page.getByRole('link', { name: 'Скачать CSV' }).click();
+    expect((await download).suggestedFilename()).toContain('cohorts');
+    await page.getByRole('link', { name: 'Уроки', exact: true }).click();
+    await expect(page.getByRole('heading', { name: /движение по курсу/ })).toBeVisible();
+    await expect(page.getByRole('heading', { name: /действия по сценам/ })).toBeAttached();
+    await page.getByRole('link', { name: 'Ученики', exact: true }).click();
     await page.getByLabel('Поиск по имени или почте').fill(email);
     await page.getByRole('link', { name: new RegExp(email.replaceAll('.', '\\.')) }).click();
     await expect(page.getByRole('button', { name: 'Назначить администратором' })).toHaveCount(0);
@@ -60,6 +70,7 @@ test('ученик выбирает курс, активирует подпис�
     await page.getByRole('button', { name: 'Сохранить контакт' }).click();
     await expect(page.getByRole('status')).toHaveText('Контакт сохранён.');
     await page.getByRole('link', { name: 'К списку аккаунтов' }).click();
+    await expect(page.getByLabel('Поиск по имени или почте')).toHaveValue(email);
     await page.getByLabel('Уровень доступа').selectOption('ADMIN');
     await page.getByRole('button', { name: 'На сегодня' }).click();
     await expect(page.getByRole('link', { name: new RegExp(email) })).toBeVisible();

@@ -183,6 +183,13 @@ export function registerCoreRoutes() {
             playthroughId: id,
             requestId: input.requestId,
             kind,
+            fromScene: state.sceneId,
+            toScene: nextState.sceneId,
+            terminal: content.scenes.some((s) => s.id === nextState.sceneId && s.terminal),
+            correct:
+              content.schemaVersion !== 1 && lessonScene(content, state.sceneId)?.exercise
+                ? lessonScene(content, state.sceneId)!.exercise!.correct === input.choiceId
+                : null,
             input: json(input),
             result: json(result),
           },

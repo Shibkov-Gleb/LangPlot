@@ -1,6 +1,7 @@
 'use client';
 import { use, useEffect, useState } from 'react';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { ArrowLeft, CalendarClock, MessageSquare, ShieldCheck } from 'lucide-react';
 import {
   ContactStage,
@@ -15,6 +16,7 @@ import { Dialog } from '@/components/dialog';
 import { api, body, errorText } from '@/lib/api';
 const date = (value: string | null) => (value ? new Date(value).toLocaleDateString('ru-RU') : '—');
 export default function ContactPage({ params }: { params: Promise<{ id: string }> }) {
+  const backQuery = useSearchParams().toString();
   const { id } = use(params),
     { user: viewer } = useProfile(),
     path = '/admin/users/' + encodeURIComponent(id);
@@ -74,7 +76,7 @@ export default function ContactPage({ params }: { params: Promise<{ id: string }
   const u = data?.user;
   return (
     <div className="crm">
-      <Link className="study-back" href="/admin">
+      <Link className="study-back" href={'/admin/students' + (backQuery ? '?' + backQuery : '')}>
         <ArrowLeft size={16} /> К списку аккаунтов
       </Link>
       {error && (

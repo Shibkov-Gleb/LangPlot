@@ -55,6 +55,9 @@ model User {
   level          String @default("A1")
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
+  visit          ProductVisit?
+  payment        FirstPayment?
+  excludedFromAnalytics Boolean @default(false)
   sessions       Session[]
   playthroughs   Playthrough[]
   skills         SkillState[]
@@ -103,6 +106,10 @@ model PlayEvent {
   playthroughId String
   playthrough   Playthrough @relation(fields: [playthroughId], references: [id], onDelete: Cascade)
   requestId     String
+  fromScene     String?
+  toScene       String?
+  terminal      Boolean @default(false)
+  correct       Boolean?
   kind          String
   input         Json
   result        Json
@@ -160,4 +167,39 @@ model StudioJob {
   error     String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model ProductVisit {
+  id String @id
+  variant String
+  source String
+  firstAt DateTime @default(now())
+  userId String? @unique
+  user User? @relation(fields:[userId],references:[id],onDelete:Cascade)
+  excluded Boolean @default(false)
+  guestDays GuestActivity[]
+  @@index([firstAt,variant,source])
+}
+model GuestActivity {
+  visitId String
+  visit ProductVisit @relation(fields:[visitId],references:[id],onDelete:Cascade)
+  day String
+  firstAt DateTime
+  @@id([visitId,day])
+}
+model FirstPayment {
+  userId String @id
+  user User @relation(fields:[userId],references:[id],onDelete:Cascade)
+  confirmationId String @unique
+  paidAt DateTime
+}
+model ReportSetup {
+  id String @id
+  startedAt DateTime @default(now())
+}
+model ContactExport {
+  id String @id @default(uuid())
+  authorId String
+  createdAt DateTime @default(now())
+  rows Int
 }

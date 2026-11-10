@@ -1,244 +1,106 @@
 'use client';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
-import {
-  ArrowUpRight,
-  CalendarClock,
-  ChevronLeft,
-  ChevronRight,
-  Search,
-  UsersRound,
-  BookOpen,
-  ListFilter,
-} from 'lucide-react';
-import { CrmList, CrmMetrics, Role, ContactStage, roleNames, stageNames } from '@langplot/shared';
-import { api, errorText } from '@/lib/api';
-const date = (value: string | null) =>
-  value
-    ? new Intl.DateTimeFormat('ru-RU', {
-        day: '2-digit',
-        month: 'short',
-        year: 'numeric',
-        timeZone: 'UTC',
-      }).format(new Date(value))
-    : '—';
+import { useSearchParams } from 'next/navigation';
+import { Overview } from '@langplot/shared';
+import { useStudyResource } from '@/lib/use-study-resource';
+import { ReportHeader, ReportFilters, ExportButton } from '@/components/report-ui';
+const percent = (a: number, b: number) =>
+  b ? ((100 * a) / b).toLocaleString('ru-RU', { maximumFractionDigits: 1 }) + '%' : '—';
 export default function AdminPage() {
-  const [metrics, setMetrics] = useState<ReturnType<typeof CrmMetrics.parse>>();
-  const [list, setList] = useState<ReturnType<typeof CrmList.parse>>();
-  const [q, setQ] = useState(''),
-    [role, setRole] = useState(''),
-    [stage, setStage] = useState(''),
-    [due, setDue] = useState(false),
-    [page, setPage] = useState(1);
-  const [error, setError] = useState(''),
-    [loading, setLoading] = useState(true),
-    [retry, setRetry] = useState(0);
-  useEffect(() => {
-    const controller = new AbortController();
-    api('/admin/metrics', CrmMetrics, { signal: controller.signal })
-      .then(setMetrics)
-      .catch((e) => {
-        if (!controller.signal.aborted) setError(errorText(e));
-      });
-    return () => controller.abort();
-  }, [retry]);
-  useEffect(() => {
-    const controller = new AbortController();
-    setLoading(true);
-    setError('');
-    const timer = setTimeout(() => {
-      const qs = new URLSearchParams({ search: q, page: String(page) });
-      if (role) qs.set('role', role);
-      if (stage) qs.set('stage', stage);
-      if (due) qs.set('due', 'true');
-      api('/admin/users?' + qs, CrmList, { signal: controller.signal })
-        .then((data) => {
-          if (!controller.signal.aborted) {
-            setList(data);
-            setLoading(false);
-          }
-        })
-        .catch((e) => {
-          if (!controller.signal.aborted) {
-            setError(errorText(e));
-            setLoading(false);
-          }
-        });
-    }, 160);
-    return () => {
-      controller.abort();
-      clearTimeout(timer);
-    };
-  }, [q, role, stage, due, page, retry]);
-  const cards = [
-    ['Аккаунты', metrics?.accounts],
-    ['С подпиской', metrics?.subscribed],
-    ['Входили за 7 дней', metrics?.recentLogins],
-    ['Ожидают контакта', metrics?.due],
-  ] as const;
+  const query = useSearchParams().toString(),
+    { data, error, reload } = useStudyResource('/admin/reports/overview?' + query, Overview);
   return (
     <div className="crm">
-      <header className="crm-heading">
-        <div>
-          <h1>Администрирование</h1>
-          <p>Ученики, обращения и учебный контент.</p>
-        </div>
-        <Link className="button secondary" href="/studio">
-          <BookOpen size={17} /> Студия контента <ArrowUpRight size={16} />
-        </Link>
-      </header>
-      <div className="crm-stats">
-        {cards.map(([label, val]) => (
-          <div key={label}>
-            <span>{label}</span>
-            <strong>{val ?? '—'}</strong>
-          </div>
-        ))}
-      </div>
-      <section className="crm-directory">
-        <header>
-          <div>
-            <UsersRound size={19} />
-            <h2>Аккаунты</h2>
-          </div>
-          <span aria-live="polite">
-            {loading ? 'Загрузка…' : list ? 'Найдено ' + list.total : ''}
-          </span>
-        </header>
-        <div className="crm-filters">
-          <label className="crm-search">
-            <Search size={17} />
-            <input
-              aria-label="Поиск по имени или почте"
-              placeholder="Имя или почта"
-              value={q}
-              maxLength={200}
-              onChange={(e) => {
-                setQ(e.target.value);
-                setPage(1);
-              }}
-            />
-          </label>
-          <select
-            aria-label="Уровень доступа"
-            value={role}
-            onChange={(e) => {
-              setRole(e.target.value);
-              setPage(1);
-            }}
-          >
-            <option value="">Все роли</option>
-            {Role.options.map((r) => (
-              <option key={r} value={r}>
-                {roleNames[r]}
-              </option>
-            ))}
-          </select>
-          <select
-            aria-label="Статус контакта"
-            value={stage}
-            onChange={(e) => {
-              setStage(e.target.value);
-              setPage(1);
-            }}
-          >
-            <option value="">Все контакты</option>
-            {ContactStage.options.map((s) => (
-              <option value={s} key={s}>
-                {stageNames[s]}
-              </option>
-            ))}
-          </select>
-          <button
-            className="crm-due"
-            aria-pressed={due}
-            onClick={() => {
-              setDue(!due);
-              setPage(1);
-            }}
-          >
-            <CalendarClock size={16} /> На сегодня
-          </button>
-        </div>
-        {error && (
-          <p role="alert" className="error-box">
-            {error} <button onClick={() => setRetry((v) => v + 1)}>Повторить</button>
-          </p>
-        )}
-        {!loading && !error && list?.users.length === 0 ? (
-          <div className="crm-empty">
-            <ListFilter />
-            <h3>Аккаунты не найдены</h3>
-            <button
-              className="button secondary"
-              onClick={() => {
-                setQ('');
-                setRole('');
-                setStage('');
-                setDue(false);
-                setPage(1);
-              }}
-            >
-              Сбросить фильтры
-            </button>
-          </div>
-        ) : (
-          <div className="crm-table-scroll">
-            <table aria-label="Список аккаунтов" aria-busy={loading}>
-              <thead>
-                <tr>
-                  <th>Имя и почта</th>
-                  <th>Доступ</th>
-                  <th>Контакт</th>
-                  <th>Последний вход</th>
-                </tr>
-              </thead>
-              <tbody>
-                {list?.users.map((u) => (
-                  <tr key={u.id}>
-                    <td>
-                      <Link className="crm-person" href={'/admin/' + u.id}>
-                        <i aria-hidden="true">{u.name[0]}</i>
-                        <span>
-                          <b>{u.name}</b>
-                          <small>{u.email}</small>
-                        </span>
-                      </Link>
-                    </td>
-                    <td>{roleNames[u.role]}</td>
-                    <td>
-                      {stageNames[u.stage]}
-                      {u.followUp && <small>{date(u.followUp)}</small>}
-                    </td>
-                    <td>{date(u.lastLoginAt)}</td>
+      <ReportHeader active="overview" />
+      <ReportFilters sources={data?.sources} />
+      {error && (
+        <p role="alert">
+          {error} <button onClick={reload}>Повторить</button>
+        </p>
+      )}
+      {data ? (
+        <>
+          <section className="crm-directory">
+            <header>
+              <h2>От первого посещения до оплаты</h2>
+            </header>
+            <p className="report-note">
+              Когорты по первому посещению · {data.from} — {data.to} · МСК. Учёт посещений с{' '}
+              {new Date(data.trackingSince).toLocaleDateString('ru-RU', {
+                timeZone: 'Europe/Moscow',
+              })}
+              . За более ранние даты данных о посещениях нет.
+            </p>
+            <div className="crm-table-scroll">
+              <table className="report-table">
+                <thead>
+                  <tr>
+                    <th>Показатель</th>
+                    <th>Участники / база</th>
+                    <th>Доля</th>
+                    <th>Предыдущий период</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
-        {list && (
-          <footer className="crm-pagination">
-            <span>
-              Страница {page} из {Math.max(1, Math.ceil(list.total / list.pageSize))}
-            </span>
-            <button
-              aria-label="Предыдущая страница"
-              disabled={page === 1 || loading}
-              onClick={() => setPage((p) => p - 1)}
-            >
-              <ChevronLeft size={18} />
-            </button>
-            <button
-              aria-label="Следующая страница"
-              disabled={page * list.pageSize >= list.total || loading}
-              onClick={() => setPage((p) => p + 1)}
-            >
-              <ChevronRight size={18} />
-            </button>
-          </footer>
-        )}
-      </section>
+                </thead>
+                <tbody>
+                  {data.metrics.map((m, i) => {
+                    const trackingDay = new Date(data.trackingSince).toLocaleDateString('sv-SE', {
+                      timeZone: 'Europe/Moscow',
+                    });
+                    const prev = data.previous[i]!,
+                      qs = new URLSearchParams(query);
+                    qs.set('from', data.from);
+                    qs.set('to', data.to);
+                    qs.set('segment', m.key);
+                    return (
+                      <tr key={m.key}>
+                        <th>
+                          {['registered', 'completed7'].includes(m.key) ? (
+                            <Link href={'/admin/students?' + qs}>{m.label} ↗</Link>
+                          ) : (
+                            m.label
+                          )}
+                        </th>
+                        {data.to < trackingDay ? (
+                          <td colSpan={3}>Нет данных до начала учёта</td>
+                        ) : !m.enabled ? (
+                          <td colSpan={3}>Данные об оплатах ещё не собираются</td>
+                        ) : (
+                          <>
+                            <td>
+                              {m.count} из {m.base}
+                              {m.pending > 0 && (
+                                <small>Окно наблюдения открыто · {m.pending}</small>
+                              )}
+                            </td>
+                            <td>{percent(m.count, m.base)}</td>
+                            <td>
+                              {data.previousTo < trackingDay
+                                ? 'Нет данных'
+                                : prev.count +
+                                  ' из ' +
+                                  prev.base +
+                                  ' · ' +
+                                  percent(prev.count, prev.base)}
+                            </td>
+                          </>
+                        )}
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+            <p className="report-note">
+              Сравнение · {data.previousFrom} — {data.previousTo}. База — новые посетители периода.
+              Для D1/D7 учитываются завершённые календарные дни, для конверсии за 7/30 дней — полные
+              окна. Последняя строка использует базу завершивших урок за 30 дней.
+            </p>
+          </section>
+          <ExportButton type="cohorts" query={query} label="CSV по когортам" />
+        </>
+      ) : (
+        !error && <p role="status">Загружаем воронку…</p>
+      )}
     </div>
   );
 }

@@ -256,7 +256,7 @@ export async function lessonReport(tx: Tx, q: ReportFilter, now: Date) {
         replays: new Set(),
       });
   const seen = new Set<string>(),
-    original = new Set<string>();
+    original = new Map<string, string>();
   for (const e of events) {
     const l = byPackage.get(e.playthrough.contentVersion.packageId)!;
     const c = chapters.get(l.number)!;
@@ -265,15 +265,13 @@ export async function lessonReport(tx: Tx, q: ReportFilter, now: Date) {
     const inPeriod = e.createdAt >= span.start;
     if (!seen.has(e.playthroughId)) {
       seen.add(e.playthroughId);
+      if (!original.has(key) && e.playthrough.runNumber === 1) original.set(key, e.playthroughId);
       if (inPeriod) {
-        const dates = c.starts.get(u) ?? [];
-        dates.push(e.createdAt);
-        c.starts.set(u, dates);
-        if (original.has(key) || e.playthrough.runNumber > 1) c.replays.add(e.playthroughId);
+        if (original.get(key) === e.playthroughId) c.starts.set(u, [e.createdAt]);
+        else c.replays.add(e.playthroughId);
       }
-      original.add(key);
     }
-    if (!inPeriod) continue;
+    if (!inPeriod || original.get(key) !== e.playthroughId) continue;
     if (e.terminal && !c.finishes.has(u)) c.finishes.set(u, e.createdAt);
     if (l.number === 1) {
       const sc = scenes.get(e.fromScene!);

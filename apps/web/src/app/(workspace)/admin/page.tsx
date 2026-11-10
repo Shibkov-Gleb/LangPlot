@@ -20,6 +20,31 @@ export default function AdminPage() {
       )}
       {data ? (
         <>
+          <div className="report-highlights">
+            {data.metrics
+              .filter((m) => m.key === 'completed7' || m.key === 'paid30')
+              .map((m) => (
+                <article key={m.key}>
+                  <h2>{m.label}</h2>
+                  {data.to <
+                  new Date(data.trackingSince).toLocaleDateString('sv-SE', {
+                    timeZone: 'Europe/Moscow',
+                  }) ? (
+                    <p>До начала учёта</p>
+                  ) : m.enabled ? (
+                    <>
+                      <strong>{percent(m.count, m.base)}</strong>
+                      <p>
+                        {m.count} из {m.base} посетителей с полным окном наблюдения
+                        {m.pending > 0 ? ' · ждём ещё ' + m.pending : ''}
+                      </p>
+                    </>
+                  ) : (
+                    <p>Данные об оплатах ещё не собираются</p>
+                  )}
+                </article>
+              ))}
+          </div>
           <section className="crm-directory">
             <header>
               <h2>От первого посещения до оплаты</h2>

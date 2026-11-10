@@ -11,18 +11,20 @@ export function trackVisit() {
         if (ref.host !== location.host) source = ref.hostname.slice(0, 64);
       } catch {}
     }
-    pending = fetch('/api/visit', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ source }),
-      credentials: 'same-origin',
-    })
-      .then((r) => {
+    const send = () =>
+      fetch('/api/visit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ source }),
+        credentials: 'same-origin',
+      }).then((r) => {
         if (!r.ok) throw Error('visit');
-      })
-      .catch(() => {
-        pending = undefined;
       });
+    pending = (
+      navigator.locks ? navigator.locks.request('langplot-first-visit', send) : send()
+    ).catch(() => {
+      pending = undefined;
+    });
   }
   return pending;
 }

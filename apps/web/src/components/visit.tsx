@@ -22,7 +22,7 @@ export function trackVisit() {
       });
     pending = (
       navigator.locks ? navigator.locks.request('langplot-first-visit', send) : send()
-    ).catch(() => {
+    ).then(()=>undefined).catch(() => {
       pending = undefined;
     });
   }

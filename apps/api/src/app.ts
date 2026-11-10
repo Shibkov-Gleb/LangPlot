@@ -6,7 +6,7 @@ import { ProfileResponse, SessionResponse } from '@langplot/shared';
 import { config, localMode } from './config.js';
 import { db } from './db.js';
 import { ApiError, errorHandler } from './errors.js';
-import { demoLogin, logout, profile, requireLocal, requireUser, session } from './session.js';
+import { createAccount, login, logout, profile, requireUser, session } from './session.js';
 
 export const app = express();
 app.disable('x-powered-by');
@@ -46,7 +46,22 @@ app.get('/api/health', async (_req, res) => {
   res.json({ ok: true, localMode });
 });
 app.use('/api', session);
-app.post('/api/session/demo', requireLocal, demoLogin);
+const authLimit = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 30,
+  standardHeaders: 'draft-8',
+  legacyHeaders: false,
+  skipSuccessfulRequests: true,
+  message: {
+    error: {
+      code: 'AUTH_RATE_LIMITED',
+      message: 'Слишком много попыток. Попробуйте через 15 минут.',
+    },
+  },
+});
+app.post('/api/session/register', authLimit, (req, res) => createAccount(req, res));
+app.post('/api/session/owner', authLimit, (req, res) => createAccount(req, res, true));
+app.post('/api/session/login', authLimit, login);
 app.delete('/api/session', logout);
 app.get('/api/session', (req, res) =>
   res.json(SessionResponse.parse({ user: req.user ? profile(req.user) : null, localMode })),

@@ -11,8 +11,6 @@ import {
   ProfileSettings,
   ProgressResponse,
   Selection,
-  fixtureFor,
-  initialState,
   languageNames,
   levels,
   transition,
@@ -20,31 +18,28 @@ import {
   lessonScene,
   reviewSkills,
 } from '@langplot/shared';
+import { registerAccountRoutes } from './admin-routes.js';
 import { app } from './app.js';
 import { db } from './db.js';
 import { ApiError } from './errors.js';
-import { profile, requireLocal, requireUser } from './session.js';
+import { profile, requireUser } from './session.js';
 import { ownedPlay, playDto } from './play-service.js';
 import { recordLessonAttempt, registerLessonRoutes } from './lesson-service.js';
 import { courses, readyLessons, courseDetails, readCourseHistory } from './course-catalog.js';
-import { localMode } from './config.js';
 
 const json = (value: unknown) => value as Prisma.InputJsonValue;
 export function registerCoreRoutes() {
+  registerAccountRoutes();
   registerLessonRoutes();
   app.get('/api/catalog', async (req, res) => {
-    const history = await readCourseHistory(
-      localMode ? [...readyLessons.values()] : [],
-      req.user?.id,
-    );
+    const history = await readCourseHistory([...readyLessons.values()], req.user?.id);
     res.json(
       CatalogResponse.parse({
         worlds: Language.options.map((language) => ({
           language,
           name: languageNames[language],
           levels: levels.map((level) => {
-            const course =
-              localMode && courses.find((c) => c.language === language && c.level === level);
+            const course = courses.find((c) => c.language === language && c.level === level);
             if (!course) return { level, status: 'preparing' };
             const { lessons } = courseDetails(course, history);
             const first = lessons.find((l) => l.slug);
@@ -75,42 +70,6 @@ export function registerCoreRoutes() {
     const data = Selection.parse(req.body);
     const user = await db.user.update({ where: { id: req.user!.id }, data });
     res.json(ProfileResponse.parse({ user: profile(user) }));
-  });
-  app.post('/api/plays/technical', requireLocal, requireUser, async (req, res) => {
-    const { language } = z.object({ language: Language }).strict().parse(req.body);
-    const fixture = fixtureFor(language);
-    const version = await db.contentVersion.upsert({
-      where: {
-        packageId_version: { packageId: fixture.manifest.id, version: fixture.manifest.version },
-      },
-      update: {},
-      create: {
-        packageId: fixture.manifest.id,
-        version: fixture.manifest.version,
-        language,
-        level: 'A1',
-        status: 'technical',
-        data: json(fixture),
-      },
-    });
-    const play = await db.playthrough.upsert({
-      where: {
-        userId_contentVersionId_runNumber: {
-          userId: req.user!.id,
-          contentVersionId: version.id,
-          runNumber: 1,
-        },
-      },
-      update: {},
-      create: {
-        userId: req.user!.id,
-        language,
-        contentVersionId: version.id,
-        state: json(initialState(fixture)),
-      },
-      include: { contentVersion: true },
-    });
-    res.json(PlayResponse.parse({ play: playDto(play) }));
   });
   app.get('/api/plays/:id', requireUser, async (req, res) => {
     res.json(
@@ -265,7 +224,11 @@ export function registerCoreRoutes() {
           ...s,
           description: objectiveNames.get(s.skillId),
         })),
-        publishedCourses: 0,
+        publishedCourses: new Set(
+          [...readyLessons.values()]
+            .filter((l) => l.course.language === language)
+            .map((l) => l.course.level),
+        ).size,
       }),
     );
   });

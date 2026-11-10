@@ -5,7 +5,45 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+enum AccountRole {
+  USER
+  SUBSCRIBER
+  ADMIN
+  SUPERADMIN
+}
+enum ContactStage {
+  NEW
+  CONTACTED
+  FOLLOW_UP
+  RESOLVED
+}
+model OwnerInvite {
+  id String @id
+  tokenHash String
+  expiresAt DateTime
+}
+model CrmEvent {
+  id String @id @default(uuid())
+  userId String
+  user User @relation("ContactHistory", fields: [userId], references: [id], onDelete: Cascade)
+  authorId String
+  author User @relation("StaffHistory", fields: [authorId], references: [id])
+  text String
+  createdAt DateTime @default(now())
+  @@index([userId, createdAt])
+}
 model User {
+  email String? @unique
+  passwordHash String?
+  role AccountRole @default(USER)
+  subscribedAt DateTime?
+  lastLoginAt DateTime?
+  contactStage ContactStage @default(NEW)
+  followUpAt DateTime? @db.Date
+  contactHistory CrmEvent[] @relation("ContactHistory")
+  staffHistory CrmEvent[] @relation("StaffHistory")
+  @@index([role, createdAt])
+  @@index([followUpAt])
   id             String @id @default(uuid())
   demoKey        String? @unique
   name           String @default("Исследователь")

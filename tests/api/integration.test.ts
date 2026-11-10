@@ -10,6 +10,7 @@ import { PlayablePackage } from '../../packages/shared/src/content.js';
 import { lessonScene } from '../../packages/shared/src/lesson-engine.js';
 import lessonPackage from '../../content/lessons/last-row.json';
 import { CourseResponse, TheoryResponse } from '../../packages/shared/src/courses.js';
+import { fixtureFor, initialState } from '../../packages/shared/src/engine';
 let base = '';
 let cookie = '';
 let server: Server;
@@ -29,6 +30,23 @@ async function request(route: string, method = 'GET', data?: unknown, sessionCoo
   });
   const payload = await response.json();
   return { status: response.status, data: payload, headers: response.headers };
+}
+async function technicalFixture(language: 'en' | 'de') {
+  const data = fixtureFor(language),
+    owner = await db.user.findUniqueOrThrow({ where: { email: 'owner@example.test' } });
+  const version = await db.contentVersion.create({
+    data: {
+      packageId: 'fixture.' + randomUUID(),
+      version: '1.0.0',
+      language,
+      level: 'A1',
+      status: 'technical',
+      data,
+    },
+  });
+  return db.playthrough.create({
+    data: { contentVersionId: version.id, userId: owner.id, language, state: initialState(data) },
+  });
 }
 beforeAll(async () => {
   process.loadEnvFile(path.resolve('.env'));
@@ -74,15 +92,112 @@ afterAll(async () => {
   }
 });
 describe.sequential('PostgreSQL API integration', () => {
-  it('guards private routes and creates an HttpOnly demo session', async () => {
+  it('claims the owner invitation once and creates an HttpOnly account session', async () => {
     expect((await request('/profile', 'GET', undefined, '')).status).toBe(401);
-    const login = await request('/session/demo', 'POST', {});
+    const token = randomBytes(32).toString('hex');
+    await db.ownerInvite.create({
+      data: {
+        id: 'initial',
+        tokenHash: createHash('sha256').update(token).digest('hex'),
+        expiresAt: new Date(Date.now() + 60000),
+      },
+    });
+    const input = { name: 'Owner', email: 'owner@example.test', password: randomUUID(), token };
+    const login = await request('/session/owner', 'POST', input);
+    expect(
+      (await request('/session/owner', 'POST', { ...input, email: 'other@example.test' })).status,
+    ).toBe(403);
+    expect((await request('/session/demo', 'POST', {})).status).toBe(404);
     expect(login.status).toBe(200);
     const setCookie = login.headers.get('set-cookie')!;
     expect(setCookie).toContain('HttpOnly');
     expect(setCookie).toContain('SameSite=Lax');
     cookie = setCookie.split(';')[0]!;
-    expect((await request('/session')).data.user.isDemo).toBe(true);
+    expect((await request('/session')).data.user.role).toBe('SUPERADMIN');
+  });
+  it('enforces roles on every entry point and immediately applies grants and revocations', async () => {
+    const reg = { name: 'Ученик', email: 'Learner@example.test', password: randomUUID() };
+    expect(
+      (await request('/session/register', 'POST', { ...reg, role: 'SUPERADMIN' }, '')).status,
+    ).toBe(400);
+    const registered = await request('/session/register', 'POST', reg, '');
+    expect(registered.data.user).toMatchObject({ role: 'USER', email: 'learner@example.test' });
+    expect(registered.data.user).not.toHaveProperty('passwordHash');
+    expect(
+      (await request('/session/register', 'POST', { ...reg, email: reg.email.toLowerCase() }, ''))
+        .status,
+    ).toBe(409);
+    expect(
+      (await request('/session/login', 'POST', { email: reg.email, password: 'incorrect' }, ''))
+        .status,
+    ).toBe(401);
+    const signedIn = await request(
+      '/session/login',
+      'POST',
+      { email: reg.email, password: reg.password },
+      '',
+    );
+    const student = signedIn.headers.get('set-cookie')!.split(';')[0]!,
+      id = registered.data.user.id;
+    const call = (url: string, method = 'GET', payload?: unknown) =>
+      request(url, method, payload, student);
+    expect((await call('/courses/en/a2')).status).toBe(200);
+    expect((await request('/admin/users', 'GET', undefined, '')).status).toBe(401);
+    for (const [url, method] of [
+      ['/admin/users', 'GET'],
+      ['/admin/metrics', 'GET'],
+      ['/studio/jobs', 'GET'],
+      ['/studio/import', 'POST'],
+      ['/studio/validate', 'POST'],
+      ['/studio/publish', 'POST'],
+      ['/studio/jobs', 'POST'],
+    ] as const) {
+      expect((await call(url, method, method === 'POST' ? {} : undefined)).status).toBe(403);
+    }
+    expect((await call('/profile', 'PATCH', { role: 'ADMIN' })).status).toBe(400);
+    const subscriptions = await Promise.all([
+      call('/subscription/test', 'POST', {}),
+      call('/subscription/test', 'POST', {}),
+    ]);
+    expect(subscriptions.map((r) => r.data.user.role)).toEqual(['SUBSCRIBER', 'SUBSCRIBER']);
+    expect((await call('/courses/en/a2')).status).toBe(200);
+    expect((await call('/studio/jobs')).status).toBe(403);
+    expect((await request('/admin/users/' + id + '/role', 'PATCH', { admin: true })).status).toBe(
+      200,
+    );
+    expect((await call('/studio/jobs')).status).toBe(200);
+    expect((await call('/admin/users/' + id + '/role', 'PATCH', { admin: false })).status).toBe(
+      403,
+    );
+    const owner = (await request('/profile')).data.user.id;
+    expect(
+      (await request('/admin/users/' + owner + '/role', 'PATCH', { admin: false })).status,
+    ).toBe(403);
+    expect(
+      (await call('/admin/users/' + id + '/notes', 'POST', { text: 'Обсудили урок' })).status,
+    ).toBe(201);
+    expect(
+      (
+        await call('/admin/users/' + id + '/contact', 'PATCH', {
+          stage: 'FOLLOW_UP',
+          followUp: '2020-01-01',
+        })
+      ).status,
+    ).toBe(200);
+    const filtered = await call('/admin/users?search=learner&role=ADMIN&stage=FOLLOW_UP&due=true');
+    expect(filtered.data.users.map((u: { id: string }) => u.id)).toEqual([id]);
+    const detail = await call('/admin/users/' + id);
+    expect(detail.data.history.some((e: { text: string }) => e.text === 'Обсудили урок')).toBe(
+      true,
+    );
+    expect((await request('/admin/users/' + id + '/role', 'PATCH', { admin: false })).status).toBe(
+      200,
+    );
+    expect((await call('/profile')).data.user.role).toBe('SUBSCRIBER');
+    expect((await call('/admin/users/' + id)).status).toBe(403);
+    expect((await call('/studio/jobs')).status).toBe(403);
+    expect((await call('/session', 'DELETE', {})).status).toBe(200);
+    expect((await call('/profile')).status).toBe(401);
   });
   it('saves settings and language across database reconnection', async () => {
     expect(
@@ -112,13 +227,13 @@ describe.sequential('PostgreSQL API integration', () => {
     ).toBe(400);
   });
   it('isolates play ownership', async () => {
-    const play = (await request('/plays/technical', 'POST', { language: 'en' })).data.play;
+    const play = await technicalFixture('en');
     const other = await db.user.create({ data: { name: 'Other' } });
     await db.playthrough.update({ where: { id: play.id }, data: { userId: other.id } });
     expect((await request(`/plays/${play.id}`)).status).toBe(404);
   });
   it('atomically saves choices, replays ids, rejects conflicts', async () => {
-    const play = (await request('/plays/technical', 'POST', { language: 'en' })).data.play;
+    const play = await technicalFixture('en');
     const action = { requestId: randomUUID(), revision: 0, choiceId: 'observe' };
     const results = await Promise.all([
       request(`/plays/${play.id}/actions`, 'POST', action),
@@ -142,7 +257,7 @@ describe.sequential('PostgreSQL API integration', () => {
     expect((await request(`/plays/${play.id}`)).data.play.state.flags.observed).toBe(true);
   });
   it('allows only one of two different concurrent choices', async () => {
-    const play = (await request('/plays/technical', 'POST', { language: 'de' })).data.play;
+    const play = await technicalFixture('de');
     const responses = await Promise.all(
       ['observe', 'continue'].map((choiceId) =>
         request(`/plays/${play.id}/actions`, 'POST', {
@@ -156,7 +271,7 @@ describe.sequential('PostgreSQL API integration', () => {
     expect(await db.playEvent.count({ where: { playthroughId: play.id } })).toBe(1);
   });
   it('persists messages exactly once and retries a failed provider', async () => {
-    const play = (await request('/plays/technical', 'POST', { language: 'en' })).data.play;
+    const play = await technicalFixture('en');
     const input = { requestId: randomUUID(), text: 'Hello' };
     const first = await request(`/plays/${play.id}/messages`, 'POST', input);
     expect(first.data.exchange.status).toBe('completed');
@@ -174,7 +289,7 @@ describe.sequential('PostgreSQL API integration', () => {
     expect((await request(`/plays/${play.id}/messages`)).data.messages).toHaveLength(2);
   });
   it('cancels generation without applying learning results', async () => {
-    const play = (await request('/plays/technical', 'POST', { language: 'en' })).data.play;
+    const play = await technicalFixture('en');
     const input = { requestId: randomUUID(), text: '/timeout' };
     const pending = request(`/plays/${play.id}/messages`, 'POST', input);
     let exchange;
@@ -385,7 +500,9 @@ describe.sequential('PostgreSQL API integration', () => {
     );
   }, 30000);
   it('opens only the finished version owned by the reader', async () => {
-    const user = await db.user.create({ data: { name: 'Читатель' } });
+    const user = await db.user.create({
+      data: { email: 'reader@example.test', passwordHash: 'fixture', name: 'Читатель' },
+    });
     const token = randomBytes(32).toString('hex');
     const readerCookie = 'langplot_session=' + token;
     await db.session.create({
@@ -489,7 +606,9 @@ describe.sequential('PostgreSQL API integration', () => {
     expect(content.lesson.contact).toBe('nell');
   });
   it('keeps routes, ending permissions and post-season reviews bound to owned attempts', async () => {
-    const actor = await db.user.create({ data: { name: 'Сезон' } });
+    const actor = await db.user.create({
+      data: { email: 'season@example.test', passwordHash: 'fixture', name: 'Сезон' },
+    });
     const token = randomBytes(32).toString('hex'),
       ownedCookie = 'langplot_session=' + token;
     await db.session.create({
@@ -593,7 +712,7 @@ describe.sequential('PostgreSQL API integration', () => {
     }
   }, 45000);
   it('marks unfinished work as interrupted after restart', async () => {
-    const user = await db.user.findUniqueOrThrow({ where: { demoKey: 'local-explorer' } });
+    const user = await db.user.findUniqueOrThrow({ where: { email: 'owner@example.test' } });
     const job = await db.studioJob.create({
       data: {
         userId: user.id,

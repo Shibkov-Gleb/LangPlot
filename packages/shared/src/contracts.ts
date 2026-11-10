@@ -22,9 +22,29 @@ export const ProfileSettings = z
   })
   .strict();
 export const Selection = z.object({ language: Language, level: Level }).strict();
+export const Role = z.enum(['USER', 'SUBSCRIBER', 'ADMIN', 'SUPERADMIN']);
+export type Role = z.infer<typeof Role>;
+export const roleNames: Record<Role, string> = {
+  USER: 'Без подписки',
+  SUBSCRIBER: 'С подпиской',
+  ADMIN: 'Администратор',
+  SUPERADMIN: 'Главный администратор',
+};
+export const isStaff = (role: Role) => role === 'ADMIN' || role === 'SUPERADMIN';
+export const Email = z.string().trim().toLowerCase().email().max(254);
+export const LoginInput = z.object({ email: Email, password: z.string().min(1).max(128) }).strict();
+export const RegisterInput = LoginInput.extend({
+  name: ProfileSettings.shape.name,
+  password: z.string().min(10).max(128),
+}).strict();
+export const OwnerInput = RegisterInput.extend({
+  token: z.string().regex(/^[a-f0-9]{64}$/),
+}).strict();
 export const Profile = ProfileSettings.merge(Selection).extend({
   id: z.string(),
-  isDemo: z.literal(true),
+  email: Email,
+  role: Role,
+  subscribed: z.boolean(),
 });
 export type Profile = z.infer<typeof Profile>;
 export const SessionResponse = z.object({ user: Profile.nullable(), localMode: z.boolean() });

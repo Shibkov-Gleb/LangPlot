@@ -16,7 +16,7 @@ import { db } from './db.js';
 import { config } from './config.js';
 import { ApiError } from './errors.js';
 import { ownedPlay } from './play-service.js';
-import { requireLocal, requireUser } from './session.js';
+import { requireUser } from './session.js';
 const controllers = new Map<string, { attempt: number; controller: AbortController }>();
 const chain = createCharacterChat(new LocalChatProvider());
 export const exchangeDto = (m: ChatExchange) => ({
@@ -50,7 +50,7 @@ export function registerChatRoutes() {
     });
     res.json(MessagesResponse.parse({ opening, messages: messages.reverse().map(exchangeDto) }));
   });
-  app.post('/api/plays/:id/messages', requireLocal, requireUser, async (req, res) => {
+  app.post('/api/plays/:id/messages', requireUser, async (req, res) => {
     const input = ChatInput.parse(req.body);
     const play = await ownedPlay(String(req.params.id), req.user!.id);
     const key = { playthroughId: play.id, requestId: input.requestId };
@@ -233,28 +233,23 @@ export function registerChatRoutes() {
     const saved = await db.chatExchange.findUniqueOrThrow({ where: { id: exchange.id } });
     if (!res.destroyed) res.json(ChatResponse.parse({ exchange: exchangeDto(saved) }));
   });
-  app.post(
-    '/api/plays/:id/messages/:requestId/cancel',
-    requireLocal,
-    requireUser,
-    async (req, res) => {
-      const play = await ownedPlay(String(req.params.id), req.user!.id);
-      const exchange = await db.chatExchange.findUnique({
-        where: {
-          playthroughId_requestId: {
-            playthroughId: play.id,
-            requestId: String(req.params.requestId),
-          },
+  app.post('/api/plays/:id/messages/:requestId/cancel', requireUser, async (req, res) => {
+    const play = await ownedPlay(String(req.params.id), req.user!.id);
+    const exchange = await db.chatExchange.findUnique({
+      where: {
+        playthroughId_requestId: {
+          playthroughId: play.id,
+          requestId: String(req.params.requestId),
         },
-      });
-      if (!exchange) throw new ApiError(404, 'MESSAGE_NOT_FOUND', 'Сообщение не найдено.');
-      const cancelled = await db.chatExchange.updateMany({
-        where: { id: exchange.id, status: 'pending', attempt: exchange.attempt },
-        data: { status: 'cancelled', errorCode: 'CANCELLED' },
-      });
-      if (cancelled.count && controllers.get(exchange.id)?.attempt === exchange.attempt)
-        controllers.get(exchange.id)?.controller.abort();
-      res.json(OkResponse.parse({ ok: true }));
-    },
-  );
+      },
+    });
+    if (!exchange) throw new ApiError(404, 'MESSAGE_NOT_FOUND', 'Сообщение не найдено.');
+    const cancelled = await db.chatExchange.updateMany({
+      where: { id: exchange.id, status: 'pending', attempt: exchange.attempt },
+      data: { status: 'cancelled', errorCode: 'CANCELLED' },
+    });
+    if (cancelled.count && controllers.get(exchange.id)?.attempt === exchange.attempt)
+      controllers.get(exchange.id)?.controller.abort();
+    res.json(OkResponse.parse({ ok: true }));
+  });
 }

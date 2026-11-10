@@ -15,7 +15,7 @@ import { app } from './app.js';
 import { db } from './db.js';
 import { config } from './config.js';
 import { ApiError } from './errors.js';
-import { requireLocal, requireUser } from './session.js';
+import { requireUser, requireStaff } from './session.js';
 import { importPackage } from './content-service.js';
 const jobDto = (job: StudioJob) => ({ ...job, createdAt: job.createdAt.toISOString() });
 const json = (value: unknown) => value as Prisma.InputJsonValue;
@@ -76,7 +76,7 @@ const jobDtoInput = (job: StudioJob) => ({
   level: job.level,
 });
 export function registerStudioRoutes() {
-  app.use('/api/studio', requireLocal, requireUser);
+  app.use('/api/studio', requireUser, requireStaff);
   app.get('/api/studio/integrations', (_req, res) =>
     res.json(
       IntegrationsResponse.parse({
@@ -110,7 +110,7 @@ export function registerStudioRoutes() {
       JobsResponse.parse({
         jobs: (
           await db.studioJob.findMany({
-            where: { userId: req.user!.id },
+            where: req.user!.role === 'SUPERADMIN' ? {} : { userId: req.user!.id },
             orderBy: { createdAt: 'desc' },
             take: 50,
           })
@@ -134,7 +134,10 @@ export function registerStudioRoutes() {
   });
   app.post('/api/studio/jobs/:id/retry', async (req, res) => {
     const job = await db.studioJob.findFirst({
-      where: { id: String(req.params.id), userId: req.user!.id },
+      where: {
+        id: String(req.params.id),
+        userId: req.user!.role === 'SUPERADMIN' ? undefined : req.user!.id,
+      },
     });
     if (!job) throw new ApiError(404, 'JOB_NOT_FOUND', 'Задание не найдено.');
     if (!['failed', 'interrupted'].includes(job.status))
@@ -166,7 +169,11 @@ export function registerStudioRoutes() {
   });
   app.get('/api/studio/jobs/:id/export', async (req, res) => {
     const job = await db.studioJob.findFirst({
-      where: { id: String(req.params.id), userId: req.user!.id, status: 'completed' },
+      where: {
+        id: String(req.params.id),
+        userId: req.user!.role === 'SUPERADMIN' ? undefined : req.user!.id,
+        status: 'completed',
+      },
     });
     if (!job?.output) throw new ApiError(404, 'EXPORT_NOT_FOUND', 'Черновик ещё не готов.');
     const content = ContentPackage.parse(job.output);

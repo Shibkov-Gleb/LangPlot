@@ -15,7 +15,7 @@ import {
 import { app } from './app.js';
 import { db } from './db.js';
 import { ApiError } from './errors.js';
-import { requireLocal, requireUser } from './session.js';
+import { requireUser } from './session.js';
 import { ownedPlay, playDto } from './play-service.js';
 import {
   getLesson,
@@ -79,7 +79,7 @@ async function newRun(
   }
 }
 export function registerLessonRoutes() {
-  app.post('/api/plays/:id/review', requireLocal, requireUser, async (req, res) => {
+  app.post('/api/plays/:id/review', requireUser, async (req, res) => {
     const prev = await ownedPlay(String(req.params.id), req.user!.id);
     const lesson = [...readyLessons.values()].find(
       (l) => l.content.manifest.id === prev.contentVersion.packageId,
@@ -117,14 +117,14 @@ export function registerLessonRoutes() {
     const play = await newRun(prev.userId, current.id, prev.runNumber + 1, c, state);
     res.json(PlayResponse.parse({ play: playDto(play) }));
   });
-  app.get('/api/courses/:language/:level', requireLocal, requireUser, async (req, res) => {
+  app.get('/api/courses/:language/:level', requireUser, async (req, res) => {
     const course = getCourse(String(req.params.language), String(req.params.level));
     const lessons = [...readyLessons.values()].filter((l) => l.course === course);
     res.json(
       CourseResponse.parse(courseDetails(course, await readCourseHistory(lessons, req.user!.id))),
     );
   });
-  app.get('/api/materials', requireLocal, requireUser, async (req, res) => {
+  app.get('/api/materials', requireUser, async (req, res) => {
     const lessons = [...readyLessons.values()];
     const histories = await readCourseHistory(lessons, req.user!.id);
     res.json(
@@ -136,7 +136,7 @@ export function registerLessonRoutes() {
       }),
     );
   });
-  app.get('/api/lessons/:slug/theory', requireLocal, requireUser, async (req, res) => {
+  app.get('/api/lessons/:slug/theory', requireUser, async (req, res) => {
     const lesson = getLesson(String(req.params.slug));
     const histories = await readCourseHistory([lesson], req.user!.id);
     const completed = histories.get(lesson.content.manifest.id)?.completed;
@@ -150,7 +150,7 @@ export function registerLessonRoutes() {
       }),
     );
   });
-  app.post('/api/lessons/:slug/plays', requireLocal, requireUser, async (req, res) => {
+  app.post('/api/lessons/:slug/plays', requireUser, async (req, res) => {
     const lesson = getLesson(String(req.params.slug));
     const latest = await db.playthrough.findFirst({
       where: { userId: req.user!.id, contentVersion: { packageId: lesson.content.manifest.id } },
@@ -165,7 +165,7 @@ export function registerLessonRoutes() {
     const play = await newRun(req.user!.id, v.id, 1, PlayablePackage.parse(v.data));
     res.json(PlayResponse.parse({ play: playDto(play) }));
   });
-  app.get('/api/lessons/:slug/runs', requireLocal, requireUser, async (req, res) => {
+  app.get('/api/lessons/:slug/runs', requireUser, async (req, res) => {
     const lesson = getLesson(String(req.params.slug));
     const plays = await db.playthrough.findMany({
       where: { userId: req.user!.id, contentVersion: { packageId: lesson.content.manifest.id } },
@@ -212,7 +212,7 @@ export function registerLessonRoutes() {
       }),
     );
   });
-  app.post('/api/plays/:id/replay', requireLocal, requireUser, async (req, res) => {
+  app.post('/api/plays/:id/replay', requireUser, async (req, res) => {
     const prev = await ownedPlay(String(req.params.id), req.user!.id);
     const lesson = [...readyLessons.values()].find(
       (l) => l.content.manifest.id === prev.contentVersion.packageId,

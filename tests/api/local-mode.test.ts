@@ -23,12 +23,12 @@ afterAll(async () => {
   const { db } = await import('../../apps/api/src/db.js');
   await db.$disconnect();
 });
-it('disables demo login, studio and old demo cookies in production even if local flag is true', async () => {
+it('removes demo login and protects the studio in production', async () => {
   const headers = { 'Content-Type': 'application/json' };
   expect(
     (await fetch(`${base}/session/demo`, { method: 'POST', headers, body: '{}' })).status,
   ).toBe(404);
-  expect((await fetch(`${base}/studio/jobs`)).status).toBe(404);
+  expect((await fetch(`${base}/studio/jobs`)).status).toBe(401);
   expect(
     (await fetch(`${base}/profile`, { headers: { Cookie: `langplot_session=${'a'.repeat(64)}` } }))
       .status,

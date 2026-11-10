@@ -15,15 +15,38 @@ try {
   console.log(JSON.stringify(report, null, 2));
   if (!report.valid) process.exitCode = 1;
   else if (command === 'import') {
-    const { localMode } = await import('./config.js');
-    if (!localMode)
-      throw new Error('Импорт доступен только при LOCAL_DEMO_MODE=true вне production.');
-    const { importPackage } = await import('./content-service.js');
-    const { db } = await import('./db.js');
+    const { config } = await import('./config.js');
+    const email = process.env.LANGPLOT_ADMIN_EMAIL,
+      password = process.env.LANGPLOT_ADMIN_PASSWORD;
+    if (!email || !password)
+      throw new Error(
+        'Для импорта укажите LANGPLOT_ADMIN_EMAIL и LANGPLOT_ADMIN_PASSWORD в окружении.',
+      );
+    const base = 'http://' + config.HOST + ':' + config.PORT + '/api';
+    const headers = { 'Content-Type': 'application/json', Origin: config.WEB_ORIGIN };
+    const login = await fetch(base + '/session/login', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ email, password }),
+    });
+    if (!login.ok) throw new Error('Не удалось войти в аккаунт.');
+    const cookie = login.headers.getSetCookie()[0]?.split(';')[0];
+    if (!cookie) throw new Error('Сессия не создана.');
     try {
-      console.log(JSON.stringify(await importPackage(input), null, 2));
+      const response = await fetch(base + '/studio/import', {
+        method: 'POST',
+        headers: { ...headers, Cookie: cookie },
+        body: JSON.stringify(input),
+      });
+      const result = await response.json();
+      if (!response.ok) throw new Error(result.error?.message ?? 'Импорт не выполнен.');
+      console.log(JSON.stringify(result, null, 2));
     } finally {
-      await db.$disconnect();
+      await fetch(base + '/session', {
+        method: 'DELETE',
+        headers: { ...headers, Cookie: cookie },
+        body: '{}',
+      });
     }
   }
 } catch (error) {

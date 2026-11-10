@@ -1,26 +1,42 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { ArrowUpRight, Check, Gamepad2, Layers3, ChevronRight, Sparkles } from 'lucide-react';
 import {
-  ArrowUpRight,
-  Check,
-  Clock3,
-  Gamepad2,
-  Layers3,
-  ChevronRight,
-  Sparkles,
-} from 'lucide-react';
-import { ProfileResponse, levels, levelDescriptions, languageNames } from '@langplot/shared';
+  CatalogResponse,
+  ProfileResponse,
+  levels,
+  levelDescriptions,
+  languageNames,
+} from '@langplot/shared';
 import { useProfile } from '@/components/workspace';
-import { Dialog } from '@/components/dialog';
+import { coursePath } from '@/lib/course-paths';
 import { api, body, errorText } from '@/lib/api';
 export default function Dashboard() {
   const { user, setUser, localMode } = useProfile();
+  const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
-  const [notice, setNotice] = useState(false);
-  async function select(language: 'en' | 'de', level = user.level) {
+  const [catalog, setCatalog] = useState<ReturnType<typeof CatalogResponse.parse>>();
+  useEffect(() => {
+    let live = true;
+    api('/catalog', CatalogResponse)
+      .then((c) => {
+        if (live) setCatalog(c);
+      })
+      .catch((e) => {
+        if (live) setError(errorText(e));
+      });
+    return () => {
+      live = false;
+    };
+  }, []);
+  const selectedCourse = catalog?.worlds
+    .find((w) => w.language === user.language)
+    ?.levels.find((l) => l.level === user.level)?.course;
+  async function select(language: 'en' | 'de', level = user.level, openCourse = false) {
     setBusy(true);
     setError('');
     try {
@@ -29,6 +45,7 @@ export default function Dashboard() {
         body: body({ language, level }),
       });
       setUser(result.user);
+      if (openCourse) router.push(coursePath(language, level));
     } catch (e) {
       setError(errorText(e));
     } finally {
@@ -89,7 +106,13 @@ export default function Dashboard() {
                   <h3>{languageNames[language]}</h3>
                   <p>{language === 'en' ? 'Мир новых возможностей' : 'Свой взгляд на привычное'}</p>
                 </div>
-                <span className="tag">ГОТОВИТСЯ</span>
+                <span className="tag">
+                  {catalog?.worlds
+                    .find((w) => w.language === language)
+                    ?.levels.filter((l) => l.status === 'available')
+                    .map((l) => l.level)
+                    .join(' · ') || 'ГОТОВИТСЯ'}
+                </span>
               </div>
             </button>
           ))}
@@ -108,7 +131,7 @@ export default function Dashboard() {
               key={level}
               aria-pressed={user.level === level}
               disabled={busy}
-              onClick={() => select(user.language, level)}
+              onClick={() => select(user.language, level, localMode)}
               className={user.level === level ? 'selected' : ''}
             >
               <span>{level}</span>
@@ -123,15 +146,21 @@ export default function Dashboard() {
           <Layers3 size={27} />
         </div>
         <div>
-          <span className="eyebrow muted">ВАША БУДУЩАЯ ИСТОРИЯ</span>
-          <h3>
+          <span className="eyebrow muted">
             {languageNames[user.language]} · {user.level}
-          </h3>
-          <p>Сюжет и учебные главы готовятся. Ваш выбор уже сохранён.</p>
+          </span>
+          <h3>{selectedCourse?.title ?? 'Уроки курса'}</h3>
+          <p>
+            {selectedCourse
+              ? 'Все уроки курса, ваши прохождения и открытая теория.'
+              : 'Учебные главы для этого уровня готовятся.'}
+          </p>
         </div>
-        <button className="button secondary" onClick={() => setNotice(true)}>
-          О курсе <ChevronRight size={17} />
-        </button>
+        {localMode && (
+          <Link className="button primary" href={coursePath(user.language, user.level)}>
+            Открыть курс <ChevronRight size={17} />
+          </Link>
+        )}
       </section>
       <div className="dashboard-bottom-grid">
         {localMode && (
@@ -159,24 +188,6 @@ export default function Dashboard() {
         <Check size={13} />
         {busy ? 'Сохраняем выбор…' : 'Выбор сохранён в вашем профиле'}
       </div>
-      {notice && (
-        <Dialog title="История ещё пишется" onClose={() => setNotice(false)}>
-          <span className="icon-tile">
-            <Clock3 size={26} />
-          </span>
-          <p>
-            {languageNames[user.language]}, уровень {user.level} — будущая часть языкового мира. Мы
-            готовим сюжет, диалоги и учебные материалы.
-          </p>
-          <p className="small muted-text">
-            Сейчас можно познакомиться с техническим игровым экраном. Дата выхода курса пока не
-            объявлена.
-          </p>
-          <button className="button primary full" onClick={() => setNotice(false)}>
-            Буду ждать
-          </button>
-        </Dialog>
-      )}
     </>
   );
 }

@@ -1,0 +1,1225 @@
+{
+  "schemaVersion": 2,
+  "manifest": {
+    "id": "langplot.en.a2.last-row",
+    "version": "1.0.1",
+    "language": "en",
+    "level": "A2",
+    "status": "draft",
+    "title": "Последний ряд",
+    "description": "Последняя перекличка · Урок 01. Вечерний рейс прибывает в Олдер-Свитч."
+  },
+  "entrySceneId": "arrival",
+  "characters": [
+    {
+      "id": "lev",
+      "name": "Лев Сомов",
+      "knownFacts": []
+    },
+    {
+      "id": "owen",
+      "name": "Оуэн Керр",
+      "knownFacts": []
+    },
+    {
+      "id": "ilya",
+      "name": "Илья Сомов",
+      "knownFacts": []
+    },
+    {
+      "id": "voice",
+      "name": "Голос из последнего ряда",
+      "knownFacts": []
+    },
+    {
+      "id": "mae",
+      "name": "Мэй Роу",
+      "knownFacts": ["Она слышала проверку линии и видела, куда попал билет."]
+    }
+  ],
+  "learningObjectives": [
+    {
+      "id": "g04",
+      "description": "Present Simple и Present Continuous"
+    },
+    {
+      "id": "v15.02",
+      "description": "пассажир"
+    },
+    {
+      "id": "v15.04",
+      "description": "расписание"
+    },
+    {
+      "id": "v15.06",
+      "description": "плата за проезд"
+    },
+    {
+      "id": "v15.09",
+      "description": "билетная касса"
+    },
+    {
+      "id": "v15.11",
+      "description": "междугородний автобус"
+    },
+    {
+      "id": "v15.13",
+      "description": "метро"
+    }
+  ],
+  "resources": [
+    {
+      "id": "arrival",
+      "mediaType": "image",
+      "path": "assets/last-row/arrival.webp"
+    },
+    {
+      "id": "cabin",
+      "mediaType": "image",
+      "path": "assets/last-row/cabin.webp"
+    },
+    {
+      "id": "ticket",
+      "mediaType": "image",
+      "path": "assets/last-row/ticket.webp"
+    },
+    {
+      "id": "owen",
+      "mediaType": "image",
+      "path": "assets/last-row/owen.webp"
+    },
+    {
+      "id": "ilya",
+      "mediaType": "image",
+      "path": "assets/last-row/ilya.webp"
+    },
+    {
+      "id": "rain",
+      "mediaType": "audio",
+      "path": "assets/last-row/rain.wav"
+    },
+    {
+      "id": "radio",
+      "mediaType": "audio",
+      "path": "assets/last-row/radio.wav"
+    },
+    {
+      "id": "message",
+      "mediaType": "audio",
+      "path": "assets/last-row/message.wav"
+    }
+  ],
+  "lesson": {
+    "notes": [
+      {
+        "key": "public",
+        "kind": "word",
+        "title": "public transport",
+        "meaning": "общественный транспорт"
+      },
+      {
+        "key": "passenger",
+        "kind": "word",
+        "title": "passenger",
+        "meaning": "пассажир"
+      },
+      {
+        "key": "platform",
+        "kind": "word",
+        "title": "platform",
+        "meaning": "платформа"
+      },
+      {
+        "key": "timetable",
+        "kind": "word",
+        "title": "timetable",
+        "meaning": "расписание"
+      },
+      {
+        "key": "route",
+        "kind": "word",
+        "title": "route",
+        "meaning": "маршрут"
+      },
+      {
+        "key": "fare",
+        "kind": "word",
+        "title": "fare",
+        "meaning": "плата за проезд"
+      },
+      {
+        "key": "single",
+        "kind": "word",
+        "title": "single ticket",
+        "meaning": "билет в одну сторону (британский вариант)"
+      },
+      {
+        "key": "return",
+        "kind": "word",
+        "title": "return ticket",
+        "meaning": "билет туда и обратно (британский вариант)"
+      },
+      {
+        "key": "office",
+        "kind": "word",
+        "title": "ticket office",
+        "meaning": "билетная касса"
+      },
+      {
+        "key": "stop",
+        "kind": "word",
+        "title": "bus stop",
+        "meaning": "автобусная остановка"
+      },
+      {
+        "key": "coach",
+        "kind": "word",
+        "title": "coach",
+        "meaning": "междугородний автобус"
+      },
+      {
+        "key": "tram",
+        "kind": "word",
+        "title": "tram",
+        "meaning": "трамвай"
+      },
+      {
+        "key": "subway",
+        "kind": "word",
+        "title": "subway",
+        "meaning": "метро"
+      },
+      {
+        "key": "railroad",
+        "kind": "word",
+        "title": "railroad",
+        "meaning": "железная дорога"
+      },
+      {
+        "key": "last",
+        "kind": "word",
+        "title": "Last stop",
+        "meaning": "конечная остановка"
+      },
+      {
+        "key": "mine",
+        "kind": "word",
+        "title": "Mine",
+        "meaning": "мои, принадлежат мне"
+      },
+      {
+        "key": "line",
+        "kind": "word",
+        "title": "old line",
+        "meaning": "старая линия связи"
+      },
+      {
+        "key": "here",
+        "kind": "word",
+        "title": "Here",
+        "meaning": "Здесь. Так откликаются на перекличке."
+      },
+      {
+        "key": "speaker",
+        "kind": "word",
+        "title": "speaker",
+        "meaning": "динамик"
+      },
+      {
+        "key": "behind",
+        "kind": "word",
+        "title": "behind you",
+        "meaning": "позади тебя"
+      },
+      {
+        "key": "fold",
+        "kind": "word",
+        "title": "Fold it once",
+        "meaning": "сложи его один раз"
+      },
+      {
+        "key": "glove",
+        "kind": "word",
+        "title": "glove",
+        "meaning": "перчатка; здесь — красная варежка"
+      },
+      {
+        "key": "ticket",
+        "kind": "word",
+        "title": "ticket",
+        "meaning": "билет"
+      },
+      {
+        "key": "g04",
+        "kind": "grammar",
+        "title": "Present Simple и Present Continuous",
+        "meaning": "Привычное действие или факт — Present Simple. Действие сейчас — am, is или are + глагол с -ing. Know, like и want в этих значениях обычно употребляются в Simple.",
+        "example": "I usually take the train. Today I am taking the bus."
+      }
+    ],
+    "gate": "gate",
+    "ambienceId": "rain",
+    "phone": "phone",
+    "contact": "mae",
+    "ticketFlag": "kept",
+    "keptOpening": "Hi, Lev. It's Mae. What time is on your ticket?",
+    "givenOpening": "Hi, Lev. It's Mae. Did you give Owen your ticket?",
+    "reply": "Thanks, Lev. I'll check the station log."
+  },
+  "scenes": [
+    {
+      "id": "arrival",
+      "phase": "arrival",
+      "layout": "arrival",
+      "text": "Вечер пятницы. На конечной свет в салоне гаснет от передней двери к задней. Лев считает мокрые следы в проходе. Последняя пара следов ведёт к выходу. Обратно следов нет. Оуэн подбирает с подушки одну красную варежку.",
+      "resourceId": "arrival",
+      "choices": [
+        {
+          "id": "next",
+          "label": "Войти в историю",
+          "target": "line-1"
+        }
+      ]
+    },
+    {
+      "id": "line-1",
+      "phase": "dialogue",
+      "layout": "line",
+      "text": "Last stop. Is this yours?",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-2"
+        }
+      ],
+      "speakerId": "owen",
+      "marks": [
+        {
+          "text": "Last stop",
+          "note": "last"
+        }
+      ],
+      "portraitId": "owen"
+    },
+    {
+      "id": "line-2",
+      "phase": "dialogue",
+      "layout": "line",
+      "text": "No. Mine are in my bag.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-3"
+        }
+      ],
+      "speakerId": "lev",
+      "marks": [
+        {
+          "text": "Mine",
+          "note": "mine"
+        }
+      ]
+    },
+    {
+      "id": "line-3",
+      "cueId": "radio",
+      "phase": "dialogue",
+      "layout": "line",
+      "text": "Owen, try the old line. Read the first name.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-4"
+        }
+      ],
+      "speakerId": "mae",
+      "marks": [
+        {
+          "text": "old line",
+          "note": "line"
+        }
+      ]
+    },
+    {
+      "id": "line-4",
+      "phase": "dialogue",
+      "layout": "line",
+      "text": "Dot Kerr?",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-5"
+        }
+      ],
+      "speakerId": "owen",
+      "marks": [],
+      "portraitId": "owen"
+    },
+    {
+      "id": "line-5",
+      "cueId": "radio",
+      "dimLights": true,
+      "phase": "dialogue",
+      "layout": "line",
+      "text": "Here.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-6"
+        }
+      ],
+      "speakerId": "voice",
+      "marks": [
+        {
+          "text": "Here",
+          "note": "here"
+        }
+      ]
+    },
+    {
+      "id": "line-6",
+      "phase": "dialogue",
+      "layout": "line",
+      "text": "Is someone still on the bus?",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-7"
+        }
+      ],
+      "speakerId": "lev",
+      "marks": []
+    },
+    {
+      "id": "line-7",
+      "phase": "dialogue",
+      "layout": "line",
+      "text": "Turn it up. Please.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-8"
+        }
+      ],
+      "speakerId": "ilya",
+      "marks": [],
+      "portraitId": "ilya"
+    },
+    {
+      "id": "line-8",
+      "phase": "dialogue",
+      "layout": "line",
+      "text": "Ilya, my radio is right here. You heard the speaker behind you.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-9"
+        }
+      ],
+      "speakerId": "owen",
+      "marks": [
+        {
+          "text": "speaker",
+          "note": "speaker"
+        },
+        {
+          "text": "behind you",
+          "note": "behind"
+        }
+      ],
+      "portraitId": "owen"
+    },
+    {
+      "id": "line-9",
+      "phase": "dialogue",
+      "layout": "line",
+      "text": "Lev, you can ask him again. You don't have to say yes.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "grammar"
+        }
+      ],
+      "speakerId": "ilya",
+      "marks": [],
+      "portraitId": "ilya"
+    },
+    {
+      "id": "grammar",
+      "phase": "grammar",
+      "layout": "task",
+      "text": "I usually take the train. Today I ____ the bus.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "am take",
+          "target": "grammar"
+        },
+        {
+          "id": "option-2",
+          "label": "am taking",
+          "target": "grammar-read"
+        },
+        {
+          "id": "option-3",
+          "label": "take yesterday",
+          "target": "grammar"
+        }
+      ],
+      "speakerId": "lev",
+      "objectiveIds": ["g04"],
+      "exercise": {
+        "skill": "g04",
+        "correct": "option-2",
+        "feedback": "Today, Lev. We're on the bus right now."
+      },
+      "marks": [
+        {
+          "text": "usually take",
+          "note": "g04"
+        }
+      ]
+    },
+    {
+      "id": "grammar-read",
+      "phase": "grammar",
+      "layout": "line",
+      "text": "I usually take the train. Today I am taking the bus.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "ticket-choice"
+        }
+      ],
+      "speakerId": "lev",
+      "marks": [
+        {
+          "text": "usually take",
+          "note": "g04"
+        },
+        {
+          "text": "am taking",
+          "note": "g04"
+        }
+      ]
+    },
+    {
+      "id": "ticket-choice",
+      "phase": "ticket",
+      "layout": "choice",
+      "text": "Оуэн протягивает руку. У Льва в ладони билет с полукруглой отметкой.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "keep",
+          "label": "I'll keep my ticket.",
+          "target": "kept",
+          "setFlags": {
+            "kept": true
+          },
+          "journalEntry": "Лев оставил билет у себя. На нём видны время и отметка компостера."
+        },
+        {
+          "id": "give",
+          "label": "You can have my ticket.",
+          "target": "given",
+          "setFlags": {
+            "kept": false
+          },
+          "journalEntry": "Лев отдал билет Оуэну. Водитель положил его под красную варежку."
+        }
+      ],
+      "portraitId": "owen"
+    },
+    {
+      "id": "kept",
+      "phase": "ticket",
+      "layout": "line",
+      "text": "Fold it once. The mark will stay dry.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "poster-intro"
+        }
+      ],
+      "speakerId": "owen",
+      "portraitId": "owen",
+      "marks": [
+        {
+          "text": "Fold it once",
+          "note": "fold"
+        }
+      ],
+      "artifact": "ticket"
+    },
+    {
+      "id": "given",
+      "phase": "ticket",
+      "layout": "line",
+      "text": "Then I'll put it under this glove. You saw me do it.",
+      "resourceId": "ticket",
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "poster-intro"
+        }
+      ],
+      "speakerId": "owen",
+      "marks": [
+        {
+          "text": "glove",
+          "note": "glove"
+        }
+      ]
+    },
+    {
+      "id": "poster-intro",
+      "phase": "reading",
+      "layout": "line",
+      "text": "The old travel poster is my dad's. Read the ticket side to me first.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "poster-1"
+        }
+      ],
+      "speakerId": "owen",
+      "portraitId": "owen",
+      "marks": [
+        {
+          "text": "ticket",
+          "note": "ticket"
+        }
+      ]
+    },
+    {
+      "id": "poster-1",
+      "phase": "reading",
+      "layout": "reading",
+      "text": "I took public transport. I'm the last passenger. The station has one platform. The timetable shows our route.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "poster-2"
+        }
+      ],
+      "artifact": "poster",
+      "marks": [
+        {
+          "note": "public",
+          "text": "public transport"
+        },
+        {
+          "note": "passenger",
+          "text": "passenger"
+        },
+        {
+          "note": "platform",
+          "text": "platform"
+        },
+        {
+          "note": "timetable",
+          "text": "timetable"
+        },
+        {
+          "note": "route",
+          "text": "route"
+        }
+      ]
+    },
+    {
+      "id": "poster-2",
+      "phase": "reading",
+      "layout": "reading",
+      "text": "The fare is four dollars. Dad's British poster calls a one-way ticket a single ticket and a round-trip ticket a return ticket. Here the ticket office is by the bus stop.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "poster-3"
+        }
+      ],
+      "artifact": "poster",
+      "marks": [
+        {
+          "note": "fare",
+          "text": "fare"
+        },
+        {
+          "note": "single",
+          "text": "single ticket"
+        },
+        {
+          "note": "return",
+          "text": "return ticket"
+        },
+        {
+          "note": "office",
+          "text": "ticket office"
+        },
+        {
+          "note": "stop",
+          "text": "bus stop"
+        }
+      ]
+    },
+    {
+      "id": "poster-3",
+      "phase": "reading",
+      "layout": "reading",
+      "text": "The poster shows a coach, a tram and the subway. Our railroad closed years ago.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "word-1"
+        }
+      ],
+      "artifact": "poster",
+      "marks": [
+        {
+          "note": "coach",
+          "text": "coach"
+        },
+        {
+          "note": "tram",
+          "text": "tram"
+        },
+        {
+          "note": "subway",
+          "text": "subway"
+        },
+        {
+          "note": "railroad",
+          "text": "railroad"
+        }
+      ]
+    },
+    {
+      "id": "word-1",
+      "phase": "practice",
+      "layout": "task",
+      "text": "I'm the last ____.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "single ticket",
+          "target": "word-1"
+        },
+        {
+          "id": "option-2",
+          "label": "coach",
+          "target": "word-1"
+        },
+        {
+          "id": "option-3",
+          "label": "passenger",
+          "target": "word-2"
+        }
+      ],
+      "speakerId": "lev",
+      "objectiveIds": ["v15.02"],
+      "exercise": {
+        "skill": "v15.02",
+        "correct": "option-3",
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "number": 1,
+        "total": 6
+      }
+    },
+    {
+      "id": "word-2",
+      "phase": "practice",
+      "layout": "task",
+      "text": "The ____ shows our route.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "passenger",
+          "target": "word-2"
+        },
+        {
+          "id": "option-2",
+          "label": "railroad",
+          "target": "word-2"
+        },
+        {
+          "id": "option-3",
+          "label": "timetable",
+          "target": "word-3"
+        }
+      ],
+      "speakerId": "lev",
+      "objectiveIds": ["v15.04"],
+      "exercise": {
+        "skill": "v15.04",
+        "correct": "option-3",
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "number": 2,
+        "total": 6
+      }
+    },
+    {
+      "id": "word-3",
+      "phase": "practice",
+      "layout": "task",
+      "text": "The ____ is four dollars.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "public transport",
+          "target": "word-3"
+        },
+        {
+          "id": "option-2",
+          "label": "subway",
+          "target": "word-3"
+        },
+        {
+          "id": "option-3",
+          "label": "fare",
+          "target": "word-4"
+        }
+      ],
+      "speakerId": "lev",
+      "objectiveIds": ["v15.06"],
+      "exercise": {
+        "skill": "v15.06",
+        "correct": "option-3",
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "number": 3,
+        "total": 6
+      }
+    },
+    {
+      "id": "word-4",
+      "phase": "practice",
+      "layout": "task",
+      "text": "Here the ____ is by the bus stop.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "public transport",
+          "target": "word-4"
+        },
+        {
+          "id": "option-2",
+          "label": "ticket office",
+          "target": "word-5"
+        },
+        {
+          "id": "option-3",
+          "label": "railroad",
+          "target": "word-4"
+        }
+      ],
+      "speakerId": "lev",
+      "objectiveIds": ["v15.09"],
+      "exercise": {
+        "skill": "v15.09",
+        "correct": "option-2",
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "number": 4,
+        "total": 6
+      }
+    },
+    {
+      "id": "word-5",
+      "phase": "practice",
+      "layout": "task",
+      "text": "The poster shows a ____, a tram and the subway.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "coach",
+          "target": "word-6"
+        },
+        {
+          "id": "option-2",
+          "label": "bus stop",
+          "target": "word-5"
+        },
+        {
+          "id": "option-3",
+          "label": "fare",
+          "target": "word-5"
+        }
+      ],
+      "speakerId": "lev",
+      "objectiveIds": ["v15.11"],
+      "exercise": {
+        "skill": "v15.11",
+        "correct": "option-1",
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "number": 5,
+        "total": 6
+      }
+    },
+    {
+      "id": "word-6",
+      "phase": "practice",
+      "layout": "task",
+      "text": "The poster shows a coach, a tram and the ____.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "ticket office",
+          "target": "word-6"
+        },
+        {
+          "id": "option-2",
+          "label": "subway",
+          "target": "gate"
+        },
+        {
+          "id": "option-3",
+          "label": "return ticket",
+          "target": "word-6"
+        }
+      ],
+      "speakerId": "lev",
+      "objectiveIds": ["v15.13"],
+      "exercise": {
+        "skill": "v15.13",
+        "correct": "option-2",
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "number": 6,
+        "total": 6
+      }
+    },
+    {
+      "id": "gate",
+      "phase": "practice",
+      "layout": "gate",
+      "text": "Сверка журнала",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "review-g04",
+          "label": "review-g04",
+          "target": "review-g04"
+        },
+        {
+          "id": "review-1",
+          "label": "review-1",
+          "target": "review-1"
+        },
+        {
+          "id": "review-2",
+          "label": "review-2",
+          "target": "review-2"
+        },
+        {
+          "id": "review-3",
+          "label": "review-3",
+          "target": "review-3"
+        },
+        {
+          "id": "review-4",
+          "label": "review-4",
+          "target": "review-4"
+        },
+        {
+          "id": "review-5",
+          "label": "review-5",
+          "target": "review-5"
+        },
+        {
+          "id": "review-6",
+          "label": "review-6",
+          "target": "review-6"
+        },
+        {
+          "id": "phone",
+          "label": "phone",
+          "target": "phone"
+        }
+      ]
+    },
+    {
+      "id": "review-g04",
+      "phase": "practice",
+      "layout": "task",
+      "text": "I usually drive. Today I ____ at the desk.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "am helping",
+          "target": "gate"
+        },
+        {
+          "id": "option-2",
+          "label": "am help",
+          "target": "review-g04"
+        },
+        {
+          "id": "option-3",
+          "label": "helped tomorrow",
+          "target": "review-g04"
+        }
+      ],
+      "speakerId": "lev",
+      "objectiveIds": ["g04"],
+      "exercise": {
+        "skill": "g04",
+        "correct": "option-1",
+        "feedback": "Look at what's happening right now.",
+        "review": true
+      }
+    },
+    {
+      "id": "review-1",
+      "phase": "practice",
+      "layout": "task",
+      "text": "One person is still on the bus. That person is a ____.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "seat",
+          "target": "review-1"
+        },
+        {
+          "id": "option-2",
+          "label": "passenger",
+          "target": "gate"
+        },
+        {
+          "id": "option-3",
+          "label": "platform",
+          "target": "review-1"
+        }
+      ],
+      "speakerId": "lev",
+      "objectiveIds": ["v15.02"],
+      "exercise": {
+        "skill": "v15.02",
+        "correct": "option-2",
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "review": true
+      }
+    },
+    {
+      "id": "review-2",
+      "phase": "practice",
+      "layout": "task",
+      "text": "I need the times of all the buses. Where's the ____?",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "timetable",
+          "target": "gate"
+        },
+        {
+          "id": "option-2",
+          "label": "ticket office",
+          "target": "review-2"
+        },
+        {
+          "id": "option-3",
+          "label": "fare",
+          "target": "review-2"
+        }
+      ],
+      "speakerId": "lev",
+      "objectiveIds": ["v15.04"],
+      "exercise": {
+        "skill": "v15.04",
+        "correct": "option-1",
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "review": true
+      }
+    },
+    {
+      "id": "review-3",
+      "phase": "practice",
+      "layout": "task",
+      "text": "I paid four dollars to ride. That's the ____.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "tram",
+          "target": "review-3"
+        },
+        {
+          "id": "option-2",
+          "label": "fare",
+          "target": "gate"
+        },
+        {
+          "id": "option-3",
+          "label": "route",
+          "target": "review-3"
+        }
+      ],
+      "speakerId": "lev",
+      "objectiveIds": ["v15.06"],
+      "exercise": {
+        "skill": "v15.06",
+        "correct": "option-2",
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "review": true
+      }
+    },
+    {
+      "id": "review-4",
+      "phase": "practice",
+      "layout": "task",
+      "text": "They sell the tickets at the ____.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "platform",
+          "target": "review-4"
+        },
+        {
+          "id": "option-2",
+          "label": "coach",
+          "target": "review-4"
+        },
+        {
+          "id": "option-3",
+          "label": "ticket office",
+          "target": "gate"
+        }
+      ],
+      "speakerId": "lev",
+      "objectiveIds": ["v15.09"],
+      "exercise": {
+        "skill": "v15.09",
+        "correct": "option-3",
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "review": true
+      }
+    },
+    {
+      "id": "review-5",
+      "phase": "practice",
+      "layout": "task",
+      "text": "On Dad's British poster, the bus between two cities is a ____.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "coach",
+          "target": "gate"
+        },
+        {
+          "id": "option-2",
+          "label": "passenger",
+          "target": "review-5"
+        },
+        {
+          "id": "option-3",
+          "label": "tram",
+          "target": "review-5"
+        }
+      ],
+      "speakerId": "lev",
+      "objectiveIds": ["v15.11"],
+      "exercise": {
+        "skill": "v15.11",
+        "correct": "option-1",
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "review": true
+      }
+    },
+    {
+      "id": "review-6",
+      "phase": "practice",
+      "layout": "task",
+      "text": "The train under the city is the ____.",
+      "resourceId": "cabin",
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "subway",
+          "target": "gate"
+        },
+        {
+          "id": "option-2",
+          "label": "platform",
+          "target": "review-6"
+        },
+        {
+          "id": "option-3",
+          "label": "coach",
+          "target": "review-6"
+        }
+      ],
+      "speakerId": "lev",
+      "objectiveIds": ["v15.13"],
+      "exercise": {
+        "skill": "v15.13",
+        "correct": "option-1",
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "review": true
+      }
+    },
+    {
+      "id": "phone",
+      "phase": "phone",
+      "cueId": "message",
+      "layout": "phone",
+      "text": "Мэй пишет из диспетчерской.",
+      "resourceId": "arrival",
+      "choices": [
+        {
+          "id": "finish",
+          "label": "Завершить урок",
+          "target": "end"
+        }
+      ],
+      "speakerId": "mae"
+    },
+    {
+      "id": "end",
+      "phase": "end",
+      "layout": "end",
+      "text": "Смена закончена. В журнале остались ваш выбор и разговор с Мэй.",
+      "resourceId": "arrival",
+      "choices": [],
+      "terminal": true
+    }
+  ]
+}

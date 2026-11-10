@@ -7,13 +7,15 @@ import {
   GameState,
   MessagesResponse,
   OkResponse,
+  phoneOpening,
+  lessonContact,
 } from '@langplot/shared';
 import { createCharacterChat, LocalChatProvider } from '@langplot/agents';
 import { app } from './app.js';
 import { db } from './db.js';
 import { config } from './config.js';
 import { ApiError } from './errors.js';
-import { ownedPlay } from './routes.js';
+import { ownedPlay } from './play-service.js';
 import { requireLocal, requireUser } from './session.js';
 const controllers = new Map<string, { attempt: number; controller: AbortController }>();
 const chain = createCharacterChat(new LocalChatProvider());
@@ -36,19 +38,61 @@ export async function recoverChats() {
 export function registerChatRoutes() {
   app.get('/api/plays/:id/messages', requireUser, async (req, res) => {
     const play = await ownedPlay(String(req.params.id), req.user!.id);
+    const content = ContentPackage.parse(play.contentVersion.data);
+    const opening =
+      content.schemaVersion !== 1 ? phoneOpening(content, GameState.parse(play.state)) : undefined;
+    if (content.schemaVersion !== 1 && !opening)
+      throw new ApiError(409, 'PHONE_LOCKED', 'Переписка откроется в конце урока.');
     const messages = await db.chatExchange.findMany({
       where: { playthroughId: play.id },
       orderBy: { createdAt: 'desc' },
       take: 100,
     });
-    res.json(MessagesResponse.parse({ messages: messages.reverse().map(exchangeDto) }));
+    res.json(MessagesResponse.parse({ opening, messages: messages.reverse().map(exchangeDto) }));
   });
   app.post('/api/plays/:id/messages', requireLocal, requireUser, async (req, res) => {
-    if (config.CHAT_PROVIDER === 'none')
-      throw new ApiError(503, 'MODEL_NOT_CONFIGURED', 'Модель переписки не настроена.');
     const input = ChatInput.parse(req.body);
     const play = await ownedPlay(String(req.params.id), req.user!.id);
     const key = { playthroughId: play.id, requestId: input.requestId };
+    const bound = ContentPackage.parse(play.contentVersion.data);
+    if (bound.schemaVersion !== 1) {
+      const saved = await db.$transaction(async (tx) => {
+        // Serialize a send with the action that closes the phone.
+        const [row] = await tx.$queryRaw<
+          { state: Prisma.JsonValue }[]
+        >`SELECT state FROM "Playthrough" WHERE id = ${play.id} FOR UPDATE`;
+        const state = GameState.parse(row?.state);
+        if (!phoneOpening(bound, state))
+          throw new ApiError(409, 'PHONE_LOCKED', 'Переписка откроется в конце урока.');
+        const existing = await tx.chatExchange.findUnique({
+          where: { playthroughId_requestId: key },
+        });
+        if (existing) {
+          if (existing.text !== input.text)
+            throw new ApiError(
+              409,
+              'IDEMPOTENCY_CONFLICT',
+              'Идентификатор сообщения уже использован.',
+            );
+          return existing;
+        }
+        if (state.sceneId !== bound.lesson.phone)
+          throw new ApiError(409, 'LESSON_FINISHED', 'Эта переписка завершена.');
+        return tx.chatExchange.create({
+          data: {
+            ...key,
+            text: input.text,
+            reply:
+              bound.schemaVersion === 2 ? bound.lesson.reply : lessonContact(bound, state)!.reply,
+            status: 'completed',
+          },
+        });
+      });
+      res.json(ChatResponse.parse({ exchange: exchangeDto(saved) }));
+      return;
+    }
+    if (config.CHAT_PROVIDER === 'none')
+      throw new ApiError(503, 'MODEL_NOT_CONFIGURED', 'Модель переписки не настроена.');
     let exchange = await db.chatExchange.findUnique({ where: { playthroughId_requestId: key } });
     let retry = false;
     if (exchange) {

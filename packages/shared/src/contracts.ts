@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { LessonView } from './lesson-view';
 export const Language = z.enum(['en', 'de']);
 export const Level = z.enum(['A1', 'A2', 'B1', 'B2', 'C1', 'C2']);
 export const levels = Level.options;
@@ -41,7 +42,23 @@ export const CatalogResponse = z.object({
     z.object({
       language: Language,
       name: z.string(),
-      levels: z.array(z.object({ level: Level, status: z.literal('preparing') })),
+      levels: z.array(
+        z.object({
+          level: Level,
+          status: z.enum(['preparing', 'available']),
+          course: z
+            .object({ title: z.string(), lessonCount: z.number().int().nonnegative() })
+            .optional(),
+          lesson: z
+            .object({
+              slug: z.string(),
+              title: z.string(),
+              started: z.boolean(),
+              completed: z.boolean(),
+            })
+            .optional(),
+        }),
+      ),
     }),
   ),
 });
@@ -51,6 +68,8 @@ export const GameState = z.object({
   visited: z.array(z.string()),
   journal: z.array(z.string()),
   choices: z.array(z.string()),
+  feedback: z.string().optional(),
+  reviewQueue: z.array(z.string()).optional(),
 });
 export type GameState = z.infer<typeof GameState>;
 export const Play = z.object({
@@ -59,6 +78,8 @@ export const Play = z.object({
   revision: z.number().int().nonnegative(),
   contentVersion: z.string(),
   state: GameState,
+  runNumber: z.number().int().positive().default(1),
+  view: LessonView.optional(),
 });
 export type Play = z.infer<typeof Play>;
 export const PlayResponse = z.object({ play: Play });
@@ -97,10 +118,20 @@ export const Exchange = z.object({
 });
 export type Exchange = z.infer<typeof Exchange>;
 export const ChatResponse = z.object({ exchange: Exchange });
-export const MessagesResponse = z.object({ messages: z.array(Exchange) });
+export const MessagesResponse = z.object({
+  messages: z.array(Exchange),
+  opening: z.string().optional(),
+});
 export const ProgressResponse = z.object({
   technicalAttempts: z.number(),
-  skills: z.array(z.object({ skillId: z.string(), successes: z.number(), attempts: z.number() })),
+  skills: z.array(
+    z.object({
+      skillId: z.string(),
+      description: z.string().optional(),
+      successes: z.number(),
+      attempts: z.number(),
+    }),
+  ),
   publishedCourses: z.number(),
 });
 export const StudioInput = z

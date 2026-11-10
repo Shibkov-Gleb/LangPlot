@@ -9,11 +9,11 @@ export class ClientError extends Error {
     super(message);
   }
 }
-export async function api<T>(
+export async function api<T extends z.ZodTypeAny>(
   path: string,
-  schema: z.ZodType<T>,
+  schema: T,
   init: RequestInit = {},
-): Promise<T> {
+): Promise<z.output<T>> {
   let response: Response;
   try {
     response = await fetch(`/api${path}`, {

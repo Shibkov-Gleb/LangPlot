@@ -1,0 +1,1921 @@
+{
+  "schemaVersion": 3,
+  "manifest": {
+    "id": "langplot.en.a2.glove-on-a-saucer",
+    "version": "1.0.0",
+    "language": "en",
+    "level": "A2",
+    "status": "draft",
+    "title": "Варежка на блюдце",
+    "description": "Последняя перекличка · Урок 03. У стойки кафе Оуэн ставит варежку на блюдце, как пирожное. Хозяйка Джо пододвигает пустое блюдце ему. Это старый семейный розыгрыш. Оуэн улыбается раньше, чем замечает бирку внутри."
+  },
+  "entrySceneId": "arrival",
+  "characters": [
+    {
+      "id": "lev",
+      "name": "Лев Сомов",
+      "knownFacts": []
+    },
+    {
+      "id": "ilya",
+      "name": "Илья Сомов",
+      "knownFacts": []
+    },
+    {
+      "id": "mae",
+      "name": "Мэй Роу",
+      "knownFacts": []
+    },
+    {
+      "id": "owen",
+      "name": "Оуэн Керр",
+      "knownFacts": []
+    },
+    {
+      "id": "nell",
+      "name": "Нэлл Дейл",
+      "knownFacts": []
+    },
+    {
+      "id": "jo",
+      "name": "Джо Парк",
+      "knownFacts": [
+        "Джо видела варежку, но её владелец неизвестен. Она приглашает описать предмет и уточнить, что действительно видно."
+      ]
+    },
+    {
+      "id": "ada",
+      "name": "Ада Дейл",
+      "knownFacts": []
+    },
+    {
+      "id": "ruth",
+      "name": "Рут Белл",
+      "knownFacts": []
+    }
+  ],
+  "learningObjectives": [
+    {
+      "id": "g04",
+      "description": "Present Simple и Present Continuous"
+    },
+    {
+      "id": "v15.02",
+      "description": "пассажир"
+    },
+    {
+      "id": "v15.04",
+      "description": "расписание"
+    },
+    {
+      "id": "v15.06",
+      "description": "плата за проезд"
+    },
+    {
+      "id": "v15.09",
+      "description": "билетная касса"
+    },
+    {
+      "id": "v15.11",
+      "description": "междугородний автобус"
+    },
+    {
+      "id": "v15.13",
+      "description": "метро"
+    },
+    {
+      "id": "g22",
+      "description": "Притяжательные местоимения"
+    },
+    {
+      "id": "v06.01",
+      "description": "accommodation"
+    },
+    {
+      "id": "v06.03",
+      "description": "block of flats"
+    },
+    {
+      "id": "v06.05",
+      "description": "exit"
+    },
+    {
+      "id": "v06.07",
+      "description": "upstairs"
+    },
+    {
+      "id": "v06.09",
+      "description": "stairs"
+    },
+    {
+      "id": "v06.11",
+      "description": "balcony"
+    },
+    {
+      "id": "v06.13",
+      "description": "roof"
+    },
+    {
+      "id": "g21",
+      "description": "Неопределённые местоимения"
+    },
+    {
+      "id": "v02.01",
+      "description": "relative"
+    },
+    {
+      "id": "v02.03",
+      "description": "grandson"
+    },
+    {
+      "id": "v02.05",
+      "description": "nephew"
+    },
+    {
+      "id": "v02.07",
+      "description": "twin"
+    },
+    {
+      "id": "v02.09",
+      "description": "younger"
+    },
+    {
+      "id": "v02.11",
+      "description": "neighbour"
+    },
+    {
+      "id": "v02.13",
+      "description": "roommate"
+    }
+  ],
+  "resources": [
+    {
+      "id": "workshop",
+      "mediaType": "image",
+      "path": "assets/first-act/workshop.webp"
+    },
+    {
+      "id": "diner",
+      "mediaType": "image",
+      "path": "assets/first-act/diner.webp"
+    },
+    {
+      "id": "dispatch",
+      "mediaType": "image",
+      "path": "assets/first-act/dispatch.webp"
+    },
+    {
+      "id": "headquarters",
+      "mediaType": "image",
+      "path": "assets/first-act/headquarters.webp"
+    },
+    {
+      "id": "mae",
+      "mediaType": "image",
+      "path": "assets/first-act/mae.webp"
+    },
+    {
+      "id": "nell",
+      "mediaType": "image",
+      "path": "assets/first-act/nell.webp"
+    },
+    {
+      "id": "ada",
+      "mediaType": "image",
+      "path": "assets/first-act/ada.webp"
+    },
+    {
+      "id": "ruth",
+      "mediaType": "image",
+      "path": "assets/first-act/ruth.webp"
+    },
+    {
+      "id": "jo",
+      "mediaType": "image",
+      "path": "assets/first-act/jo.webp"
+    },
+    {
+      "id": "arrival",
+      "mediaType": "image",
+      "path": "assets/last-row/arrival.webp"
+    },
+    {
+      "id": "cabin",
+      "mediaType": "image",
+      "path": "assets/last-row/cabin.webp"
+    },
+    {
+      "id": "ticket",
+      "mediaType": "image",
+      "path": "assets/last-row/ticket.webp"
+    },
+    {
+      "id": "ilya",
+      "mediaType": "image",
+      "path": "assets/last-row/ilya.webp"
+    },
+    {
+      "id": "owen",
+      "mediaType": "image",
+      "path": "assets/last-row/owen.webp"
+    },
+    {
+      "id": "rain",
+      "mediaType": "audio",
+      "path": "assets/last-row/rain.wav"
+    },
+    {
+      "id": "radio",
+      "mediaType": "audio",
+      "path": "assets/last-row/radio.wav"
+    },
+    {
+      "id": "message",
+      "mediaType": "audio",
+      "path": "assets/last-row/message.wav"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "arrival",
+      "text": "У стойки кафе Оуэн ставит варежку на блюдце, как пирожное. Хозяйка Джо пододвигает пустое блюдце ему. Это старый семейный розыгрыш. Оуэн улыбается раньше, чем замечает бирку внутри.",
+      "phase": "arrival",
+      "layout": "arrival",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-1",
+          "setFlags": {}
+        }
+      ]
+    },
+    {
+      "id": "line-1",
+      "text": "One red glove. Do you want a fork with that?",
+      "phase": "dialogue",
+      "layout": "line",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-2",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "jo",
+      "portraitId": "jo"
+    },
+    {
+      "id": "line-2",
+      "text": "Only if you have two.",
+      "phase": "dialogue",
+      "layout": "line",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-3",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "owen",
+      "portraitId": "owen"
+    },
+    {
+      "id": "line-3",
+      "text": "Who lost it?",
+      "phase": "dialogue",
+      "layout": "line",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-4",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "lev"
+    },
+    {
+      "id": "line-4",
+      "text": "Dot used to put her name inside everything. Look under the little white line.",
+      "phase": "dialogue",
+      "layout": "line",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-5",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "jo",
+      "portraitId": "jo"
+    },
+    {
+      "id": "line-5",
+      "text": "Don't pull. My sister did that by hand.",
+      "phase": "dialogue",
+      "layout": "line",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-6",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "owen",
+      "portraitId": "owen"
+    },
+    {
+      "id": "line-6",
+      "text": "It says K. It doesn't say Dot.",
+      "phase": "dialogue",
+      "layout": "line",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-7",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "lev"
+    },
+    {
+      "id": "line-7",
+      "text": "Good. Keep telling me what it says.",
+      "phase": "dialogue",
+      "layout": "line",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "grammar",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "owen",
+      "portraitId": "owen"
+    },
+    {
+      "id": "grammar",
+      "text": "____ left a glove on the seat. I don't know who.",
+      "phase": "grammar",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "Someone",
+          "target": "grammar-answer",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "Everyone never",
+          "target": "grammar",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "Anywhere",
+          "target": "grammar",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["g21"],
+      "exercise": {
+        "skill": "g21",
+        "correct": "option-1",
+        "feedback": "A person left it. A place can't leave a glove.",
+        "review": false
+      },
+      "speakerId": "lev",
+      "caption": "Лев не знает, кто оставил варежку"
+    },
+    {
+      "id": "grammar-answer",
+      "text": "Someone left a glove on the seat. I don't know who.",
+      "phase": "grammar",
+      "layout": "line",
+      "resourceId": "diner",
+      "marks": [
+        {
+          "text": "Someone left a glove on the seat. I don't know who.",
+          "note": "g21"
+        }
+      ],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "decision",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "lev"
+    },
+    {
+      "id": "decision",
+      "text": "Варежка — выберите реплику Льва.",
+      "phase": "ticket",
+      "layout": "choice",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "choose-a",
+          "label": "Let Owen hold it.",
+          "target": "answer-0-1",
+          "setFlags": {
+            "e03.hold": true
+          },
+          "journalEntry": "Owen held the glove himself."
+        },
+        {
+          "id": "choose-b",
+          "label": "Read the label for him.",
+          "target": "answer-1-1",
+          "setFlags": {
+            "e03.hold": false
+          },
+          "journalEntry": "I read one letter, K."
+        }
+      ]
+    },
+    {
+      "id": "answer-0-1",
+      "text": "My hands are shaking. That's all right.",
+      "phase": "ticket",
+      "layout": "line",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "reading-1",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "owen",
+      "portraitId": "owen",
+      "caption": "Запись в журнале — Owen held the glove himself."
+    },
+    {
+      "id": "answer-1-1",
+      "text": "Just the letter, please. Leave my sister out of it.",
+      "phase": "ticket",
+      "layout": "line",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "reading-1",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "owen",
+      "portraitId": "owen",
+      "caption": "Запись в журнале — I read one letter, K."
+    },
+    {
+      "id": "reading-1",
+      "text": "Which relative is this? That's a grandchild of the family in the photo. The grandson has a red cap. The granddaughter is holding her nephew and her niece. The boy has a twin.",
+      "phase": "reading",
+      "layout": "reading",
+      "resourceId": "diner",
+      "marks": [
+        {
+          "text": "relative",
+          "note": "v02.01"
+        },
+        {
+          "text": "grandchild",
+          "note": "v02.02"
+        },
+        {
+          "text": "grandson",
+          "note": "v02.03"
+        },
+        {
+          "text": "granddaughter",
+          "note": "v02.04"
+        },
+        {
+          "text": "nephew",
+          "note": "v02.05"
+        },
+        {
+          "text": "niece",
+          "note": "v02.06"
+        },
+        {
+          "text": "twin",
+          "note": "v02.07"
+        }
+      ],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "reading-2",
+          "setFlags": {}
+        }
+      ],
+      "caption": "Подпись к снимку за стойкой Джо для приехавшего гостя"
+    },
+    {
+      "id": "reading-2",
+      "text": "The elder sister is on the left and the younger one is on the right. One family member is away. Their neighbor took the picture. In England they called the woman who shared their home a flatmate. Here they say roommate.",
+      "phase": "reading",
+      "layout": "reading",
+      "resourceId": "diner",
+      "marks": [
+        {
+          "text": "elder",
+          "note": "v02.08"
+        },
+        {
+          "text": "younger",
+          "note": "v02.09"
+        },
+        {
+          "text": "family member",
+          "note": "v02.10"
+        },
+        {
+          "text": "neighbor",
+          "note": "v02.11"
+        },
+        {
+          "text": "flatmate",
+          "note": "v02.12"
+        },
+        {
+          "text": "roommate",
+          "note": "v02.13"
+        }
+      ],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "word-1",
+          "setFlags": {}
+        }
+      ],
+      "caption": "Подпись к снимку за стойкой Джо для приехавшего гостя"
+    },
+    {
+      "id": "word-1",
+      "text": "Which ____ is this?",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "grandchild",
+          "target": "word-1",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "roommate",
+          "target": "word-1",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "relative",
+          "target": "word-2",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v02.01"],
+      "exercise": {
+        "skill": "v02.01",
+        "correct": "option-3",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": false,
+        "number": 1,
+        "total": 7
+      },
+      "speakerId": "lev",
+      "caption": "Восстановите слово или выражение со значением «родственник, родственница»."
+    },
+    {
+      "id": "word-2",
+      "text": "The ____ has a red cap.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "roommate",
+          "target": "word-2",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "grandson",
+          "target": "word-3",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "relative",
+          "target": "word-2",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v02.03"],
+      "exercise": {
+        "skill": "v02.03",
+        "correct": "option-2",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": false,
+        "number": 2,
+        "total": 7
+      },
+      "speakerId": "lev",
+      "caption": "Восстановите слово или выражение со значением «внук»."
+    },
+    {
+      "id": "word-3",
+      "text": "The granddaughter is holding her ____ and her niece.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [
+        {
+          "text": "granddaughter",
+          "note": "v02.04"
+        },
+        {
+          "text": "niece",
+          "note": "v02.06"
+        }
+      ],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "nephew",
+          "target": "word-4",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "relative",
+          "target": "word-3",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "roommate",
+          "target": "word-3",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v02.05"],
+      "exercise": {
+        "skill": "v02.05",
+        "correct": "option-1",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": false,
+        "number": 3,
+        "total": 7
+      },
+      "speakerId": "lev",
+      "caption": "Восстановите слово или выражение со значением «племянник»."
+    },
+    {
+      "id": "word-4",
+      "text": "The boy has a ____.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "relative",
+          "target": "word-4",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "roommate",
+          "target": "word-4",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "twin",
+          "target": "word-5",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v02.07"],
+      "exercise": {
+        "skill": "v02.07",
+        "correct": "option-3",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": false,
+        "number": 4,
+        "total": 7
+      },
+      "speakerId": "lev",
+      "caption": "Восстановите слово или выражение со значением «близнец; один из близнецов»."
+    },
+    {
+      "id": "word-5",
+      "text": "The elder sister is on the left and the ____ one is on the right.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [
+        {
+          "text": "elder",
+          "note": "v02.08"
+        }
+      ],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "roommate",
+          "target": "word-5",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "younger",
+          "target": "word-6",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "relative",
+          "target": "word-5",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v02.09"],
+      "exercise": {
+        "skill": "v02.09",
+        "correct": "option-2",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": false,
+        "number": 5,
+        "total": 7
+      },
+      "speakerId": "lev",
+      "caption": "Восстановите слово или выражение со значением «младший по возрасту»."
+    },
+    {
+      "id": "word-6",
+      "text": "Their ____ took the picture.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "neighbor",
+          "target": "word-7",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "relative",
+          "target": "word-6",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "roommate",
+          "target": "word-6",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v02.11"],
+      "exercise": {
+        "skill": "v02.11",
+        "correct": "option-1",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": false,
+        "number": 6,
+        "total": 7
+      },
+      "speakerId": "lev",
+      "caption": "Восстановите слово или выражение со значением «сосед»."
+    },
+    {
+      "id": "word-7",
+      "text": "In England they called the woman who shared their home a flatmate. Here they say ____.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [
+        {
+          "text": "flatmate",
+          "note": "v02.12"
+        }
+      ],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "relative",
+          "target": "word-7",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "flatmate",
+          "target": "word-7",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "roommate",
+          "target": "review-gate",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v02.13"],
+      "exercise": {
+        "skill": "v02.13",
+        "correct": "option-3",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": false,
+        "number": 7,
+        "total": 7
+      },
+      "speakerId": "lev",
+      "caption": "Восстановите слово или выражение со значением «сосед по комнате»."
+    },
+    {
+      "id": "review-gate",
+      "text": "Журнал дела. Уточнение прежних записей.",
+      "phase": "practice",
+      "layout": "gate",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "phone",
+          "setFlags": {}
+        }
+      ]
+    },
+    {
+      "id": "review-g04",
+      "text": "I usually take the train. Today I ____ the bus.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "am taking",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "am take",
+          "target": "review-g04",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "take yesterday",
+          "target": "review-g04",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["g04"],
+      "exercise": {
+        "skill": "g04",
+        "correct": "option-1",
+        "feedback": "Today, Lev. We're on the bus right now.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Уточнение из журнала первого рейса."
+    },
+    {
+      "id": "review-v15.02",
+      "text": "I'm the last ____.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "passenger",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "single ticket",
+          "target": "review-v15.02",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "coach",
+          "target": "review-v15.02",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v15.02"],
+      "exercise": {
+        "skill": "v15.02",
+        "correct": "option-1",
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Уточнение из журнала первого рейса."
+    },
+    {
+      "id": "review-v15.04",
+      "text": "The ____ shows our route.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "timetable",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "passenger",
+          "target": "review-v15.04",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "railroad",
+          "target": "review-v15.04",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v15.04"],
+      "exercise": {
+        "skill": "v15.04",
+        "correct": "option-1",
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Уточнение из журнала первого рейса."
+    },
+    {
+      "id": "review-v15.06",
+      "text": "The ____ is four dollars.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "fare",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "public transport",
+          "target": "review-v15.06",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "subway",
+          "target": "review-v15.06",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v15.06"],
+      "exercise": {
+        "skill": "v15.06",
+        "correct": "option-1",
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Уточнение из журнала первого рейса."
+    },
+    {
+      "id": "review-v15.09",
+      "text": "Here the ____ is by the bus stop.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "ticket office",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "public transport",
+          "target": "review-v15.09",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "railroad",
+          "target": "review-v15.09",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v15.09"],
+      "exercise": {
+        "skill": "v15.09",
+        "correct": "option-1",
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Уточнение из журнала первого рейса."
+    },
+    {
+      "id": "review-v15.11",
+      "text": "The poster shows a ____, a tram and the subway.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "coach",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "bus stop",
+          "target": "review-v15.11",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "fare",
+          "target": "review-v15.11",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v15.11"],
+      "exercise": {
+        "skill": "v15.11",
+        "correct": "option-1",
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Уточнение из журнала первого рейса."
+    },
+    {
+      "id": "review-v15.13",
+      "text": "The poster shows a coach, a tram and the ____.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "subway",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "ticket office",
+          "target": "review-v15.13",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "return ticket",
+          "target": "review-v15.13",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v15.13"],
+      "exercise": {
+        "skill": "v15.13",
+        "correct": "option-1",
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Уточнение из журнала первого рейса."
+    },
+    {
+      "id": "review-g22",
+      "text": "The small key is ____. Yours is on the table.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "mine",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "my",
+          "target": "review-g22",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "me",
+          "target": "review-g22",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["g22"],
+      "exercise": {
+        "skill": "g22",
+        "correct": "option-1",
+        "feedback": "You can say “my key.” Without “key,” try that last word again.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Дядя положил рядом два ключа. Лев указывает на свой"
+    },
+    {
+      "id": "review-v06.01",
+      "text": "The town calls this ____.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "accommodation",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "apartment",
+          "target": "review-v06.01",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "roof",
+          "target": "review-v06.01",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v06.01"],
+      "exercise": {
+        "skill": "v06.01",
+        "correct": "option-1",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Восстановите слово или выражение со значением «жильё, место размещения»."
+    },
+    {
+      "id": "review-v06.03",
+      "text": "That ____ in the old travel photo is in England.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "block of flats",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "accommodation",
+          "target": "review-v06.03",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "roof",
+          "target": "review-v06.03",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v06.03"],
+      "exercise": {
+        "skill": "v06.03",
+        "correct": "option-1",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Восстановите слово или выражение со значением «многоквартирный дом»."
+    },
+    {
+      "id": "review-v06.05",
+      "text": "Here there is one entrance and one ____ on the first floor.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "exit",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "accommodation",
+          "target": "review-v06.05",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "roof",
+          "target": "review-v06.05",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v06.05"],
+      "exercise": {
+        "skill": "v06.05",
+        "correct": "option-1",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Восстановите слово или выражение со значением «выход»."
+    },
+    {
+      "id": "review-v06.07",
+      "text": "Here there is one entrance and one exit on the first floor. Your room is ____.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "upstairs",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "accommodation",
+          "target": "review-v06.07",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "roof",
+          "target": "review-v06.07",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v06.07"],
+      "exercise": {
+        "skill": "v06.07",
+        "correct": "option-1",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Восстановите слово или выражение со значением «наверху; на верхнем этаже»."
+    },
+    {
+      "id": "review-v06.09",
+      "text": "Take the ____; the elevator is out.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "stairs",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "accommodation",
+          "target": "review-v06.09",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "roof",
+          "target": "review-v06.09",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v06.09"],
+      "exercise": {
+        "skill": "v06.09",
+        "correct": "option-1",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Восстановите слово или выражение со значением «лестница, ступени»."
+    },
+    {
+      "id": "review-v06.11",
+      "text": "The ____ is above the garage.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "balcony",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "accommodation",
+          "target": "review-v06.11",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "roof",
+          "target": "review-v06.11",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v06.11"],
+      "exercise": {
+        "skill": "v06.11",
+        "correct": "option-1",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Восстановите слово или выражение со значением «балкон»."
+    },
+    {
+      "id": "review-v06.13",
+      "text": "Someone is fixing the ____.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [
+        {
+          "text": "Someone",
+          "note": "g21"
+        }
+      ],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "roof",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "accommodation",
+          "target": "review-v06.13",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "garage",
+          "target": "review-v06.13",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v06.13"],
+      "exercise": {
+        "skill": "v06.13",
+        "correct": "option-1",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Восстановите слово или выражение со значением «крыша»."
+    },
+    {
+      "id": "review-g21",
+      "text": "____ left a glove on the seat. I don't know who.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "Someone",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "Everyone never",
+          "target": "review-g21",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "Anywhere",
+          "target": "review-g21",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["g21"],
+      "exercise": {
+        "skill": "g21",
+        "correct": "option-1",
+        "feedback": "A person left it. A place can't leave a glove.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Лев не знает, кто оставил варежку"
+    },
+    {
+      "id": "review-v02.01",
+      "text": "Which ____ is this?",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "relative",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "grandchild",
+          "target": "review-v02.01",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "roommate",
+          "target": "review-v02.01",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v02.01"],
+      "exercise": {
+        "skill": "v02.01",
+        "correct": "option-1",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Восстановите слово или выражение со значением «родственник, родственница»."
+    },
+    {
+      "id": "review-v02.03",
+      "text": "The ____ has a red cap.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "grandson",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "relative",
+          "target": "review-v02.03",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "roommate",
+          "target": "review-v02.03",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v02.03"],
+      "exercise": {
+        "skill": "v02.03",
+        "correct": "option-1",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Восстановите слово или выражение со значением «внук»."
+    },
+    {
+      "id": "review-v02.05",
+      "text": "The granddaughter is holding her ____ and her niece.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [
+        {
+          "text": "granddaughter",
+          "note": "v02.04"
+        },
+        {
+          "text": "niece",
+          "note": "v02.06"
+        }
+      ],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "nephew",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "relative",
+          "target": "review-v02.05",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "roommate",
+          "target": "review-v02.05",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v02.05"],
+      "exercise": {
+        "skill": "v02.05",
+        "correct": "option-1",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Восстановите слово или выражение со значением «племянник»."
+    },
+    {
+      "id": "review-v02.07",
+      "text": "The boy has a ____.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "twin",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "relative",
+          "target": "review-v02.07",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "roommate",
+          "target": "review-v02.07",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v02.07"],
+      "exercise": {
+        "skill": "v02.07",
+        "correct": "option-1",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Восстановите слово или выражение со значением «близнец; один из близнецов»."
+    },
+    {
+      "id": "review-v02.09",
+      "text": "The elder sister is on the left and the ____ one is on the right.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [
+        {
+          "text": "elder",
+          "note": "v02.08"
+        }
+      ],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "younger",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "relative",
+          "target": "review-v02.09",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "roommate",
+          "target": "review-v02.09",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v02.09"],
+      "exercise": {
+        "skill": "v02.09",
+        "correct": "option-1",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Восстановите слово или выражение со значением «младший по возрасту»."
+    },
+    {
+      "id": "review-v02.11",
+      "text": "Their ____ took the picture.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "neighbor",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "relative",
+          "target": "review-v02.11",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "roommate",
+          "target": "review-v02.11",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v02.11"],
+      "exercise": {
+        "skill": "v02.11",
+        "correct": "option-1",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Восстановите слово или выражение со значением «сосед»."
+    },
+    {
+      "id": "review-v02.13",
+      "text": "In England they called the woman who shared their home a flatmate. Here they say ____.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "diner",
+      "marks": [
+        {
+          "text": "flatmate",
+          "note": "v02.12"
+        }
+      ],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "roommate",
+          "target": "review-gate",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "relative",
+          "target": "review-v02.13",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "flatmate",
+          "target": "review-v02.13",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v02.13"],
+      "exercise": {
+        "skill": "v02.13",
+        "correct": "option-1",
+        "feedback": "Let's read that line again. Take your time.",
+        "review": true
+      },
+      "speakerId": "lev",
+      "caption": "Журнал дела — уточните прежнюю запись. Восстановите слово или выражение со значением «сосед по комнате»."
+    },
+    {
+      "id": "phone",
+      "text": "Джо видела варежку, но её владелец неизвестен. Она приглашает описать предмет и уточнить, что действительно видно.",
+      "phase": "phone",
+      "layout": "phone",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [
+        {
+          "id": "finish",
+          "label": "Завершить урок",
+          "target": "end",
+          "setFlags": {}
+        }
+      ],
+      "cueId": "message"
+    },
+    {
+      "id": "end",
+      "text": "Запись сохранена в журнале. Вы можете вернуться к теории или продолжить расследование.",
+      "phase": "end",
+      "layout": "end",
+      "resourceId": "diner",
+      "marks": [],
+      "choices": [],
+      "terminal": true
+    }
+  ],
+  "lesson": {
+    "notes": [
+      {
+        "key": "g21",
+        "kind": "grammar",
+        "title": "Неопределённые местоимения",
+        "meaning": "Someone, anyone и no one относятся к людям. Something — к вещи, somewhere — к месту. В обычном отрицании нужен один отрицательный элемент: I didn't see anyone или I saw no one.",
+        "example": "Someone left a glove on the seat. I don't know who."
+      },
+      {
+        "key": "v02.01",
+        "kind": "word",
+        "title": "relative",
+        "meaning": "родственник, родственница",
+        "example": "Which relative is this?"
+      },
+      {
+        "key": "v02.02",
+        "kind": "word",
+        "title": "grandchild, grandchildren",
+        "meaning": "внук или внучка; внуки",
+        "example": "That's a grandchild of the family in the photo."
+      },
+      {
+        "key": "v02.03",
+        "kind": "word",
+        "title": "grandson",
+        "meaning": "внук",
+        "example": "The grandson has a red cap."
+      },
+      {
+        "key": "v02.04",
+        "kind": "word",
+        "title": "granddaughter",
+        "meaning": "внучка",
+        "example": "The granddaughter is holding her nephew and her niece."
+      },
+      {
+        "key": "v02.05",
+        "kind": "word",
+        "title": "nephew",
+        "meaning": "племянник",
+        "example": "The granddaughter is holding her nephew and her niece."
+      },
+      {
+        "key": "v02.06",
+        "kind": "word",
+        "title": "niece",
+        "meaning": "племянница",
+        "example": "The granddaughter is holding her nephew and her niece."
+      },
+      {
+        "key": "v02.07",
+        "kind": "word",
+        "title": "twin",
+        "meaning": "близнец; один из близнецов",
+        "example": "The boy has a twin."
+      },
+      {
+        "key": "v02.08",
+        "kind": "word",
+        "title": "elder",
+        "meaning": "старший в семье",
+        "example": "The elder sister is on the left and the younger one is on the right."
+      },
+      {
+        "key": "v02.09",
+        "kind": "word",
+        "title": "younger",
+        "meaning": "младший по возрасту",
+        "example": "The elder sister is on the left and the younger one is on the right."
+      },
+      {
+        "key": "v02.10",
+        "kind": "word",
+        "title": "family member",
+        "meaning": "член семьи",
+        "example": "One family member is away."
+      },
+      {
+        "key": "v02.11",
+        "kind": "word",
+        "title": "neighbour",
+        "meaning": "сосед",
+        "example": "Their neighbor took the picture."
+      },
+      {
+        "key": "v02.12",
+        "kind": "word",
+        "title": "flatmate",
+        "meaning": "сосед по квартире",
+        "example": "In England they called the woman who shared their home a flatmate."
+      },
+      {
+        "key": "v02.13",
+        "kind": "word",
+        "title": "roommate",
+        "meaning": "сосед по комнате",
+        "example": "In England they called the woman who shared their home a flatmate. Here they say roommate."
+      }
+    ],
+    "gate": "review-gate",
+    "phone": "phone",
+    "decisionFlag": "e03.hold",
+    "carryFlags": ["kept", "e02.lock"],
+    "ambienceId": "rain",
+    "contact": "jo",
+    "contactRole": "Кафе",
+    "phoneContext": "Джо просит описать варежку. Отделите то, что вы видели, от догадок о её владельце.",
+    "openings": ["Was the glove wet when Owen held it?", "Was there a whole name on the label?"],
+    "reply": "Thanks. I'll keep your message with my notes. We can talk again.",
+    "presentation": {
+      "location": "Кафе Джо",
+      "time": "Пятница, вечер",
+      "duration": "10–15 минут",
+      "finishTitle": "Запись 03 сохранена"
+    }
+  }
+}

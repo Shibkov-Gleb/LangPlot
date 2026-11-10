@@ -32,11 +32,11 @@ test('landing, persistent profile, player phone and local studio', async ({ page
     'true',
   );
   await page.getByRole('button', { name: 'B1 Больше самостоятельности' }).click();
-  await expect(page.getByRole('button', { name: 'B1 Больше самостоятельности' })).toHaveAttribute(
-    'aria-pressed',
-    'true',
-  );
+  await expect(page).toHaveURL(/\/courses\/de\/b1$/);
+  await expect(page.getByRole('heading', { name: 'Уроки готовятся' })).toBeVisible();
   await page.reload();
+  await expect(page.getByRole('heading', { name: 'Уроки готовятся' })).toBeVisible();
+  await page.getByRole('main').getByRole('link', { name: 'Мои миры', exact: true }).click();
   await expect(page.getByRole('button', { name: 'B1 Больше самостоятельности' })).toHaveAttribute(
     'aria-pressed',
     'true',
@@ -101,6 +101,18 @@ test('landing, persistent profile, player phone and local studio', async ({ page
   expect(external).toEqual([]);
   await page.getByRole('button', { name: 'Выйти', exact: true }).click();
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Ещё одна глава');
+});
+test('returns to the requested course after signing in', async ({ page }) => {
+  await page.goto('/courses/en/a2');
+  await expect(page).toHaveURL(/\/login\?next=/);
+  await page.getByRole('button', { name: 'Войти в демо-профиль' }).click();
+  await expect(page).toHaveURL(/\/courses\/en\/a2$/);
+  await expect(page.getByRole('heading', { name: 'Последняя перекличка' })).toBeVisible();
+  await page.getByRole('main').getByRole('link', { name: 'Мои миры', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'A2 Простые разговоры' })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  );
 });
 test('reduced motion and keyboard navigation', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });

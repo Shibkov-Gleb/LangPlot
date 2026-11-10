@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { OkResponse, Profile, SessionResponse } from '@langplot/shared';
 import { api, errorText } from '@/lib/api';
+import { studyReturnPath } from '@/lib/course-paths';
 import { Brand } from './brand';
 const Context = createContext<{
   user: Profile;
@@ -37,13 +38,27 @@ export function Workspace({ children }: { children: React.ReactNode }) {
   const [error, setError] = useState('');
   const [logoutPending, setLogoutPending] = useState(false);
   const pathname = usePathname();
+  const lessonPlayer = /^\/play\/[a-z][a-z0-9-]*$/.test(pathname);
+  const gamePlayer = pathname === '/play' || lessonPlayer;
+  const activeNav = pathname.startsWith('/courses/')
+    ? '/dashboard'
+    : pathname.startsWith('/dashboard/materials/')
+      ? '/dashboard/materials'
+      : pathname;
   const router = useRouter();
   const load = useCallback(async () => {
     setError('');
     try {
       const result = await api('/session', SessionResponse);
       if (!result.user) {
-        router.replace('/login');
+        const target = studyReturnPath(pathname);
+        router.replace(
+          pathname === '/play/last-row'
+            ? '/login?lesson=last-row'
+            : target
+              ? '/login?next=' + encodeURIComponent(target)
+              : '/login',
+        );
         return;
       }
       setUser(result.user);
@@ -51,7 +66,7 @@ export function Workspace({ children }: { children: React.ReactNode }) {
     } catch (e) {
       setError(errorText(e));
     }
-  }, [router]);
+  }, [router, pathname]);
   useEffect(() => {
     void load();
   }, [load]);
@@ -95,7 +110,9 @@ export function Workspace({ children }: { children: React.ReactNode }) {
     );
   return (
     <Context.Provider value={{ user, setUser, localMode }}>
-      <div className={`workspace ${pathname === '/play' ? 'workspace-game' : ''}`}>
+      <div
+        className={`workspace ${gamePlayer ? 'workspace-game' : ''} ${lessonPlayer ? 'workspace-lesson' : ''}`}
+      >
         <aside className="sidebar">
           <Brand />
           <div className="sidebar-caption">ВАШЕ ПРОСТРАНСТВО</div>
@@ -106,12 +123,14 @@ export function Workspace({ children }: { children: React.ReactNode }) {
                 href={href}
                 aria-label={text}
                 title={text}
-                className={pathname === href ? 'active' : ''}
-                aria-current={pathname === href ? 'page' : undefined}
+                className={activeNav === href ? 'active' : ''}
+                aria-current={
+                  activeNav === href ? (pathname === href ? 'page' : 'location') : undefined
+                }
               >
                 <Icon size={19} />
                 <span>{text}</span>
-                {pathname === href && <i />}
+                {activeNav === href && <i />}
               </Link>
             ))}
           </nav>
@@ -137,10 +156,10 @@ export function Workspace({ children }: { children: React.ReactNode }) {
             <span className="breadcrumb">
               {pathname === '/studio'
                 ? 'Студия контента'
-                : pathname === '/play'
+                : gamePlayer
                   ? 'Игровое пространство'
                   : 'Личный кабинет'}{' '}
-              <span>/ {nav.find((x) => x.href === pathname)?.text ?? 'Локальная версия'}</span>
+              <span>/ {nav.find((x) => x.href === activeNav)?.text ?? 'Локальная версия'}</span>
             </span>
             <div className="workspace-account">
               {localMode && (
@@ -161,7 +180,7 @@ export function Workspace({ children }: { children: React.ReactNode }) {
               {error}
             </p>
           )}
-          <main id="main" className={pathname === '/play' ? 'player-main' : 'dashboard-content'}>
+          <main id="main" className={gamePlayer ? 'player-main' : 'dashboard-content'}>
             {children}
           </main>
         </div>

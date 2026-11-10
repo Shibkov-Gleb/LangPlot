@@ -52,12 +52,13 @@ model Playthrough {
   contentVersion   ContentVersion @relation(fields: [contentVersionId], references: [id])
   language         String
   revision         Int @default(0)
+  runNumber        Int @default(1)
   state            Json
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
   events           PlayEvent[]
   exchanges        ChatExchange[]
-  @@unique([userId, contentVersionId])
+  @@unique([userId, contentVersionId, runNumber])
 }
 model PlayEvent {
   id            String @id @default(uuid())
@@ -102,6 +103,8 @@ model SkillState {
   skillId    String
   successes  Int @default(0)
   attempts   Int @default(0)
+  reviewDueAt DateTime?
+  reviewStage Int @default(0)
   updatedAt  DateTime @updatedAt
   @@unique([userId, language, skillId])
 }

@@ -1,0 +1,3420 @@
+{
+  "schemaVersion": 4,
+  "manifest": {
+    "id": "langplot.en.a2.episode-39d",
+    "version": "1.0.2",
+    "title": "Мелочь для телефона",
+    "language": "en",
+    "level": "A2",
+    "status": "draft",
+    "description": "Последняя перекличка · Урок 39D. В старом кассовом аппарате вместо денег жетоны. Оуэн выбирает один с дырочкой и крутит на столе. Пока тот крутится, он успевает признаться."
+  },
+  "entrySceneId": "arrival",
+  "characters": [
+    {
+      "id": "lev",
+      "name": "Лев Сомов",
+      "knownFacts": []
+    },
+    {
+      "id": "ilya",
+      "name": "Илья Сомов",
+      "knownFacts": []
+    },
+    {
+      "id": "mae",
+      "name": "Мэй Роу",
+      "knownFacts": []
+    },
+    {
+      "id": "owen",
+      "name": "Оуэн Керр",
+      "knownFacts": []
+    },
+    {
+      "id": "nell",
+      "name": "Нэлл Дейл",
+      "knownFacts": []
+    },
+    {
+      "id": "jo",
+      "name": "Джо Парк",
+      "knownFacts": []
+    },
+    {
+      "id": "ada",
+      "name": "Ада Дейл",
+      "knownFacts": []
+    },
+    {
+      "id": "ruth",
+      "name": "Рут Белл",
+      "knownFacts": [
+        "Рут получила сообщение с согласия Оуэна, знает происхождение кода и проверяет факт передачи."
+      ]
+    },
+    {
+      "id": "anna",
+      "name": "Анна Сомова",
+      "knownFacts": []
+    },
+    {
+      "id": "voice",
+      "name": "Голос из линии",
+      "knownFacts": []
+    }
+  ],
+  "learningObjectives": [
+    {
+      "id": "g16",
+      "description": "Вежливые просьбы и предложения"
+    },
+    {
+      "id": "v39.16",
+      "description": "copy"
+    },
+    {
+      "id": "v39.18",
+      "description": "ID number"
+    },
+    {
+      "id": "v39.20",
+      "description": "first name / last name"
+    },
+    {
+      "id": "v39.22",
+      "description": "register"
+    },
+    {
+      "id": "v39.24",
+      "description": "confirm"
+    },
+    {
+      "id": "v39.26",
+      "description": "send something by post"
+    },
+    {
+      "id": "v39.28",
+      "description": "Could you help me fill in this form?"
+    }
+  ],
+  "resources": [
+    {
+      "id": "arrival",
+      "path": "assets/last-row/arrival.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "cabin",
+      "path": "assets/last-row/cabin.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "ticket",
+      "path": "assets/last-row/ticket.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "ilya",
+      "path": "assets/last-row/ilya.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "owen",
+      "path": "assets/last-row/owen.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "workshop",
+      "path": "assets/first-act/workshop.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "diner",
+      "path": "assets/first-act/diner.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "dispatch",
+      "path": "assets/first-act/dispatch.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "headquarters",
+      "path": "assets/first-act/headquarters.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "mae",
+      "path": "assets/first-act/mae.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "nell",
+      "path": "assets/first-act/nell.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "ada",
+      "path": "assets/first-act/ada.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "ruth",
+      "path": "assets/first-act/ruth.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "jo",
+      "path": "assets/first-act/jo.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "depot",
+      "path": "assets/season/depot.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "family",
+      "path": "assets/season/family.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "lowerpost",
+      "path": "assets/season/lowerpost.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "trail",
+      "path": "assets/season/trail.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "hall",
+      "path": "assets/season/hall.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "porch",
+      "path": "assets/season/porch.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "anna",
+      "path": "assets/season/anna.webp",
+      "mediaType": "image"
+    },
+    {
+      "id": "rain",
+      "path": "assets/last-row/rain.wav",
+      "mediaType": "audio"
+    },
+    {
+      "id": "radio",
+      "path": "assets/last-row/radio.wav",
+      "mediaType": "audio"
+    },
+    {
+      "id": "message",
+      "path": "assets/last-row/message.wav",
+      "mediaType": "audio"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "arrival",
+      "text": "В старом кассовом аппарате вместо денег жетоны. Оуэн выбирает один с дырочкой и крутит на столе. Пока тот крутится, он успевает признаться.",
+      "phase": "arrival",
+      "layout": "arrival",
+      "resourceId": "depot",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-0",
+          "setFlags": {}
+        }
+      ]
+    },
+    {
+      "id": "line-0",
+      "text": "I gave Mae the depot code. If Ruth asks, it was me.",
+      "phase": "dialogue",
+      "layout": "line",
+      "resourceId": "depot",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-1",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "owen",
+      "portraitId": "owen"
+    },
+    {
+      "id": "line-1",
+      "text": "Why didn't you tell her before?",
+      "phase": "dialogue",
+      "layout": "line",
+      "resourceId": "depot",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-2",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "lev"
+    },
+    {
+      "id": "line-2",
+      "text": "I thought Mae would lose her job if I said it. Now I think she could lose more.",
+      "phase": "dialogue",
+      "layout": "line",
+      "resourceId": "depot",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-3",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "owen",
+      "portraitId": "owen"
+    },
+    {
+      "id": "line-3",
+      "text": "May I tell Ruth now?",
+      "phase": "dialogue",
+      "layout": "line",
+      "resourceId": "depot",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "line-4",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "lev"
+    },
+    {
+      "id": "line-4",
+      "text": "Say I gave it to her. Don't say she stole it.",
+      "phase": "dialogue",
+      "layout": "line",
+      "resourceId": "depot",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "grammar",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "owen",
+      "portraitId": "owen"
+    },
+    {
+      "id": "grammar",
+      "text": "____ me to stay while you call?",
+      "phase": "grammar",
+      "layout": "task",
+      "resourceId": "depot",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "Would you like",
+          "target": "grammar-answer",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "Would you liking",
+          "target": "grammar",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "Do you would like",
+          "target": "grammar",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["g16"],
+      "exercise": {
+        "skill": "g16",
+        "correct": "option-1",
+        "feedback": "You're offering help. Say “Would you like” and then tell me what.",
+        "review": false
+      },
+      "speakerId": "lev",
+      "caption": "Тактично предложить быть рядом во время звонка"
+    },
+    {
+      "id": "grammar-answer",
+      "text": "Would you like me to stay while you call?",
+      "phase": "grammar",
+      "layout": "line",
+      "resourceId": "depot",
+      "marks": [
+        {
+          "text": "Would you like me to stay while you call?",
+          "note": "g16"
+        }
+      ],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "decision",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "lev"
+    },
+    {
+      "id": "decision",
+      "text": "Выберите реплику Льва.",
+      "phase": "ticket",
+      "layout": "choice",
+      "resourceId": "depot",
+      "marks": [],
+      "choices": [
+        {
+          "id": "choose-a",
+          "label": "Let Owen make the call.",
+          "target": "response-0-0",
+          "setFlags": {
+            "e39d.a": true
+          },
+          "journalEntry": "Owen made his own call."
+        },
+        {
+          "id": "choose-b",
+          "label": "Make the call beside him.",
+          "target": "response-1-0",
+          "setFlags": {
+            "e39d.a": false
+          },
+          "journalEntry": "Ruth heard Owen agree with my words."
+        }
+      ]
+    },
+    {
+      "id": "document-intro",
+      "text": "I want a record of my call. Read the contact card before I dial.",
+      "phase": "dialogue",
+      "layout": "line",
+      "resourceId": "depot",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "document-0",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "owen",
+      "portraitId": "owen"
+    },
+    {
+      "id": "response-0-0",
+      "text": "Ruth? It's Owen. I need you to write something down.",
+      "phase": "dialogue",
+      "layout": "line",
+      "resourceId": "depot",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "document-intro",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "owen",
+      "portraitId": "owen"
+    },
+    {
+      "id": "response-1-0",
+      "text": "He's there with you? Put me on speaker.",
+      "phase": "dialogue",
+      "layout": "line",
+      "resourceId": "depot",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "document-intro",
+          "setFlags": {}
+        }
+      ],
+      "speakerId": "ruth",
+      "portraitId": "ruth"
+    },
+    {
+      "id": "document-0",
+      "text": "Print one copy. Check your ID card. Write its ID number only on your private form. Your contact details are separate. Put your first name before your last name. Add the ZIP code. To register, use the registration desk.",
+      "phase": "reading",
+      "layout": "reading",
+      "resourceId": "depot",
+      "marks": [
+        {
+          "text": "ID card",
+          "note": "v39.17"
+        },
+        {
+          "text": "first name",
+          "note": "v39.20"
+        },
+        {
+          "text": "ZIP code",
+          "note": "v39.21"
+        },
+        {
+          "text": "contact details",
+          "note": "v39.19"
+        },
+        {
+          "text": "registration",
+          "note": "v39.23"
+        },
+        {
+          "text": "ID number",
+          "note": "v39.18"
+        },
+        {
+          "text": "register",
+          "note": "v39.22"
+        },
+        {
+          "text": "Print",
+          "note": "v39.15"
+        },
+        {
+          "text": "copy",
+          "note": "v39.16"
+        }
+      ],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "document-1",
+          "setFlags": {}
+        }
+      ],
+      "caption": "Памятка о передаче копии или сообщения, лежит и в архиве Ады, и в депо"
+    },
+    {
+      "id": "document-1",
+      "text": "We'll confirm the time and send a confirmation. To send it by mail, seal the flap. Please sign here. Could you help me fill in this form?",
+      "phase": "reading",
+      "layout": "reading",
+      "resourceId": "depot",
+      "marks": [
+        {
+          "text": "Could you help me fill in this form?",
+          "note": "v39.28"
+        },
+        {
+          "text": "send it by mail",
+          "note": "v39.26"
+        },
+        {
+          "text": "Please sign here.",
+          "note": "v39.27"
+        },
+        {
+          "text": "confirmation",
+          "note": "v39.25"
+        },
+        {
+          "text": "confirm",
+          "note": "v39.24"
+        }
+      ],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "word-0",
+          "setFlags": {}
+        }
+      ],
+      "caption": "Памятка о передаче копии или сообщения, лежит и в архиве Ады, и в депо"
+    },
+    {
+      "id": "word-0",
+      "text": "Print one ____.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "depot",
+      "marks": [
+        {
+          "text": "Print",
+          "note": "v39.15"
+        }
+      ],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "Print",
+          "target": "word-0",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "Could you help me fill in this form?",
+          "target": "word-0",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "copy",
+          "target": "word-1",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v39.16"],
+      "exercise": {
+        "skill": "v39.16",
+        "correct": "option-3",
+        "feedback": "Let's read the whole line again. Take your time.",
+        "review": false,
+        "number": 1,
+        "total": 7
+      },
+      "speakerId": "lev",
+      "caption": "Вставьте слово или выражение со значением «копия; копировать»."
+    },
+    {
+      "id": "word-1",
+      "text": "Write its ____ only on your private form.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "depot",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "Could you help me fill in this form?",
+          "target": "word-1",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "ID number",
+          "target": "word-2",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "Print",
+          "target": "word-1",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v39.18"],
+      "exercise": {
+        "skill": "v39.18",
+        "correct": "option-2",
+        "feedback": "Let's read the whole line again. Take your time.",
+        "review": false,
+        "number": 2,
+        "total": 7
+      },
+      "speakerId": "lev",
+      "caption": "Вставьте слово или выражение со значением «номер удостоверения или личный номер»."
+    },
+    {
+      "id": "word-2",
+      "text": "Put your ____ before your last name.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "depot",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "first name",
+          "target": "word-3",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "Print",
+          "target": "word-2",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "Could you help me fill in this form?",
+          "target": "word-2",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v39.20"],
+      "exercise": {
+        "skill": "v39.20",
+        "correct": "option-1",
+        "feedback": "Let's read the whole line again. Take your time.",
+        "review": false,
+        "number": 3,
+        "total": 7
+      },
+      "speakerId": "lev",
+      "caption": "Вставьте слово или выражение со значением «имя / фамилия в анкете»."
+    },
+    {
+      "id": "word-3",
+      "text": "To ____, use the registration desk.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "depot",
+      "marks": [
+        {
+          "text": "registration",
+          "note": "v39.23"
+        }
+      ],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "Print",
+          "target": "word-3",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "Could you help me fill in this form?",
+          "target": "word-3",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "register",
+          "target": "word-4",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v39.22"],
+      "exercise": {
+        "skill": "v39.22",
+        "correct": "option-3",
+        "feedback": "Let's read the whole line again. Take your time.",
+        "review": false,
+        "number": 4,
+        "total": 7
+      },
+      "speakerId": "lev",
+      "caption": "Вставьте слово или выражение со значением «регистрироваться»."
+    },
+    {
+      "id": "word-4",
+      "text": "We'll ____ the time and send a confirmation.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "depot",
+      "marks": [
+        {
+          "text": "confirmation",
+          "note": "v39.25"
+        }
+      ],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "Could you help me fill in this form?",
+          "target": "word-4",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "confirm",
+          "target": "word-5",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "Print",
+          "target": "word-4",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v39.24"],
+      "exercise": {
+        "skill": "v39.24",
+        "correct": "option-2",
+        "feedback": "Let's read the whole line again. Take your time.",
+        "review": false,
+        "number": 5,
+        "total": 7
+      },
+      "speakerId": "lev",
+      "caption": "Вставьте слово или выражение со значением «подтверждать»."
+    },
+    {
+      "id": "word-5",
+      "text": "To ____, seal the flap.",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "depot",
+      "marks": [],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "send it by mail",
+          "target": "word-6",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "Print",
+          "target": "word-5",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "Could you help me fill in this form?",
+          "target": "word-5",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v39.26"],
+      "exercise": {
+        "skill": "v39.26",
+        "correct": "option-1",
+        "feedback": "Let's read the whole line again. Take your time.",
+        "review": false,
+        "number": 6,
+        "total": 7
+      },
+      "speakerId": "lev",
+      "caption": "Вставьте слово или выражение со значением «отправить что-либо по почте»."
+    },
+    {
+      "id": "word-6",
+      "text": "Please sign here. ____",
+      "phase": "practice",
+      "layout": "task",
+      "resourceId": "depot",
+      "marks": [
+        {
+          "text": "Please sign here.",
+          "note": "v39.27"
+        }
+      ],
+      "choices": [
+        {
+          "id": "option-1",
+          "label": "Print",
+          "target": "word-6",
+          "setFlags": {}
+        },
+        {
+          "id": "option-2",
+          "label": "Please sign here.",
+          "target": "word-6",
+          "setFlags": {}
+        },
+        {
+          "id": "option-3",
+          "label": "Could you help me fill in this form?",
+          "target": "review-gate",
+          "setFlags": {}
+        }
+      ],
+      "objectiveIds": ["v39.28"],
+      "exercise": {
+        "skill": "v39.28",
+        "correct": "option-3",
+        "feedback": "Let's read the whole line again. Take your time.",
+        "review": false,
+        "number": 7,
+        "total": 7
+      },
+      "speakerId": "lev",
+      "caption": "Вставьте слово или выражение со значением «Поможете мне заполнить этот бланк?»."
+    },
+    {
+      "id": "review-gate",
+      "text": "Сверка журнала",
+      "phase": "practice",
+      "layout": "gate",
+      "resourceId": "depot",
+      "marks": [],
+      "choices": [
+        {
+          "id": "next",
+          "label": "Дальше",
+          "target": "phone",
+          "setFlags": {}
+        }
+      ]
+    },
+    {
+      "id": "phone",
+      "text": "Сообщение от Рут Белл",
+      "phase": "phone",
+      "layout": "phone",
+      "resourceId": "depot",
+      "marks": [],
+      "choices": [
+        {
+          "id": "finish",
+          "label": "Завершить урок",
+          "target": "end",
+          "setFlags": {}
+        }
+      ],
+      "cueId": "message"
+    },
+    {
+      "id": "end",
+      "text": "Запись сохранена. Можно открыть теорию или продолжить расследование.",
+      "phase": "end",
+      "layout": "end",
+      "resourceId": "depot",
+      "marks": [],
+      "choices": [],
+      "terminal": true
+    }
+  ],
+  "lesson": {
+    "notes": [
+      {
+        "key": "g16",
+        "kind": "grammar",
+        "title": "Вежливые просьбы и предложения",
+        "meaning": "Could you + глагол — просьба, May I или Could I — вопрос о разрешении. Would you like — предложение другому человеку, I'd like to — собственное вежливое желание.",
+        "example": "Would you like me to stay while you call?"
+      },
+      {
+        "key": "v39.15",
+        "kind": "word",
+        "title": "print",
+        "meaning": "печатать на принтере",
+        "example": "Print one copy."
+      },
+      {
+        "key": "v39.16",
+        "kind": "word",
+        "title": "copy",
+        "meaning": "копия; копировать",
+        "example": "Print one copy."
+      },
+      {
+        "key": "v39.17",
+        "kind": "word",
+        "title": "identity card / ID card",
+        "meaning": "удостоверение личности",
+        "example": "Print one copy. Check your ID card."
+      },
+      {
+        "key": "v39.18",
+        "kind": "word",
+        "title": "ID number",
+        "meaning": "номер удостоверения или личный номер",
+        "example": "Write its ID number only on your private form."
+      },
+      {
+        "key": "v39.19",
+        "kind": "word",
+        "title": "contact details",
+        "meaning": "контактные данные",
+        "example": "Your contact details are separate."
+      },
+      {
+        "key": "v39.20",
+        "kind": "word",
+        "title": "first name / last name",
+        "meaning": "имя / фамилия в анкете",
+        "example": "Put your first name before your last name."
+      },
+      {
+        "key": "v39.21",
+        "kind": "word",
+        "title": "postcode / ZIP code",
+        "meaning": "почтовый индекс",
+        "example": "Put your first name before your last name. Add the ZIP code."
+      },
+      {
+        "key": "v39.22",
+        "kind": "word",
+        "title": "register",
+        "meaning": "регистрироваться",
+        "example": "To register, use the registration desk."
+      },
+      {
+        "key": "v39.23",
+        "kind": "word",
+        "title": "registration",
+        "meaning": "регистрация",
+        "example": "To register, use the registration desk."
+      },
+      {
+        "key": "v39.24",
+        "kind": "word",
+        "title": "confirm",
+        "meaning": "подтверждать",
+        "example": "We'll confirm the time and send a confirmation."
+      },
+      {
+        "key": "v39.25",
+        "kind": "word",
+        "title": "confirmation",
+        "meaning": "подтверждение",
+        "example": "We'll confirm the time and send a confirmation."
+      },
+      {
+        "key": "v39.26",
+        "kind": "word",
+        "title": "send something by post",
+        "meaning": "отправить что-либо по почте",
+        "example": "To send it by mail, seal the flap."
+      },
+      {
+        "key": "v39.27",
+        "kind": "word",
+        "title": "Please sign here.",
+        "meaning": "Подпишите здесь, пожалуйста.",
+        "example": "Please sign here. Could you help me fill in this form?"
+      },
+      {
+        "key": "v39.28",
+        "kind": "word",
+        "title": "Could you help me fill in this form?",
+        "meaning": "Поможете мне заполнить этот бланк?",
+        "example": "Please sign here. Could you help me fill in this form?"
+      }
+    ],
+    "gate": "review-gate",
+    "phone": "phone",
+    "decisionFlag": "e39d.a",
+    "carryFlags": [
+      "e10.ruth",
+      "e06.call",
+      "e14.drawer",
+      "e03.hold",
+      "kept",
+      "e05.punch",
+      "e07.report",
+      "e13.time",
+      "e09.seat",
+      "e11.cook",
+      "e15.stay",
+      "e02.lock",
+      "e04.times",
+      "e12.trace",
+      "e08.own",
+      "e16.a",
+      "e17.a",
+      "e18.a",
+      "e19.a",
+      "e20.a",
+      "e21.a",
+      "e22.a",
+      "e23.a",
+      "e24.a",
+      "e25.a",
+      "e26.a",
+      "e27.a",
+      "e28.a",
+      "e29.a",
+      "e30.a",
+      "e31d.a",
+      "e32d.a",
+      "e33d.a",
+      "e34d.a",
+      "e35d.a",
+      "e36d.a",
+      "e37d.a",
+      "e38d.a",
+      "e39d.a",
+      "e40d.a",
+      "e41d.a",
+      "e42d.a",
+      "e43d.a",
+      "e44d.a",
+      "e45d.a",
+      "e31f.a",
+      "e32f.a",
+      "e33f.a",
+      "e34f.a",
+      "e35f.a",
+      "e36f.a",
+      "e37f.a",
+      "e38f.a",
+      "e39f.a",
+      "e40f.a",
+      "e41f.a",
+      "e42f.a",
+      "e43f.a",
+      "e44f.a",
+      "e45f.a",
+      "e46.a",
+      "e47.a",
+      "e48.a",
+      "e49.a",
+      "e50.a",
+      "e51.a",
+      "e52.a",
+      "e53.a",
+      "e54.a",
+      "e55.a",
+      "e56.a",
+      "e57.a",
+      "e58.a",
+      "e59.a",
+      "e60.a",
+      "e61.a",
+      "e62.a",
+      "e63.a",
+      "e64.a",
+      "e65.a",
+      "e66.a",
+      "e67.a",
+      "e68.a",
+      "e69.a",
+      "e70.a",
+      "e71.a",
+      "e72.a",
+      "e73.a",
+      "e74.a",
+      "e75.a",
+      "e76.a",
+      "e77.a",
+      "e78.a",
+      "e79.a",
+      "e80.a",
+      "e81.a",
+      "e82.a",
+      "e83.a",
+      "e84.a",
+      "e85.a",
+      "e86.a",
+      "e87.a",
+      "e88.a",
+      "e89.a",
+      "e90.a",
+      "story.route-f",
+      "owen.alive",
+      "ending.h",
+      "ending.f"
+    ],
+    "initialFlags": {
+      "story.route-f": false
+    },
+    "exportFlags": ["story.route-f"],
+    "reviewTemplates": [
+      {
+        "skill": "g04",
+        "prompt": "Owen ____ the wire right now.",
+        "answer": "is checking",
+        "wrong": ["has check", "is check"],
+        "feedback": "Look down at his hands. What is he doing now?",
+        "caption": "Что Оуэн делает непосредственно сейчас"
+      },
+      {
+        "skill": "v15.02",
+        "prompt": "I'm the last ____.",
+        "answer": "passenger",
+        "wrong": ["single ticket", "coach"],
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v15.04",
+        "prompt": "The ____ shows our route.",
+        "answer": "timetable",
+        "wrong": ["passenger", "railroad"],
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v15.06",
+        "prompt": "The ____ is four dollars.",
+        "answer": "fare",
+        "wrong": ["public transport", "subway"],
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v15.09",
+        "prompt": "Here the ____ is by the bus stop.",
+        "answer": "ticket office",
+        "wrong": ["public transport", "railroad"],
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v15.11",
+        "prompt": "The poster shows a ____, a tram and the subway.",
+        "answer": "coach",
+        "wrong": ["bus stop", "fare"],
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v15.13",
+        "prompt": "The poster shows a coach, a tram and the ____.",
+        "answer": "subway",
+        "wrong": ["ticket office", "return ticket"],
+        "feedback": "It's the word on the ticket, Lev. Look at the next two words and try again.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "g22",
+        "prompt": "The receipt belongs to Ada's family. It's ____.",
+        "answer": "theirs",
+        "wrong": ["their", "them"],
+        "feedback": "You can say “their receipt.” Now say it without “receipt.”",
+        "caption": "Квитанция остаётся у Ады и её близких"
+      },
+      {
+        "skill": "v06.01",
+        "prompt": "The town calls this ____.",
+        "answer": "accommodation",
+        "wrong": ["apartment", "roof"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v06.03",
+        "prompt": "That ____ in the old travel photo is in England.",
+        "answer": "block of flats",
+        "wrong": ["roof", "accommodation"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v06.05",
+        "prompt": "Here there is one entrance and one ____ on the first floor.",
+        "answer": "exit",
+        "wrong": ["accommodation", "roof"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v06.07",
+        "prompt": "Here there is one entrance and one exit on the first floor. Your room is ____.",
+        "answer": "upstairs",
+        "wrong": ["accommodation", "roof"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v06.09",
+        "prompt": "Take the ____; the elevator is out.",
+        "answer": "stairs",
+        "wrong": ["roof", "accommodation"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v06.11",
+        "prompt": "The ____ is above the garage.",
+        "answer": "balcony",
+        "wrong": ["accommodation", "roof"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v06.13",
+        "prompt": "Someone is fixing the ____.",
+        "answer": "roof",
+        "wrong": ["accommodation", "garage"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "g21",
+        "prompt": "I can't see ____ at the desk.",
+        "answer": "anybody",
+        "wrong": ["nobody", "somewhere"],
+        "feedback": "You already said “can't.” Keep just one negative.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v02.01",
+        "prompt": "Which ____ is this?",
+        "answer": "relative",
+        "wrong": ["grandchild", "roommate"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v02.03",
+        "prompt": "The ____ has a red cap.",
+        "answer": "grandson",
+        "wrong": ["roommate", "relative"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v02.05",
+        "prompt": "The granddaughter is holding her ____ and her niece.",
+        "answer": "nephew",
+        "wrong": ["relative", "roommate"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v02.07",
+        "prompt": "The boy has a ____.",
+        "answer": "twin",
+        "wrong": ["relative", "roommate"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v02.09",
+        "prompt": "The elder sister is on the left and the ____ one is on the right.",
+        "answer": "younger",
+        "wrong": ["roommate", "relative"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v02.11",
+        "prompt": "Their ____ took the picture.",
+        "answer": "neighbor",
+        "wrong": ["relative", "roommate"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v02.13",
+        "prompt": "In England they called the woman who shared their home a flatmate. Here they say ____.",
+        "answer": "roommate",
+        "wrong": ["relative", "flatmate"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "g12",
+        "prompt": "The first bus ____ at six tomorrow.",
+        "answer": "leaves",
+        "wrong": ["leaving", "leave"],
+        "feedback": "It's the printed time for one bus. Read it once more.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v30.02",
+        "prompt": "A family ____ is in green.",
+        "answer": "arrangement",
+        "wrong": ["appointment", "daily"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v30.04",
+        "prompt": "We ____ on the wall calendar.",
+        "answer": "plan ahead",
+        "wrong": ["daily", "appointment"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v30.06",
+        "prompt": "My ____ stays in my pocket.",
+        "answer": "diary",
+        "wrong": ["appointment", "daily"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v30.09",
+        "prompt": "A long ____ can change in a moment.",
+        "answer": "period",
+        "wrong": ["appointment", "daily"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v30.11",
+        "prompt": "The depot is nearly a ____ old.",
+        "answer": "century",
+        "wrong": ["daily", "appointment"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v30.13",
+        "prompt": "Calls at midnight and ____ go in the daily book.",
+        "answer": "noon",
+        "wrong": ["appointment", "daily"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "g31",
+        "prompt": "Please ____ when the copy is ready.",
+        "answer": "turn it off",
+        "wrong": ["turn off it", "turned it off"],
+        "feedback": "The pronoun goes in the middle. Where does “it” go?",
+        "caption": "Реплика о выключении копира после работы"
+      },
+      {
+        "skill": "v15.16",
+        "prompt": "The ____ is at Upper School.",
+        "answer": "connection",
+        "wrong": ["line", "How long does the journey take?"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v15.18",
+        "prompt": "A delay means the bus is late. This one is ____.",
+        "answer": "delayed",
+        "wrong": ["How long does the journey take?", "line"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v15.20",
+        "prompt": "If we cancel the trip it shows as ____ on Mae's British display.",
+        "answer": "cancelled",
+        "wrong": ["line", "How long does the journey take?"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v15.23",
+        "prompt": "____ at Lower; get off at Upper.",
+        "answer": "Get on",
+        "wrong": ["line", "How long does the journey take?"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v15.24",
+        "prompt": "In the city, ____ here.",
+        "answer": "change trains",
+        "wrong": ["How long does the journey take?", "line"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v15.26",
+        "prompt": "____ Does this bus go to the centre? How long does the journey take?",
+        "answer": "Which platform does it leave from?",
+        "wrong": ["line", "How long does the journey take?"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v15.28",
+        "prompt": "Which platform does it leave from? Does this bus go to the centre? ____",
+        "answer": "How long does the journey take?",
+        "wrong": ["line", "Does this bus go to the centre?"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "g01",
+        "prompt": "What ____ Mae order yesterday?",
+        "answer": "did",
+        "wrong": ["does", "has"],
+        "feedback": "Yesterday is over. Ask about yesterday's order.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v01.01",
+        "prompt": "I need an ____ pass.",
+        "answer": "adult",
+        "wrong": ["teenage", "personal"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v01.03",
+        "prompt": "I was a ____ in that picture.",
+        "answer": "teenager",
+        "wrong": ["personal", "adult"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v01.05",
+        "prompt": "The first box says ____.",
+        "answer": "birth",
+        "wrong": ["adult", "personal"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v01.07",
+        "prompt": "It asks for my birthplace and my ____.",
+        "answer": "date of birth",
+        "wrong": ["adult", "personal"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v01.09",
+        "prompt": "I'm staying with a ____ family, so I don't need a foreign visitor's pass.",
+        "answer": "local",
+        "wrong": ["personal", "adult"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v01.11",
+        "prompt": "The old form says ____.",
+        "answer": "foreigner",
+        "wrong": ["adult", "personal"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v01.13",
+        "prompt": "At home I just say “visitor from abroad.” That's a ____ detail.",
+        "answer": "personal",
+        "wrong": ["adult", "abroad"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v07.02",
+        "prompt": "A coat in the ____.",
+        "answer": "wardrobe",
+        "wrong": ["cupboard", "faucet"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v07.04",
+        "prompt": "A book on the shelf of the ____.",
+        "answer": "bookcase",
+        "wrong": ["faucet", "cupboard"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v07.06",
+        "prompt": "A wet ____ by the curtain.",
+        "answer": "carpet",
+        "wrong": ["cupboard", "faucet"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v07.08",
+        "prompt": "One ____, a pillow, a blanket and a sheet for night shifts.",
+        "answer": "cushion",
+        "wrong": ["cupboard", "faucet"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v07.10",
+        "prompt": "One cushion, a pillow, a ____ and a sheet for night shifts.",
+        "answer": "blanket",
+        "wrong": ["faucet", "cupboard"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v07.12",
+        "prompt": "The ____ is over the sink.",
+        "answer": "mirror",
+        "wrong": ["cupboard", "faucet"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v07.14",
+        "prompt": "The cold ____ is dripping.",
+        "answer": "faucet",
+        "wrong": ["cupboard", "sink"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "g16",
+        "prompt": "____ me to stay while you call?",
+        "answer": "Would you like",
+        "wrong": ["Would you liking", "Do you would like"],
+        "feedback": "You're offering help. Say “Would you like” and then tell me what.",
+        "caption": "Тактично предложить быть рядом во время звонка"
+      },
+      {
+        "skill": "v39.02",
+        "prompt": "Our mail includes one ____ in an envelope with a blue stamp.",
+        "answer": "postcard",
+        "wrong": ["mail", "Fill out"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v39.04",
+        "prompt": "Our mail includes one postcard in an envelope with a blue ____.",
+        "answer": "stamp",
+        "wrong": ["Fill out", "mail"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v39.06",
+        "prompt": "The package was too big for the ____.",
+        "answer": "mailbox",
+        "wrong": ["mail", "Fill out"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v39.09",
+        "prompt": "Who could ____ it that early?",
+        "answer": "deliver",
+        "wrong": ["mail", "Fill out"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v39.11",
+        "prompt": "Check the sender on the ____.",
+        "answer": "address label",
+        "wrong": ["Fill out", "mail"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v39.13",
+        "prompt": "A signature shows who agreed to ____.",
+        "answer": "sign",
+        "wrong": ["mail", "Fill out"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "g30",
+        "prompt": "We have to go ____ the bridge to reach the school.",
+        "answer": "across",
+        "wrong": ["among", "during"],
+        "feedback": "You're going from one side to the other. Try the direction again.",
+        "caption": "Мост — путь с одного берега на другой"
+      },
+      {
+        "skill": "v16.02",
+        "prompt": "A ____ starts where the highway reaches the roundabout.",
+        "answer": "traffic jam",
+        "wrong": ["traffic", "brake"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v16.04",
+        "prompt": "A traffic jam starts where the highway reaches the ____.",
+        "answer": "roundabout",
+        "wrong": ["brake", "traffic"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v16.06",
+        "prompt": "At the crossroads, use the ____.",
+        "answer": "parking lot",
+        "wrong": ["traffic", "brake"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v16.09",
+        "prompt": "We need gasoline; the ____ is closed.",
+        "answer": "gas station",
+        "wrong": ["traffic", "brake"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v16.11",
+        "prompt": "With the ____ off, look at each wheel.",
+        "answer": "engine",
+        "wrong": ["brake", "traffic"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v16.13",
+        "prompt": "Check the ____ before you press the brake.",
+        "answer": "tire",
+        "wrong": ["traffic", "brake"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "g23",
+        "prompt": "They make the mark ____. Nobody makes it for them.",
+        "answer": "themselves",
+        "wrong": ["their", "itself"],
+        "feedback": "It's their own action. There is more than one person.",
+        "caption": "Ада просит дать вернувшемуся самому сделать зарубку"
+      },
+      {
+        "skill": "v34.02",
+        "prompt": "Mark the position and the ____ of the hole.",
+        "answer": "direction",
+        "wrong": ["position", "along"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v34.04",
+        "prompt": "The flat side is in the ____ between the bottom and the top.",
+        "answer": "middle",
+        "wrong": ["along", "position"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v34.06",
+        "prompt": "The flat side is in the middle between the bottom and the ____.",
+        "answer": "top",
+        "wrong": ["position", "along"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v34.08",
+        "prompt": "Here is the front; here is the ____.",
+        "answer": "back",
+        "wrong": ["position", "along"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v34.10",
+        "prompt": "The punch is inside, the stop is ____, and the door is opposite the desk.",
+        "answer": "outside",
+        "wrong": ["along", "position"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v34.12",
+        "prompt": "Walk ____ it, go through it and along the bus.",
+        "answer": "towards",
+        "wrong": ["position", "along"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v34.14",
+        "prompt": "Walk towards it, go through it and ____ the bus.",
+        "answer": "along",
+        "wrong": ["position", "through"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "g20",
+        "prompt": "There is ____ soup left in the pan.",
+        "answer": "a little",
+        "wrong": ["a few", "many"],
+        "feedback": "Soup isn't a number of separate things here.",
+        "caption": "В кухне немного супа, много банок"
+      },
+      {
+        "skill": "v10.02",
+        "prompt": "Today's stew can have beef, ____ or lamb.",
+        "answer": "pork",
+        "wrong": ["beef", "cabbage"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v10.04",
+        "prompt": "Today's stew can have beef, pork or lamb. We also have ____.",
+        "answer": "turkey",
+        "wrong": ["cabbage", "beef"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v10.06",
+        "prompt": "No seafood in this kitchen today. Slice one ____.",
+        "answer": "sausage",
+        "wrong": ["beef", "cabbage"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v10.08",
+        "prompt": "A white bean and a green ____ are different things.",
+        "answer": "pea",
+        "wrong": ["beef", "cabbage"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v10.10",
+        "prompt": "Put the mushroom, ____ and onion in the pan with garlic.",
+        "answer": "pepper",
+        "wrong": ["cabbage", "beef"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v10.12",
+        "prompt": "Put the mushroom, pepper and onion in the pan with ____.",
+        "answer": "garlic",
+        "wrong": ["beef", "cabbage"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v10.14",
+        "prompt": "Keep the lettuce and ____ cold for later.",
+        "answer": "cabbage",
+        "wrong": ["beef", "lettuce"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "g24",
+        "prompt": "The square ____ opens the real door.",
+        "answer": "one",
+        "wrong": ["ones", "oneself"],
+        "feedback": "There are two keys. You're pointing to just one.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v37.02",
+        "prompt": "____ the tray with both hands.",
+        "answer": "Carry",
+        "wrong": ["Lift", "pack"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v37.04",
+        "prompt": "Don't push the drawer; ____ it.",
+        "answer": "pull",
+        "wrong": ["pack", "Lift"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v37.06",
+        "prompt": "Don't throw the key or ____ it.",
+        "answer": "drop",
+        "wrong": ["Lift", "pack"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v37.09",
+        "prompt": "Pick up the pencil and put away the note. ____ the tray.",
+        "answer": "Put down",
+        "wrong": ["Lift", "pack"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v37.11",
+        "prompt": "Hang the toy key on its hook. ____ the real one.",
+        "answer": "Hold",
+        "wrong": ["pack", "Lift"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v37.13",
+        "prompt": "____ the punch and pack the two keys separately.",
+        "answer": "Cover",
+        "wrong": ["Lift", "pack"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v17.02",
+        "prompt": "This trip is my first long ____ alone.",
+        "answer": "journey",
+        "wrong": ["trip", "travel insurance"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v17.04",
+        "prompt": "It isn't a tour, and I don't have a ____.",
+        "answer": "tour guide",
+        "wrong": ["travel insurance", "trip"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v17.06",
+        "prompt": "I'm a traveler with a ____ ticket.",
+        "answer": "flight",
+        "wrong": ["trip", "travel insurance"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v17.09",
+        "prompt": "My airline sent the boarding pass after ____.",
+        "answer": "check-in",
+        "wrong": ["trip", "travel insurance"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v17.11",
+        "prompt": "My luggage is a ____ and a backpack.",
+        "answer": "suitcase",
+        "wrong": ["travel insurance", "trip"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v17.13",
+        "prompt": "My ____ is in my pocket with my travel insurance.",
+        "answer": "passport",
+        "wrong": ["trip", "travel insurance"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "g19",
+        "prompt": "The shoes are ____ for my feet.",
+        "answer": "too small",
+        "wrong": ["enough small", "small too"],
+        "feedback": "You can't wear them. Put the word for excess before “small.”",
+        "caption": "Туфли неудобны для ходьбы при нынешнем размере"
+      },
+      {
+        "skill": "v06.14",
+        "prompt": "Close the ____ by the fence.",
+        "answer": "gate",
+        "wrong": ["fence", "share a flat"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v06.16",
+        "prompt": "Close the gate by the fence. The ____ is quiet.",
+        "answer": "neighborhood",
+        "wrong": ["share a flat", "gate"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v06.18",
+        "prompt": "The rent goes to the ____.",
+        "answer": "landlord",
+        "wrong": ["gate", "share a flat"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v06.20",
+        "prompt": "The last bill covers ____, electricity and gas.",
+        "answer": "heating",
+        "wrong": ["gate", "share a flat"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v06.22",
+        "prompt": "The last bill covers heating, electricity and ____.",
+        "answer": "gas",
+        "wrong": ["share a flat", "gate"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v06.24",
+        "prompt": "When you ____, get a key; when you move out, bring it back.",
+        "answer": "move in",
+        "wrong": ["gate", "share a flat"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v06.26",
+        "prompt": "You can ____ with a friend; that's what the old British notice calls sharing an apartment.",
+        "answer": "share a flat",
+        "wrong": ["gate", "Pay the rent"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "g26",
+        "prompt": "I need the lamp ____ the small word.",
+        "answer": "to read",
+        "wrong": ["for read", "reading"],
+        "feedback": "What is the lamp for? Tell me the purpose in two words.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v05.01",
+        "prompt": "Start with a ____, then have a short discussion.",
+        "answer": "conversation",
+        "wrong": ["discussion", "discuss"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v05.03",
+        "prompt": "If it's your ____, say so.",
+        "answer": "opinion",
+        "wrong": ["discuss", "conversation"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v05.05",
+        "prompt": "Make a suggestion or a ____.",
+        "answer": "request",
+        "wrong": ["conversation", "discuss"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v05.07",
+        "prompt": "Ask for an explanation and a ____.",
+        "answer": "reason",
+        "wrong": ["conversation", "discuss"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v05.09",
+        "prompt": "Send a short ____ and wait for a reply.",
+        "answer": "message",
+        "wrong": ["discuss", "conversation"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v05.11",
+        "prompt": "Can you ____ the difference between the two times?",
+        "answer": "explain",
+        "wrong": ["conversation", "discuss"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "v05.13",
+        "prompt": "We can ____ what happened after that.",
+        "answer": "discuss",
+        "wrong": ["conversation", "describe"],
+        "feedback": "Let's read that line again. Take your time.",
+        "caption": "Сверка прежней записи в журнале."
+      },
+      {
+        "skill": "g03",
+        "prompt": "Ilya ____ uphill when the bridge fell.",
+        "answer": "was driving",
+        "wrong": ["has driven", "was drive"],
+        "feedback": "The bus was already moving when the bridge fell.",
+        "caption": "Илья вёл автобус, когда мост исчез"
+      },
+      {
+        "skill": "v01.14",
+        "prompt": "My uncle was never ____.",
+        "answer": "married",
+        "wrong": ["single", "move to another country"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «состоящий в браке»."
+      },
+      {
+        "skill": "v01.16",
+        "prompt": "In this photo a ____ bought a truck.",
+        "answer": "couple",
+        "wrong": ["married", "move to another country"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «пара; супруги»."
+      },
+      {
+        "skill": "v01.18",
+        "prompt": "Their ____ isn't part of my uncle's life story.",
+        "answer": "relationship",
+        "wrong": ["married", "move to another country"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «отношения; связь между людьми»."
+      },
+      {
+        "skill": "v01.20",
+        "prompt": "His ____ as a driver gave him an opportunity to work here.",
+        "answer": "experience",
+        "wrong": ["married", "move to another country"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «опыт; пережитое событие»."
+      },
+      {
+        "skill": "v01.21",
+        "prompt": "His experience as a driver gave him an ____ to work here.",
+        "answer": "opportunity",
+        "wrong": ["married", "move to another country"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «возможность, благоприятный случай»."
+      },
+      {
+        "skill": "v01.23",
+        "prompt": "Where did he ____?",
+        "answer": "grow up",
+        "wrong": ["married", "move to another country"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «вырасти; взрослеть»."
+      },
+      {
+        "skill": "v01.25",
+        "prompt": "It takes time to ____.",
+        "answer": "move to another country",
+        "wrong": ["married", "was born in"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «переехать в другую страну»."
+      },
+      {
+        "skill": "g17",
+        "prompt": "The sleeve with the note is ____ than the other one.",
+        "answer": "heavier",
+        "wrong": ["more heavy than it", "heaviest"],
+        "feedback": "You're comparing two sleeves. Use “than” once.",
+        "caption": "Сравнить рукава одного пиджака"
+      },
+      {
+        "skill": "v08.02",
+        "prompt": "One Sunday ____: a blue suit.",
+        "answer": "outfit",
+        "wrong": ["clothing", "boots"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «комплект одежды»."
+      },
+      {
+        "skill": "v08.04",
+        "prompt": "A work ____ and a heavy coat.",
+        "answer": "uniform",
+        "wrong": ["clothing", "boots"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «форменная одежда»."
+      },
+      {
+        "skill": "v08.06",
+        "prompt": "A yellow ____, jeans and two pairs of pants.",
+        "answer": "raincoat",
+        "wrong": ["clothing", "boots"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «плащ, дождевик»."
+      },
+      {
+        "skill": "v08.09",
+        "prompt": "Some summer ____, tights, clean underwear and winter pajamas.",
+        "answer": "shorts",
+        "wrong": ["clothing", "boots"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «шорты»."
+      },
+      {
+        "skill": "v08.11",
+        "prompt": "Some summer shorts, tights, clean ____ and winter pajamas.",
+        "answer": "underwear",
+        "wrong": ["clothing", "boots"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «нижнее бельё»."
+      },
+      {
+        "skill": "v08.13",
+        "prompt": "His ____ fit Jo now.",
+        "answer": "sneakers",
+        "wrong": ["clothing", "boots"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «кроссовки»."
+      },
+      {
+        "skill": "v40.02",
+        "prompt": "My shopping list starts at the ____.",
+        "answer": "bakery",
+        "wrong": ["shopping list", "bag of rice"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «пекарня; булочная»."
+      },
+      {
+        "skill": "v40.04",
+        "prompt": "The old English card says “butcher's” and “____”; I buy meat and fruit at the grocery shop.",
+        "answer": "greengrocer's",
+        "wrong": ["shopping list", "bag of rice"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «овощной магазин»."
+      },
+      {
+        "skill": "v40.06",
+        "prompt": "One ____ of seeds, a pack of paper cups, a can of soup and a jar of jam.",
+        "answer": "packet",
+        "wrong": ["shopping list", "bag of rice"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «пакет; пачка»."
+      },
+      {
+        "skill": "v40.08",
+        "prompt": "One packet of seeds, a pack of paper cups, a ____ of soup and a jar of jam.",
+        "answer": "can",
+        "wrong": ["shopping list", "bag of rice"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «жестяная банка»."
+      },
+      {
+        "skill": "v40.10",
+        "prompt": "A ____ of juice and a bar of chocolate.",
+        "answer": "carton",
+        "wrong": ["shopping list", "bag of rice"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «картонная упаковка для жидкости»."
+      },
+      {
+        "skill": "v40.12",
+        "prompt": "One ____, a bunch of grapes, a slice of bread for Ben and a bag of rice.",
+        "answer": "loaf",
+        "wrong": ["shopping list", "bag of rice"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «буханка; буханки»."
+      },
+      {
+        "skill": "v40.14",
+        "prompt": "One loaf, a bunch of grapes, a ____ for Ben and a bag of rice.",
+        "answer": "slice of bread",
+        "wrong": ["shopping list", "bag of rice"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «ломтик хлеба»."
+      },
+      {
+        "skill": "g18",
+        "prompt": "This paper road is ____ the other one.",
+        "answer": "as long as",
+        "wrong": ["as long than", "so long than"],
+        "feedback": "The lines have equal length. Use the same little word twice.",
+        "caption": "Одинаковая длина двух нарисованных дорог"
+      },
+      {
+        "skill": "v03.01",
+        "prompt": "What did you actually see? Write her ____ first.",
+        "answer": "appearance",
+        "wrong": ["attractive", "mustache"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «внешность»."
+      },
+      {
+        "skill": "v03.03",
+        "prompt": "One note says “attractive,” another says “____,” and a third says “pretty.” Those words won't help find the right person.",
+        "answer": "handsome",
+        "wrong": ["appearance", "mustache"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «красивый, привлекательный о мужчине»."
+      },
+      {
+        "skill": "v03.05",
+        "prompt": "One note says “attractive,” another says “handsome,” and a third says “pretty.” Those words won't help find the right person. One girl was ____.",
+        "answer": "slim",
+        "wrong": ["appearance", "mustache"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «стройный»."
+      },
+      {
+        "skill": "v03.07",
+        "prompt": "The woman by the door was ____.",
+        "answer": "of medium height",
+        "wrong": ["appearance", "mustache"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «среднего роста»."
+      },
+      {
+        "skill": "v03.08",
+        "prompt": "The woman by the door was of medium height. She had ____ hair.",
+        "answer": "straight",
+        "wrong": ["appearance", "mustache"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «прямой о волосах»."
+      },
+      {
+        "skill": "v03.10",
+        "prompt": "The older man was ____.",
+        "answer": "bald",
+        "wrong": ["appearance", "mustache"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «лысый»."
+      },
+      {
+        "skill": "v03.12",
+        "prompt": "He had a beard and a ____.",
+        "answer": "mustache",
+        "wrong": ["appearance", "beard"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «усы»."
+      },
+      {
+        "skill": "g15",
+        "prompt": "Nell ____ see Mae's hand, but she couldn't see the clock.",
+        "answer": "could",
+        "wrong": ["could to", "can to"],
+        "feedback": "Think of what Nell was able to see then.",
+        "caption": "Лев говорит о возможности прочитать запись в прошлом"
+      },
+      {
+        "skill": "v13.02",
+        "prompt": "The department store is in the ____.",
+        "answer": "mall",
+        "wrong": ["department store", "note"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «торговый центр»."
+      },
+      {
+        "skill": "v13.04",
+        "prompt": "A ____ sent her to the checkout.",
+        "answer": "shop assistant",
+        "wrong": ["department store", "note"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «продавец-консультант»."
+      },
+      {
+        "skill": "v13.06",
+        "prompt": "A shop assistant sent her to the checkout. There was a ____.",
+        "answer": "line",
+        "wrong": ["department store", "note"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «очередь»."
+      },
+      {
+        "skill": "v13.09",
+        "prompt": "The ____ on the sign was wrong.",
+        "answer": "price",
+        "wrong": ["department store", "note"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «цена; сравнение стоимости»."
+      },
+      {
+        "skill": "v13.11",
+        "prompt": "The cost on her slip was right. She paid ____.",
+        "answer": "cash",
+        "wrong": ["department store", "note"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «наличные деньги»."
+      },
+      {
+        "skill": "v13.13",
+        "prompt": "The change was a ____ and a five-dollar note from the old drawer.",
+        "answer": "coin",
+        "wrong": ["department store", "note"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «монета»."
+      },
+      {
+        "skill": "g10",
+        "prompt": "I ____ to your answer before I go.",
+        "answer": "will listen",
+        "wrong": ["will to listen", "will listening"],
+        "feedback": "You're making a promise now. Say what you'll do.",
+        "caption": "Обещание Аде от лица Льва, независимо от выбора о передаче имени"
+      },
+      {
+        "skill": "v05.15",
+        "prompt": "I suggest we talk at this table. I can ____ tea.",
+        "answer": "offer",
+        "wrong": ["suggest", "That sounds like a good idea."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «предлагать; предложение помощи или услуги»."
+      },
+      {
+        "skill": "v05.17",
+        "prompt": "You can accept or ____.",
+        "answer": "refuse",
+        "wrong": ["suggest", "That sounds like a good idea."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «отказываться»."
+      },
+      {
+        "skill": "v05.19",
+        "prompt": "I cannot promise to speak today. We may ____.",
+        "answer": "disagree",
+        "wrong": ["suggest", "That sounds like a good idea."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «не соглашаться»."
+      },
+      {
+        "skill": "v05.21",
+        "prompt": "I can ____ for my words and thank you for listening.",
+        "answer": "apologize",
+        "wrong": ["suggest", "That sounds like a good idea."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «извиняться»."
+      },
+      {
+        "skill": "v05.23",
+        "prompt": "I can apologize for my words and thank you for listening. Please ____ that name.",
+        "answer": "repeat",
+        "wrong": ["suggest", "That sounds like a good idea."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «повторять»."
+      },
+      {
+        "skill": "v05.25",
+        "prompt": "____ Could you say that again? Now I understand.",
+        "answer": "What do you mean?",
+        "wrong": ["suggest", "That sounds like a good idea."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «Что ты имеешь в виду?»."
+      },
+      {
+        "skill": "v05.27",
+        "prompt": "____",
+        "answer": "That sounds like a good idea.",
+        "wrong": ["suggest", "Could you say that again?"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «Звучит как хорошая идея.»."
+      },
+      {
+        "skill": "v14.02",
+        "prompt": "The public meeting is in the ____.",
+        "answer": "square",
+        "wrong": ["public", "playground"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «городская площадь»."
+      },
+      {
+        "skill": "v14.04",
+        "prompt": "At the ____, stay on the sidewalk.",
+        "answer": "corner",
+        "wrong": ["public", "playground"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «угол, поворот»."
+      },
+      {
+        "skill": "v14.06",
+        "prompt": "Use the ____ by the traffic lights.",
+        "answer": "pedestrian crossing",
+        "wrong": ["public", "playground"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «пешеходный переход»."
+      },
+      {
+        "skill": "v14.09",
+        "prompt": "Town hall is opposite the ____.",
+        "answer": "police station",
+        "wrong": ["public", "playground"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «полицейский участок»."
+      },
+      {
+        "skill": "v14.11",
+        "prompt": "The post office is by the ____.",
+        "answer": "pharmacy",
+        "wrong": ["public", "playground"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «аптека»."
+      },
+      {
+        "skill": "v14.13",
+        "prompt": "The old visitor called the gym a ____.",
+        "answer": "leisure centre",
+        "wrong": ["public", "playground"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «центр досуга и спорта»."
+      },
+      {
+        "skill": "g29",
+        "prompt": "The badge ____ to Ruth in 2006.",
+        "answer": "was given",
+        "wrong": ["gave", "was give"],
+        "feedback": "Ruth received the badge. Start with “was.”",
+        "caption": "Ограниченная пассивная модель, бейдж выдан Рут"
+      },
+      {
+        "skill": "v22.02",
+        "prompt": "Every ____ has an employer.",
+        "answer": "employee",
+        "wrong": ["occupation", "photographer"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «наёмный работник»."
+      },
+      {
+        "skill": "v22.04",
+        "prompt": "The ____ meet on Fridays.",
+        "answer": "staff",
+        "wrong": ["occupation", "photographer"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «персонал, сотрудники»."
+      },
+      {
+        "skill": "v22.06",
+        "prompt": "Ask a colleague before you ask the ____.",
+        "answer": "boss",
+        "wrong": ["occupation", "photographer"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «начальник»."
+      },
+      {
+        "skill": "v22.08",
+        "prompt": "The manager is sick; the ____ has the radio.",
+        "answer": "assistant",
+        "wrong": ["occupation", "photographer"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «помощник; ассистент»."
+      },
+      {
+        "skill": "v22.10",
+        "prompt": "An ____ drew the school.",
+        "answer": "architect",
+        "wrong": ["occupation", "photographer"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «архитектор»."
+      },
+      {
+        "skill": "v22.12",
+        "prompt": "A mechanic fixed the bus, an ____ checked the line and a plumber fixed the sink.",
+        "answer": "electrician",
+        "wrong": ["occupation", "photographer"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «электрик»."
+      },
+      {
+        "skill": "v22.14",
+        "prompt": "A ____ wrote about it and a photographer took the picture.",
+        "answer": "journalist",
+        "wrong": ["occupation", "photographer"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «журналист»."
+      },
+      {
+        "skill": "v23.02",
+        "prompt": "Our company is a family ____.",
+        "answer": "business",
+        "wrong": ["company", "working hours"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «бизнес; коммерческая деятельность»."
+      },
+      {
+        "skill": "v23.04",
+        "prompt": "The travel department has a ____ about the road project.",
+        "answer": "meeting",
+        "wrong": ["company", "working hours"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «совещание; встреча»."
+      },
+      {
+        "skill": "v23.06",
+        "prompt": "Take the ____ and the signed document.",
+        "answer": "report",
+        "wrong": ["company", "working hours"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «отчёт»."
+      },
+      {
+        "skill": "v23.08",
+        "prompt": "Keep the ____ in its file.",
+        "answer": "form",
+        "wrong": ["company", "working hours"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «бланк; анкета»."
+      },
+      {
+        "skill": "v23.10",
+        "prompt": "Use the ____ to make a photocopy.",
+        "answer": "printer",
+        "wrong": ["company", "working hours"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «принтер»."
+      },
+      {
+        "skill": "v23.12",
+        "prompt": "Write the ____ across the top.",
+        "answer": "working hours",
+        "wrong": ["company", "photocopy"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «рабочие часы»."
+      },
+      {
+        "skill": "v10.16",
+        "prompt": "Fruit for the search team: a grape, a ____, a peach and a strawberry in each small box.",
+        "answer": "pear",
+        "wrong": ["grape", "vegetarian food"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «груша»."
+      },
+      {
+        "skill": "v10.18",
+        "prompt": "Fruit for the search team: a grape, a pear, a peach and a ____ in each small box.",
+        "answer": "strawberry",
+        "wrong": ["grape", "vegetarian food"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «клубника; ягода клубники»."
+      },
+      {
+        "skill": "v10.20",
+        "prompt": "Breakfast is ____ with honey or jam.",
+        "answer": "cereal",
+        "wrong": ["grape", "vegetarian food"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «хлопья; зерновые продукты»."
+      },
+      {
+        "skill": "v10.22",
+        "prompt": "Breakfast is cereal with honey or ____.",
+        "answer": "jam",
+        "wrong": ["grape", "vegetarian food"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «варенье, джем»."
+      },
+      {
+        "skill": "v10.24",
+        "prompt": "Keep the yogurt and ____ cold.",
+        "answer": "cream",
+        "wrong": ["grape", "vegetarian food"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «сливки; крем»."
+      },
+      {
+        "skill": "v10.26",
+        "prompt": "Ask what people ____.",
+        "answer": "are allergic to",
+        "wrong": ["grape", "vegetarian food"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «иметь аллергию на...»."
+      },
+      {
+        "skill": "g02",
+        "prompt": "Ilya ____ when the line went quiet.",
+        "answer": "was listening",
+        "wrong": ["is listen", "was listen"],
+        "feedback": "He was doing it at that moment in the past.",
+        "caption": "Описать действие во время тех одиннадцати секунд"
+      },
+      {
+        "skill": "v29.02",
+        "prompt": "The old device is by the ____.",
+        "answer": "laptop",
+        "wrong": ["device", "browser"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «ноутбук»."
+      },
+      {
+        "skill": "v29.04",
+        "prompt": "The tablet has a dark ____.",
+        "answer": "screen",
+        "wrong": ["device", "browser"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «экран»."
+      },
+      {
+        "skill": "v29.06",
+        "prompt": "Use the keyboard or the ____.",
+        "answer": "mouse",
+        "wrong": ["device", "browser"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «компьютерная мышь; мыши»."
+      },
+      {
+        "skill": "v29.09",
+        "prompt": "The ____ fills the battery.",
+        "answer": "charger",
+        "wrong": ["device", "browser"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «зарядное устройство»."
+      },
+      {
+        "skill": "v29.11",
+        "prompt": "The charger fills the battery. The ____ is short.",
+        "answer": "cable",
+        "wrong": ["device", "browser"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «кабель»."
+      },
+      {
+        "skill": "v29.13",
+        "prompt": "This app opens our ____ in the browser.",
+        "answer": "website",
+        "wrong": ["device", "browser"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «веб-сайт; работа с ним»."
+      },
+      {
+        "skill": "g13",
+        "prompt": "We ____ press the button while someone is speaking.",
+        "answer": "mustn't",
+        "wrong": ["don't have to", "must to"],
+        "feedback": "It isn't allowed. That is different from having a choice.",
+        "caption": "Правило безопасности: запрещено нажимать во время чужого вызова"
+      },
+      {
+        "skill": "v29.16",
+        "prompt": "Use your own password and ____ for the account.",
+        "answer": "username",
+        "wrong": ["password", "send an attachment"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «имя пользователя»."
+      },
+      {
+        "skill": "v29.18",
+        "prompt": "Use your own password and username for the account. ____ the shift list.",
+        "answer": "Download",
+        "wrong": ["password", "send an attachment"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «скачивать; загруженный файл»."
+      },
+      {
+        "skill": "v29.20",
+        "prompt": "____ the date and search for the line.",
+        "answer": "Click",
+        "wrong": ["password", "send an attachment"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «щёлкать; щелчок»."
+      },
+      {
+        "skill": "v29.22",
+        "prompt": "____ the message; don't delete it yet.",
+        "answer": "Save",
+        "wrong": ["password", "send an attachment"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «сохранять файл»."
+      },
+      {
+        "skill": "v29.24",
+        "prompt": "Save the message; don't delete it yet. ____ the set.",
+        "answer": "Connect",
+        "wrong": ["password", "send an attachment"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «подключать; соединять»."
+      },
+      {
+        "skill": "v29.26",
+        "prompt": "____ before work and log out after.",
+        "answer": "Log in",
+        "wrong": ["password", "send an attachment"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «войти в аккаунт / выйти»."
+      },
+      {
+        "skill": "v29.28",
+        "prompt": "To send the picture, ____.",
+        "answer": "send an attachment",
+        "wrong": ["password", "Turn on"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «отправить вложение»."
+      },
+      {
+        "skill": "v34.16",
+        "prompt": "Rest ____ the wall, not among the loose rocks.",
+        "answer": "against",
+        "wrong": ["past", "a long way from"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «против; у, вплотную к»."
+      },
+      {
+        "skill": "v34.18",
+        "prompt": "Step ____ the board and into the light.",
+        "answer": "onto",
+        "wrong": ["past", "a long way from"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «на поверхность, с направлением»."
+      },
+      {
+        "skill": "v34.20",
+        "prompt": "The gate is ____ the house.",
+        "answer": "across from",
+        "wrong": ["past", "a long way from"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «напротив, через дорогу от»."
+      },
+      {
+        "skill": "v34.22",
+        "prompt": "A guide lives nearby. Go no ____ alone.",
+        "answer": "further",
+        "wrong": ["past", "a long way from"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «дальше; дальнейший»."
+      },
+      {
+        "skill": "v34.24",
+        "prompt": "Walk round the pool; it's ____.",
+        "answer": "deep",
+        "wrong": ["past", "a long way from"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «глубокий»."
+      },
+      {
+        "skill": "v34.26",
+        "prompt": "The second mark is ____.",
+        "answer": "on the other side",
+        "wrong": ["past", "a long way from"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «на другой стороне»."
+      },
+      {
+        "skill": "g25",
+        "prompt": "Dot enjoyed ____ notes in my coat.",
+        "answer": "leaving",
+        "wrong": ["to leaving", "leave"],
+        "feedback": "After “enjoyed,” try the action with its -ing ending.",
+        "caption": "Оуэн вспоминает привычку сестры"
+      },
+      {
+        "skill": "v08.16",
+        "prompt": "Summer sandals and warm ____ go below the bench.",
+        "answer": "slippers",
+        "wrong": ["sandals", "Put on"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «домашние тапочки»."
+      },
+      {
+        "skill": "v08.18",
+        "prompt": "A belt, two ____ and gloves hang above.",
+        "answer": "scarves",
+        "wrong": ["sandals", "Put on"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «шарф; шарфы»."
+      },
+      {
+        "skill": "v08.20",
+        "prompt": "Put ____ in the little box: a ring, one earring and a necklace.",
+        "answer": "jewelry",
+        "wrong": ["sandals", "Put on"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «ювелирные украшения»."
+      },
+      {
+        "skill": "v08.22",
+        "prompt": "Put jewelry in the little box: a ring, one ____ and a necklace.",
+        "answer": "earring",
+        "wrong": ["sandals", "Put on"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «серьга»."
+      },
+      {
+        "skill": "v08.24",
+        "prompt": "Put jewelry in the little box: a ring, one earring and a necklace. Does this coat ____?",
+        "answer": "fit",
+        "wrong": ["sandals", "Put on"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «подходить по размеру»."
+      },
+      {
+        "skill": "v08.26",
+        "prompt": "You can ____ here.",
+        "answer": "try it on",
+        "wrong": ["sandals", "Put on"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «примерить вещь»."
+      },
+      {
+        "skill": "v08.28",
+        "prompt": "____ the coat or take it off before you go.",
+        "answer": "Put on",
+        "wrong": ["sandals", "Get dressed"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «надеть / снять одежду»."
+      },
+      {
+        "skill": "g09",
+        "prompt": "I ____ follow one trail tonight.",
+        "answer": "am going to",
+        "wrong": ["going", "am go to"],
+        "feedback": "Your plan is ready. Give “going to” its missing verb.",
+        "caption": "Лев объявляет уже выбранный план"
+      },
+      {
+        "skill": "v36.02",
+        "prompt": "Is it an ____, a call about lost property or a complaint?",
+        "answer": "emergency",
+        "wrong": ["helpful", "It doesn't matter."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «чрезвычайная ситуация»."
+      },
+      {
+        "skill": "v36.04",
+        "prompt": "Is it an emergency, a call about lost property or a ____?",
+        "answer": "complaint",
+        "wrong": ["helpful", "It doesn't matter."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «жалоба»."
+      },
+      {
+        "skill": "v36.06",
+        "prompt": "Ask for ____ at the information desk.",
+        "answer": "advice",
+        "wrong": ["helpful", "It doesn't matter."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «совет; рекомендации, неисчисляемое»."
+      },
+      {
+        "skill": "v36.09",
+        "prompt": "____ Could I have a look? Would you mind repeating that? I'm afraid I can't. I'm sorry I'm late. It doesn't matter.",
+        "answer": "Could you help me, please?",
+        "wrong": ["helpful", "It doesn't matter."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «Не могли бы вы мне помочь?»."
+      },
+      {
+        "skill": "v36.11",
+        "prompt": "Could you help me, please? Could I have a look? ____ I'm afraid I can't. I'm sorry I'm late. It doesn't matter.",
+        "answer": "Would you mind repeating that?",
+        "wrong": ["helpful", "It doesn't matter."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «Не могли бы вы повторить?»."
+      },
+      {
+        "skill": "v36.13",
+        "prompt": "Could you help me, please? Could I have a look? Would you mind repeating that? I'm afraid I can't. ____ It doesn't matter.",
+        "answer": "I'm sorry I'm late.",
+        "wrong": ["helpful", "It doesn't matter."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «Простите за опоздание.»."
+      },
+      {
+        "skill": "v07.16",
+        "prompt": "Take the garbage to the ____.",
+        "answer": "trash can",
+        "wrong": ["garbage", "hang up the washing"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «мусорное ведро»."
+      },
+      {
+        "skill": "v07.18",
+        "prompt": "Start the washing machine. Leave the ____ shut.",
+        "answer": "dishwasher",
+        "wrong": ["garbage", "hang up the washing"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «посудомоечная машина»."
+      },
+      {
+        "skill": "v07.20",
+        "prompt": "The vacuum cleaner is by the ____.",
+        "answer": "iron",
+        "wrong": ["garbage", "hang up the washing"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «утюг; гладить»."
+      },
+      {
+        "skill": "v07.22",
+        "prompt": "Keep the passage tidy. ____ after lunch.",
+        "answer": "Wash up",
+        "wrong": ["garbage", "hang up the washing"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «мыть посуду»."
+      },
+      {
+        "skill": "v07.24",
+        "prompt": "Dad can ____ the broken lock.",
+        "answer": "repair",
+        "wrong": ["garbage", "hang up the washing"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «ремонтировать; ремонт»."
+      },
+      {
+        "skill": "v07.26",
+        "prompt": "We ____ together.",
+        "answer": "do the housework",
+        "wrong": ["garbage", "hang up the washing"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «заниматься домашними делами»."
+      },
+      {
+        "skill": "v07.28",
+        "prompt": "I'll make the bed for the night shift and ____ near the stove.",
+        "answer": "hang up the washing",
+        "wrong": ["garbage", "make the bed"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «развешивать бельё»."
+      },
+      {
+        "skill": "g07",
+        "prompt": "Owen has kept the sheet ____ twenty years.",
+        "answer": "for",
+        "wrong": ["since", "during of"],
+        "feedback": "Twenty years is a length of time. It isn't a starting date.",
+        "caption": "Длительность хранения табеля до сегодняшнего дня"
+      },
+      {
+        "skill": "v23.13",
+        "prompt": "Take a ____ at noon.",
+        "answer": "break",
+        "wrong": ["salary", "pay back the money"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «перерыв в работе»."
+      },
+      {
+        "skill": "v23.15",
+        "prompt": "My salary is what I ____.",
+        "answer": "earn",
+        "wrong": ["break", "pay back the money"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «зарабатывать»."
+      },
+      {
+        "skill": "v23.17",
+        "prompt": "The town will pay it into my ____.",
+        "answer": "bank account",
+        "wrong": ["break", "pay back the money"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «банковский счёт»."
+      },
+      {
+        "skill": "v23.19",
+        "prompt": "A ____ takes a day.",
+        "answer": "transfer",
+        "wrong": ["break", "pay back the money"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «перевод денег; переводить»."
+      },
+      {
+        "skill": "v23.20",
+        "prompt": "You can ____ my tool; I can lend it until noon.",
+        "answer": "borrow",
+        "wrong": ["break", "pay back the money"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «брать взаймы, во временное пользование»."
+      },
+      {
+        "skill": "v23.22",
+        "prompt": "You can borrow my tool; I can lend it until noon. We sometimes ____.",
+        "answer": "work overtime",
+        "wrong": ["break", "pay back the money"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «работать сверхурочно»."
+      },
+      {
+        "skill": "v23.24",
+        "prompt": "I want to take a day off and ____ I owe Jo.",
+        "answer": "pay back the money",
+        "wrong": ["break", "take a day off"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «вернуть деньги, отдать долг»."
+      },
+      {
+        "skill": "v03.13",
+        "prompt": "A picture can't show my ____.",
+        "answer": "personality",
+        "wrong": ["polite", "be kind to"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «характер; личность»."
+      },
+      {
+        "skill": "v03.15",
+        "prompt": "I was polite to the photographer but ____ to my brother.",
+        "answer": "rude",
+        "wrong": ["personality", "be kind to"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «грубый, невежливый»."
+      },
+      {
+        "skill": "v03.17",
+        "prompt": "I was being ____ with the glass.",
+        "answer": "careful",
+        "wrong": ["personality", "be kind to"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «осторожный; внимательный»."
+      },
+      {
+        "skill": "v03.19",
+        "prompt": "He's clever and ____, but shy around strangers.",
+        "answer": "serious",
+        "wrong": ["personality", "be kind to"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «серьёзный»."
+      },
+      {
+        "skill": "v03.21",
+        "prompt": "How we ____ on one day isn't all our behavior.",
+        "answer": "behave",
+        "wrong": ["personality", "be kind to"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «вести себя»."
+      },
+      {
+        "skill": "v03.23",
+        "prompt": "People say I ____ my mom.",
+        "answer": "look like",
+        "wrong": ["personality", "be kind to"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «быть похожим внешне на кого-либо»."
+      },
+      {
+        "skill": "v03.25",
+        "prompt": "They ask, “What is she like?” I say she tries to ____ the person nobody sees.",
+        "answer": "be kind to",
+        "wrong": ["personality", "What is she like?"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «быть добрым к кому-либо»."
+      },
+      {
+        "skill": "g06",
+        "prompt": "Have you ____ heard those two sounds together?",
+        "answer": "ever",
+        "wrong": ["yesterday", "ago"],
+        "feedback": "There's no date in my question. I mean at any time before now.",
+        "caption": "Спросить о прослушивании когда-либо до настоящего момента"
+      },
+      {
+        "skill": "v25.02",
+        "prompt": "Our audience came for one ____ on a small stage.",
+        "answer": "performance",
+        "wrong": ["audience", "comedy"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «представление; выступление»."
+      },
+      {
+        "skill": "v25.04",
+        "prompt": "Our audience came for one performance on a small stage. Children ____ after supper.",
+        "answer": "perform",
+        "wrong": ["audience", "comedy"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «выступать; исполнять»."
+      },
+      {
+        "skill": "v25.06",
+        "prompt": "One musician has an ____; the others use a keyboard, a drum and a violin.",
+        "answer": "instrument",
+        "wrong": ["audience", "comedy"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «музыкальный инструмент»."
+      },
+      {
+        "skill": "v25.09",
+        "prompt": "One musician has an instrument; the others use a keyboard, a drum and a ____.",
+        "answer": "violin",
+        "wrong": ["audience", "comedy"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «скрипка»."
+      },
+      {
+        "skill": "v25.11",
+        "prompt": "First we play classical music, then ____.",
+        "answer": "pop music",
+        "wrong": ["audience", "comedy"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «поп-музыка»."
+      },
+      {
+        "skill": "v25.13",
+        "prompt": "After the show we watched a ____ and a short comedy.",
+        "answer": "cartoon",
+        "wrong": ["audience", "comedy"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «мультфильм»."
+      },
+      {
+        "skill": "v16.16",
+        "prompt": "A rider needs a ____.",
+        "answer": "helmet",
+        "wrong": ["seat belt", "give me a lift"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «шлем»."
+      },
+      {
+        "skill": "v16.18",
+        "prompt": "Leave the cycle lane clear for a ____.",
+        "answer": "cyclist",
+        "wrong": ["seat belt", "give me a lift"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «велосипедист»."
+      },
+      {
+        "skill": "v16.20",
+        "prompt": "An ____ isn't the only danger.",
+        "answer": "accident",
+        "wrong": ["seat belt", "give me a lift"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «несчастный случай; авария»."
+      },
+      {
+        "skill": "v16.22",
+        "prompt": "Is the bend ____ or dangerous?",
+        "answer": "safe",
+        "wrong": ["seat belt", "give me a lift"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «безопасный»."
+      },
+      {
+        "skill": "v16.24",
+        "prompt": "Is the bend safe or dangerous? ____ by the school.",
+        "answer": "Park",
+        "wrong": ["seat belt", "give me a lift"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «парковать автомобиль»."
+      },
+      {
+        "skill": "v16.26",
+        "prompt": "We can rent a truck if buses ____.",
+        "answer": "break down",
+        "wrong": ["seat belt", "give me a lift"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «сломаться о машине»."
+      },
+      {
+        "skill": "v16.28",
+        "prompt": "The British handbook says “run out of petrol.” Owen says “run out of gas.” Can you ____ to the depot?",
+        "answer": "give me a lift",
+        "wrong": ["seat belt", "run out of petrol"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «подвезти кого-либо»."
+      },
+      {
+        "skill": "g05",
+        "prompt": "I ____ one point on Dot's court now.",
+        "answer": "have played",
+        "wrong": ["am play", "have play"],
+        "feedback": "You can say what you've done now. Use the past participle.",
+        "caption": "Лев впервые сыграл здесь, результат ощущается сейчас"
+      },
+      {
+        "skill": "v26.02",
+        "prompt": "An athlete can ask the ____ for help.",
+        "answer": "coach",
+        "wrong": ["athlete", "lose"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «тренер»."
+      },
+      {
+        "skill": "v26.04",
+        "prompt": "Our team has one new ____.",
+        "answer": "player",
+        "wrong": ["athlete", "lose"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «игрок; участник команды»."
+      },
+      {
+        "skill": "v26.06",
+        "prompt": "The competition starts with a ____ and ends with a race.",
+        "answer": "match",
+        "wrong": ["athlete", "lose"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «матч»."
+      },
+      {
+        "skill": "v26.08",
+        "prompt": "The ____ gets a prize.",
+        "answer": "winner",
+        "wrong": ["athlete", "lose"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «победитель»."
+      },
+      {
+        "skill": "v26.10",
+        "prompt": "One ____ is for helping a friend.",
+        "answer": "award",
+        "wrong": ["athlete", "lose"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «награда»."
+      },
+      {
+        "skill": "v26.12",
+        "prompt": "Write the score by the ____.",
+        "answer": "goal",
+        "wrong": ["athlete", "lose"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «гол; цель»."
+      },
+      {
+        "skill": "v26.14",
+        "prompt": "We might win or ____.",
+        "answer": "lose",
+        "wrong": ["athlete", "win"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «проигрывать»."
+      },
+      {
+        "skill": "g08",
+        "prompt": "The school ____ for gas that night in 2006.",
+        "answer": "paid",
+        "wrong": ["has paid", "pays tomorrow"],
+        "feedback": "We know which night. Tell me what happened then.",
+        "caption": "Точное законченное время покупки топлива"
+      },
+      {
+        "skill": "v13.16",
+        "prompt": "A ____ uses money in your account.",
+        "answer": "debit card",
+        "wrong": ["credit card", "I'd like to return this."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «дебетовая карта»."
+      },
+      {
+        "skill": "v13.18",
+        "prompt": "A ____ is marked in blue.",
+        "answer": "discount",
+        "wrong": ["credit card", "I'd like to return this."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «скидка»."
+      },
+      {
+        "skill": "v13.20",
+        "prompt": "The sale ends at noon; today's ____ is fuel.",
+        "answer": "special offer",
+        "wrong": ["credit card", "I'd like to return this."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «специальное предложение, акция»."
+      },
+      {
+        "skill": "v13.22",
+        "prompt": "An ____ gives a different item.",
+        "answer": "exchange",
+        "wrong": ["credit card", "I'd like to return this."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «обмен; обменивать»."
+      },
+      {
+        "skill": "v13.24",
+        "prompt": "Don't ____ the money yet.",
+        "answer": "spend",
+        "wrong": ["credit card", "I'd like to return this."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «тратить»."
+      },
+      {
+        "skill": "v13.26",
+        "prompt": "We can save some if we ____.",
+        "answer": "pay in cash",
+        "wrong": ["credit card", "I'd like to return this."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «платить наличными / картой»."
+      },
+      {
+        "skill": "v13.28",
+        "prompt": "How much does it cost? ____",
+        "answer": "I'd like to return this.",
+        "wrong": ["credit card", "How much does it cost?"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «Я хотел бы вернуть эту вещь.»."
+      },
+      {
+        "skill": "g28",
+        "prompt": "This is the notice ____ covers the map.",
+        "answer": "that",
+        "wrong": ["who", "where"],
+        "feedback": "The notice is a thing. It isn't the person who put it up.",
+        "caption": "Придаточное о предмете, который закрывает карту"
+      },
+      {
+        "skill": "v22.17",
+        "prompt": "We need a secretary and a ____.",
+        "answer": "cleaner",
+        "wrong": ["secretary", "was unemployed"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «уборщик, уборщица»."
+      },
+      {
+        "skill": "v22.19",
+        "prompt": "A police officer will show the rooms; a ____ will show the exits.",
+        "answer": "firefighter",
+        "wrong": ["secretary", "was unemployed"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «пожарный»."
+      },
+      {
+        "skill": "v22.21",
+        "prompt": "This job advertisement comes with an ____.",
+        "answer": "application",
+        "wrong": ["secretary", "was unemployed"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «заявка; заявление при поиске работы»."
+      },
+      {
+        "skill": "v22.23",
+        "prompt": "To apply for the job, come to an ____ and bring a résumé.",
+        "answer": "interview",
+        "wrong": ["secretary", "was unemployed"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «собеседование; проводить интервью»."
+      },
+      {
+        "skill": "v22.25",
+        "prompt": "Want to ____ here?",
+        "answer": "look for a job",
+        "wrong": ["secretary", "was unemployed"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «искать работу»."
+      },
+      {
+        "skill": "v22.27",
+        "prompt": "Ben ____ when he first took this job.",
+        "answer": "was unemployed",
+        "wrong": ["secretary", "work full-time"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «быть безработным»."
+      },
+      {
+        "skill": "v39.16",
+        "prompt": "Print one ____.",
+        "answer": "copy",
+        "wrong": ["Print", "Could you help me fill in this form?"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «копия; копировать»."
+      },
+      {
+        "skill": "v39.18",
+        "prompt": "Write its ____ only on your private form.",
+        "answer": "ID number",
+        "wrong": ["Print", "Could you help me fill in this form?"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «номер удостоверения или личный номер»."
+      },
+      {
+        "skill": "v39.20",
+        "prompt": "Put your ____ before your last name.",
+        "answer": "first name",
+        "wrong": ["Print", "Could you help me fill in this form?"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «имя / фамилия в анкете»."
+      },
+      {
+        "skill": "v39.22",
+        "prompt": "To ____, use the registration desk.",
+        "answer": "register",
+        "wrong": ["Print", "Could you help me fill in this form?"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «регистрироваться»."
+      },
+      {
+        "skill": "v39.24",
+        "prompt": "We'll ____ the time and send a confirmation.",
+        "answer": "confirm",
+        "wrong": ["Print", "Could you help me fill in this form?"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «подтверждать»."
+      },
+      {
+        "skill": "v39.26",
+        "prompt": "To ____, seal the flap.",
+        "answer": "send it by mail",
+        "wrong": ["Print", "Could you help me fill in this form?"],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «отправить что-либо по почте»."
+      },
+      {
+        "skill": "v39.28",
+        "prompt": "Please sign here. ____",
+        "answer": "Could you help me fill in this form?",
+        "wrong": ["Print", "Please sign here."],
+        "feedback": "Let's read the whole line again. Take your time.",
+        "caption": "Вставьте слово или выражение со значением «Поможете мне заполнить этот бланк?»."
+      }
+    ],
+    "ambienceId": "rain",
+    "contact": "ruth",
+    "contactRole": "Спасательная служба",
+    "phoneContext": "Ответьте на сообщение о событиях этой главы. Собеседник знает вашу последнюю договорённость.",
+    "openings": ["Who gave Mae the code?", "Did Owen agree with what you told me?"],
+    "reply": "I got your message. We can talk again.",
+    "phoneVariants": [],
+    "presentation": {
+      "location": "Автобусное депо",
+      "time": "Суббота",
+      "duration": "10–15 минут",
+      "finishTitle": "Запись 39 сохранена"
+    }
+  }
+}

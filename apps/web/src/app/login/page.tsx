@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowUpRight, LoaderCircle, Compass, ShieldCheck } from 'luc
 import { ProfileResponse } from '@langplot/shared';
 import { Brand } from '@/components/brand';
 import { api, body, errorText } from '@/lib/api';
+import { studyReturnPath } from '@/lib/course-paths';
 export default function LoginPage() {
   const [pending, setPending] = useState(false);
   const [error, setError] = useState('');
@@ -16,13 +17,17 @@ export default function LoginPage() {
     setError('');
     try {
       await api('/session/demo', ProfileResponse, { method: 'POST', body: '{}' });
-      const language = new URLSearchParams(window.location.search).get('language');
+      const query = new URLSearchParams(window.location.search);
+      const lesson = query.get('lesson') === 'last-row';
+      const target = studyReturnPath(query.get('next'));
+      const course = target?.startsWith('/courses/') ? target.split('/') : undefined;
+      const language = lesson ? 'en' : (course?.[2] ?? query.get('language'));
       if (language === 'en' || language === 'de')
         await api('/profile/selection', ProfileResponse, {
           method: 'PUT',
-          body: body({ language, level: 'A1' }),
+          body: body({ language, level: lesson ? 'A2' : (course?.[3]?.toUpperCase() ?? 'A1') }),
         });
-      router.push('/dashboard');
+      router.push(target ?? (lesson ? '/play/last-row' : '/dashboard'));
     } catch (e) {
       setError(errorText(e));
       setPending(false);

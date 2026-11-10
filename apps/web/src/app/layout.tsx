@@ -2,7 +2,9 @@ import type { Metadata } from 'next';
 import '@fontsource-variable/manrope';
 import './globals.css';
 import './workspace.css';
+import './course.css';
 import './player.css';
+import './last-row.css';
 import './studio.css';
 
 export const metadata: Metadata = {

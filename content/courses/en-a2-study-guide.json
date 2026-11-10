@@ -1,0 +1,3034 @@
+{
+  "version": 1,
+  "grammar": [
+    {
+      "key": "g01",
+      "title": "Past Simple — законченное прошлое",
+      "overview": "Past Simple помогает рассказать о завершённых событиях, прошлых состояниях и привычках. Мы смотрим на событие как на факт прошлого. Время может быть названо прямо или понятно из разговора.",
+      "sections": [
+        {
+          "title": "Когда выбирать это время",
+          "paragraphs": [
+            "Используй Past Simple с yesterday, last night, two days ago, in 2006 и другими указаниями на закончившийся период. Цепочка событий в рассказе обычно тоже передаётся этим временем.",
+            "Даже без даты Past Simple подходит, если собеседники уже обсуждают конкретный прошлый случай. Вопрос What happened? просит рассказать, что произошло."
+          ],
+          "examples": [
+            {
+              "en": "The bus stopped. Owen opened the door.",
+              "ru": "Автобус остановился. Оуэн открыл дверь.",
+              "explanation": "Два последовательных завершённых действия."
+            },
+            {
+              "en": "I lived here as a child.",
+              "ru": "В детстве я жил здесь.",
+              "explanation": "Прошлое состояние, а не обязательно короткое действие."
+            },
+            {
+              "en": "Did you call my mom last night?",
+              "ru": "Ты звонил моей маме вчера вечером?",
+              "explanation": "В вопросе прошлое выражает did, а call остаётся в начальной форме."
+            }
+          ]
+        },
+        {
+          "title": "Утверждение, отрицание и вопрос",
+          "paragraphs": [
+            "V1 обозначает начальную форму глагола, V2 — форму прошедшего времени. У правильных глаголов V2 оканчивается на -ed; неправильные формы нужно запоминать. После did и didn’t возвращайся к V1."
+          ],
+          "table": {
+            "headers": ["Форма", "Схема", "Пример"],
+            "rows": [
+              ["Утверждение", "Подлежащее + V2", "Mae called. / Owen left."],
+              ["Отрицание", "Подлежащее + did not (didn’t) + V1", "Mae didn’t call."],
+              ["Общий вопрос", "Did + подлежащее + V1?", "Did Owen leave?"],
+              [
+                "Специальный вопрос",
+                "Вопросительное слово + did + подлежащее + V1?",
+                "When did Owen leave?"
+              ],
+              ["Короткий ответ", "Yes, … did. / No, … didn’t.", "Yes, he did. / No, he didn’t."]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Особые формы и написание",
+          "paragraphs": [
+            "У be свои формы was (I, he, she, it) и were (you, we, they). Ему не нужен did: Was she here? — No, she wasn’t.",
+            "В -ed-формах конечная e получает только -d (live → lived), согласная + y меняется на -ied (carry → carried). У коротких ударных глаголов последняя согласная иногда удваивается (stop → stopped). Частые неправильные формы: go → went, see → saw, take → took, write → wrote.",
+            "Если who само является подлежащим, did обычно не нужен: Who called? — Кто позвонил? Сравни Who did you call? — Кому ты позвонил?"
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "Did she called?",
+          "right": "Did she call?",
+          "explanation": "Прошедшее время уже выражено словом did."
+        },
+        {
+          "wrong": "She didn’t went home.",
+          "right": "She didn’t go home.",
+          "explanation": "После didn’t нужна начальная форма go."
+        },
+        {
+          "wrong": "Did he was here?",
+          "right": "Was he here?",
+          "explanation": "Be образует вопрос без did."
+        }
+      ],
+      "recap": [
+        "Прошлый период уже закончился или известен из контекста?",
+        "Есть did или didn’t? Тогда основной глагол ставится в V1.",
+        "Если глагол be, выбери was/were вместо did."
+      ]
+    },
+    {
+      "key": "g02",
+      "title": "Past Continuous — процесс в прошлом",
+      "overview": "Past Continuous показывает действие изнутри: оно уже происходило в выбранный момент прошлого. Важен процесс в тот момент, а не факт его завершения.",
+      "sections": [
+        {
+          "title": "Процесс в определённый момент",
+          "paragraphs": [
+            "At six yesterday, at that moment и when you called задают точку, в которую мы как будто заглядываем. Не обязательно знать, когда действие началось и закончилось.",
+            "Два одновременных процесса могут соединяться while. Само по себе длительное действие не требует Continuous: I worked all day сообщает законченный факт, I was working at six показывает процесс в шесть."
+          ],
+          "examples": [
+            {
+              "en": "At six, Owen was checking the seats.",
+              "ru": "В шесть Оуэн проверял сиденья."
+            },
+            {
+              "en": "While I was reading, Mae was writing.",
+              "ru": "Пока я читал, Мэй писала."
+            }
+          ]
+        },
+        {
+          "title": "Как построить предложение",
+          "paragraphs": [
+            "Выбери was или were по подлежащему, затем прибавь -ing к смысловому глаголу. В вопросе was/were перемещается перед подлежащим."
+          ],
+          "table": {
+            "headers": ["Подлежащее / форма", "Схема", "Пример"],
+            "rows": [
+              ["I, he, she, it", "was + V-ing", "Ilya was listening."],
+              ["You, we, they", "were + V-ing", "They were waiting."],
+              ["Отрицание", "wasn’t / weren’t + V-ing", "We weren’t talking."],
+              ["Вопрос", "Was/Were + подлежащее + V-ing?", "Was he driving?"],
+              ["Короткий ответ", "Yes, … was/were. / No, … wasn’t/weren’t.", "Yes, he was."]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Форма -ing и границы употребления",
+          "paragraphs": [
+            "Чаще всего просто прибавляй -ing: read → reading. Конечная немая e обычно исчезает: make → making. В коротких ударных словах согласная может удваиваться: sit → sitting, run → running. Lie меняется на lying.",
+            "Know, want, need, like в обычных значениях описывают состояние. В учебных сценах выбирай I knew the name или I wanted to leave, даже если речь о конкретном моменте прошлого."
+          ],
+          "examples": [
+            {
+              "en": "I knew his name, but I wasn’t listening.",
+              "ru": "Я знал его имя, но не слушал.",
+              "explanation": "Знание — состояние; слушание — процесс."
+            }
+          ]
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "He was check the seats.",
+          "right": "He was checking the seats.",
+          "explanation": "После was в Continuous нужна форма -ing."
+        },
+        {
+          "wrong": "They was waiting.",
+          "right": "They were waiting.",
+          "explanation": "С they используется were."
+        },
+        {
+          "wrong": "Did you were listening?",
+          "right": "Were you listening?",
+          "explanation": "Вопрос уже строится с were; did не добавляется."
+        }
+      ],
+      "recap": [
+        "Назван момент прошлого, в который действие шло?",
+        "Выбери was/were по подлежащему.",
+        "Проверь -ing у смыслового глагола и отсутствие лишнего did."
+      ]
+    },
+    {
+      "key": "g03",
+      "title": "Past Simple и Past Continuous — событие и фон",
+      "overview": "Эти времена помогают восстановить ход событий. Past Continuous задаёт происходивший процесс, Past Simple сообщает отдельное событие или следующий факт в рассказе.",
+      "sections": [
+        {
+          "title": "Что было фоном, а что произошло",
+          "paragraphs": [
+            "Сначала спроси, что уже происходило в тот момент. Для этого процесса подходит was/were + V-ing. Затем найди событие, наступившее на его фоне: его обычно передают Past Simple.",
+            "Новое событие не обязательно прервало процесс навсегда. I was cooking when she called не сообщает, перестал ли я готовить после звонка."
+          ],
+          "table": {
+            "headers": ["Роль", "Форма", "Пример"],
+            "rows": [
+              ["Фон / процесс", "Past Continuous", "Ilya was driving uphill."],
+              ["Отдельное событие", "Past Simple", "The light went out."],
+              ["Соединение", "Фон + when + событие", "Ilya was driving when the light went out."]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Как работают when и while",
+          "paragraphs": [
+            "When означает «когда» и может вводить как событие, так и описанный период. While означает «пока, в то время как» и часто сопровождает процесс. Выбирай время по смыслу, а не только по союзу.",
+            "Если придаточная часть стоит первой, после неё обычно ставят запятую. Если она идёт после главной, запятая обычно не нужна."
+          ],
+          "examples": [
+            {
+              "en": "While I was reading, the phone rang.",
+              "ru": "Пока я читал, зазвонил телефон."
+            },
+            {
+              "en": "The phone rang while I was reading.",
+              "ru": "Телефон зазвонил, пока я читал."
+            },
+            {
+              "en": "When I arrived, Owen was cleaning the bus.",
+              "ru": "Когда я приехал, Оуэн убирал автобус.",
+              "explanation": "Уборка уже шла к моменту приезда."
+            }
+          ]
+        },
+        {
+          "title": "Одновременность и последовательность",
+          "paragraphs": [
+            "Для двух одновременных процессов возможны два Continuous: Mae was writing while I was reading. Для последовательности завершённых действий обычно нужны два Simple: I opened the door and switched on the light.",
+            "Сравни When I arrived, he left и When I arrived, he was leaving. В первом случае сообщается факт ухода, во втором — уход как процесс в момент моего появления. Не пытайся всегда переводить русский вид одним английским временем."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "We were walk when the phone rang.",
+          "right": "We were walking when the phone rang.",
+          "explanation": "Процесс требует формы -ing."
+        },
+        {
+          "wrong": "I was knowing his name when he called.",
+          "right": "I knew his name when he called.",
+          "explanation": "Know в значении знания обычно не используется в Continuous."
+        }
+      ],
+      "recap": [
+        "Назови фон и отдельное событие своими словами.",
+        "Фону дай was/were + -ing, событию — V2.",
+        "Если оба действия — законченные шаги, проверь, не нужны ли два Past Simple."
+      ]
+    },
+    {
+      "key": "g04",
+      "title": "Present Simple и Present Continuous",
+      "overview": "Present Simple описывает привычки, факты и состояния. Present Continuous показывает действие сейчас или временную ситуацию вокруг настоящего момента. Сначала определяй смысл, затем выбирай форму.",
+      "sections": [
+        {
+          "title": "Привычка или временное действие",
+          "paragraphs": [
+            "Usually, often, every day часто сопровождают Present Simple. Now, right now, at the moment часто помогают узнать Present Continuous. Это подсказки, а не автоматические переключатели времени.",
+            "Today может обозначать временное исключение из привычки: обычно поезд, а сегодня автобус. Временная ситуация не обязана происходить буквально в секунду речи."
+          ],
+          "table": {
+            "headers": ["Смысл", "Время", "Пример"],
+            "rows": [
+              ["Привычка", "Present Simple", "I usually take the train."],
+              ["Действие сейчас", "Present Continuous", "I am taking the bus now."],
+              ["Постоянный факт", "Present Simple", "Owen works at the depot."],
+              ["Временная ситуация", "Present Continuous", "I am staying with my uncle this week."]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Как строятся обе формы",
+          "paragraphs": [
+            "V1 — начальная форма. В Present Simple у he/she/it в утверждении добавляется -s/-es; после does/doesn’t окончание исчезает."
+          ],
+          "table": {
+            "headers": ["Форма", "Present Simple", "Present Continuous"],
+            "rows": [
+              ["Утверждение", "I work. / She works.", "I am working. / She is working."],
+              [
+                "Отрицание",
+                "I don’t work. / She doesn’t work.",
+                "I am not working. / She isn’t working."
+              ],
+              ["Вопрос", "Do you work? / Does she work?", "Are you working? / Is she working?"],
+              ["Короткий ответ", "Yes, I do. / No, she doesn’t.", "Yes, I am. / No, she isn’t."]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Состояния, окончания и наречия",
+          "paragraphs": [
+            "Know, understand, want, need, like, believe в обычных значениях состояния обычно употребляются в Simple: I don’t understand. Не нужно добавлять am перед обычным смысловым глаголом.",
+            "Для -ing обычно убирается конечная немая e (take → taking), иногда удваивается согласная (sit → sitting). В Simple после -s, -sh, -ch, -x часто нужно -es: watches; согласная + y даёт -ies: studies.",
+            "Наречие частоты обычно стоит перед смысловым глаголом: I usually walk. После be: He is often late."
+          ],
+          "examples": [
+            {
+              "en": "I know the way, but I am checking the map.",
+              "ru": "Я знаю дорогу, но сейчас проверяю карту."
+            },
+            {
+              "en": "She usually drives. Today she is walking.",
+              "ru": "Обычно она ездит на машине. Сегодня она идёт пешком."
+            },
+            {
+              "en": "Does he work here? — Yes, he does.",
+              "ru": "Он здесь работает? — Да.",
+              "explanation": "Вопрос о постоянном месте работы, а не о действии в эту секунду."
+            }
+          ]
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I am take the bus.",
+          "right": "I am taking the bus.",
+          "explanation": "После am в Continuous нужна форма -ing."
+        },
+        {
+          "wrong": "Does he works here?",
+          "right": "Does he work here?",
+          "explanation": "Окончание -s уже выражено вспомогательным does."
+        },
+        {
+          "wrong": "I am not understand.",
+          "right": "I don’t understand.",
+          "explanation": "Understand в этом значении — состояние в Present Simple."
+        }
+      ],
+      "recap": [
+        "Это привычка, факт или временное действие?",
+        "В Continuous есть и am/is/are, и -ing?",
+        "В Simple проверь -s у he/she/it и do/does в вопросе."
+      ]
+    },
+    {
+      "key": "g05",
+      "title": "Present Perfect — результат и опыт",
+      "overview": "Present Perfect связывает прошлое с настоящим. Важен результат сейчас, опыт до настоящего момента или ситуация, которая началась раньше и продолжается. Точная законченная дата обычно не является центром сообщения.",
+      "sections": [
+        {
+          "title": "Для чего нужно это время",
+          "paragraphs": [
+            "Результат: человек закончил страницу, и сейчас она готова. Опыт: человек бывал в городе, но дата не названа. Продолжение до настоящего: человек живёт здесь с определённого года.",
+            "Present Perfect не сообщает точное время события. Если уточняешь when или называешь yesterday, last Friday, in 2006, обычно переходи на Past Simple."
+          ],
+          "examples": [
+            {
+              "en": "Mae has finished the page. Here it is.",
+              "ru": "Мэй закончила страницу. Вот она.",
+              "explanation": "Важен готовый результат."
+            },
+            {
+              "en": "I have seen that bus before.",
+              "ru": "Я уже видел этот автобус раньше.",
+              "explanation": "Опыт без точной даты."
+            },
+            {
+              "en": "She has lived here for five years.",
+              "ru": "Она живёт здесь пять лет.",
+              "explanation": "Начала в прошлом и живёт здесь сейчас."
+            }
+          ]
+        },
+        {
+          "title": "Have/has + третья форма",
+          "paragraphs": [
+            "V3 — третья форма. У правильных глаголов она совпадает с -ed-формой; у неправильных запоминается отдельно: go–went–gone, see–saw–seen, write–wrote–written, do–did–done.",
+            "I/you/we/they требуют have, he/she/it — has. Сокращения I’ve, we’ve, she’s часто встречаются в переписке; she’s finished здесь означает she has finished."
+          ],
+          "table": {
+            "headers": ["Форма", "Схема", "Пример"],
+            "rows": [
+              ["Утверждение", "Подлежащее + have/has + V3", "She has written a note."],
+              ["Отрицание", "Подлежащее + haven’t/hasn’t + V3", "I haven’t read it."],
+              ["Вопрос", "Have/Has + подлежащее + V3?", "Have you read it?"],
+              [
+                "Короткий ответ",
+                "Yes, … have/has. / No, … haven’t/hasn’t.",
+                "Yes, I have. / No, she hasn’t."
+              ]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Что важно не смешивать",
+          "paragraphs": [
+            "Have в этой конструкции — вспомогательный глагол: ему не нужны do/does/did. Has относится к подлежащему, а V3 не меняется по лицам.",
+            "Сравни been to и gone to: She has been to the depot — она там бывала и вернулась; She has gone to the depot — она ушла туда и пока не вернулась. В курсе достаточно узнавать эту разницу в коротких репликах."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "She have finished.",
+          "right": "She has finished.",
+          "explanation": "С she нужен has."
+        },
+        {
+          "wrong": "I have saw it.",
+          "right": "I have seen it.",
+          "explanation": "После have нужна третья форма seen, а не вторая saw."
+        },
+        {
+          "wrong": "I have seen her yesterday.",
+          "right": "I saw her yesterday.",
+          "explanation": "Yesterday — закончившийся период, здесь нужен Past Simple."
+        }
+      ],
+      "recap": [
+        "Есть связь с настоящим результатом или опытом?",
+        "Выбери have/has и проверь именно V3.",
+        "Если указана законченная дата, ещё раз проверь выбор времени."
+      ]
+    },
+    {
+      "key": "g06",
+      "title": "Present Perfect — ever, never, just, already, yet",
+      "overview": "Эти слова уточняют опыт и готовность результата: когда-либо, никогда, только что, уже и ещё. Они помогают понять высказывание, но время всё равно выбирается по смыслу и контексту.",
+      "sections": [
+        {
+          "title": "Значение и место слова",
+          "paragraphs": [
+            "В этой учебной модели ever, never, just и already обычно стоят между have/has и V3. Yet чаще идёт в конце вопроса или отрицания."
+          ],
+          "table": {
+            "headers": ["Слово", "Смысл и позиция", "Пример"],
+            "rows": [
+              ["ever", "Когда-либо; обычно в вопросе перед V3", "Have you ever seen this?"],
+              ["never", "Никогда; перед V3, без not", "I have never seen this."],
+              ["just", "Только что; перед V3", "She has just called."],
+              ["already", "Уже; обычно перед V3", "I have already read it."],
+              ["yet", "Уже? / ещё не; обычно в конце", "Has he called yet? / He hasn’t called yet."]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Как меняется смысл вопроса и ответа",
+          "paragraphs": [
+            "Have you ever…? спрашивает об опыте за период до настоящего. Короткое No, I haven’t можно дополнить I’ve never…; не нужно добавлять второе отрицание.",
+            "Already в вопросе часто передаёт удивление, что действие выполнено так рано. Yet — обычный вопрос об ожидаемом результате. Сравни Have you finished already? и Have you finished yet?"
+          ],
+          "examples": [
+            {
+              "en": "Have you ever heard that sound?",
+              "ru": "Ты когда-нибудь слышал этот звук?"
+            },
+            {
+              "en": "I have never heard it before.",
+              "ru": "Я никогда раньше его не слышал."
+            },
+            {
+              "en": "I haven’t sent the message yet.",
+              "ru": "Я ещё не отправил сообщение."
+            },
+            {
+              "en": "Mae has just arrived.",
+              "ru": "Мэй только что приехала."
+            }
+          ]
+        },
+        {
+          "title": "Маркеры не заменяют понимание",
+          "paragraphs": [
+            "Yesterday, ago и last night обозначают законченное прошлое и обычно требуют Past Simple. I saw her two days ago нельзя механически соединить с have seen.",
+            "В американском английском just, already и yet встречаются и с Past Simple: Did you eat yet? В заданиях этого блока тренируется модель Present Perfect; при чтении и разговоре узнавай оба варианта. Never может относиться и к завершённому прошлому: He never called that day."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I haven’t never heard it.",
+          "right": "I have never heard it.",
+          "explanation": "Never уже содержит отрицание."
+        },
+        {
+          "wrong": "Have you readed the note yet?",
+          "right": "Have you read the note yet?",
+          "explanation": "У read третья форма пишется read; -ed не добавляется. Yet в этом нейтральном вопросе стоит в конце."
+        },
+        {
+          "wrong": "She has just call.",
+          "right": "She has just called.",
+          "explanation": "Just не отменяет необходимость V3."
+        }
+      ],
+      "recap": [
+        "Определи смысл слова: опыт, недавность или готовность?",
+        "Проверь место наречия и третью форму.",
+        "С never не добавляй not; с yet проверь вопрос или отрицание."
+      ]
+    },
+    {
+      "key": "g07",
+      "title": "For и since — как долго и с какого момента",
+      "overview": "For обозначает длительность, since — точку начала. С Present Perfect они часто описывают ситуацию, которая началась в прошлом и всё ещё продолжается.",
+      "sections": [
+        {
+          "title": "Период или начальная точка",
+          "paragraphs": [
+            "Задай два разных вопроса: How long? — Как долго? Since when? — С какого времени? Число лет отвечает на первый, конкретный год — на второй."
+          ],
+          "table": {
+            "headers": ["For + длительность", "Since + начало"],
+            "rows": [
+              ["for twenty years — двадцать лет", "since 2006 — с 2006 года"],
+              ["for two hours — два часа", "since six o’clock — с шести часов"],
+              ["for a week — неделю", "since Monday — с понедельника"],
+              ["for a long time — долго", "since I was a child — с детства"]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Связь с настоящим",
+          "paragraphs": [
+            "Для продолжающейся ситуации используй have/has + V3: I’ve lived here for five years. По-русски это обычно настоящее время: «живу», а не «прожил и уехал».",
+            "Since может вводить предложение о начальном событии. Внутри него часто стоит Past Simple: since I moved here. Главная часть при этом остаётся в Present Perfect."
+          ],
+          "examples": [
+            {
+              "en": "Owen has kept the sheet for twenty years.",
+              "ru": "Оуэн хранит лист двадцать лет."
+            },
+            {
+              "en": "Ada has had this book since 2006.",
+              "ru": "Эта книга у Ады с 2006 года."
+            },
+            {
+              "en": "I have known her since I moved here.",
+              "ru": "Я знаю её с тех пор, как переехал сюда."
+            }
+          ]
+        },
+        {
+          "title": "Границы правила",
+          "paragraphs": [
+            "For используется и в других временах. I lived there for five years описывает законченный период жизни, а I have lived here for five years — период до настоящего. Один предлог не определяет время.",
+            "During + существительное означает «во время» события: during the lesson. Это не замена for two hours. Since в этом блоке означает «с», хотя в других контекстах оно может также означать причину."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I have had it since twenty years.",
+          "right": "I have had it for twenty years.",
+          "explanation": "Twenty years — длительность, а не дата начала."
+        },
+        {
+          "wrong": "She has lived here for 2006.",
+          "right": "She has lived here since 2006.",
+          "explanation": "Год задаёт начальную точку."
+        },
+        {
+          "wrong": "I know him since Monday.",
+          "right": "I have known him since Monday.",
+          "explanation": "В этой ситуации знакомство началось раньше и продолжается до настоящего."
+        }
+      ],
+      "recap": [
+        "После пропуска длительность или начало?",
+        "Ситуация ещё продолжается? Проверь Present Perfect.",
+        "Не перепутай for с during: длительность и событие — разные значения."
+      ]
+    },
+    {
+      "key": "g08",
+      "title": "Present Perfect и Past Simple",
+      "overview": "Оба времени могут описывать прошлое. Past Simple помещает событие в законченный прошлый период. Present Perfect рассматривает опыт или результат с точки зрения настоящего.",
+      "sections": [
+        {
+          "title": "Сравни смысл",
+          "paragraphs": [
+            "Выбор времени зависит от того, о чём говорящий сообщает сейчас: о событии тогда или о результате и опыте до настоящего."
+          ],
+          "table": {
+            "headers": ["Вопрос к смыслу", "Past Simple", "Present Perfect"],
+            "rows": [
+              [
+                "Когда это случилось?",
+                "I saw her last Friday.",
+                "Точная законченная дата обычно не называется."
+              ],
+              [
+                "Есть ли такой опыт?",
+                "Я рассказываю о конкретной встрече.",
+                "I have seen her before."
+              ],
+              ["Период закончился?", "I worked there in 2006.", "I have worked here since 2006."],
+              [
+                "Какой результат сейчас?",
+                "I lost the key yesterday.",
+                "I have lost the key. I can’t open the door."
+              ]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Как развивается разговор",
+          "paragraphs": [
+            "Часто разговор начинается с опыта в Present Perfect, а затем переходит к деталям в Past Simple. Это нормальная смена точки зрения, а не противоречие.",
+            "When did you see her? спрашивает о времени встречи. В обычной учебной модели вопрос When have you seen her? не используется для одной конкретной встречи."
+          ],
+          "examples": [
+            {
+              "en": "Have you been to the depot? — Yes, I have.",
+              "ru": "Ты бывал в депо? — Да."
+            },
+            {
+              "en": "When did you go? — I went last Friday.",
+              "ru": "Когда ты ходил? — В прошлую пятницу."
+            },
+            {
+              "en": "I haven’t finished yet, but I checked two pages yesterday.",
+              "ru": "Я ещё не закончил, но вчера проверил две страницы."
+            }
+          ]
+        },
+        {
+          "title": "Today, this week и американский английский",
+          "paragraphs": [
+            "Today и this week могут обозначать ещё продолжающийся период: I’ve seen her twice today. Если говорящий рассматривает встречу как отдельное завершённое событие, Past Simple тоже возможен: I saw her this morning. Учитывай контекст и время суток.",
+            "В американском английском Past Simple с just, already и yet встречается чаще, чем в некоторых учебных моделях. В заданиях следуй смыслу реплики и изучаемой конструкции; не делай вывод, что любой другой контекст с этим наречием неверен."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I have met him in 2006.",
+          "right": "I met him in 2006.",
+          "explanation": "Конкретный законченный год требует Past Simple."
+        },
+        {
+          "wrong": "Did you ever been there?",
+          "right": "Have you ever been there?",
+          "explanation": "В вопросе об опыте до настоящего используй have + V3."
+        },
+        {
+          "wrong": "She has wrote it.",
+          "right": "She has written it.",
+          "explanation": "Present Perfect требует V3, а не Past Simple wrote."
+        }
+      ],
+      "recap": [
+        "Период закончен или включает настоящее?",
+        "Важна дата события или его результат/опыт?",
+        "Проверь пару вспомогательного глагола и формы: did + V1, have/has + V3."
+      ]
+    },
+    {
+      "key": "g09",
+      "title": "Be going to — намерение и прогноз",
+      "overview": "Be going to + глагол сообщает о плане, принятом до разговора, или о прогнозе на основании видимых признаков. В конструкции обязательно есть форма be.",
+      "sections": [
+        {
+          "title": "Два основных значения",
+          "paragraphs": [
+            "Намерение: человек уже решил, что будет делать. Ещё не обязательно есть точная договорённость с другими людьми. Прогноз: сейчас видно основание ожидать событие.",
+            "Сравни решение в момент речи I’ll help you и заранее выбранный план I’m going to help at the depot. В реальном разговоре граница бывает гибкой; в уроке важен контекст решения."
+          ],
+          "examples": [
+            {
+              "en": "I am going to check the map tonight.",
+              "ru": "Сегодня вечером я собираюсь проверить карту.",
+              "explanation": "План уже выбран."
+            },
+            {
+              "en": "Look at the water. It is going to cover the road.",
+              "ru": "Посмотри на воду. Она скоро затопит дорогу.",
+              "explanation": "Прогноз опирается на то, что видно."
+            }
+          ]
+        },
+        {
+          "title": "Утверждение, отрицание и вопрос",
+          "paragraphs": [
+            "Выбирай am/is/are по подлежащему. После going to всегда нужна начальная форма смыслового глагола."
+          ],
+          "table": {
+            "headers": ["Форма", "Схема", "Пример"],
+            "rows": [
+              ["Утверждение", "am/is/are + going to + V1", "We are going to wait."],
+              ["Отрицание", "am not / isn’t / aren’t + going to + V1", "She isn’t going to leave."],
+              ["Вопрос", "Am/Is/Are + подлежащее + going to + V1?", "Are you going to call?"],
+              ["Короткий ответ", "Yes, … am/is/are. / No, … am not/isn’t/aren’t.", "Yes, I am."]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Намерение в прошлом и движение",
+          "paragraphs": [
+            "Was/were going to + V1 описывает прежний план. Из контекста может выясниться, что он не осуществился; сама форма ещё не доказывает отмену.",
+            "Не путай I’m going to the depot (я еду в депо: после to место) и I’m going to call (я собираюсь позвонить: после to глагол). Разговорное gonna можно встретить на слух, но в учебной переписке используй going to."
+          ],
+          "examples": [
+            {
+              "en": "I was going to walk, but it started to rain.",
+              "ru": "Я собирался идти пешком, но начался дождь."
+            },
+            {
+              "en": "We were going to call at six.",
+              "ru": "Мы собирались позвонить в шесть."
+            }
+          ]
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I going to wait.",
+          "right": "I am going to wait.",
+          "explanation": "Нужна форма be."
+        },
+        {
+          "wrong": "It is going to raining.",
+          "right": "It is going to rain.",
+          "explanation": "После going to нужен V1."
+        },
+        {
+          "wrong": "I was go to check.",
+          "right": "I was going to check.",
+          "explanation": "В прошлом меняется be, но going to сохраняется."
+        }
+      ],
+      "recap": [
+        "Это заранее выбранный план или прогноз по признакам?",
+        "Есть ли am/is/are либо was/were?",
+        "После going to стоит начальная форма?"
+      ]
+    },
+    {
+      "key": "g10",
+      "title": "Will — решение, обещание и прогноз",
+      "overview": "Will + начальная форма помогает предложить помощь в момент разговора, дать обещание или высказать прогноз. Форма will одинакова для всех лиц.",
+      "sections": [
+        {
+          "title": "Что означает will",
+          "paragraphs": [
+            "Спонтанное решение часто отвечает на новую ситуацию: собеседнику тяжело — I’ll carry it. Обещание показывает готовность сделать что-то: I’ll call you. Прогноз выражает мнение о будущем: I think it will rain.",
+            "Won’t может быть отрицательным прогнозом или отказом. В The door won’t open речь может идти о двери, которую никак не удаётся открыть."
+          ],
+          "examples": [
+            {
+              "en": "The phone is ringing. I’ll answer it.",
+              "ru": "Телефон звонит. Я отвечу.",
+              "explanation": "Решение принято сейчас."
+            },
+            {
+              "en": "I will listen before I go.",
+              "ru": "Я выслушаю тебя, прежде чем уйду.",
+              "explanation": "Обещание."
+            },
+            {
+              "en": "I think Owen will be here soon.",
+              "ru": "Думаю, Оуэн скоро будет здесь.",
+              "explanation": "Прогноз, а не договорённость."
+            }
+          ]
+        },
+        {
+          "title": "Как строить форму",
+          "paragraphs": [
+            "Will не требует to, окончания -s или вспомогательного do. I’ll = I will, won’t = will not."
+          ],
+          "table": {
+            "headers": ["Форма", "Схема", "Пример"],
+            "rows": [
+              ["Утверждение", "Подлежащее + will + V1", "She will help."],
+              ["Отрицание", "Подлежащее + won’t + V1", "I won’t leave."],
+              ["Вопрос", "Will + подлежащее + V1?", "Will you wait?"],
+              ["Короткий ответ", "Yes, … will. / No, … won’t.", "Yes, I will."]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Сравнение с другими способами говорить о будущем",
+          "paragraphs": [
+            "Для заранее принятого намерения подходит going to, для согласованной встречи — Present Continuous, для расписания — Present Simple. Will не нужно ставить в каждое предложение о будущем.",
+            "После if и when в придаточной части реального будущего условия или времени обычно используется Present Simple: I’ll call when I get home. Вопрос Will you help me? может быть просьбой, а не только запросом прогноза."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I will to wait.",
+          "right": "I will wait.",
+          "explanation": "После will начальная форма без to."
+        },
+        {
+          "wrong": "She will helps.",
+          "right": "She will help.",
+          "explanation": "После will у глагола нет -s."
+        },
+        {
+          "wrong": "Do you will call?",
+          "right": "Will you call?",
+          "explanation": "Вопрос образует само will."
+        }
+      ],
+      "recap": [
+        "Это решение сейчас, обещание или прогноз?",
+        "После will стоит V1 без to и -s?",
+        "В отрицании использовано won’t, а не don’t will?"
+      ]
+    },
+    {
+      "key": "g11",
+      "title": "Present Continuous — договорённость на будущее",
+      "overview": "Форма am/is/are + V-ing может обозначать уже организованное будущее событие. Обычно известны участники, время или место; речь идёт о договорённости, а не только о желании.",
+      "sections": [
+        {
+          "title": "Как понять, что речь о будущем",
+          "paragraphs": [
+            "Слова tonight, tomorrow, on Tuesday и at six помещают действие в будущее. Контекст показывает, что встреча согласована или планы уже организованы.",
+            "We are meeting at six обычно подразумевает договорённость. We are going to meet выражает намерение и не обязательно гарантирует, что другая сторона уже всё подтвердила."
+          ],
+          "examples": [
+            {
+              "en": "Owen and I are meeting at the bus at six tonight.",
+              "ru": "Сегодня вечером в шесть мы с Оуэном встречаемся у автобуса."
+            },
+            {
+              "en": "I am visiting my uncle tomorrow.",
+              "ru": "Завтра я навещаю дядю.",
+              "explanation": "Визит уже организован."
+            },
+            {
+              "en": "Are you meeting Mae on Tuesday?",
+              "ru": "Ты встречаешься с Мэй во вторник?",
+              "explanation": "Уточняем уже согласованные планы."
+            }
+          ]
+        },
+        {
+          "title": "Форма остаётся той же",
+          "paragraphs": [
+            "Время будущего события задаёт контекст, а грамматическая форма совпадает с обычным Present Continuous. Не заменяй am/is/are на will."
+          ],
+          "table": {
+            "headers": ["Форма", "Пример", "Перевод"],
+            "rows": [
+              ["Утверждение", "We are meeting on Tuesday.", "Мы встречаемся во вторник."],
+              ["Отрицание", "We aren’t meeting tonight.", "Сегодня вечером мы не встречаемся."],
+              ["Общий вопрос", "Are you meeting Mae tomorrow?", "Ты встречаешься с Мэй завтра?"],
+              ["Специальный вопрос", "Where are you meeting her?", "Где ты с ней встречаешься?"],
+              ["Короткий ответ", "Yes, I am. / No, I’m not.", "Да. / Нет."]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Три полезных различия",
+          "paragraphs": [
+            "I’m meeting Mae tomorrow — моя согласованная встреча. The bus leaves at six — чужое расписание. I’ll call her — решение, принятое сейчас, или обещание.",
+            "Без указания времени фраза We are talking может означать «мы сейчас разговариваем». Не добавляй tomorrow только ради формы: сначала выясни, есть ли будущая договорённость. Глаголы состояния вроде know обычно не используются в этой модели."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "We are meet at six.",
+          "right": "We are meeting at six.",
+          "explanation": "После are нужна форма -ing."
+        },
+        {
+          "wrong": "We will are meeting tomorrow.",
+          "right": "We are meeting tomorrow.",
+          "explanation": "Одна конструкция Present Continuous уже выражает договорённость."
+        },
+        {
+          "wrong": "Do you meeting her?",
+          "right": "Are you meeting her?",
+          "explanation": "Вопрос начинается с are."
+        }
+      ],
+      "recap": [
+        "Есть организованная встреча или согласованный план?",
+        "Понятно, что действие в будущем?",
+        "Проверь am/is/are + -ing, как для действия сейчас."
+      ]
+    },
+    {
+      "key": "g12",
+      "title": "Present Simple — будущее по расписанию",
+      "overview": "Для рейсов, занятий, открытий и других событий по установленному расписанию используется Present Simple, даже если событие произойдёт завтра. Говорящий сообщает время в программе или графике.",
+      "sections": [
+        {
+          "title": "Как распознать расписание",
+          "paragraphs": [
+            "The bus leaves at six tomorrow — информация из расписания. This lesson starts on Monday — событие в программе. Слова tomorrow и next week сами по себе не требуют will.",
+            "Сравни расписание The bus leaves at six и личную договорённость We are leaving at six. Форма показывает, на чём основан план."
+          ],
+          "examples": [
+            {
+              "en": "The first bus leaves at six tomorrow.",
+              "ru": "Первый автобус отправляется завтра в шесть."
+            },
+            {
+              "en": "The ticket office opens at eight.",
+              "ru": "Билетная касса открывается в восемь."
+            },
+            {
+              "en": "What time does the train arrive?",
+              "ru": "Во сколько прибывает поезд?",
+              "explanation": "Вопрос о времени из расписания."
+            }
+          ]
+        },
+        {
+          "title": "Формы Present Simple",
+          "paragraphs": [
+            "В утверждении у he/she/it и единственного числа существительного нужен -s/-es. После does/doesn’t возвращается начальная форма."
+          ],
+          "table": {
+            "headers": ["Форма", "Пример", "Что проверить"],
+            "rows": [
+              [
+                "Утверждение",
+                "The bus leaves at six.",
+                "Bus — единственное число, поэтому leaves."
+              ],
+              ["Множественное число", "The buses leave at six.", "Окончания -s у leave нет."],
+              ["Отрицание", "The office doesn’t open on Sunday.", "После doesn’t — open."],
+              ["Общий вопрос", "Does the bus stop here?", "Does перед подлежащим."],
+              [
+                "Вопрос о времени",
+                "What time does the bus leave?",
+                "Вопросительное выражение в начале."
+              ]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Время и дни в реплике",
+          "paragraphs": [
+            "At используется с часами: at six, at 6:10 PM. On — с днями и датами: on Monday. С tomorrow, today, next Monday дополнительный предлог обычно не нужен.",
+            "В Where does the bus stop? слово stop — глагол «останавливаться». В the bus stop это часть названия «автобусная остановка». Смотри на роль слова в предложении."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "The bus leave at six.",
+          "right": "The bus leaves at six.",
+          "explanation": "У единственного bus глагол в утверждении получает -s."
+        },
+        {
+          "wrong": "What time does it leaves?",
+          "right": "What time does it leave?",
+          "explanation": "После does нужен V1."
+        },
+        {
+          "wrong": "The bus leaves at tomorrow.",
+          "right": "The bus leaves tomorrow.",
+          "explanation": "Перед tomorrow предлог at не ставится."
+        }
+      ],
+      "recap": [
+        "Источник времени — расписание?",
+        "В утверждении проверено -s/-es у единственного числа?",
+        "В вопросе есть does/do и начальная форма?"
+      ]
+    },
+    {
+      "key": "g13",
+      "title": "Must и have to — обязанность, запрет и отсутствие необходимости",
+      "overview": "Must и have to выражают необходимость. Mustn’t запрещает действие, а don’t have to сообщает, что оно необязательно. Различие отрицательных форм особенно важно для понимания правил.",
+      "sections": [
+        {
+          "title": "Четыре значения",
+          "paragraphs": [
+            "Must часто передаёт настойчивое требование говорящего или правило. Have to часто объясняет внешние обстоятельства. На практике значения пересекаются; главный контраст в этом блоке — запрет и отсутствие обязанности."
+          ],
+          "table": {
+            "headers": ["Конструкция", "Значение", "Пример"],
+            "rows": [
+              ["must + V1", "Нужно, обязательно", "You must wait here."],
+              [
+                "have/has to + V1",
+                "Приходится, нужно по правилу или обстоятельствам",
+                "She has to work tonight."
+              ],
+              ["mustn’t + V1", "Нельзя, запрещено", "You mustn’t press the button."],
+              [
+                "don’t/doesn’t have to + V1",
+                "Необязательно, можно не делать",
+                "You don’t have to stay."
+              ]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Вопросы, отрицания и прошлое",
+          "paragraphs": [
+            "Have to ведёт себя как обычный глагол: Do you have to go? She doesn’t have to go. После does форма has возвращается к have.",
+            "Для обязанности в прошлом используется had to: We had to leave. Отрицание didn’t have to означает «не было необходимости», но не сообщает само по себе, сделал ли человек это. Для будущей необходимости можно сказать will have to."
+          ],
+          "examples": [
+            {
+              "en": "We had to take the upper road.",
+              "ru": "Нам пришлось поехать по верхней дороге."
+            },
+            {
+              "en": "Did you have to wait?",
+              "ru": "Тебе пришлось ждать?"
+            },
+            {
+              "en": "You don’t have to answer now.",
+              "ru": "Тебе необязательно отвечать сейчас.",
+              "explanation": "Ответить можно, но обязанности нет."
+            }
+          ]
+        },
+        {
+          "title": "Безопасное чтение правил",
+          "paragraphs": [
+            "Mustn’t равнозначно запрету, а не разрешению отказаться от обязанности. В сценах с инструкциями это меняет доступное действие. Если нужна мягкая рекомендация, используй should.",
+            "После must/mustn’t не бывает to и окончания -s. Have to, напротив, содержит to как часть конструкции. Can’t тоже может выражать запрет, но в этом блоке тренируется различие mustn’t и don’t have to."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "You must to wait.",
+          "right": "You must wait.",
+          "explanation": "После модального must нужен V1 без to."
+        },
+        {
+          "wrong": "She doesn’t has to go.",
+          "right": "She doesn’t have to go.",
+          "explanation": "Doesn’t уже выражает третье лицо."
+        },
+        {
+          "wrong": "You don’t have to touch it. It is forbidden.",
+          "right": "You mustn’t touch it. It is forbidden.",
+          "explanation": "Если запрещено, нужна форма mustn’t, а не «необязательно»."
+        }
+      ],
+      "recap": [
+        "Это обязанность, запрет или возможность не делать?",
+        "Для прошлого выбрано had to?",
+        "После must нет to; после do/does/did форма have, не has/had."
+      ]
+    },
+    {
+      "key": "g14",
+      "title": "Should — совет и рекомендация",
+      "overview": "Should + начальная форма означает «стоит, следует». Shouldn’t — «не стоит». Это совет: собеседник сохраняет возможность принять решение.",
+      "sections": [
+        {
+          "title": "Совет, а не обязательное правило",
+          "paragraphs": [
+            "You should rest предлагает полезное действие. You must rest звучит как более сильное требование. Would you like to rest? — предложение с вопросом о желании.",
+            "Should также может выражать ожидание: The bus should be here soon — ожидается, что автобус скоро будет здесь. Это не обещание и не абсолютная уверенность."
+          ],
+          "examples": [
+            {
+              "en": "You should sit by the stove.",
+              "ru": "Тебе стоит сесть у печки."
+            },
+            {
+              "en": "You shouldn’t go alone.",
+              "ru": "Тебе не стоит идти одному."
+            },
+            {
+              "en": "The bus should arrive soon.",
+              "ru": "Автобус должен скоро приехать.",
+              "explanation": "Ожидание, а не приказ автобусу."
+            }
+          ]
+        },
+        {
+          "title": "Как дать совет и попросить его",
+          "paragraphs": [
+            "Should одинаково для всех лиц. В вопросе ставится перед подлежащим, в отрицании получает not. Сокращение shouldn’t обычно в разговоре."
+          ],
+          "table": {
+            "headers": ["Форма", "Схема", "Пример"],
+            "rows": [
+              ["Совет", "Подлежащее + should + V1", "She should call Mae."],
+              ["Отрицательный совет", "Подлежащее + shouldn’t + V1", "We shouldn’t wait outside."],
+              ["Вопрос", "Should + подлежащее + V1?", "Should I call?"],
+              ["Просьба о совете", "What should + подлежащее + V1?", "What should we do?"],
+              ["Короткий ответ", "Yes, … should. / No, … shouldn’t.", "Yes, you should."]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Как отвечать естественно",
+          "paragraphs": [
+            "На совет можно ответить Thanks. I’ll try that. — Спасибо, попробую. Или I’m not sure. — Я не уверен. Вопрос Should I…? обычно просит совета о своём действии.",
+            "Для совета о нескольких действиях достаточно одного should: You should sit down and drink some water. Не вставляй to перед вторым глаголом. Сложные формы о сожалении в прошлом не нужны для этого блока A2."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "You should to sit.",
+          "right": "You should sit.",
+          "explanation": "После should нужна начальная форма без to."
+        },
+        {
+          "wrong": "She should rests.",
+          "right": "She should rest.",
+          "explanation": "Модальный глагол не допускает -s у следующего глагола."
+        },
+        {
+          "wrong": "Do I should call?",
+          "right": "Should I call?",
+          "explanation": "Вопрос образуется с should без do."
+        }
+      ],
+      "recap": [
+        "Это рекомендация или обязательное правило?",
+        "После should стоит V1 без to?",
+        "В вопросе should стоит перед подлежащим?"
+      ]
+    },
+    {
+      "key": "g15",
+      "title": "Can, could, may, might — способность и возможность",
+      "overview": "Эти модальные глаголы помогают сказать, что человек умеет или может сделать, попросить разрешения и оценить возможность события. Значение зависит от ситуации.",
+      "sections": [
+        {
+          "title": "Какое значение передаёт форма",
+          "paragraphs": [
+            "После can, could, may и might нужен V1 без to. Формы не меняются по лицам: she can, they can."
+          ],
+          "table": {
+            "headers": ["Значение", "Конструкция", "Пример"],
+            "rows": [
+              ["Способность сейчас", "can / can’t", "I can read the map."],
+              ["Общая способность в прошлом", "could / couldn’t", "I could swim when I was ten."],
+              ["Разрешение", "can / may", "You may sit here."],
+              ["Просьба / разрешение вежливо", "could", "Could I use your phone?"],
+              ["Неуверенная возможность", "may / might", "It might be open."]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Вопрос и отрицание",
+          "paragraphs": [
+            "Can you see the gate? спрашивает, видно ли ворота. Could you see it then? спрашивает о прошлом. Could you open the door? может быть вежливой просьбой сейчас, поэтому could не всегда означает прошлое.",
+            "Для возможности события отрицание may not / might not означает «возможно, не…»: She might not come. Cannot / can’t может означать невозможность или запрет; не переводится автоматически как may not."
+          ],
+          "examples": [
+            {
+              "en": "Nell could see the hand, but she couldn’t see the clock.",
+              "ru": "Нэлл видела руку, но не могла увидеть часы."
+            },
+            {
+              "en": "The road might be clear. Let’s ask.",
+              "ru": "Возможно, дорога свободна. Давай спросим."
+            },
+            {
+              "en": "You can wait inside.",
+              "ru": "Ты можешь подождать внутри.",
+              "explanation": "Разрешение."
+            }
+          ]
+        },
+        {
+          "title": "Что помнить о прошлом",
+          "paragraphs": [
+            "Could удобно для общей способности и восприятия в прошлом: could hear, could see. Для конкретного успешно выполненного трудного действия часто используется was/were able to: We were able to open the gate.",
+            "Будущая способность может передаваться will be able to. Не соединяй два модальных глагола: will can в обычной модели неверно. Не пытайся определить точный процент вероятности для may и might: оба часто выражают неуверенность."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "She can to read.",
+          "right": "She can read.",
+          "explanation": "После can нет to."
+        },
+        {
+          "wrong": "It might is open.",
+          "right": "It might be open.",
+          "explanation": "После might нужна начальная форма be."
+        },
+        {
+          "wrong": "He cans see it.",
+          "right": "He can see it.",
+          "explanation": "У can нет окончания -s."
+        }
+      ],
+      "recap": [
+        "Речь о способности, разрешении, просьбе или предположении?",
+        "Could здесь прошлое или вежливая просьба?",
+        "После модального глагола стоит V1 без to?"
+      ]
+    },
+    {
+      "key": "g16",
+      "title": "Вежливые просьбы, разрешение и предложения",
+      "overview": "Выбирай конструкцию по тому, кто должен действовать. Could you…? просит другого сделать что-то; May I…? спрашивает разрешение для себя; Would you like…? предлагает что-то собеседнику.",
+      "sections": [
+        {
+          "title": "Кто делает действие",
+          "paragraphs": [
+            "Вежливость создаётся и формой, и спокойным тоном. Please обычно ставится в начале или конце просьбы. Can you…? также подходит в повседневном общении; could часто звучит мягче."
+          ],
+          "table": {
+            "headers": ["Цель", "Шаблон", "Пример"],
+            "rows": [
+              ["Попросить другого", "Could you + V1, please?", "Could you read this, please?"],
+              ["Получить разрешение", "May I / Could I + V1?", "May I sit here?"],
+              [
+                "Предложить предмет",
+                "Would you like + существительное?",
+                "Would you like some tea?"
+              ],
+              ["Пригласить к действию", "Would you like to + V1?", "Would you like to sit down?"],
+              [
+                "Вежливо выразить желание",
+                "I’d like + существительное / to + V1",
+                "I’d like a ticket. / I’d like to leave."
+              ]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Как ответить",
+          "paragraphs": [
+            "На просьбу: Sure. / Of course. / Sorry, I can’t right now. На запрос разрешения: Yes, you can. / Of course. Для отказа полезно короткое объяснение: Sorry, that seat is taken.",
+            "На Would you like some tea? отвечай Yes, please или No, thank you. На приглашение Would you like to come? подходит I’d love to. Не обязательно копировать вспомогательный глагол в каждом разговорном ответе."
+          ],
+          "examples": [
+            {
+              "en": "Could you read my line back to me, please?",
+              "ru": "Не могли бы вы прочесть мне мою строку вслух?"
+            },
+            {
+              "en": "May we turn the power off now?",
+              "ru": "Можно нам сейчас отключить питание?"
+            },
+            {
+              "en": "Would you like a seat by the window?",
+              "ru": "Хотите сесть у окна?"
+            },
+            {
+              "en": "I’d like to check the time.",
+              "ru": "Я хотел бы проверить время."
+            }
+          ]
+        },
+        {
+          "title": "Различай просьбу и предложение",
+          "paragraphs": [
+            "Would you like me to help? предлагает мою помощь: «Хотите, я помогу?» Could you help me? просит помощи у собеседника. В обоих случаях за вежливой формой важно увидеть направление действия.",
+            "Would like не равно like: Do you like tea? спрашивает о предпочтении вообще, Would you like some tea? предлагает чай сейчас. После would like to нужна начальная форма, а не -ing."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "Would like you a chair?",
+          "right": "Would you like a chair?",
+          "explanation": "В вопросе would ставится перед you."
+        },
+        {
+          "wrong": "Could you to read it?",
+          "right": "Could you read it?",
+          "explanation": "После could нужен V1 без to."
+        },
+        {
+          "wrong": "I’d like checking it.",
+          "right": "I’d like to check it.",
+          "explanation": "После would like для действия используется to + V1."
+        }
+      ],
+      "recap": [
+        "Кто должен действовать — я или собеседник?",
+        "Предлагаю предмет или действие? Для действия после would like нужен to.",
+        "Проверь порядок слов в вопросе и подходящий вежливый ответ."
+      ]
+    },
+    {
+      "key": "g17",
+      "title": "Степени сравнения прилагательных и наречий",
+      "overview": "Сравнительная степень сопоставляет два объекта или состояния, превосходная выделяет один среди группы. Форму выбирают по слову: shorter, more careful, the best.",
+      "sections": [
+        {
+          "title": "Как образовать степень",
+          "paragraphs": [
+            "Короткие прилагательные обычно получают -er/-est. Длинные чаще используют more/most. У двухсложных слов возможны особенности, поэтому незнакомую форму полезно запоминать целиком.",
+            "Конечная e даёт только -r/-st: nice → nicer → nicest. Согласная + y меняется на i: heavy → heavier → heaviest. У некоторых коротких слов согласная удваивается: big → bigger → biggest."
+          ],
+          "table": {
+            "headers": ["Тип", "Исходная форма", "Сравнительная", "Превосходная"],
+            "rows": [
+              ["Короткое слово", "short", "shorter", "the shortest"],
+              ["Слово на -y", "heavy", "heavier", "the heaviest"],
+              ["Длинное слово", "careful", "more careful", "the most careful"],
+              ["Неправильная форма", "good / well", "better", "the best"],
+              ["Неправильная форма", "bad / badly", "worse", "the worst"],
+              ["Количество", "much / many", "more", "the most"],
+              ["Количество", "little", "less", "the least"]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Как соединить сравниваемое",
+          "paragraphs": [
+            "Than означает «чем»: This sleeve is heavier than that one. Для превосходной степени перед прилагательным обычно нужен the: the shortest path. После притяжательного слова the не добавляется: my best friend.",
+            "Much и a little усиливают или смягчают сравнение: much better, a little worse. Very обычно не ставится перед сравнительной формой; для обычного прилагательного подходит very good."
+          ],
+          "examples": [
+            {
+              "en": "This road is safer than the lower road.",
+              "ru": "Эта дорога безопаснее нижней."
+            },
+            {
+              "en": "This is the shortest of the three paths.",
+              "ru": "Это самая короткая из трёх троп."
+            },
+            {
+              "en": "The view is a little worse from here.",
+              "ru": "Отсюда видно немного хуже."
+            }
+          ]
+        },
+        {
+          "title": "Прилагательное или наречие",
+          "paragraphs": [
+            "Good описывает человека или предмет: a good driver. Well описывает действие: He drives well. В сравнении обе формы становятся better: a better driver / He drives better.",
+            "Для большинства наречий на -ly используются more/most: more carefully. У fast — faster, у hard — harder. Не складывай more и -er в одной форме. Far имеет варианты farther/further; для расстояния в американском английском часто встречается farther."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "This is more heavier.",
+          "right": "This is heavier.",
+          "explanation": "Один способ образования степени, без двойного more + -er."
+        },
+        {
+          "wrong": "It is the most short path.",
+          "right": "It is the shortest path.",
+          "explanation": "У short обычная краткая форма the shortest."
+        },
+        {
+          "wrong": "This is better that the old one.",
+          "right": "This is better than the old one.",
+          "explanation": "Для сравнения нужен than, а не that."
+        }
+      ],
+      "recap": [
+        "Сравниваются два объекта или выбирается один из группы?",
+        "Нужны -er/-est, more/most или особая форма?",
+        "Проверь than в сравнении и the в превосходной степени."
+      ]
+    },
+    {
+      "key": "g18",
+      "title": "As … as — сравнение равенства",
+      "overview": "As + прилагательное или наречие + as означает «такой же …, как» или «так же …, как». Отрицание not as … as показывает, что признак выражен слабее.",
+      "sections": [
+        {
+          "title": "Основная модель",
+          "paragraphs": [
+            "Между двумя as нужна обычная, а не сравнительная форма. Первое as задаёт степень признака, второе вводит объект сравнения."
+          ],
+          "table": {
+            "headers": ["Смысл", "Шаблон", "Пример"],
+            "rows": [
+              ["Равенство признака", "as + прилагательное + as", "Dot was as tall as Owen."],
+              [
+                "Признак выражен слабее",
+                "not as + прилагательное + as",
+                "This road isn’t as wide as that one."
+              ],
+              ["Равенство действия", "as + наречие + as", "Read as carefully as Mae."],
+              [
+                "Максимально возможная степень",
+                "as + слово + as possible",
+                "Walk as slowly as possible."
+              ]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Как читать отрицание",
+          "paragraphs": [
+            "The upper road isn’t as dangerous as the lower road означает, что верхняя дорога менее опасна. Not as не сообщает, что признак отсутствует совсем: дорога может оставаться опасной.",
+            "Сравни The rope is longer than the wire и The rope is as long as the wire. В первом случае длина разная, во втором одинаковая. Не смешивай than с двумя as."
+          ],
+          "examples": [
+            {
+              "en": "This wire is as long as the other one.",
+              "ru": "Этот провод такой же длинный, как другой."
+            },
+            {
+              "en": "The photo isn’t as clear as the original.",
+              "ru": "Фотография не такая чёткая, как оригинал."
+            },
+            {
+              "en": "Please speak as clearly as possible.",
+              "ru": "Пожалуйста, говорите как можно разборчивее."
+            }
+          ]
+        },
+        {
+          "title": "Равенство количества",
+          "paragraphs": [
+            "Для количества добавляется much с неисчисляемым или many с исчисляемым множественным: as much water as, as many pages as. Между as оказывается вся группа much water или many pages.",
+            "Если предмет уже назван, его можно заменить на one/ones: This key is as old as that one. Это позволяет сравнивать вещи, не повторяя одно существительное."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "She is as taller as Owen.",
+          "right": "She is as tall as Owen.",
+          "explanation": "Внутри as … as используется обычная форма tall."
+        },
+        {
+          "wrong": "This is as long than that one.",
+          "right": "This is as long as that one.",
+          "explanation": "Пара as … as не соединяется с than."
+        },
+        {
+          "wrong": "We have as much pages as Mae.",
+          "right": "We have as many pages as Mae.",
+          "explanation": "Pages можно посчитать, поэтому many."
+        }
+      ],
+      "recap": [
+        "Ты хочешь выразить равенство или отличие?",
+        "Оба as на месте, а форма слова обычная?",
+        "При количестве проверь many для счётных предметов и much для вещества."
+      ]
+    },
+    {
+      "key": "g19",
+      "title": "Too и enough — слишком и достаточно",
+      "overview": "Too показывает избыток, который часто мешает действию. Enough показывает достаточность. Положение enough зависит от того, относится оно к признаку или к существительному.",
+      "sections": [
+        {
+          "title": "Порядок слов",
+          "paragraphs": [
+            "Too ставится перед прилагательным или наречием. Enough идёт после прилагательного/наречия, но перед существительным."
+          ],
+          "table": {
+            "headers": ["Шаблон", "Пример", "Значение"],
+            "rows": [
+              ["too + прилагательное", "The gap is too narrow.", "Проём слишком узкий."],
+              [
+                "прилагательное + enough",
+                "The chain is long enough.",
+                "Цепочка достаточно длинная."
+              ],
+              ["наречие + enough", "He spoke clearly enough.", "Он говорил достаточно понятно."],
+              ["enough + существительное", "We have enough time.", "У нас достаточно времени."],
+              ["not + прилагательное + enough", "It isn’t warm enough.", "Недостаточно тепло."]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Для кого и для какого действия",
+          "paragraphs": [
+            "For + человек/предмет уточняет, кому мешает избыток или для кого чего-то достаточно. To + глагол обозначает действие, которое возможно или невозможно.",
+            "Too heavy to carry означает, что нести мешает чрезмерный вес. Light enough to carry означает, что веса достаточно мало, чтобы нести. В этих сочетаниях не требуется повторять it после carry, если предмет уже подлежащее."
+          ],
+          "examples": [
+            {
+              "en": "The shoes are too small for me.",
+              "ru": "Эта обувь слишком мала для меня."
+            },
+            {
+              "en": "The chain isn’t long enough to reach the hook.",
+              "ru": "Цепочка недостаточно длинная, чтобы достать до крючка."
+            },
+            {
+              "en": "We have enough light to read.",
+              "ru": "У нас достаточно света, чтобы читать."
+            }
+          ]
+        },
+        {
+          "title": "Too much, too many и very",
+          "paragraphs": [
+            "Для избыточного количества используй too much + неисчисляемое и too many + исчисляемое множественное: too much water, too many people. Enough подходит к обоим типам: enough water, enough people.",
+            "Very усиливает признак без обязательной проблемы: very cold — очень холодно. Too cold — слишком холодно для определённой цели. В конце I want one too слово too означает «тоже» — это другое употребление."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "The chain is enough long.",
+          "right": "The chain is long enough.",
+          "explanation": "После прилагательного enough ставится справа."
+        },
+        {
+          "wrong": "We have enough times to wait.",
+          "right": "We have enough time to wait.",
+          "explanation": "Time в значении запаса времени неисчисляемое; times означает отдельные разы."
+        },
+        {
+          "wrong": "There are too much people.",
+          "right": "There are too many people.",
+          "explanation": "People — исчисляемое множественное."
+        }
+      ],
+      "recap": [
+        "Это избыток или достаточность?",
+        "Enough стоит после признака, но перед существительным?",
+        "Если указан результат, проверь to + V1 и подходящее for."
+      ]
+    },
+    {
+      "key": "g20",
+      "title": "Количество — some, any, much, many, few, little",
+      "overview": "Выбор количественного слова начинается с существительного: можно ли посчитать отдельные предметы в этом значении? Pages, tickets и people считаются; water, information и luggage обычно не считаются.",
+      "sections": [
+        {
+          "title": "Исчисляемое и неисчисляемое",
+          "paragraphs": [
+            "У исчисляемого есть отдельные единицы и множественное число: a ticket — three tickets. Неисчисляемое в данном значении обозначает вещество, массу или абстрактное понятие: water, advice, information.",
+            "Чтобы посчитать неисчисляемое, назови меру или единицу: two bottles of water, a piece of advice. Одно и то же слово может менять тип по смыслу: two onions — две луковицы, some onion in the soup — некоторое количество лука в супе."
+          ],
+          "table": {
+            "headers": ["Задача", "Исчисляемое множественное", "Неисчисляемое"],
+            "rows": [
+              ["Вопрос «сколько?»", "How many tickets?", "How much water?"],
+              ["Много", "many / a lot of tickets", "much / a lot of water"],
+              ["Немного, некоторое количество", "a few pages", "a little time"],
+              ["Мало, меньше нужного", "few pages", "little time"],
+              ["Меньше", "fewer pages", "less water"]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Some, any, no и a lot of",
+          "paragraphs": [
+            "Some обычно используется в утверждениях. Any — в обычных вопросах и отрицаниях. No означает «никаких» и само делает смысл отрицательным: There are no seats.",
+            "В предложении еды и ожидаемой положительной просьбе часто используется some: Would you like some tea? Can I have some water? A lot of подходит и к счётным предметам, и к неисчисляемому; в разговорном утверждении оно часто естественнее much."
+          ],
+          "examples": [
+            {
+              "en": "There are a few seats by the wall.",
+              "ru": "У стены есть несколько свободных мест."
+            },
+            {
+              "en": "There is a little soup left.",
+              "ru": "Осталось немного супа."
+            },
+            {
+              "en": "We don’t have any clean copies.",
+              "ru": "У нас нет чистых копий."
+            },
+            {
+              "en": "How much onion do you want?",
+              "ru": "Сколько лука тебе положить?",
+              "explanation": "Спрашивают о количестве ингредиента, а не о целых луковицах."
+            }
+          ]
+        },
+        {
+          "title": "Артикль a меняет оттенок",
+          "paragraphs": [
+            "A few и a little подчёркивают, что некоторое количество есть. Few и little чаще подчёркивают недостаток: We have little time — времени мало.",
+            "How many допускает ноль в ответе: How many copies? — None. Не добавляй -s к information, advice, furniture и luggage в обычных значениях этого курса. Для fewer/less ориентируйся на тип существительного."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "How much copies do we need?",
+          "right": "How many copies do we need?",
+          "explanation": "Отдельные копии можно посчитать."
+        },
+        {
+          "wrong": "There is a few water.",
+          "right": "There is a little water.",
+          "explanation": "Water здесь неисчисляемое."
+        },
+        {
+          "wrong": "I need an advice.",
+          "right": "I need some advice.",
+          "explanation": "Advice обычно неисчисляемое; можно также сказать a piece of advice."
+        }
+      ],
+      "recap": [
+        "Существительное счётное в этом значении?",
+        "Нужно много, немного, мало, меньше или неопределённое количество?",
+        "Проверь some/any/no по типу реплики и не добавляй второе отрицание."
+      ]
+    },
+    {
+      "key": "g21",
+      "title": "Неопределённые местоимения — someone, anything, nowhere",
+      "overview": "Эти слова называют неизвестного человека, предмет или место без точного имени. Начало слова передаёт неопределённость, вопрос или отсутствие, а конец — тип того, о чём говорят.",
+      "sections": [
+        {
+          "title": "Люди, вещи и места",
+          "paragraphs": [
+            "Someone и somebody равнозначны; anyone и anybody тоже. No one пишется двумя словами, nobody — одним."
+          ],
+          "table": {
+            "headers": ["Значение", "Люди", "Вещи", "Места"],
+            "rows": [
+              ["Кто-то / что-то / где-то", "someone / somebody", "something", "somewhere"],
+              ["Кто-нибудь / что-нибудь / где-нибудь", "anyone / anybody", "anything", "anywhere"],
+              ["Никто / ничто / нигде", "no one / nobody", "nothing", "nowhere"],
+              ["Все / всё / везде", "everyone / everybody", "everything", "everywhere"]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Утверждение, вопрос и отрицание",
+          "paragraphs": [
+            "Some-формы часто встречаются в утверждении. Any-формы — в обычном вопросе и после отрицательного глагола. No-форма уже отрицательна: I saw nobody = I didn’t see anybody.",
+            "В просьбах и предложениях можно встретить some: Would you like something to eat? Anyone в утверждении может означать «любой»: Anyone can help. Это не вопросительное «кто-нибудь»."
+          ],
+          "examples": [
+            {
+              "en": "Someone left a glove on the seat.",
+              "ru": "Кто-то оставил варежку на сиденье."
+            },
+            {
+              "en": "Did you hear anything?",
+              "ru": "Ты что-нибудь слышал?"
+            },
+            {
+              "en": "I can’t see anybody at the desk.",
+              "ru": "Я никого не вижу за столом."
+            },
+            {
+              "en": "There is nowhere to sit.",
+              "ru": "Сесть негде."
+            }
+          ]
+        },
+        {
+          "title": "Согласование и уточнения",
+          "paragraphs": [
+            "Someone, everyone, nothing и подобные слова грамматически требуют единственного числа: Everyone is here. Something has changed. Если дальше неизвестного человека называют they, это не меняет форму is в первом предложении.",
+            "Прилагательное обычно идёт после местоимения: something strange, someone new. Для «ещё» также используется else после него: someone else, anything else. Не ставь прилагательное перед something по русскому образцу."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I didn’t see nobody.",
+          "right": "I didn’t see anybody.",
+          "explanation": "В стандартной модели нужен один отрицательный элемент."
+        },
+        {
+          "wrong": "Everyone are here.",
+          "right": "Everyone is here.",
+          "explanation": "Everyone грамматически единственное число."
+        },
+        {
+          "wrong": "I heard strange something.",
+          "right": "I heard something strange.",
+          "explanation": "Прилагательное идёт после неопределённого местоимения."
+        }
+      ],
+      "recap": [
+        "Ты называешь человека, вещь или место?",
+        "В предложении уже есть not? Тогда проверь any вместо no.",
+        "Местоимение требует единственного числа; уточняющее прилагательное ставится после него."
+      ]
+    },
+    {
+      "key": "g22",
+      "title": "Притяжательные формы — my и mine",
+      "overview": "Притяжательные слова показывают, кому что принадлежит. Одни стоят перед существительным, другие заменяют всю группу с существительным. Сравни my key и The key is mine.",
+      "sections": [
+        {
+          "title": "Две формы для одного владельца",
+          "paragraphs": [
+            "Левая колонка требует названного предмета справа. Правая используется самостоятельно, когда предмет уже понятен."
+          ],
+          "table": {
+            "headers": ["Владелец", "Перед существительным", "Вместо существительного"],
+            "rows": [
+              ["I", "my key", "mine"],
+              ["you", "your key", "yours"],
+              ["he", "his key", "his"],
+              ["she", "her key", "hers"],
+              ["it", "its door", "Отдельная форма в этом блоке не используется."],
+              ["we", "our key", "ours"],
+              ["they", "their key", "theirs"]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Выбор формы в предложении",
+          "paragraphs": [
+            "В This is my key слово my относится к key. В This key is mine предмет key уже назван, поэтому mine стоит отдельно. Не ставь артикль перед my/your и не добавляй существительное после mine/yours.",
+            "Whose? означает «чей?». Ответ может назвать владельца: It’s Ada’s. Притяжательное ’s у имени — другой способ показать принадлежность: Ada’s key."
+          ],
+          "examples": [
+            {
+              "en": "The small key is mine. Yours is on the table.",
+              "ru": "Маленький ключ — мой. Твой на столе."
+            },
+            {
+              "en": "This is their receipt. It’s theirs.",
+              "ru": "Это их квитанция. Она принадлежит им."
+            },
+            {
+              "en": "Whose coat is this? — It’s Owen’s.",
+              "ru": "Чьё это пальто? — Оуэна."
+            }
+          ]
+        },
+        {
+          "title": "His, her, its и it’s",
+          "paragraphs": [
+            "His совпадает в обеих позициях: his coat / the coat is his. Her перед предметом означает «её», hers стоит отдельно. Her после обычного глагола может быть объектным местоимением: I saw her — я видел её.",
+            "Its означает принадлежность: its door. It’s — сокращение it is или it has: It’s cold; It’s stopped. У самостоятельных yours, hers, ours, theirs нет апострофа. Форма зависит от владельца, а не от числа вещей: my key и my keys."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "This key is my.",
+          "right": "This key is mine.",
+          "explanation": "Существительное не следует за формой, поэтому нужен mine."
+        },
+        {
+          "wrong": "This is mine key.",
+          "right": "This is my key.",
+          "explanation": "Перед key нужна форма my."
+        },
+        {
+          "wrong": "The receipt is their’s.",
+          "right": "The receipt is theirs.",
+          "explanation": "У theirs нет апострофа."
+        }
+      ],
+      "recap": [
+        "После пропуска назван предмет или местоимение стоит само?",
+        "Кому принадлежит предмет? Выбери строку владельца.",
+        "Проверь its/it’s и отсутствие апострофа у theirs/yours."
+      ]
+    },
+    {
+      "key": "g23",
+      "title": "Возвратные местоимения — myself, themselves",
+      "overview": "Возвратное местоимение связывает действие с тем же человеком, который его совершает, или подчёркивает, что он сделал что-то лично. By + возвратное местоимение означает «один, без помощи».",
+      "sections": [
+        {
+          "title": "Формы по лицам",
+          "paragraphs": [
+            "Выбирай форму по тому, кто действует. Yourself относится к одному собеседнику, yourselves — к нескольким."
+          ],
+          "table": {
+            "headers": ["Подлежащее", "Возвратная форма"],
+            "rows": [
+              ["I", "myself"],
+              ["you — один человек", "yourself"],
+              ["he", "himself"],
+              ["she", "herself"],
+              ["it", "itself"],
+              ["we", "ourselves"],
+              ["you — несколько человек", "yourselves"],
+              ["they", "themselves"]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Три разных значения",
+          "paragraphs": [
+            "Возвратное действие: She cut herself — она порезалась, действие направлено на неё саму. Подчёркивание самостоятельности: She wrote it herself — написала лично, без другого исполнителя. By herself — была одна или справилась без помощи; точный оттенок даёт контекст.",
+            "Сравни She saw her и She saw herself. В первом случае her обычно другая женщина, во втором — она сама, например в зеркале."
+          ],
+          "examples": [
+            {
+              "en": "I found that mark myself.",
+              "ru": "Я сам нашёл эту отметку."
+            },
+            {
+              "en": "They make the marks themselves.",
+              "ru": "Они сами делают отметки."
+            },
+            {
+              "en": "I was at home by myself.",
+              "ru": "Я был дома один."
+            },
+            {
+              "en": "Owen hurt himself.",
+              "ru": "Оуэн поранился."
+            }
+          ]
+        },
+        {
+          "title": "Когда возвратная форма не нужна",
+          "paragraphs": [
+            "Русское «-ся» не всегда переводится возвратным местоимением. Для обычных повседневных действий естественны I washed, I got dressed, I sat down. Wash myself возможно, если важно подчеркнуть самостоятельность или направление действия.",
+            "Myself не заменяет любое I/me из вежливости. Mae called me, а не Mae called myself. Each other означает «друг друга»: They helped each other — помогали друг другу; themselves — самим себе или сами."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I found it me.",
+          "right": "I found it myself.",
+          "explanation": "Для «сам» нужна возвратная форма."
+        },
+        {
+          "wrong": "They did it theirselves.",
+          "right": "They did it themselves.",
+          "explanation": "Нормативная форма — themselves."
+        },
+        {
+          "wrong": "Mae called myself.",
+          "right": "Mae called me.",
+          "explanation": "Действие другого человека направлено на меня; нужно объектное me."
+        }
+      ],
+      "recap": [
+        "Действующий человек и получатель действия совпадают?",
+        "Или нужно подчеркнуть «лично / без помощи»?",
+        "Сверь форму с подлежащим и отличи себя от друг друга."
+      ]
+    },
+    {
+      "key": "g24",
+      "title": "All, both, every, each и замена one/ones",
+      "overview": "Эти слова помогают говорить о группе целиком, о каждом её участнике или заменять уже названный предмет. Важно различать число объектов и грамматическое число после слова.",
+      "sections": [
+        {
+          "title": "Вся группа, двое и каждый",
+          "paragraphs": [
+            "All относится ко всем участникам группы, both — ровно к двум. Every и each выделяют отдельных участников и обычно требуют существительного в единственном числе."
+          ],
+          "table": {
+            "headers": ["Слово", "Модель", "Пример"],
+            "rows": [
+              [
+                "all",
+                "all + множественное / неисчисляемое",
+                "All the pages are here. / All the water is cold."
+              ],
+              ["both", "both + множественное", "Both keys are old."],
+              ["every", "every + единственное", "Every page has a number."],
+              ["each", "each + единственное", "Each person has a key."],
+              [
+                "each of",
+                "each of + группа, глагол обычно единственный",
+                "Each of the keys is different."
+              ]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "One и ones вместо существительного",
+          "paragraphs": [
+            "One заменяет исчисляемое существительное в единственном числе, ones — во множественном. Нужный предмет уточняется прилагательным, артиклем или указательным словом: the square one, the blue ones.",
+            "Не заменяй неисчисляемое существительное формой one: для water можно сказать some water или some, если смысл понятен. Не путай one как замену предмета и one как число «один»."
+          ],
+          "examples": [
+            {
+              "en": "The square one opens the door.",
+              "ru": "Квадратный ключ открывает дверь.",
+              "explanation": "Key уже назван в разговоре."
+            },
+            {
+              "en": "Give me the blue ones. I need both labels.",
+              "ru": "Дай мне синие. Мне нужны обе этикетки."
+            },
+            {
+              "en": "Every passenger has a ticket.",
+              "ru": "У каждого пассажира есть билет."
+            }
+          ]
+        },
+        {
+          "title": "Another, other и the other",
+          "paragraphs": [
+            "Another + единственное — ещё один или другой: another key. Other + множественное — другие: other keys. The other — второй из двух или оставшийся: one key is small, the other is large.",
+            "Others стоит самостоятельно вместо «другие люди/вещи». All of us и both of them говорят о конкретной группе местоимением. Не добавляй of в every person: every of не используется; для выбранной группы подходит each of the people."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "Every pages are numbered.",
+          "right": "Every page is numbered.",
+          "explanation": "После every нужно единственное число."
+        },
+        {
+          "wrong": "Give me the blue one. I need two.",
+          "right": "Give me the blue ones. I need two.",
+          "explanation": "Для нескольких предметов используется ones."
+        },
+        {
+          "wrong": "I need other key.",
+          "right": "I need another key.",
+          "explanation": "Для ещё одного исчисляемого предмета нужен another."
+        }
+      ],
+      "recap": [
+        "Речь обо всех, о двоих или о каждом отдельно?",
+        "После every/each проверь единственное число.",
+        "One/ones заменяет счётный предмет и согласовано с нужным количеством?"
+      ]
+    },
+    {
+      "key": "g25",
+      "title": "Герундий и инфинитив после глаголов",
+      "overview": "Когда два действия идут рядом, форма второго зависит от первого слова или всей конструкции. Enjoy reading и want to read нужно запоминать как разные модели.",
+      "sections": [
+        {
+          "title": "Какой глагол управляет формой",
+          "paragraphs": [
+            "Герундий — форма V-ing, которая называет действие. Инфинитив в этом блоке — to + V1. Не выбирай между ними только по русскому переводу «читать»."
+          ],
+          "table": {
+            "headers": ["Модель", "Частые слова", "Пример"],
+            "rows": [
+              ["Глагол + V-ing", "enjoy, finish, avoid, keep", "Dot enjoyed leaving notes."],
+              [
+                "Глагол + to + V1",
+                "want, decide, hope, plan, agree",
+                "Nell agreed to share the case."
+              ],
+              ["Would like + to + V1", "would like / would love", "I’d like to read it."],
+              [
+                "Возможны обе формы",
+                "like, love, hate, prefer",
+                "I like reading. / I like to read."
+              ],
+              ["Предлог + V-ing", "after, before, without, about", "Check it before leaving."]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Почему -ing не всегда Continuous",
+          "paragraphs": [
+            "В She enjoys reading слово reading не показывает время. Настоящее время выражено enjoys, а reading называет занятие. В She is reading форма is reading уже целиком является Present Continuous.",
+            "Форма первого глагола может меняться, а модель второго остаётся: enjoy reading, enjoyed reading, will enjoy reading. После decide остаётся to read и в прошлом: decided to read."
+          ],
+          "examples": [
+            {
+              "en": "Dot enjoyed leaving notes in my coat.",
+              "ru": "Дот любила оставлять записки в моём пальто."
+            },
+            {
+              "en": "Mae wants to ask first.",
+              "ru": "Мэй хочет сначала спросить."
+            },
+            {
+              "en": "He left without saying goodbye.",
+              "ru": "Он ушёл, не попрощавшись."
+            },
+            {
+              "en": "We finished checking the list.",
+              "ru": "Мы закончили проверять список."
+            }
+          ]
+        },
+        {
+          "title": "Как запоминать и где осторожнее",
+          "paragraphs": [
+            "Учи небольшую связку вместе с примером: finish checking, decide to call, be interested in reading. После предлога to тоже возможен -ing, если to — часть выражения: look forward to meeting you. Это не тот to, который вводит инфинитив.",
+            "У некоторых глаголов выбор меняет смысл: stop talking — перестать говорить, stop to talk — остановиться, чтобы поговорить. Для A2 достаточно узнавать такие частые пары и не переносить правило одного глагола на все остальные."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "She enjoys to read.",
+          "right": "She enjoys reading.",
+          "explanation": "Enjoy требует -ing."
+        },
+        {
+          "wrong": "He decided calling.",
+          "right": "He decided to call.",
+          "explanation": "Decide сочетается с to + V1."
+        },
+        {
+          "wrong": "Before to leave, call me.",
+          "right": "Before leaving, call me.",
+          "explanation": "После предлога before используется -ing."
+        }
+      ],
+      "recap": [
+        "Найди слово перед вторым действием: глагол или предлог?",
+        "Вспомни модель целиком — enjoy doing или decide to do.",
+        "Не путай самостоятельную -ing-форму с временем be + -ing."
+      ]
+    },
+    {
+      "key": "g26",
+      "title": "Инфинитив цели — to + глагол",
+      "overview": "To + начальная форма может отвечать на вопрос «зачем?». Эта короткая конструкция объясняет цель действия: I came to listen — я пришёл, чтобы послушать.",
+      "sections": [
+        {
+          "title": "Цель действия",
+          "paragraphs": [
+            "После основного действия добавь to + V1. В простых сценах подразумевается тот же исполнитель: I came to listen — пришёл я и слушать собираюсь тоже я.",
+            "Более полная форма in order to означает ту же цель и звучит формальнее. Для A2 достаточно уверенно строить короткую форму to read, to help, to check."
+          ],
+          "table": {
+            "headers": ["Часть", "Роль", "Пример"],
+            "rows": [
+              ["Основное действие", "Что сделал или что нужно", "I need the lamp"],
+              ["Цель", "Зачем", "to read the small word."],
+              ["Готовое предложение", "Действие + цель", "I need the lamp to read the small word."]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Цель, причина и назначение",
+          "paragraphs": [
+            "To + V1 сообщает намерение. Because + подлежащее + глагол сообщает причину: I came because Mae called. Эти ответы могут быть связаны, но не взаимозаменяемы.",
+            "For + существительное описывает назначение: a lamp for the desk, a ticket for the bus. For + V-ing может описывать применение предмета: a tool for cutting wire. Для цели собственного действия выбирай I came to check, а не I came for check."
+          ],
+          "examples": [
+            {
+              "en": "I brought a lamp to read the report.",
+              "ru": "Я принёс лампу, чтобы прочитать отчёт."
+            },
+            {
+              "en": "I came because Mae asked me.",
+              "ru": "Я пришёл, потому что Мэй попросила меня."
+            },
+            {
+              "en": "We went outside to check the light.",
+              "ru": "Мы вышли на улицу, чтобы проверить свет."
+            }
+          ]
+        },
+        {
+          "title": "Отрицательная цель и другой исполнитель",
+          "paragraphs": [
+            "In order not to + V1 удобно выражает отрицательную цель: I spoke quietly in order not to wake him — я говорил тихо, чтобы не разбудить его. Не ставь don’t после to.",
+            "Если цель должна выполняться другим человеком, короткая конструкция может быть двусмысленна. На этом уровне лучше сказать прямо: I brought a lamp. You can read now. Сложные придаточные цели не обязательны для прохождения."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I came for listen.",
+          "right": "I came to listen.",
+          "explanation": "Для цели действия нужен to + V1."
+        },
+        {
+          "wrong": "I need the lamp to reading.",
+          "right": "I need the lamp to read.",
+          "explanation": "После инфинитивного to начальная форма."
+        },
+        {
+          "wrong": "I came because to help.",
+          "right": "I came to help.",
+          "explanation": "Because вводит полное предложение о причине, а to — цель."
+        }
+      ],
+      "recap": [
+        "Отвечает ли фрагмент на «зачем»?",
+        "После to стоит V1?",
+        "Если это причина, используй because и полное предложение."
+      ]
+    },
+    {
+      "key": "g27",
+      "title": "If и when — реальное условие и время",
+      "overview": "В реальном будущем условии после if и в придаточной части времени после when обычно стоит Present Simple. Будущее выражается в главной части: If it rains, we’ll stay inside.",
+      "sections": [
+        {
+          "title": "Общее правило и будущая ситуация",
+          "paragraphs": [
+            "Нулевое условное предложение описывает обычную закономерность. Первое условное — возможную конкретную будущую ситуацию. В результате может стоять will, can или повелительная форма."
+          ],
+          "table": {
+            "headers": ["Тип", "Схема", "Пример"],
+            "rows": [
+              [
+                "Общее правило",
+                "If + Present Simple, Present Simple",
+                "If it rains, the road gets wet."
+              ],
+              ["Будущий результат", "If + Present Simple, will + V1", "If it rains, we’ll wait."],
+              [
+                "Возможность",
+                "If + Present Simple, can + V1",
+                "If the rope holds, we can reach the step."
+              ],
+              [
+                "Инструкция",
+                "If + Present Simple, повелительная форма",
+                "If you hear the bell, stop."
+              ],
+              ["Будущее время", "When + Present Simple, will + V1", "When Mae arrives, I’ll call."]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "If не равно when",
+          "paragraphs": [
+            "If означает «если»: событие может произойти, а может и нет. When означает «когда»: говорящий рассматривает событие как ожидаемое и уточняет момент.",
+            "Before, after, as soon as и until в придаточных времени о будущем следуют той же базовой модели: I’ll call after I get home. Если придаточная часть первая, после неё обычно ставится запятая."
+          ],
+          "examples": [
+            {
+              "en": "If I hear my name, I’ll look at your face.",
+              "ru": "Если я услышу своё имя, я посмотрю на тебя."
+            },
+            {
+              "en": "I’ll send it when Mae gets home.",
+              "ru": "Я отправлю это, когда Мэй вернётся домой."
+            },
+            {
+              "en": "Wait here until I come back.",
+              "ru": "Подожди здесь, пока я не вернусь.",
+              "explanation": "В английской части после until нет дополнительного not."
+            }
+          ]
+        },
+        {
+          "title": "Где will всё-таки возможен",
+          "paragraphs": [
+            "Правило относится к придаточному условию или времени. В прямом вопросе When will she arrive? will уместен: спрашивают о будущем времени. В I don’t know when she will arrive это косвенный вопрос, а не инструкция «когда она придёт».",
+            "В этом курсе тренируются реальные условия, а не воображаемые ситуации с would. Не добавляй will автоматически в обе половины предложения."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "If the rope will hold, we can cross.",
+          "right": "If the rope holds, we can cross.",
+          "explanation": "В реальном условии о будущем после if используется Present Simple."
+        },
+        {
+          "wrong": "I’ll call when she will get home.",
+          "right": "I’ll call when she gets home.",
+          "explanation": "Это придаточная часть времени, поэтому gets."
+        },
+        {
+          "wrong": "If it rain, we’ll wait.",
+          "right": "If it rains, we’ll wait.",
+          "explanation": "В Present Simple у it нужно -s."
+        }
+      ],
+      "recap": [
+        "Это общее правило, условие будущего или указание времени?",
+        "После if/when в такой придаточной части стоит Present Simple?",
+        "В результате выбери will, can или инструкцию по смыслу."
+      ]
+    },
+    {
+      "key": "g28",
+      "title": "Who, which, that, where — определительные придаточные",
+      "overview": "Короткая придаточная часть объясняет, о каком человеке, предмете или месте говорится. Она идёт сразу после существительного: the person who has the key.",
+      "sections": [
+        {
+          "title": "Какое слово выбрать",
+          "paragraphs": [
+            "В этом блоке используются простые уточняющие придаточные без запятых: уточнение помогает понять, какой именно предмет или человек нужен."
+          ],
+          "table": {
+            "headers": ["Что уточняется", "Слово", "Пример"],
+            "rows": [
+              ["Человек", "who / that", "the woman who has the key"],
+              ["Предмет или животное", "which / that", "the box that is on the desk"],
+              ["Место, где происходит действие", "where", "the room where we met"]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Порядок слов и роль местоимения",
+          "paragraphs": [
+            "В the person who called местоимение who само выполняет роль подлежащего: это человек позвонил. Не добавляй he после who. Вопросительного порядка слов здесь нет.",
+            "В the note that I found подлежащее — I, а that обозначает найденную записку, то есть дополнение. Если местоимение — дополнение, в коротком разговорном определении его иногда опускают: the note I found. Если оно подлежащее, так делать нельзя."
+          ],
+          "examples": [
+            {
+              "en": "Jo is the person who saw the bus.",
+              "ru": "Джо — человек, который видел автобус."
+            },
+            {
+              "en": "This is the key that opens the door.",
+              "ru": "Это ключ, который открывает дверь."
+            },
+            {
+              "en": "Show me the room where you waited.",
+              "ru": "Покажи мне комнату, где ты ждал."
+            },
+            {
+              "en": "This is the note I found.",
+              "ru": "Это записка, которую я нашёл."
+            }
+          ]
+        },
+        {
+          "title": "Согласование и границы",
+          "paragraphs": [
+            "Глагол после who/that согласуется с определяемым словом: the person who lives here, the people who live here. Не путай where и which: the room where we met — в комнате встретились; the room that has two doors — сама комната имеет две двери.",
+            "Дополнительные замечания с запятыми и сложные формы whom/whose выходят за базовую задачу этого блока. На A2 важно узнавать короткое уточнение и понимать, к какому существительному оно относится."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "The girl who she drew the bus is here.",
+          "right": "The girl who drew the bus is here.",
+          "explanation": "Who уже является подлежащим; she дублирует его."
+        },
+        {
+          "wrong": "This is the key where opens the door.",
+          "right": "This is the key that opens the door.",
+          "explanation": "Ключ — предмет, а не место действия."
+        },
+        {
+          "wrong": "The person who live here is away.",
+          "right": "The person who lives here is away.",
+          "explanation": "Person — единственное число, поэтому lives."
+        }
+      ],
+      "recap": [
+        "Какое существительное уточняет придаточная часть?",
+        "Нужны who для человека, which/that для вещи или where для места действия?",
+        "Не продублировано ли подлежащее и согласован ли глагол?"
+      ]
+    },
+    {
+      "key": "g29",
+      "title": "Базовый пассив — is made, was given",
+      "overview": "Пассив ставит в начало предмет или человека, с которым что-то сделали. Исполнитель может быть неизвестен или менее важен. В этом блоке тренируются короткие формы настоящего и прошлого.",
+      "sections": [
+        {
+          "title": "Смена точки зрения",
+          "paragraphs": [
+            "Актив: Ruth locked the door — Рут заперла дверь. Пассив: The door was locked by Ruth — дверь была заперта Рут. В обоих случаях действие то же, но внимание направлено на разное.",
+            "Пассив строится с be + V3. Для Present Simple это am/is/are, для Past Simple — was/were. V3 — третья форма: make–made, give–given, write–written, remove–removed."
+          ],
+          "table": {
+            "headers": ["Время", "Единственное число", "Множественное число"],
+            "rows": [
+              ["Настоящее", "The door is checked daily.", "The doors are checked daily."],
+              ["Прошлое", "The cable was removed.", "The cables were removed."],
+              ["Отрицание в прошлом", "It wasn’t removed.", "They weren’t removed."],
+              ["Вопрос в прошлом", "Was it removed?", "Were they removed?"]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Исполнитель и материал",
+          "paragraphs": [
+            "By + исполнитель отвечает на вопрос «кем?»: by Owen. Если человек неизвестен или неважен, этот фрагмент опускается. With часто указывает инструмент: with a key — ключом.",
+            "Is made of обычно описывает видимый материал: The box is made of wood. Is made from используют, когда исходный материал переработан: Paper is made from wood. Достаточно узнавать эти частые выражения."
+          ],
+          "examples": [
+            {
+              "en": "The badge was given to Ruth in 2006.",
+              "ru": "Значок был вручён Рут в 2006 году."
+            },
+            {
+              "en": "Both cables were removed before the call.",
+              "ru": "Оба кабеля сняли до звонка."
+            },
+            {
+              "en": "The box is made of wood.",
+              "ru": "Коробка сделана из дерева."
+            }
+          ]
+        },
+        {
+          "title": "Как не спутать с активом",
+          "paragraphs": [
+            "Подлежащее пассива не выполняет действие: cables were removed — кабели сняли, они не снимали что-то сами. Be согласуется именно с этим подлежащим.",
+            "Не все глаголы допускают такой пассив. Для arrive, happen, go обычная модель is arrived/is happened не подходит: действие не направлено на дополнение. В этом уровне не требуются сложные времена пассива."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "Both cables was removed.",
+          "right": "Both cables were removed.",
+          "explanation": "Подлежащее множественное, поэтому were."
+        },
+        {
+          "wrong": "The badge was give to Ruth.",
+          "right": "The badge was given to Ruth.",
+          "explanation": "После be в пассиве нужна V3."
+        },
+        {
+          "wrong": "The bus was arrived.",
+          "right": "The bus arrived.",
+          "explanation": "Arrive в обычном значении не образует такой пассив."
+        }
+      ],
+      "recap": [
+        "Подлежащее действует само или действие совершили с ним?",
+        "Выбрана форма be для времени и числа?",
+        "После be стоит V3; исполнитель с by добавлен только при необходимости?"
+      ]
+    },
+    {
+      "key": "g30",
+      "title": "Предлоги — время, место и направление",
+      "overview": "Предлог связывает действие с точкой времени, местом или траекторией. Сначала выясни, о чём спрашивают: когда, где или куда. Один русский предлог не всегда соответствует одному английскому.",
+      "sections": [
+        {
+          "title": "Время: at, on, in",
+          "paragraphs": [
+            "Для this, next, last и слов today/tomorrow дополнительный предлог обычно не нужен: next week, last Monday, tomorrow."
+          ],
+          "table": {
+            "headers": ["Предлог", "Основной смысл", "Примеры"],
+            "rows": [
+              ["at", "Точное время и некоторые устойчивые сочетания", "at six, at noon, at night"],
+              ["on", "День или дата", "on Monday, on June 5, on Friday evening"],
+              ["in", "Месяц, год, сезон, часть дня", "in June, in 2006, in winter, in the morning"]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Место: точка, поверхность и пространство",
+          "paragraphs": [
+            "At часто представляет место как точку встречи или деятельности: at the stop, at the station. In подчёркивает нахождение внутри: in the office. On — поверхность: on the table.",
+            "In front of — перед чем-то, behind — позади, next to — рядом, between — между отдельными объектами, among — среди группы. Для транспорта запоминай on the bus/train, но in a car/taxi."
+          ],
+          "examples": [
+            {
+              "en": "I’m behind your seat.",
+              "ru": "Я позади твоего сиденья."
+            },
+            {
+              "en": "The note is on the desk, next to the lamp.",
+              "ru": "Записка на столе рядом с лампой."
+            }
+          ]
+        },
+        {
+          "title": "Направление и траектория",
+          "paragraphs": [
+            "To указывает пункт назначения, toward — направление в сторону места без гарантии достижения. At/in описывают положение, into/out of — движение внутрь или наружу."
+          ],
+          "table": {
+            "headers": ["Предлог", "Значение", "Пример"],
+            "rows": [
+              ["to / toward", "К пункту / в сторону", "go to the depot / walk toward the gate"],
+              [
+                "into / out of",
+                "Внутрь / изнутри наружу",
+                "go into the room / come out of the office"
+              ],
+              ["across", "С одной стороны на другую", "walk across the bridge"],
+              ["through", "Сквозь внутреннее пространство", "go through the tunnel"],
+              ["along", "Вдоль", "walk along the river"],
+              ["past", "Мимо", "go past the school"]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "During, while, for и until",
+          "paragraphs": [
+            "During + существительное: during the lesson — во время урока. While + предложение: while I was reading — пока я читал. For + длительность: for two hours — два часа. Until + момент: until six — до шести.",
+            "Не выбирай предлог только по отдельному слову. Across the bridge описывает пересечение моста, on the bridge — нахождение на нём. Обе фразы правильны, но сообщают разное."
+          ],
+          "examples": [
+            {
+              "en": "We walked across the bridge during the night.",
+              "ru": "Мы перешли мост ночью."
+            },
+            {
+              "en": "Wait here until six.",
+              "ru": "Подожди здесь до шести."
+            }
+          ]
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "I’ll call in Monday.",
+          "right": "I’ll call on Monday.",
+          "explanation": "С днём недели используется on."
+        },
+        {
+          "wrong": "During I was reading, she called.",
+          "right": "While I was reading, she called.",
+          "explanation": "Перед предложением нужен while, а не during."
+        },
+        {
+          "wrong": "Go at the station.",
+          "right": "Go to the station.",
+          "explanation": "Пункт назначения выражается с to."
+        }
+      ],
+      "recap": [
+        "Это время, положение или движение?",
+        "Нужно показать точку назначения или всю траекторию?",
+        "После during стоит существительное, после while — предложение?"
+      ]
+    },
+    {
+      "key": "g31",
+      "title": "Фразовые глаголы — значение и место дополнения",
+      "overview": "Фразовый глагол состоит из глагола и частицы или предлога: turn off, look after, get off. Значение часто нужно запоминать целиком, а порядок слов зависит от конкретной конструкции.",
+      "sections": [
+        {
+          "title": "Как читать выражение целиком",
+          "paragraphs": [
+            "Turn off — выключить, put away — убрать, look after — присматривать, find out — выяснить. Перевод отдельного turn или look не всегда помогает понять всю фразу.",
+            "Время выражается в глаголе: turn off → turned off; get off → got off. Частица off при этом не меняется. Некоторые фразовые глаголы не требуют дополнения: The car broke down — машина сломалась."
+          ],
+          "examples": [
+            {
+              "en": "Please turn off the radio.",
+              "ru": "Пожалуйста, выключи рацию."
+            },
+            {
+              "en": "Nell looks after the house.",
+              "ru": "Нэлл присматривает за домом."
+            },
+            {
+              "en": "I got off the bus at the school.",
+              "ru": "Я вышел из автобуса у школы."
+            }
+          ]
+        },
+        {
+          "title": "Отделяемые и неотделяемые модели",
+          "paragraphs": [
+            "В отделяемой модели существительное можно поставить до частицы или после неё. Короткое объектное местоимение it/them обязательно идёт в середину. Не все конструкции отделяемые — это свойство нужно учить вместе со значением."
+          ],
+          "table": {
+            "headers": ["Тип", "Существительное", "Местоимение"],
+            "rows": [
+              ["Отделяемое turn off", "turn off the radio / turn the radio off", "turn it off"],
+              ["Отделяемое put away", "put away the keys / put the keys away", "put them away"],
+              ["Неотделяемое look after", "look after the child", "look after her"],
+              ["Неотделяемое get off", "get off the bus", "get off it"]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Транспорт и точность смысла",
+          "paragraphs": [
+            "Get on / get off используются с автобусом, поездом и подобным транспортом: сесть / выйти. Get in / get out of — с машиной или такси. Время на билете может отмечать посадку, поэтому эти значения нельзя менять местами.",
+            "В Could you turn it off? could требует V1 turn, а частица сохраняется. В She turned it off yesterday Past Simple выражено turned. Местоимение не перемещается в конец из-за смены времени."
+          ],
+          "examples": []
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "Turn off it.",
+          "right": "Turn it off.",
+          "explanation": "У отделяемого turn off местоимение стоит между частями."
+        },
+        {
+          "wrong": "Look her after.",
+          "right": "Look after her.",
+          "explanation": "Look after не разделяется дополнением."
+        },
+        {
+          "wrong": "I get on the bus to leave it.",
+          "right": "I get off the bus to leave it.",
+          "explanation": "Get on — сесть, get off — выйти."
+        }
+      ],
+      "recap": [
+        "Понято значение всей фразы, а не только первого слова?",
+        "Допускает ли конкретная модель разделение?",
+        "Если она отделяемая и дополнение it/them, местоимение стоит в середине?"
+      ]
+    },
+    {
+      "key": "g32",
+      "title": "Косвенные вопросы и связки because, so, although, but",
+      "overview": "Косвенный вопрос встраивает вопрос в более длинную фразу и часто делает его вежливее. Связки помогают объяснить причину, результат или противоречие между двумя сообщениями.",
+      "sections": [
+        {
+          "title": "Порядок слов внутри косвенного вопроса",
+          "paragraphs": [
+            "После Could you tell me…?, Do you know…? и I don’t know… вопросительная часть получает прямой порядок: подлежащее, затем сказуемое. Вложенный вопрос не требует дополнительного do/does/did.",
+            "Внешняя фраза может оставаться вопросом: Could you tell me where Mae is? Если она является утверждением I don’t know where Mae is, в конце ставится точка."
+          ],
+          "table": {
+            "headers": ["Прямой вопрос", "Косвенная форма"],
+            "rows": [
+              ["Where is Mae?", "Could you tell me where Mae is?"],
+              ["What does she want?", "Do you know what she wants?"],
+              ["What did he say?", "Could you tell me what he said?"],
+              ["Is the office open?", "Do you know if the office is open?"]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "If/whether и сохранение смысла",
+          "paragraphs": [
+            "Если в прямом вопросе нет вопросительного слова, добавь if или whether: I don’t know if she is here. Здесь if означает «ли», а не условие «если».",
+            "Вопросительное who может само быть подлежащим. Тогда порядок внешне не меняется: Who called? → Do you know who called? Не добавляй ещё одно подлежащее. Косвенный вопрос не требует автоматического сдвига времени в прошлое."
+          ],
+          "examples": [
+            {
+              "en": "Can you tell me what color the coat is?",
+              "ru": "Можешь сказать, какого цвета пальто?"
+            },
+            {
+              "en": "Could you tell me what you said?",
+              "ru": "Не мог бы ты сказать, что ты сказал?"
+            },
+            {
+              "en": "I don’t know whether she heard it.",
+              "ru": "Я не знаю, слышала ли она это."
+            }
+          ]
+        },
+        {
+          "title": "Причина, результат и противопоставление",
+          "paragraphs": [
+            "После because и although нужно полное предложение с подлежащим и глаголом. Because of, в отличие от because, вводит существительное: because of the rain."
+          ],
+          "table": {
+            "headers": ["Связка", "Смысл", "Пример"],
+            "rows": [
+              ["because", "Причина — потому что", "We waited because it was raining."],
+              ["so", "Результат — поэтому", "It was raining, so we waited."],
+              ["but", "Противопоставление — но", "I heard it, but I don’t know who spoke."],
+              ["although", "Уступка — хотя", "Although it was cold, we went outside."],
+              ["and / or", "Добавление / альтернатива", "Read it and check it. / Call or write."]
+            ]
+          },
+          "examples": []
+        },
+        {
+          "title": "Как собрать ясную реплику",
+          "paragraphs": [
+            "Для одной пары причины и результата выбирай либо because, либо so: Because it was raining, we waited. / It was raining, so we waited. Не копируй русскую модель с лишним «потому что… поэтому…».",
+            "Хотя и но в английском обычно не дублируются в одной конструкции: Although it was cold, we went outside. Уступка признаёт факт, который мог бы помешать; but просто противопоставляет два сообщения."
+          ],
+          "examples": [
+            {
+              "en": "I stayed because you asked me.",
+              "ru": "Я остался, потому что ты попросил."
+            },
+            {
+              "en": "The light was off, so I used my phone.",
+              "ru": "Свет был выключен, поэтому я воспользовался телефоном."
+            },
+            {
+              "en": "Although I heard the word, I don’t know who said it.",
+              "ru": "Хотя я слышал слово, я не знаю, кто его произнёс."
+            }
+          ]
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "Can you tell me where is Mae?",
+          "right": "Can you tell me where Mae is?",
+          "explanation": "Внутри косвенного вопроса нужен прямой порядок слов."
+        },
+        {
+          "wrong": "Do you know what does she want?",
+          "right": "Do you know what she wants?",
+          "explanation": "Вложенное does убирается, а want получает -s."
+        },
+        {
+          "wrong": "Although it was cold, but we went out.",
+          "right": "Although it was cold, we went out.",
+          "explanation": "Although уже выражает уступку; but не добавляется."
+        },
+        {
+          "wrong": "Because it rained, so we waited.",
+          "right": "Because it rained, we waited.",
+          "explanation": "Одна связь причины и результата не требует сразу because и so."
+        }
+      ],
+      "recap": [
+        "Вложенная часть имеет порядок подлежащее + глагол?",
+        "Для вопроса без wh-слова добавлено if/whether?",
+        "Связка выражает нужный смысл, а because/so и although/but не дублируются?"
+      ]
+    }
+  ],
+  "lessons": {
+    "last-row": {
+      "grammarKeys": ["g04"],
+      "vocabulary": ["Общественный транспорт и маршрут"]
+    },
+    "tea-at-the-door": {
+      "grammarKeys": ["g22"],
+      "vocabulary": ["Жильё, здание и аренда"]
+    },
+    "glove-on-a-saucer": {
+      "grammarKeys": ["g21"],
+      "vocabulary": ["Родственники и отношения между людьми"]
+    },
+    "three-minutes": {
+      "grammarKeys": ["g12"],
+      "vocabulary": ["Время, планы и организация дел"]
+    },
+    "letter-l": {
+      "grammarKeys": ["g31"],
+      "vocabulary": ["Общественный транспорт и маршрут"]
+    },
+    "busy-line": {
+      "grammarKeys": ["g01"],
+      "vocabulary": ["Личные сведения и жизненные события"]
+    },
+    "orange-peel": {
+      "grammarKeys": ["g21"],
+      "vocabulary": ["Мебель, вещи и домашние дела"]
+    },
+    "white-card": {
+      "grammarKeys": ["g16"],
+      "vocabulary": ["Почта, документы и оформление услуг"]
+    },
+    "quiet-shift": {
+      "grammarKeys": ["g30"],
+      "vocabulary": ["Дорога, автомобиль и велосипед"]
+    },
+    "blank-field": {
+      "grammarKeys": ["g23"],
+      "vocabulary": ["Пространство, положение и движение"]
+    },
+    "seat-by-the-stove": {
+      "grammarKeys": ["g20"],
+      "vocabulary": ["Продукты и питание"]
+    },
+    "toothless-key": {
+      "grammarKeys": ["g24"],
+      "vocabulary": ["Обращение с вещами и простые движения"]
+    },
+    "order-number": {
+      "grammarKeys": ["g01"],
+      "vocabulary": ["Путешествия, отпуск и гостиница"]
+    },
+    "chained-door": {
+      "grammarKeys": ["g19"],
+      "vocabulary": ["Жильё, здание и аренда"]
+    },
+    "small-word": {
+      "grammarKeys": ["g26"],
+      "vocabulary": ["Общение, мнение и договорённости"]
+    },
+    "episode-16": {
+      "grammarKeys": ["g03"],
+      "vocabulary": ["Личные сведения и жизненные события"]
+    },
+    "episode-17": {
+      "grammarKeys": ["g17"],
+      "vocabulary": ["Одежда, обувь и аксессуары"]
+    },
+    "episode-18": {
+      "grammarKeys": ["g22"],
+      "vocabulary": ["Продуктовый магазин, упаковки и хранение"]
+    },
+    "episode-19": {
+      "grammarKeys": ["g18"],
+      "vocabulary": ["Внешность, характер и поведение"]
+    },
+    "episode-20": {
+      "grammarKeys": ["g15"],
+      "vocabulary": ["Покупки, деньги и возврат товара"]
+    },
+    "episode-21": {
+      "grammarKeys": ["g10"],
+      "vocabulary": ["Общение, мнение и договорённости"]
+    },
+    "episode-22": {
+      "grammarKeys": ["g30"],
+      "vocabulary": ["Город, общественные места и услуги"]
+    },
+    "episode-23": {
+      "grammarKeys": ["g29"],
+      "vocabulary": ["Работа, профессии и поиск работы"]
+    },
+    "episode-24": {
+      "grammarKeys": ["g31"],
+      "vocabulary": ["На рабочем месте и личные финансы"]
+    },
+    "episode-25": {
+      "grammarKeys": ["g20"],
+      "vocabulary": ["Продукты и питание"]
+    },
+    "episode-26": {
+      "grammarKeys": ["g02"],
+      "vocabulary": ["Техника, интернет и связь"]
+    },
+    "episode-27": {
+      "grammarKeys": ["g13"],
+      "vocabulary": ["Техника, интернет и связь"]
+    },
+    "episode-28": {
+      "grammarKeys": ["g23"],
+      "vocabulary": ["Пространство, положение и движение"]
+    },
+    "episode-29": {
+      "grammarKeys": ["g25"],
+      "vocabulary": ["Одежда, обувь и аксессуары"]
+    },
+    "episode-30": {
+      "grammarKeys": ["g09"],
+      "vocabulary": ["Вежливые фразы и решение бытовых проблем"]
+    },
+    "episode-31d": {
+      "grammarKeys": ["g04"],
+      "vocabulary": ["Мебель, вещи и домашние дела"]
+    },
+    "episode-31f": {
+      "grammarKeys": ["g04"],
+      "vocabulary": ["Мебель, вещи и домашние дела"]
+    },
+    "episode-32d": {
+      "grammarKeys": ["g07"],
+      "vocabulary": ["На рабочем месте и личные финансы"]
+    },
+    "episode-32f": {
+      "grammarKeys": ["g07"],
+      "vocabulary": ["На рабочем месте и личные финансы"]
+    },
+    "episode-33d": {
+      "grammarKeys": ["g19"],
+      "vocabulary": ["Внешность, характер и поведение"]
+    },
+    "episode-33f": {
+      "grammarKeys": ["g19"],
+      "vocabulary": ["Внешность, характер и поведение"]
+    },
+    "episode-34d": {
+      "grammarKeys": ["g06"],
+      "vocabulary": ["Музыка, кино, книги и медиа"]
+    },
+    "episode-34f": {
+      "grammarKeys": ["g06"],
+      "vocabulary": ["Музыка, кино, книги и медиа"]
+    },
+    "episode-35d": {
+      "grammarKeys": ["g18"],
+      "vocabulary": ["Дорога, автомобиль и велосипед"]
+    },
+    "episode-35f": {
+      "grammarKeys": ["g18"],
+      "vocabulary": ["Дорога, автомобиль и велосипед"]
+    },
+    "episode-36d": {
+      "grammarKeys": ["g05"],
+      "vocabulary": ["Спорт, соревнования и движение"]
+    },
+    "episode-36f": {
+      "grammarKeys": ["g05"],
+      "vocabulary": ["Спорт, соревнования и движение"]
+    },
+    "episode-37d": {
+      "grammarKeys": ["g08"],
+      "vocabulary": ["Покупки, деньги и возврат товара"]
+    },
+    "episode-37f": {
+      "grammarKeys": ["g08"],
+      "vocabulary": ["Покупки, деньги и возврат товара"]
+    },
+    "episode-38d": {
+      "grammarKeys": ["g28"],
+      "vocabulary": ["Работа, профессии и поиск работы"]
+    },
+    "episode-38f": {
+      "grammarKeys": ["g28"],
+      "vocabulary": ["Работа, профессии и поиск работы"]
+    },
+    "episode-39d": {
+      "grammarKeys": ["g16"],
+      "vocabulary": ["Почта, документы и оформление услуг"]
+    },
+    "episode-39f": {
+      "grammarKeys": ["g16"],
+      "vocabulary": ["Почта, документы и оформление услуг"]
+    },
+    "episode-40d": {
+      "grammarKeys": ["g03"],
+      "vocabulary": ["Музыка, кино, книги и медиа"]
+    },
+    "episode-40f": {
+      "grammarKeys": ["g03"],
+      "vocabulary": ["Музыка, кино, книги и медиа"]
+    },
+    "episode-41d": {
+      "grammarKeys": ["g17"],
+      "vocabulary": ["Количество, мера и сравнение"]
+    },
+    "episode-41f": {
+      "grammarKeys": ["g17"],
+      "vocabulary": ["Количество, мера и сравнение"]
+    },
+    "episode-42d": {
+      "grammarKeys": ["g26"],
+      "vocabulary": ["Обращение с вещами и простые движения"]
+    },
+    "episode-42f": {
+      "grammarKeys": ["g26"],
+      "vocabulary": ["Обращение с вещами и простые движения"]
+    },
+    "episode-43d": {
+      "grammarKeys": ["g12"],
+      "vocabulary": ["Время, планы и организация дел"]
+    },
+    "episode-43f": {
+      "grammarKeys": ["g12"],
+      "vocabulary": ["Время, планы и организация дел"]
+    },
+    "episode-44d": {
+      "grammarKeys": ["g15"],
+      "vocabulary": ["Вежливые фразы и решение бытовых проблем"]
+    },
+    "episode-44f": {
+      "grammarKeys": ["g15"],
+      "vocabulary": ["Вежливые фразы и решение бытовых проблем"]
+    },
+    "episode-45d": {
+      "grammarKeys": ["g27"],
+      "vocabulary": ["Повторение: связь, направление и вежливые просьбы"]
+    },
+    "episode-45f": {
+      "grammarKeys": ["g27"],
+      "vocabulary": ["Повторение: связь, направление и вежливые просьбы"]
+    },
+    "episode-46": {
+      "grammarKeys": ["g14"],
+      "vocabulary": ["Тело, ощущения и физическая активность"]
+    },
+    "episode-47": {
+      "grammarKeys": ["g08"],
+      "vocabulary": ["Эмоции, настроение и реакции"]
+    },
+    "episode-48": {
+      "grammarKeys": ["g24"],
+      "vocabulary": ["Готовка, посуда и вкус"]
+    },
+    "episode-49": {
+      "grammarKeys": ["g01"],
+      "vocabulary": ["Эмоции, настроение и реакции"]
+    },
+    "episode-50": {
+      "grammarKeys": ["g13"],
+      "vocabulary": ["Учёба, школа и язык"]
+    },
+    "episode-51": {
+      "grammarKeys": ["g09"],
+      "vocabulary": ["Действия, изменения и повседневные процессы"]
+    },
+    "episode-52": {
+      "grammarKeys": ["g28"],
+      "vocabulary": ["Экзамен, задания и учебные действия"]
+    },
+    "episode-53": {
+      "grammarKeys": ["g02"],
+      "vocabulary": ["Тело, ощущения и физическая активность"]
+    },
+    "episode-54": {
+      "grammarKeys": ["g29"],
+      "vocabulary": ["Хобби, творчество и свободное время"]
+    },
+    "episode-55": {
+      "grammarKeys": ["g11"],
+      "vocabulary": ["Хобби, творчество и свободное время"]
+    },
+    "episode-56": {
+      "grammarKeys": ["g21"],
+      "vocabulary": ["Болезнь, врач и лечение"]
+    },
+    "episode-57": {
+      "grammarKeys": ["g32"],
+      "vocabulary": ["Качества, условия и абстрактные понятия"]
+    },
+    "episode-58": {
+      "grammarKeys": ["g20"],
+      "vocabulary": ["Количество, мера и сравнение"]
+    },
+    "episode-59": {
+      "grammarKeys": ["g25"],
+      "vocabulary": ["Внешний вид вещей и материалы"]
+    },
+    "episode-60": {
+      "grammarKeys": ["g10"],
+      "vocabulary": ["Болезнь, врач и лечение"]
+    },
+    "episode-61": {
+      "grammarKeys": ["g09"],
+      "vocabulary": ["Природа, местность и погода"]
+    },
+    "episode-62": {
+      "grammarKeys": ["g24"],
+      "vocabulary": ["Животные, растения и окружающая среда"]
+    },
+    "episode-63": {
+      "grammarKeys": ["g15"],
+      "vocabulary": ["Город, общественные места и услуги"]
+    },
+    "episode-64": {
+      "grammarKeys": ["g07"],
+      "vocabulary": ["Родственники и отношения между людьми"]
+    },
+    "episode-65": {
+      "grammarKeys": ["g19"],
+      "vocabulary": ["Внешний вид вещей и материалы"]
+    },
+    "episode-66": {
+      "grammarKeys": ["g11"],
+      "vocabulary": ["Путешествия, отпуск и гостиница"]
+    },
+    "episode-67": {
+      "grammarKeys": ["g29"],
+      "vocabulary": ["Экзамен, задания и учебные действия"]
+    },
+    "episode-68": {
+      "grammarKeys": ["g27"],
+      "vocabulary": ["Природа, местность и погода"]
+    },
+    "episode-69": {
+      "grammarKeys": ["g32"],
+      "vocabulary": ["Связки, частотные наречия и уточнение смысла"]
+    },
+    "episode-70": {
+      "grammarKeys": ["g16"],
+      "vocabulary": ["Действия, изменения и повседневные процессы"]
+    },
+    "episode-71": {
+      "grammarKeys": ["g30"],
+      "vocabulary": ["Кафе, ресторан и заказ еды"]
+    },
+    "episode-72": {
+      "grammarKeys": ["g27"],
+      "vocabulary": ["Животные, растения и окружающая среда"]
+    },
+    "episode-73": {
+      "grammarKeys": ["g03"],
+      "vocabulary": ["Повторение: местность, движение и физические действия"]
+    },
+    "episode-74": {
+      "grammarKeys": ["g10"],
+      "vocabulary": ["Кафе, ресторан и заказ еды"]
+    },
+    "episode-75": {
+      "grammarKeys": ["g26"],
+      "vocabulary": ["Оценка качества и образ действия"]
+    },
+    "episode-76": {
+      "grammarKeys": ["g05"],
+      "vocabulary": ["Учёба, школа и язык"]
+    },
+    "episode-77": {
+      "grammarKeys": ["g29"],
+      "vocabulary": ["Связки, частотные наречия и уточнение смысла"]
+    },
+    "episode-78": {
+      "grammarKeys": ["g06"],
+      "vocabulary": ["Праздники, события и приглашения"]
+    },
+    "episode-79": {
+      "grammarKeys": ["g25"],
+      "vocabulary": ["Праздники, события и приглашения"]
+    },
+    "episode-80": {
+      "grammarKeys": ["g28"],
+      "vocabulary": ["Качества, условия и абстрактные понятия"]
+    },
+    "episode-81": {
+      "grammarKeys": ["g16"],
+      "vocabulary": ["Повторение: общение, приглашение и согласие"]
+    },
+    "episode-82": {
+      "grammarKeys": ["g20"],
+      "vocabulary": ["Продуктовый магазин, упаковки и хранение"]
+    },
+    "episode-83": {
+      "grammarKeys": ["g17"],
+      "vocabulary": ["Спорт, соревнования и движение"]
+    },
+    "episode-84": {
+      "grammarKeys": ["g32"],
+      "vocabulary": ["Повторение: документы, уточнение смысла и личная ответственность"]
+    },
+    "episode-85": {
+      "grammarKeys": ["g27"],
+      "vocabulary": ["Повторение: документы, передача вещей и договорённости"]
+    },
+    "episode-86": {
+      "grammarKeys": ["g22"],
+      "vocabulary": ["Готовка, посуда и вкус"]
+    },
+    "episode-87": {
+      "grammarKeys": ["g01"],
+      "vocabulary": ["Повторение: семья, память и личные вещи"]
+    },
+    "episode-88": {
+      "grammarKeys": ["g31"],
+      "vocabulary": ["Оценка качества и образ действия"]
+    },
+    "episode-89": {
+      "grammarKeys": ["g11"],
+      "vocabulary": ["Повторение: время, планы и общение"]
+    },
+    "episode-90": {
+      "grammarKeys": ["g32"],
+      "vocabulary": ["Повторение: связь, наблюдения и выражение сомнения"]
+    }
+  }
+}

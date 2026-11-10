@@ -1,7 +1,7 @@
-import type { ContentPackage } from './content';
+import type { ContentPackage, ContentPackageV1 } from './content';
 import type { GameState } from './contracts';
 
-export const technicalFixture: ContentPackage = {
+export const technicalFixture: ContentPackageV1 = {
   schemaVersion: 1,
   manifest: {
     id: 'langplot.technical.en',
@@ -69,7 +69,7 @@ export const technicalFixture: ContentPackage = {
     },
   ],
 };
-export function fixtureFor(language: 'en' | 'de'): ContentPackage {
+export function fixtureFor(language: 'en' | 'de'): ContentPackageV1 {
   return {
     ...technicalFixture,
     manifest: { ...technicalFixture.manifest, id: `langplot.technical.${language}`, language },

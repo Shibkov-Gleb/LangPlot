@@ -7,12 +7,23 @@ import { useProfile } from '@/components/workspace';
 import { api, errorText } from '@/lib/api';
 export default function ProgressPage() {
   const { user } = useProfile();
-  const [attempts, setAttempts] = useState<number | null>(null);
+  const [progress, setProgress] = useState<ReturnType<typeof ProgressResponse.parse> | null>(null);
   const [error, setError] = useState('');
   useEffect(() => {
+    let live = true;
     api(`/progress?language=${user.language}`, ProgressResponse)
-      .then((r) => setAttempts(r.technicalAttempts))
-      .catch((e) => setError(errorText(e)));
+      .then((r) => {
+        if (live) {
+          setProgress(r);
+          setError('');
+        }
+      })
+      .catch((e) => {
+        if (live) setError(errorText(e));
+      });
+    return () => {
+      live = false;
+    };
   }, [user.language]);
   return (
     <>
@@ -32,27 +43,45 @@ export default function ProgressPage() {
           {error}
         </p>
       )}
-      <div className="empty-panel">
-        <span className="empty-icon">
-          <Sprout size={42} />
-        </span>
-        <span className="eyebrow muted">ВПЕРЕДИ МНОГО ОТКРЫТИЙ</span>
-        <h2>Ваш путь только начинается.</h2>
-        <p>
-          После первых учебных глав здесь появятся освоенные темы,
-          <br />
-          словарный запас и рекомендации для практики.
-        </p>
-        <Link className="button secondary" href="/dashboard">
-          К языковым мирам <ArrowUpRight size={18} />
-        </Link>
-      </div>
+      {progress?.skills.length ? (
+        <section className="info-row">
+          <div>
+            <h2>Практика урока</h2>
+            <ul>
+              {progress.skills.map((s) => (
+                <li key={s.skillId}>
+                  {s.description ?? s.skillId} — верных ответов {s.successes} из {s.attempts}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      ) : (
+        <div className="empty-panel">
+          <span className="empty-icon">
+            <Sprout size={42} />
+          </span>
+          <span className="eyebrow muted">ВПЕРЕДИ МНОГО ОТКРЫТИЙ</span>
+          <h2>Ваш путь только начинается.</h2>
+          <p>
+            После первых учебных глав здесь появятся освоенные темы,
+            <br />
+            словарный запас и рекомендации для практики.
+          </p>
+          <Link className="button secondary" href="/dashboard">
+            К языковым мирам <ArrowUpRight size={18} />
+          </Link>
+        </div>
+      )}
       <div className="info-row">
         <ChartNoAxesCombined size={22} />
         <p>
           Профиль знаний будет общим для всех частей одного языка.
           <br />
-          <span>Технические сообщения: {attempts ?? '…'}. Они не считаются учебной оценкой.</span>
+          <span>
+            Технические сообщения: {progress?.technicalAttempts ?? '…'}. Они не считаются учебной
+            оценкой.
+          </span>
         </p>
       </div>
     </>

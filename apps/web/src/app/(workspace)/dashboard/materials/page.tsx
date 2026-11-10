@@ -1,46 +1,78 @@
+'use client';
 import Link from 'next/link';
-import { BookOpen, ArrowUpRight, Headphones, FileText, Bookmark } from 'lucide-react';
+import { ArrowRight, BookOpen, ChevronRight } from 'lucide-react';
+import { MaterialsResponse, languageNames } from '@langplot/shared';
+import { useProfile } from '@/components/workspace';
+import { coursePath, theoryPath } from '@/lib/course-paths';
+import { useStudyResource } from '@/lib/use-study-resource';
+
 export default function MaterialsPage() {
+  const { user, localMode } = useProfile();
+  const { data, error, reload } = useStudyResource('/materials', MaterialsResponse);
+  const groups = new Map<string, MaterialsResponse['lessons']>();
+  data?.lessons.forEach((lesson) => {
+    const path = coursePath(lesson.language, lesson.level);
+    if (!groups.has(path)) groups.set(path, []);
+    groups.get(path)!.push(lesson);
+  });
   return (
-    <>
-      <div className="page-title">
-        <div>
-          <div className="eyebrow muted">ВСЁ ВАЖНОЕ ПОД РУКОЙ</div>
-          <h1>
-            Ваша коллекция<span>.</span>
-          </h1>
-          <p>Слова, смыслы и правила, которые хочется сохранить.</p>
+    <div className="study-page">
+      <header className="theory-heading">
+        <h1>Мои материалы</h1>
+        <p>Слова, примеры и грамматические правила из пройденных уроков.</p>
+      </header>
+      {localMode && error ? (
+        <div className="study-state">
+          <p role="alert">{error}</p>
+          <button className="button secondary" onClick={reload}>
+            Повторить
+          </button>
         </div>
-      </div>
-      <div className="empty-panel">
-        <span className="empty-icon">
-          <BookOpen size={42} />
-        </span>
-        <span className="eyebrow muted">МЕСТО ДЛЯ НОВЫХ ЗНАНИЙ</span>
-        <h2>Пока здесь чистая страница.</h2>
-        <p>
-          Материалы появятся вместе с учебными историями.
-          <br />
-          Их можно будет повторять здесь и скачивать для занятий вне игры.
-        </p>
-        <Link href="/dashboard" className="button secondary">
-          Выбрать будущий мир <ArrowUpRight size={18} />
-        </Link>
-      </div>
-      <div className="material-types">
-        {[
-          { Icon: Bookmark, name: 'Слова в контексте', text: 'Лексика из знакомых сцен' },
-          { Icon: FileText, name: 'Грамматика', text: 'Понятные объяснения и примеры' },
-          { Icon: Headphones, name: 'Диалоги', text: 'Реплики для повторения' },
-        ].map(({ Icon, name, text }) => (
-          <div key={name}>
-            <Icon size={20} />
-            <h3>{name}</h3>
-            <p>{text}</p>
-            <span>Готовится</span>
-          </div>
-        ))}
-      </div>
-    </>
+      ) : localMode && !data ? (
+        <p role="status">Открываем материалы…</p>
+      ) : !groups.size ? (
+        <div className="study-state">
+          <span className="empty-icon">
+            <BookOpen size={36} />
+          </span>
+          <h2>Первый урок откроет вашу коллекцию</h2>
+          <p>Когда вы завершите урок, здесь появится вся его лексика и грамматика.</p>
+          <Link
+            className="button secondary"
+            href={localMode ? coursePath(user.language, user.level) : '/dashboard'}
+          >
+            К урокам <ArrowRight size={16} />
+          </Link>
+        </div>
+      ) : (
+        Array.from(groups, ([path, lessons]) => {
+          const first = lessons[0]!;
+          return (
+            <section className="material-course" key={path}>
+              <span className="study-kicker">
+                {languageNames[first.language]} · {first.level}
+              </span>
+              <h2>
+                <Link href={path}>{first.title}</Link>
+              </h2>
+              <ol className="material-links">
+                {lessons.map((l) => (
+                  <li key={l.slug}>
+                    <Link href={theoryPath(l.slug)}>
+                      <span className="lesson-num">{String(l.number).padStart(2, '0')}</span>
+                      <span>
+                        <strong>{l.lessonTitle}</strong>
+                        <small>Лексика и грамматика</small>
+                      </span>
+                      <ChevronRight size={18} />
+                    </Link>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          );
+        })
+      )}
+    </div>
   );
 }

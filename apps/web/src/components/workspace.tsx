@@ -7,19 +7,18 @@ import {
   Compass,
   ChartNoAxesCombined,
   Settings2,
-  FlaskConical,
+  UsersRound,
   LogOut,
   LoaderCircle,
   ArrowUpRight,
 } from 'lucide-react';
-import { OkResponse, Profile, SessionResponse } from '@langplot/shared';
+import { OkResponse, Profile, SessionResponse, isStaff, roleNames } from '@langplot/shared';
 import { api, errorText } from '@/lib/api';
 import { studyReturnPath } from '@/lib/course-paths';
 import { Brand } from './brand';
 const Context = createContext<{
   user: Profile;
   setUser: (user: Profile) => void;
-  localMode: boolean;
 } | null>(null);
 export function useProfile() {
   const value = useContext(Context);
@@ -34,7 +33,6 @@ const nav = [
 ];
 export function Workspace({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<Profile | null>(null);
-  const [localMode, setLocalMode] = useState(false);
   const [error, setError] = useState('');
   const [logoutPending, setLogoutPending] = useState(false);
   const pathname = usePathname();
@@ -51,6 +49,7 @@ export function Workspace({ children }: { children: React.ReactNode }) {
     try {
       const result = await api('/session', SessionResponse);
       if (!result.user) {
+        setUser(null);
         const target = studyReturnPath(pathname);
         router.replace(
           pathname === '/play/last-row'
@@ -62,7 +61,6 @@ export function Workspace({ children }: { children: React.ReactNode }) {
         return;
       }
       setUser(result.user);
-      setLocalMode(result.localMode);
     } catch (e) {
       setError(errorText(e));
     }
@@ -109,7 +107,7 @@ export function Workspace({ children }: { children: React.ReactNode }) {
       </main>
     );
   return (
-    <Context.Provider value={{ user, setUser, localMode }}>
+    <Context.Provider value={{ user, setUser }}>
       <div
         className={`workspace ${gamePlayer ? 'workspace-game' : ''} ${lessonPlayer ? 'workspace-lesson' : ''}`}
       >
@@ -135,39 +133,34 @@ export function Workspace({ children }: { children: React.ReactNode }) {
             ))}
           </nav>
           <div className="sidebar-bottom">
-            {localMode && (
-              <Link
-                href="/studio"
-                className={pathname === '/studio' ? 'studio-link active' : 'studio-link'}
-              >
-                <FlaskConical size={17} /> Студия контента <ArrowUpRight size={14} />
+            {isStaff(user.role) && (
+              <Link href="/admin" className="studio-link" title="Администрирование">
+                <UsersRound size={18} /> Администрирование <ArrowUpRight size={14} />
               </Link>
             )}
-            <div className="sidebar-note">
-              <span className="live-dot" />
-              <div>
-                Начало большой истории<p>Локальная демоверсия</p>
-              </div>
-            </div>
           </div>
         </aside>
         <div className="workspace-main">
           <header className="workspace-header">
             <span className="breadcrumb">
-              {pathname === '/studio'
-                ? 'Студия контента'
-                : gamePlayer
-                  ? 'Игровое пространство'
-                  : 'Личный кабинет'}{' '}
-              <span>/ {nav.find((x) => x.href === activeNav)?.text ?? 'Локальная версия'}</span>
+              {pathname.startsWith('/admin')
+                ? 'Администрирование'
+                : pathname === '/studio'
+                  ? 'Студия контента'
+                  : gamePlayer
+                    ? 'Игровое пространство'
+                    : 'Личный кабинет'}{' '}
+              <span>/ {nav.find((x) => x.href === activeNav)?.text ?? 'LangPlot'}</span>
             </span>
             <div className="workspace-account">
-              {localMode && (
-                <Link className="mobile-studio-link" href="/studio" aria-label="Открыть студию">
-                  <FlaskConical size={17} />
+              {isStaff(user.role) && (
+                <Link className="mobile-studio-link" href="/admin" aria-label="Администрирование">
+                  <UsersRound size={17} />
                 </Link>
               )}
-              <span className="demo-badge">ДЕМО</span>
+              <Link href="/dashboard/settings" className="account-role">
+                {roleNames[user.role]}
+              </Link>
               <span className="avatar">{user.name[0]?.toUpperCase()}</span>
               <span className="account-name">{user.name}</span>
               <button aria-label="Выйти" title="Выйти" onClick={logout} disabled={logoutPending}>
@@ -181,7 +174,18 @@ export function Workspace({ children }: { children: React.ReactNode }) {
             </p>
           )}
           <main id="main" className={gamePlayer ? 'player-main' : 'dashboard-content'}>
-            {children}
+            {(pathname.startsWith('/admin') || pathname.startsWith('/studio')) &&
+            !isStaff(user.role) ? (
+              <section className="study-state">
+                <h1>Доступ ограничен</h1>
+                <p>Раздел доступен администраторам.</p>
+                <Link className="button secondary" href="/dashboard">
+                  Мои миры
+                </Link>
+              </section>
+            ) : (
+              children
+            )}
           </main>
         </div>
       </div>

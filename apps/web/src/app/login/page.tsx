@@ -1,52 +1,96 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ArrowLeft, ArrowUpRight, LoaderCircle, Compass, ShieldCheck } from 'lucide-react';
-import { ProfileResponse } from '@langplot/shared';
+import { ArrowLeft, ArrowRight, LoaderCircle } from 'lucide-react';
+import { ProfileResponse, SessionResponse } from '@langplot/shared';
 import { Brand } from '@/components/brand';
 import { api, body, errorText } from '@/lib/api';
 import { studyReturnPath } from '@/lib/course-paths';
+function destination() {
+  const query = new URLSearchParams(window.location.search);
+  return (
+    studyReturnPath(query.get('next')) ??
+    (query.get('lesson') === 'last-row' ? '/play/last-row' : '/dashboard')
+  );
+}
 export default function LoginPage() {
-  const [pending, setPending] = useState(false);
-  const [error, setError] = useState('');
   const router = useRouter();
-  async function enter() {
-    setPending(true);
+  const [mode, setMode] = useState<'login' | 'register' | 'owner'>('login');
+  const [invite, setInvite] = useState('');
+  const [ready, setReady] = useState(false),
+    [pending, setPending] = useState(false),
+    [error, setError] = useState('');
+  useEffect(() => {
+    const token = new URLSearchParams(window.location.hash.slice(1)).get('owner');
+    if (token) {
+      setInvite(token);
+      setMode('owner');
+      setReady(true);
+      return;
+    }
+    let live = true;
+    api('/session', SessionResponse)
+      .then((session) => {
+        if (!live) return;
+        if (session.user) router.replace(destination());
+        else setReady(true);
+      })
+      .catch(() => {
+        if (live) setReady(true);
+      });
+    return () => {
+      live = false;
+    };
+  }, [router]);
+  async function submit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (pending) return;
+    const fields = new FormData(event.currentTarget);
     setError('');
+    setPending(true);
     try {
-      await api('/session/demo', ProfileResponse, { method: 'POST', body: '{}' });
-      const query = new URLSearchParams(window.location.search);
-      const lesson = query.get('lesson') === 'last-row';
-      const target = studyReturnPath(query.get('next'));
-      const course = target?.startsWith('/courses/') ? target.split('/') : undefined;
-      const language = lesson ? 'en' : (course?.[2] ?? query.get('language'));
+      const credentials = { email: fields.get('email'), password: fields.get('password') };
+      const input =
+        mode === 'login'
+          ? credentials
+          : {
+              ...credentials,
+              name: fields.get('name'),
+              ...(mode === 'owner' ? { token: invite } : {}),
+            };
+      await api('/session/' + mode, ProfileResponse, { method: 'POST', body: body(input) });
+      const target = destination(),
+        course = target.match(/^\/courses\/(en|de)\/(a1|a2|b1|b2|c1|c2)$/);
+      const language = course?.[1] ?? new URLSearchParams(window.location.search).get('language');
       if (language === 'en' || language === 'de')
         await api('/profile/selection', ProfileResponse, {
           method: 'PUT',
-          body: body({ language, level: lesson ? 'A2' : (course?.[3]?.toUpperCase() ?? 'A1') }),
+          body: body({
+            language,
+            level: course?.[2]?.toUpperCase() ?? (language === 'en' ? 'A2' : 'A1'),
+          }),
         });
-      router.push(target ?? (lesson ? '/play/last-row' : '/dashboard'));
+      router.replace(mode === 'owner' ? '/admin' : target);
     } catch (e) {
       setError(errorText(e));
       setPending(false);
     }
   }
+  const register = mode !== 'login';
   return (
     <main id="main" className="login-page">
       <div className="login-image">
         <Image
-          src="/images/english-world.webp"
-          alt="Вечерняя станция в мире LangPlot"
+          src="/assets/last-row/arrival.webp"
+          alt="Автобус у освещённой остановки в горах Олдер-Свитч"
           fill
           sizes="55vw"
         />
         <div />
         <span>
-          У каждого языка
-          <br />
-          своя история.
+          Последняя перекличка<small>Английский · A2</small>
         </span>
       </div>
       <div className="login-panel">
@@ -54,47 +98,68 @@ export default function LoginPage() {
         <Link className="back-link" href="/">
           <ArrowLeft size={16} /> На главную
         </Link>
-        <div className="login-content">
-          <span className="icon-tile">
-            <Compass size={27} />
-          </span>
-          <div className="eyebrow muted">ПЕРВОЕ ЗНАКОМСТВО</div>
+        <div className="login-content account-form">
           <h1>
-            Добро пожаловать
-            <br />в LangPlot.
+            {mode === 'owner'
+              ? 'Главный администратор'
+              : register
+                ? 'Создать аккаунт'
+                : 'Вход в LangPlot'}
           </h1>
           <p>
-            Загляните в свои будущие языковые миры. Выберите язык, найдите свой уровень и
-            познакомьтесь с игровым пространством.
+            {mode === 'owner'
+              ? 'Задайте имя, адрес и пароль для управления сервисом.'
+              : register
+                ? 'Ваш аккаунт сохранит выборы, пройденные главы и учебные материалы.'
+                : 'Войдите, чтобы продолжить свою историю.'}
           </p>
-          <button className="button primary full" onClick={enter} disabled={pending}>
-            {pending ? (
-              <>
-                <LoaderCircle className="spin" size={18} /> Открываем кабинет…
-              </>
-            ) : (
-              <>
-                Войти в демо-профиль <ArrowUpRight size={20} />
-              </>
+          <form onSubmit={submit}>
+            {register && (
+              <label className="field">
+                Имя
+                <input name="name" autoComplete="nickname" maxLength={60} required />
+              </label>
             )}
-          </button>
-          {error && (
-            <p role="alert" className="error-box">
-              {error}
-            </p>
+            <label className="field">
+              Электронная почта
+              <input name="email" type="email" autoComplete="email" maxLength={254} required />
+            </label>
+            <label className="field">
+              Пароль
+              <input
+                name="password"
+                type="password"
+                autoComplete={register ? 'new-password' : 'current-password'}
+                minLength={register ? 10 : 1}
+                maxLength={128}
+                required
+              />
+              {register && <small>От 10 символов</small>}
+            </label>
+            {error && (
+              <p role="alert" className="error-box">
+                {error}
+              </p>
+            )}
+            <button className="button primary full" disabled={!ready || pending}>
+              {pending ? <LoaderCircle className="spin" size={18} /> : <ArrowRight size={18} />}{' '}
+              {register ? 'Зарегистрироваться' : 'Войти'}
+            </button>
+          </form>
+          {mode !== 'owner' && (
+            <button
+              type="button"
+              className="auth-switch"
+              disabled={pending}
+              onClick={() => {
+                setError('');
+                setMode(register ? 'login' : 'register');
+              }}
+            >
+              {register ? 'Уже есть аккаунт? Войти' : 'Создать аккаунт'}
+            </button>
           )}
-          <div className="demo-note">
-            <ShieldCheck size={19} />
-            <p>
-              Локальная демоверсия
-              <br />
-              <span>
-                Без регистрации. Один общий тестовый профиль на этом сервере. Курсы ещё готовятся.
-              </span>
-            </p>
-          </div>
         </div>
-        <span className="small muted-text">LangPlot · Пространство для новых историй</span>
       </div>
     </main>
   );

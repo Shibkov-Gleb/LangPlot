@@ -107,7 +107,9 @@ export function CoursePage({ language, level }: { language: string; level: strin
           <header
             className={
               'course-cover ' +
-              (course.language === 'en' && course.level === 'A2' ? 'course-cover-alder' : '')
+              (course.language === 'en' && course.level === 'A2'
+                ? 'course-cover-alder'
+                : 'course-planned')
             }
           >
             <div className="course-cover-copy">
@@ -133,7 +135,7 @@ export function CoursePage({ language, level }: { language: string; level: strin
           {course.lessons.length === 0 ? (
             <div className="study-state">
               <BookOpen size={30} />
-              <h2>Уроки готовятся</h2>
+              <h2>В разработке</h2>
               <p>
                 Здесь появятся главы курса «{languageNames[course.language]} · {course.level}».
               </p>

@@ -22,19 +22,19 @@ const faqs = [
   ],
   [
     'Можно ли уже начать учиться?',
-    'Сейчас доступна локальная демоверсия интерфейса. В ней можно выбрать язык и уровень, посмотреть кабинет и технический игровой экран. Полноценные истории и курсы ещё готовятся.',
+    'Да. Откройте английский A2 и начните «Последнюю перекличку». После урока в кабинете появятся его слова и грамматика.',
   ],
   [
     'Какие языки и уровни планируются?',
-    'Начинаем с английского и немецкого для русскоязычной аудитории. Каждый язык — отдельный мир, а уровни от A1 до C2 — его будущие части. Состав и даты выхода курсов пока не объявлены.',
+    'Начинаем с английского и немецкого для русскоязычной аудитории. Каждый язык — отдельный мир, а уровни от A1 до C2 — его будущие части. Сейчас открыт английский A2. Остальные уровни английского и все уровни немецкого в разработке.',
   ],
   [
     'Как будет работать персонализация?',
-    'Планируем учитывать учебные попытки отдельно от сюжетных выборов. Темы, которые требуют практики, будут возвращаться в подходящих сценах. В текущей демоверсии учебная оценка ещё не проводится.',
+    'В кабинете сохраняются результаты практики. В пройденных уроках можно вернуться к словам, правилам и заданиям на повторение.',
   ],
   [
     'Нужно ли что-то устанавливать?',
-    'Играть планируется прямо в браузере на компьютере или телефоне. Сейчас проект работает локально; демоверсия не требует оплаты или подключения внешних моделей.',
+    'Игра открывается прямо в браузере. Создайте аккаунт, чтобы сохранять прохождение.',
   ],
 ];
 export default function HomePage() {
@@ -56,8 +56,8 @@ export default function HomePage() {
         <section className="hero">
           <div className="hero-art">
             <Image
-              src="/images/english-world.webp"
-              alt="Вечерняя станция: тёплый свет фонарей, мокрые рельсы и девушка с телефоном"
+              src="/assets/last-row/arrival.webp"
+              alt="Автобус у освещённой остановки в горах Олдер-Свитч"
               fill
               preload
               sizes="100vw"
@@ -84,7 +84,7 @@ export default function HomePage() {
             </Link>
             <div className="hero-note">
               <span>EN / DE</span>
-              <i /> Браузерная игра · Проект в разработке
+              <i /> Открыт английский A2
             </div>
           </div>
           <div className="hero-caption">
@@ -179,7 +179,6 @@ export default function HomePage() {
                   <span className="keycap">B</span> Продолжить разговор <Check size={15} />
                 </span>
               </div>
-              <small>Иллюстрация будущей механики</small>
             </article>
             <article className="feature-phone" data-reveal>
               <div className="card-topline">
@@ -258,7 +257,9 @@ export default function HomePage() {
                 <br />
                 Каждый уровень — новая часть пути.
                 <br />
-                <span className="small muted-text">Направления готовятся к запуску.</span>
+                <span className="small muted-text">
+                  Первый курс — «Последняя перекличка», английский A2.
+                </span>
               </p>
             </div>
             <div className="world-grid">
@@ -266,47 +267,62 @@ export default function HomePage() {
                 {
                   code: 'EN',
                   name: 'Английский',
-                  sub: 'Откройте больше, чем новый язык.',
-                  image: 'english-world',
+                  sub: 'Последняя перекличка',
+                  image: '/assets/last-row/arrival.webp',
                   lang: 'en',
                 },
                 {
                   code: 'DE',
                   name: 'Немецкий',
-                  sub: 'У каждого открытия свой характер.',
-                  image: 'german-world',
+                  sub: 'Готовим первые истории',
+                  image: '/images/german-world.webp',
                   lang: 'de',
                 },
-              ].map((world) => (
-                <Link
-                  href={`/login?language=${world.lang}`}
-                  className="world-card"
-                  key={world.code}
-                  data-reveal
-                >
-                  <Image
-                    src={`/images/${world.image}.webp`}
-                    alt=""
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                  <div className="world-overlay" />
-                  <div className="world-top">
-                    <span className="world-code">{world.code}</span>
-                    <span className="tag">В РАЗРАБОТКЕ</span>
-                  </div>
-                  <div className="world-bottom">
-                    <div>
-                      <span className="world-levels">A1 — C2 · БУДУЩИЕ ЧАСТИ</span>
-                      <h3>{world.name}</h3>
-                      <p>{world.sub}</p>
+              ].map((world) => {
+                const available = world.lang === 'en';
+                const card = (
+                  <>
+                    <Image src={world.image} alt="" fill sizes="(max-width: 768px) 100vw, 50vw" />
+                    <div className="world-overlay" />
+                    <div className="world-top">
+                      <span className="world-code">{world.code}</span>
+                      <span className="tag">
+                        {world.lang === 'en' ? 'A2 · Доступен' : 'В разработке'}
+                      </span>
                     </div>
-                    <span className="round-arrow">
-                      <ArrowUpRight size={24} />
-                    </span>
-                  </div>
-                </Link>
-              ))}
+                    <div className="world-bottom">
+                      <div>
+                        <span className="world-levels">
+                          {world.lang === 'en'
+                            ? 'A1 и B1–C2 в разработке'
+                            : 'Все уровни A1–C2 в разработке'}
+                        </span>
+                        <h3>{world.name}</h3>
+                        <p>{world.sub}</p>
+                      </div>
+                      {available && (
+                        <span className="round-arrow">
+                          <ArrowUpRight size={24} />
+                        </span>
+                      )}
+                    </div>
+                  </>
+                );
+                return available ? (
+                  <Link
+                    href="/courses/en/a2"
+                    className="world-card world-live"
+                    key={world.code}
+                    data-reveal
+                  >
+                    {card}
+                  </Link>
+                ) : (
+                  <article className="world-card in-development" key={world.code} data-reveal>
+                    {card}
+                  </article>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -382,13 +398,13 @@ export default function HomePage() {
           <Link className="button primary" href="/login">
             Открыть свои миры <ArrowUpRight size={20} />
           </Link>
-          <p>Познакомьтесь с демоверсией LangPlot.</p>
+          <p>Начните с английского A2.</p>
         </section>
       </main>
       <footer className="wrap footer">
         <Brand />
         <span>Языки. Истории. Вы.</span>
-        <span>© {new Date().getFullYear()} LangPlot · Локальная демоверсия</span>
+        <span>© {new Date().getFullYear()} LangPlot</span>
         <a href="#main" aria-label="В начало страницы">
           <ArrowUpRight size={20} />
         </a>

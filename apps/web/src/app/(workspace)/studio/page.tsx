@@ -22,7 +22,7 @@ import {
   languageNames,
 } from '@langplot/shared';
 import { api, body, errorText } from '@/lib/api';
-import { useProfile } from '@/components/workspace';
+import Link from 'next/link';
 const stages = [
   ['brief', 'Задание'],
   ['structure', 'Структура'],
@@ -31,7 +31,6 @@ const stages = [
   ['export', 'Экспорт'],
 ];
 export default function StudioPage() {
-  const { localMode } = useProfile();
   const [brief, setBrief] = useState('');
   const [language, setLanguage] = useState<'en' | 'de'>('en');
   const [level, setLevel] = useState('A1');
@@ -56,12 +55,11 @@ export default function StudioPage() {
     }
   }, []);
   useEffect(() => {
-    if (!localMode) return;
     void load();
     api('/studio/integrations', IntegrationsResponse)
       .then((r) => setIntegrations(r.integrations))
       .catch((e) => setError(errorText(e)));
-  }, [load, localMode]);
+  }, [load]);
   const active = jobs.some((j) => j.status === 'queued' || j.status === 'running');
   useEffect(() => {
     if (!active) return;
@@ -144,18 +142,13 @@ export default function StudioPage() {
       setBusy(false);
     }
   }
-  if (!localMode)
-    return (
-      <div className="empty-panel">
-        <h1>Студия недоступна.</h1>
-        <p>Этот раздел открывается только в локальном режиме.</p>
-      </div>
-    );
   return (
     <>
       <div className="page-title">
         <div>
-          <div className="eyebrow muted">LANGPLOT / РАБОЧЕЕ ПРОСТРАНСТВО</div>
+          <Link className="study-back" href="/admin">
+            ← Администрирование
+          </Link>
           <h1>
             Студия контента<span>.</span>
           </h1>

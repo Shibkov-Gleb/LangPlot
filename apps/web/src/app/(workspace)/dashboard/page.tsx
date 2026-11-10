@@ -3,19 +3,13 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ArrowUpRight, Check, Gamepad2, Layers3, ChevronRight, Sparkles } from 'lucide-react';
-import {
-  CatalogResponse,
-  ProfileResponse,
-  levels,
-  levelDescriptions,
-  languageNames,
-} from '@langplot/shared';
+import { Check, Layers3, ChevronRight } from 'lucide-react';
+import { CatalogResponse, ProfileResponse, levels, languageNames } from '@langplot/shared';
 import { useProfile } from '@/components/workspace';
 import { coursePath } from '@/lib/course-paths';
 import { api, body, errorText } from '@/lib/api';
 export default function Dashboard() {
-  const { user, setUser, localMode } = useProfile();
+  const { user, setUser } = useProfile();
   const router = useRouter();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
@@ -33,9 +27,11 @@ export default function Dashboard() {
       live = false;
     };
   }, []);
-  const selectedCourse = catalog?.worlds
-    .find((w) => w.language === user.language)
-    ?.levels.find((l) => l.level === user.level)?.course;
+  const activeWorld = catalog?.worlds.find((world) => world.language === user.language);
+  const courseFor = (level: typeof user.level) =>
+    activeWorld?.levels.find((course) => course.level === level);
+  const available = (level: typeof user.level) => courseFor(level)?.status === 'available';
+  const selectedCourse = courseFor(user.level);
   async function select(language: 'en' | 'de', level = user.level, openCourse = false) {
     setBusy(true);
     setError('');
@@ -60,7 +56,7 @@ export default function Dashboard() {
           <h1>
             Ваши языковые миры<span>.</span>
           </h1>
-          <p>Выберите язык и уровень. Остальное начинается с любопытства.</p>
+          <p>Выберите язык и уровень, чтобы открыть историю.</p>
         </div>
         <span className="outlined-icon">
           <CompassIcon />
@@ -82,13 +78,15 @@ export default function Dashboard() {
           {(['en', 'de'] as const).map((language) => (
             <button
               key={language}
-              onClick={() => select(language)}
+              onClick={() => select(language, language === 'en' ? 'A2' : user.level)}
               disabled={busy}
               aria-pressed={user.language === language}
-              className={`dashboard-world ${user.language === language ? 'selected' : ''}`}
+              className={`dashboard-world ${language === 'de' ? 'in-development' : 'world-live'} ${user.language === language ? 'selected' : ''}`}
             >
               <Image
-                src={`/images/${language === 'en' ? 'english' : 'german'}-world.webp`}
+                src={
+                  language === 'en' ? '/assets/last-row/arrival.webp' : '/images/german-world.webp'
+                }
                 alt=""
                 fill
                 loading="eager"
@@ -104,14 +102,15 @@ export default function Dashboard() {
               <div className="dashboard-world-bottom">
                 <div>
                   <h3>{languageNames[language]}</h3>
-                  <p>{language === 'en' ? 'Мир новых возможностей' : 'Свой взгляд на привычное'}</p>
+                  <p>{language === 'en' ? 'Последняя перекличка' : 'Готовим первые главы'}</p>
                 </div>
                 <span className="tag">
                   {catalog?.worlds
                     .find((w) => w.language === language)
                     ?.levels.filter((l) => l.status === 'available')
                     .map((l) => l.level)
-                    .join(' · ') || 'ГОТОВИТСЯ'}
+                    .map((level) => level + ' · Доступен')
+                    .join(' · ') || 'В разработке'}
                 </span>
               </div>
             </button>
@@ -131,17 +130,24 @@ export default function Dashboard() {
               key={level}
               aria-pressed={user.level === level}
               disabled={busy}
-              onClick={() => select(user.language, level, localMode)}
-              className={user.level === level ? 'selected' : ''}
+              onClick={() => select(user.language, level, available(level))}
+              className={[
+                available(level) ? 'level-live' : 'in-development',
+                user.level === level ? 'selected' : '',
+              ].join(' ')}
             >
               <span>{level}</span>
-              <small>{levelDescriptions[level]}</small>
+              <small>{available(level) ? 'Доступен' : 'В разработке'}</small>
               {user.level === level && <Check size={13} />}
             </button>
           ))}
         </div>
       </section>
-      <section className="selected-part">
+      <section
+        className={
+          selectedCourse?.status === 'available' ? 'selected-part' : 'selected-part in-development'
+        }
+      >
         <div className="part-icon">
           <Layers3 size={27} />
         </div>
@@ -149,41 +155,19 @@ export default function Dashboard() {
           <span className="eyebrow muted">
             {languageNames[user.language]} · {user.level}
           </span>
-          <h3>{selectedCourse?.title ?? 'Уроки курса'}</h3>
+          <h3>{selectedCourse?.course?.title ?? 'В разработке'}</h3>
           <p>
-            {selectedCourse
+            {selectedCourse?.status === 'available'
               ? 'Все уроки курса, ваши прохождения и открытая теория.'
               : 'Учебные главы для этого уровня готовятся.'}
           </p>
         </div>
-        {localMode && (
+        {selectedCourse?.status === 'available' && (
           <Link className="button primary" href={coursePath(user.language, user.level)}>
             Открыть курс <ChevronRight size={17} />
           </Link>
         )}
       </section>
-      <div className="dashboard-bottom-grid">
-        {localMode && (
-          <Link className="technical-card" href="/play">
-            <Gamepad2 size={24} />
-            <div>
-              <span className="tiny-label">ТЕХНИЧЕСКИЙ МАКЕТ</span>
-              <h3>Заглянуть за кулисы</h3>
-              <p>
-                Попробуйте выборы, телефон и сохранения.
-                <br />
-                Это проверка механик, а не учебный курс.
-              </p>
-            </div>
-            <ArrowUpRight size={22} />
-          </Link>
-        )}
-        <div className="next-card">
-          <Sparkles size={22} />
-          <h3>Постепенно. По-своему.</h3>
-          <p>Здесь появятся ваши открытия, знакомые персонажи и пройденные главы.</p>
-        </div>
-      </div>
       <div className="saved-caption" role="status">
         <Check size={13} />
         {busy ? 'Сохраняем выбор…' : 'Выбор сохранён в вашем профиле'}

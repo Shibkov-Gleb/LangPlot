@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { ChartNoAxesCombined, ArrowUpRight, Sprout } from 'lucide-react';
+import { ArrowUpRight, Sprout } from 'lucide-react';
 import { ProgressResponse, languageNames } from '@langplot/shared';
 import { useProfile } from '@/components/workspace';
 import { api, errorText } from '@/lib/api';
@@ -73,17 +73,6 @@ export default function ProgressPage() {
           </Link>
         </div>
       )}
-      <div className="info-row">
-        <ChartNoAxesCombined size={22} />
-        <p>
-          Профиль знаний будет общим для всех частей одного языка.
-          <br />
-          <span>
-            Технические сообщения: {progress?.technicalAttempts ?? '…'}. Они не считаются учебной
-            оценкой.
-          </span>
-        </p>
-      </div>
     </>
   );
 }

@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { Save, Volume2, Captions, Waves, UserRound } from 'lucide-react';
-import { ProfileResponse, ProfileSettings } from '@langplot/shared';
+import { ProfileResponse, ProfileSettings, roleNames, isStaff } from '@langplot/shared';
 import { useProfile } from '@/components/workspace';
 import { api, body, errorText } from '@/lib/api';
 export default function SettingsPage() {
@@ -36,6 +36,23 @@ export default function SettingsPage() {
       setPending(false);
     }
   }
+  async function subscribe() {
+    setPending(true);
+    setMessage('');
+    setError('');
+    try {
+      const result = await api('/subscription/test', ProfileResponse, {
+        method: 'POST',
+        body: '{}',
+      });
+      setUser(result.user);
+      setMessage('Тестовая подписка активирована.');
+    } catch (e) {
+      setError(errorText(e));
+    } finally {
+      setPending(false);
+    }
+  }
   return (
     <>
       <div className="page-title">
@@ -51,9 +68,9 @@ export default function SettingsPage() {
         <section className="panel">
           <div className="panel-heading">
             <UserRound size={20} />
-            <h2>Демо-профиль</h2>
-            <span className="demo-badge">ЛОКАЛЬНО</span>
+            <h2>Мой аккаунт</h2>
           </div>
+          <p className="account-email">{user.email}</p>
           <label className="field">
             Как к вам обращаться
             <input
@@ -76,7 +93,6 @@ export default function SettingsPage() {
               <option value="en">Английский</option>
               <option value="de">Немецкий</option>
             </select>
-            <small>Интерфейс демоверсии пока доступен на русском.</small>
           </label>
         </section>
         <section className="panel">
@@ -85,7 +101,7 @@ export default function SettingsPage() {
             {
               key: 'sound' as const,
               label: 'Звук',
-              note: 'Сохраняет предпочтение. Озвучка появится вместе с курсами.',
+              note: 'Звуковые эффекты в игре.',
               icon: Volume2,
             },
             {
@@ -115,6 +131,30 @@ export default function SettingsPage() {
               />
             </label>
           ))}
+        </section>
+        <section className="panel subscription-panel">
+          <h2>Подписка</h2>
+          <strong>{roleNames[user.role]}</strong>
+          {isStaff(user.role) ? (
+            <p>Вам доступны все учебные функции.</p>
+          ) : (
+            <>
+              <p>
+                Английский A2 доступен всем ученикам. Тестовая подписка бесплатна, платёжные данные
+                не требуются.
+              </p>
+              {!user.subscribed && (
+                <button
+                  type="button"
+                  className="button secondary"
+                  disabled={pending}
+                  onClick={subscribe}
+                >
+                  Активировать тестовую подписку
+                </button>
+              )}
+            </>
+          )}
         </section>
         {error && (
           <p className="error-box" role="alert">

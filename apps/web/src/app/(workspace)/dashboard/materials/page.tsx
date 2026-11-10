@@ -2,12 +2,10 @@
 import Link from 'next/link';
 import { ArrowRight, BookOpen, ChevronRight } from 'lucide-react';
 import { MaterialsResponse, languageNames } from '@langplot/shared';
-import { useProfile } from '@/components/workspace';
 import { coursePath, theoryPath } from '@/lib/course-paths';
 import { useStudyResource } from '@/lib/use-study-resource';
 
 export default function MaterialsPage() {
-  const { user, localMode } = useProfile();
   const { data, error, reload } = useStudyResource('/materials', MaterialsResponse);
   const groups = new Map<string, MaterialsResponse['lessons']>();
   data?.lessons.forEach((lesson) => {
@@ -21,14 +19,14 @@ export default function MaterialsPage() {
         <h1>Мои материалы</h1>
         <p>Слова, примеры и грамматические правила из пройденных уроков.</p>
       </header>
-      {localMode && error ? (
+      {error ? (
         <div className="study-state">
           <p role="alert">{error}</p>
           <button className="button secondary" onClick={reload}>
             Повторить
           </button>
         </div>
-      ) : localMode && !data ? (
+      ) : !data ? (
         <p role="status">Открываем материалы…</p>
       ) : !groups.size ? (
         <div className="study-state">
@@ -37,10 +35,7 @@ export default function MaterialsPage() {
           </span>
           <h2>Первый урок откроет вашу коллекцию</h2>
           <p>Когда вы завершите урок, здесь появится вся его лексика и грамматика.</p>
-          <Link
-            className="button secondary"
-            href={localMode ? coursePath(user.language, user.level) : '/dashboard'}
-          >
+          <Link className="button secondary" href={coursePath('en', 'A2')}>
             К урокам <ArrowRight size={16} />
           </Link>
         </div>

@@ -19,7 +19,15 @@ async function setup(context: BrowserContext, baseURL: string) {
   const db = new PrismaClient(),
     token = randomBytes(32).toString('hex');
   const actor = await db.user.create({
-    data: { name: 'Полный сезон', language: 'en', level: 'A2', sound: false, reducedMotion: true },
+    data: {
+      email: randomBytes(12).toString('hex') + '@playwright.invalid',
+      passwordHash: 'fixture',
+      name: 'Полный сезон',
+      language: 'en',
+      level: 'A2',
+      sound: false,
+      reducedMotion: true,
+    },
   });
   await db.session.create({
     data: {

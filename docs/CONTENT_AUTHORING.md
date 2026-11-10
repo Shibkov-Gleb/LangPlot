@@ -8,7 +8,9 @@
 2. Задайте уникальный `manifest.id`, semver `manifest.version`, `language` (`en` / `de`), `level` (`A1`–`C2`), `status: draft`.
 3. Выполните из корня `pnpm content validate ../../content/drafts/my-package.json`. Команда работает из `apps/api`, поэтому пути относительно неё. Также можно передать абсолютный путь.
 4. При необходимости проверьте готовность: `pnpm content validate ../../content/drafts/my-package.json --publish`. Пустой пакет должен завершиться с ненулевым кодом.
-5. Импортируйте через локальную студию или `pnpm content import ../../content/drafts/my-package.json`. Для импорта нужны запущенная PostgreSQL, миграции и `LOCAL_DEMO_MODE=true`.
+5. Импортируйте через локальную студию или `pnpm content import ../../content/drafts/my-package.json`. Для импорта нужны запущенные API и PostgreSQL, миграции и административный аккаунт.
+
+CLI для импорта входит в API как администратор, используя переменные окружения `LANGPLOT_ADMIN_EMAIL` и `LANGPLOT_ADMIN_PASSWORD`. Проверка файла доступна автономно.
 
 API студии и CLI используют одни и те же `validatePackage` и `importPackage`. Граф LangGraph использует тот же валидатор. Дубликат `(manifest.id, manifest.version)` отклоняется; увеличивайте версию. Прохождения остаются привязаны к прежней версии.
 

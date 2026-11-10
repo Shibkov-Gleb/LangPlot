@@ -16,7 +16,15 @@ test('plays chapters 2–15 with their own contacts, theory and saved decisions'
   const db = new PrismaClient(),
     token = randomBytes(32).toString('hex');
   const actor = await db.user.create({
-    data: { name: 'Первый акт', language: 'en', level: 'A2', sound: false, reducedMotion: true },
+    data: {
+      email: randomBytes(12).toString('hex') + '@playwright.invalid',
+      passwordHash: 'fixture',
+      name: 'Первый акт',
+      language: 'en',
+      level: 'A2',
+      sound: false,
+      reducedMotion: true,
+    },
   });
   const external = new Set<string>(),
     errors: string[] = [];

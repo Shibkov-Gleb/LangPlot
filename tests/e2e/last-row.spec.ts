@@ -25,7 +25,14 @@ test('Последний ряд: обе ветки, сохранение, под
   const db = new PrismaClient(),
     token = randomBytes(32).toString('hex');
   const actor = await db.user.create({
-    data: { name: 'Исследователь', language: 'en', level: 'A2', reducedMotion: true },
+    data: {
+      email: randomBytes(12).toString('hex') + '@playwright.invalid',
+      passwordHash: 'fixture',
+      name: 'Исследователь',
+      language: 'en',
+      level: 'A2',
+      reducedMotion: true,
+    },
   });
   const thirdParty = new Set<string>();
   page.on('request', (request) => {
@@ -165,7 +172,11 @@ test('Последний ряд: обе ветки, сохранение, под
         await page.getByRole('link', { name: 'Теория урока', exact: true }).click();
         await expect(page.getByRole('heading', { name: 'Последний ряд' })).toBeVisible();
         await expect(page.locator('#vocabulary dt')).toHaveCount(23);
-        await expect(page.locator('#grammar dt')).toHaveCount(1);
+        await expect(
+          page
+            .locator('#grammar')
+            .getByRole('article', { name: /Present Simple и Present Continuous/ }),
+        ).toHaveCount(1);
         await expect(page.locator('#vocabulary')).toContainText('glove');
         await expect(page.locator('#vocabulary')).toContainText(
           "Then I'll put it under this glove.",

@@ -19,7 +19,13 @@ test('shows lesson topics and all grammar articles, including previously complet
   process.loadEnvFile(path.resolve('.env'));
   const db = new PrismaClient();
   const actor = await db.user.create({
-    data: { name: 'Проверка справочника', language: 'en', level: 'A2' },
+    data: {
+      email: randomBytes(12).toString('hex') + '@playwright.invalid',
+      passwordHash: 'fixture',
+      name: 'Проверка справочника',
+      language: 'en',
+      level: 'A2',
+    },
   });
   const token = randomBytes(32).toString('hex');
   const errors: string[] = [];

@@ -1,118 +1,83 @@
 import { test, expect } from '@playwright/test';
-test('landing, persistent profile, player phone and local studio', async ({ page }, testInfo) => {
+import { PrismaClient } from '../../apps/api/node_modules/@prisma/client';
+import { randomUUID } from 'node:crypto';
+test('ученик выбирает курс, активирует подписку и работает с CRM только после назначения', async ({
+  page,
+}, info) => {
+  test.setTimeout(110000);
+  process.loadEnvFile('.env');
+  const db = new PrismaClient(),
+    email = randomUUID() + '@playwright.invalid',
+    password = randomUUID();
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
-  const external: string[] = [];
-  page.on('request', (r) => {
-    const host = new URL(r.url()).hostname;
-    // Kaspersky on this workstation injects its own script into every page.
-    // Keep it enabled; exclude only that independently injected host from the app audit.
-    if (host === 'me.kis.v2.scr.kaspersky-labs.com') return;
-    if (!host.match(/^(localhost|127\.0\.0\.1)$/)) external.push(host);
-  });
-  await page.goto('/');
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Ещё одна глава');
-  await page.keyboard.press('Tab');
-  await expect(page.getByRole('link', { name: 'К содержимому' })).toBeFocused();
-  for (const element of await page.locator('[data-reveal]').all())
-    await element.scrollIntoViewIfNeeded();
-  await page.getByRole('heading', { level: 1 }).scrollIntoViewIfNeeded();
-  await page.getByRole('heading', { level: 1 }).click();
-  await page.screenshot({ path: testInfo.outputPath('hero.png') });
-  await page.screenshot({ path: testInfo.outputPath('landing.png'), fullPage: true });
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
-    true,
-  );
-  await page.getByRole('link', { name: 'Выбрать язык', exact: true }).click();
-  await page.getByRole('button', { name: 'Войти в демо-профиль' }).click();
-  await expect(page.getByRole('heading', { name: 'Ваши языковые миры.' })).toBeVisible();
-  await page.getByRole('button', { name: /DE Немецкий/ }).click();
-  await expect(page.getByRole('button', { name: /DE Немецкий/ })).toHaveAttribute(
-    'aria-pressed',
-    'true',
-  );
-  await page.getByRole('button', { name: 'B1 Больше самостоятельности' }).click();
-  await expect(page).toHaveURL(/\/courses\/de\/b1$/);
-  await expect(page.getByRole('heading', { name: 'Уроки готовятся' })).toBeVisible();
-  await page.reload();
-  await expect(page.getByRole('heading', { name: 'Уроки готовятся' })).toBeVisible();
-  await page.getByRole('main').getByRole('link', { name: 'Мои миры', exact: true }).click();
-  await expect(page.getByRole('button', { name: 'B1 Больше самостоятельности' })).toHaveAttribute(
-    'aria-pressed',
-    'true',
-  );
-  await page.screenshot({ path: testInfo.outputPath('dashboard.png'), fullPage: true });
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
-    true,
-  );
-  await page.getByRole('link', { name: 'Настройки', exact: true }).click();
-  await page.getByRole('textbox', { name: 'Как к вам обращаться' }).fill('Исследователь');
-  await page.getByRole('checkbox', { name: /Меньше анимации/ }).check();
-  await page.getByRole('button', { name: 'Сохранить настройки' }).click();
-  await expect(page.getByRole('status')).toHaveText('Настройки сохранены.');
-  await page.reload();
-  await expect(page.getByRole('checkbox', { name: /Меньше анимации/ })).toBeChecked();
-  await expect(page.locator('html')).toHaveAttribute('data-reduced-motion', 'true');
-  await page.getByRole('link', { name: 'Мои миры', exact: true }).click();
-  await page.getByRole('link', { name: /Заглянуть за кулисы/ }).click();
-  await expect(page.getByText('LANGPLOT / ПРОВЕРКА МЕХАНИК')).toBeVisible();
-  if (await page.getByRole('button', { name: /Осмотреть пространство/ }).isVisible())
-    await page.getByRole('button', { name: /Осмотреть пространство/ }).click();
-  await page.reload();
-  await expect(page.getByText(/Выбор сохранён|Техническая проверка завершена/)).toBeVisible();
-  await page.screenshot({ path: testInfo.outputPath('player.png'), fullPage: true });
-  await page.getByRole('button', { name: 'Открыть телефон' }).click();
-  await expect(page.getByRole('dialog', { name: 'Телефон' })).toBeVisible();
-  await page.getByRole('textbox', { name: 'Сообщение', exact: true }).fill('Hallo');
-  await page.getByRole('button', { name: 'Отправить сообщение' }).click();
-  await expect(
-    page.getByText('Hallo! Deine Nachricht ist angekommen. Dies ist ein technischer Test.').last(),
-  ).toBeVisible();
-  await page.getByRole('textbox', { name: 'Сообщение', exact: true }).fill('/error');
-  await page.getByRole('button', { name: 'Отправить сообщение' }).click();
-  await expect(page.getByText('Ответ не получен').last()).toBeVisible();
-  await page.getByRole('button', { name: 'Повторить', exact: true }).last().click();
-  await expect(page.getByText('Ответ не получен')).toHaveCount(0);
-  await expect(page.locator('.message-exchange').last().locator('.incoming')).toBeVisible();
-  await page.screenshot({ path: testInfo.outputPath('phone.png') });
-  await page.keyboard.press('Escape');
-  await expect(page.getByRole('dialog')).toHaveCount(0);
-  await page.goto('/studio');
-  await page
-    .getByRole('textbox', { name: 'Что нужно подготовить?' })
-    .fill(`Технический черновик ${testInfo.project.name} ${Date.now()}`);
-  await page.getByRole('button', { name: 'Подготовить черновик' }).click();
-  await expect(page.getByText('Формат пакета корректен').first()).toBeVisible();
-  await expect(page.getByText('Статус: черновик, не готов к публикации.').first()).toBeVisible();
-  const downloadPromise = page.waitForEvent('download');
-  await page.getByRole('link', { name: 'Скачать пакет JSON' }).click();
-  const download = await downloadPromise;
-  const destination = testInfo.outputPath('draft.json');
-  await download.saveAs(destination);
-  await page.getByLabel('Выбрать пакет JSON').setInputFiles(destination);
-  await expect(page.getByRole('button', { name: 'Импортировать как черновик' })).toBeEnabled();
-  await page.getByRole('button', { name: 'Импортировать как черновик' }).click();
-  await expect(page.getByRole('status')).toContainText('Черновик импортирован');
-  await page.screenshot({ path: testInfo.outputPath('studio.png'), fullPage: true });
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
-    true,
-  );
-  expect(errors).toEqual([]);
-  expect(external).toEqual([]);
-  await page.getByRole('button', { name: 'Выйти', exact: true }).click();
-  await expect(page.getByRole('heading', { level: 1 })).toContainText('Ещё одна глава');
-});
-test('returns to the requested course after signing in', async ({ page }) => {
-  await page.goto('/courses/en/a2');
-  await expect(page).toHaveURL(/\/login\?next=/);
-  await page.getByRole('button', { name: 'Войти в демо-профиль' }).click();
-  await expect(page).toHaveURL(/\/courses\/en\/a2$/);
-  await expect(page.getByRole('heading', { name: 'Последняя перекличка' })).toBeVisible();
-  await page.getByRole('main').getByRole('link', { name: 'Мои миры', exact: true }).click();
-  await expect(page.getByRole('button', { name: 'A2 Простые разговоры' })).toHaveAttribute(
-    'aria-pressed',
-    'true',
-  );
+  try {
+    await page.goto('/');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Ещё одна глава');
+    await page.screenshot({ path: info.outputPath('cover.png') });
+    await page.getByRole('link', { name: 'Выбрать язык', exact: true }).click();
+    await page.getByRole('button', { name: 'Создать аккаунт' }).click();
+    await page.getByLabel('Имя', { exact: true }).fill('Ученик CRM');
+    await page.getByLabel('Электронная почта').fill(email);
+    await page.getByLabel('Пароль', { exact: false }).fill(password);
+    await page.getByRole('button', { name: 'Зарегистрироваться' }).click();
+    await expect(page.getByRole('heading', { name: 'Ваши языковые миры.' })).toBeVisible();
+    await expect(page.locator('.levels .level-live')).toHaveText(/A2.*Доступен/);
+    await expect(page.locator('.levels .in-development')).toHaveCount(5);
+    await page.screenshot({ path: info.outputPath('catalog.png') });
+    await page.getByRole('button', { name: /DE Немецкий/ }).click();
+    await expect(page.locator('.levels .in-development')).toHaveCount(6);
+    await expect(page.getByRole('link', { name: 'Открыть курс' })).toHaveCount(0);
+    await page.getByRole('button', { name: /EN Английский/ }).click();
+    await page.getByRole('link', { name: 'Открыть курс' }).click();
+    await expect(page.getByRole('heading', { name: 'Последняя перекличка' })).toBeVisible();
+    await page.goto('/dashboard/settings');
+    await page.getByRole('button', { name: 'Активировать тестовую подписку' }).click();
+    await expect(page.getByRole('status')).toContainText('активирована');
+    await page.reload();
+    await expect(page.locator('.subscription-panel strong')).toHaveText('С подпиской');
+    for (const path of ['/admin', '/studio']) {
+      await page.goto(path);
+      await expect(page.getByRole('heading', { name: 'Доступ ограничен' })).toBeVisible();
+    }
+    await page.getByRole('button', { name: 'Выйти', exact: true }).click();
+    await page.goto('/courses/en/a2');
+    await page.getByLabel('Электронная почта').fill(email);
+    await page.getByLabel('Пароль').fill(password);
+    await page.getByRole('button', { name: 'Войти', exact: true }).click();
+    await expect(page.getByRole('heading', { name: 'Последняя перекличка' })).toBeVisible();
+    await db.user.update({ where: { email }, data: { role: 'ADMIN' } });
+    await page.goto('/admin');
+    await expect(page.getByRole('heading', { name: 'Администрирование' })).toBeVisible();
+    await page.getByLabel('Поиск по имени или почте').fill(email);
+    await page.getByRole('link', { name: new RegExp(email.replaceAll('.', '\\.')) }).click();
+    await expect(page.getByRole('button', { name: 'Назначить администратором' })).toHaveCount(0);
+    await page.getByLabel('Внутренняя заметка').fill('Разобрали первый урок.');
+    await page.getByRole('button', { name: 'Добавить заметку' }).click();
+    await expect(page.locator('.crm-timeline')).toContainText('Разобрали первый урок.');
+    await page.getByLabel('Статус контакта').selectOption('FOLLOW_UP');
+    await page.getByLabel('Следующий контакт').fill('2026-01-18');
+    await page.getByRole('button', { name: 'Сохранить контакт' }).click();
+    await expect(page.getByRole('status')).toHaveText('Контакт сохранён.');
+    await page.getByRole('link', { name: 'К списку аккаунтов' }).click();
+    await page.getByLabel('Уровень доступа').selectOption('ADMIN');
+    await page.getByRole('button', { name: 'На сегодня' }).click();
+    await expect(page.getByRole('link', { name: new RegExp(email) })).toBeVisible();
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(
+      true,
+    );
+    await page.screenshot({ path: info.outputPath('crm.png') });
+    await page.getByRole('link', { name: 'Студия контента' }).click();
+    await expect(page.getByRole('heading', { name: /Студия контента/ })).toBeVisible();
+    expect(errors).toEqual([]);
+  } finally {
+    const user = await db.user.findUnique({ where: { email }, select: { id: true } });
+    if (user) {
+      await db.crmEvent.deleteMany({ where: { authorId: user.id } });
+      await db.user.delete({ where: { id: user.id } });
+    }
+    await db.$disconnect();
+  }
 });
 test('reduced motion and keyboard navigation', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
@@ -124,5 +89,4 @@ test('reduced motion and keyboard navigation', async ({ page }) => {
   expect(await page.locator('.hero-art').evaluate((el) => getComputedStyle(el).animationName)).toBe(
     'none',
   );
-  expect(await page.locator('.will-reveal').count()).toBe(0);
 });

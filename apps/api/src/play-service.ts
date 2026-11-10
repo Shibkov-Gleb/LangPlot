@@ -1,6 +1,7 @@
 import { ContentPackage, GameState, lessonView } from '@langplot/shared';
 import { db } from './db.js';
 import { ApiError } from './errors.js';
+import { sceneSpeech } from './voiceover.js';
 export async function ownedPlay(id: string, userId: string) {
   const play = await db.playthrough.findFirst({
     where: { id, userId },
@@ -19,6 +20,17 @@ export function playDto(play: Awaited<ReturnType<typeof ownedPlay>>) {
     runNumber: play.runNumber,
     contentVersion: `${play.contentVersion.packageId}@${play.contentVersion.version}`,
     state,
-    ...(c.schemaVersion !== 1 ? { view: lessonView(c, state) } : {}),
+    ...(c.schemaVersion !== 1
+      ? {
+          view: {
+            ...lessonView(c, state),
+            speech: sceneSpeech(
+              c.manifest.language,
+              c.manifest.level,
+              c.scenes.find((scene) => scene.id === state.sceneId),
+            ),
+          },
+        }
+      : {}),
   };
 }

@@ -33,6 +33,7 @@ import { coursePath, theoryPath } from '@/lib/course-paths';
 import { MaePhone } from './phone';
 import { RichLine, NoteCard, PaperTicket } from './reading';
 import { useSceneSound } from './sound';
+import { useVoiceover } from './voiceover';
 
 const phases = [
   ['arrival', 'Прибытие'],
@@ -96,7 +97,12 @@ function Player({
       choiceId: string;
       requestId: string;
     } | null>(null);
-  const arm = useSceneSound(sound, play?.state.sceneId, play?.view?.ambience, play?.view?.cue);
+  const armSound = useSceneSound(sound, play?.state.sceneId, play?.view?.ambience, play?.view?.cue);
+  const { armVoice, replay: repeatSpeech, speechError } = useVoiceover(sound, play?.view?.speech);
+  const arm = useCallback(() => {
+    armSound();
+    armVoice();
+  }, [armSound, armVoice]);
   const refreshRuns = useCallback(
     async (selectedId?: string) => {
       const r = await api(
@@ -499,6 +505,21 @@ function Player({
                     </small>
                   )}
                 </div>
+                {view.speech && (
+                  <button
+                    className="lr-subtle lr-repeat"
+                    onClick={repeatSpeech}
+                    disabled={!sound}
+                    title={sound ? 'Прослушать реплику ещё раз' : 'Включите звук в верхней панели'}
+                  >
+                    <Volume2 size={15} /> Повторить реплику
+                  </button>
+                )}
+                {speechError && (
+                  <p className="lr-caption" role="status">
+                    {speechError}
+                  </p>
+                )}
                 {view.caption && <p className="lr-caption">{view.caption}</p>}
                 <p
                   className="lr-speech"

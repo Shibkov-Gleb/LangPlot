@@ -11,7 +11,7 @@ const schema = z.object({
   SESSION_DAYS: z.coerce.number().min(1).max(30).default(7),
   CHAT_PROVIDER: z.enum(['local', 'none']).default('local'),
   COURSE_PROVIDER: z.enum(['local', 'none']).default('local'),
-  TTS_PROVIDER: z.literal('none').default('none'),
+  TTS_PROVIDER: z.enum(['none', 'gemini']).default('none'),
   STORAGE_PROVIDER: z.literal('local').default('local'),
 });
 export const config = schema.parse(process.env);

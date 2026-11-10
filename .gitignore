@@ -10,3 +10,5 @@ playwright-report/
 test-results/
 .local/
 *.log
+apps/web/public/assets/voices/**/.generation-lock
+apps/web/public/assets/voices/**/*.tmp

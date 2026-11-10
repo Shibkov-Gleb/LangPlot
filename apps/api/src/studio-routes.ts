@@ -97,8 +97,8 @@ export function registerStudioRoutes() {
           },
           {
             name: 'Озвучка · TTS',
-            status: 'Не настроено',
-            detail: 'Интерфейс провайдера подготовлен',
+            status: config.TTS_PROVIDER === 'gemini' ? 'Gemini TTS' : 'Не настроено',
+            detail: 'Локальные аудиофайлы реплик персонажей',
           },
           {
             name: 'Файловое хранилище',

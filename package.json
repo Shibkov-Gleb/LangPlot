@@ -23,7 +23,8 @@
     "db:migrate": "pnpm --filter @langplot/api db:migrate",
     "db:studio": "pnpm --filter @langplot/api db:studio",
     "admin:invite": "pnpm --filter @langplot/api admin:invite",
-    "content": "pnpm --filter @langplot/api content"
+    "content": "pnpm --filter @langplot/api content",
+    "tts": "pnpm --filter @langplot/api tts"
   },
   "devDependencies": {
     "@playwright/test": "1.58.2",

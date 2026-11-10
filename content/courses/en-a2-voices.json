@@ -1,0 +1,16 @@
+{
+  "model": "gemini-3.1-flash-tts-preview",
+  "language": "British English",
+  "voices": {
+    "lev": { "voice": "Puck", "direction": "Lev, a thoughtful young adult man. Curious, understated, attentive. Clear English." },
+    "ilya": { "voice": "Charon", "direction": "Ilya, an older man, Lev's uncle. Warm low voice, restrained and sometimes anxious." },
+    "owen": { "voice": "Orus", "direction": "Owen, a middle-aged British bus driver. A tired, kind, grounded male voice." },
+    "mae": { "voice": "Kore", "direction": "Mae, an adult British dispatcher. Calm, precise, observant female voice." },
+    "nell": { "voice": "Aoede", "direction": "Nell, an adult British woman. Lively, direct, friendly but perceptive." },
+    "jo": { "voice": "Iapetus", "direction": "Jo, an adult British man. Clear, practical, steady and approachable." },
+    "ada": { "voice": "Leda", "direction": "Ada, a young adult British woman. Gentle, thoughtful and quietly determined." },
+    "ruth": { "voice": "Gacrux", "direction": "Ruth, a mature British woman. Composed, authoritative, measured and careful." },
+    "anna": { "voice": "Sulafat", "direction": "Anna, Lev's mother, an adult woman. Warm, intimate and reassuring." },
+    "voice": { "voice": "Achernar", "direction": "A distant mysterious female voice from the last row of a bus. Very quiet and restrained, distinctly audible. No added sound effects." }
+  }
+}

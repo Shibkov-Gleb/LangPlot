@@ -25,6 +25,15 @@
   min-height: 100svh;
   padding: 0 clamp(16px, 2.7vw, 48px) 10px;
 }
+.lr-page .lr-repeat {
+  margin: 8px 0;
+  font-size: 12px;
+  padding: 5px 9px;
+}
+.lr-repeat:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
 .lr-page button:focus-visible,
 .lr-page a:focus-visible,
 .lr-page input:focus-visible {

@@ -42,6 +42,7 @@ export const LessonView = z.object({
   backdrop: z.string(),
   ambience: z.string().optional(),
   cue: z.string().optional(),
+  speech: z.string().regex(/^\/assets\/voices\/en-a2\/[a-f0-9]{24}\.mp3$/).optional(),
   dimLights: z.boolean().optional(),
   portrait: z.string().optional(),
   notes: z.array(LessonNote),

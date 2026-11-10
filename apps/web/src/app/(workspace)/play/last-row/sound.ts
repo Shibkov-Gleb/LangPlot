@@ -12,7 +12,7 @@ export function useSceneSound(
     if (!enabled || !armed || !ambience) return;
     const rain = new Audio(ambience);
     rain.loop = true;
-    rain.volume = 0.4;
+    rain.volume = 0.12;
     const update = () => {
       if (document.hidden) rain.pause();
       else void rain.play().catch(() => {});

@@ -11,7 +11,8 @@
     "db:migrate": "dotenv -e ../../.env -- prisma migrate deploy",
     "db:studio": "dotenv -e ../../.env -- prisma studio",
     "admin:invite": "tsx --env-file=../../.env src/owner-invite.ts",
-    "content": "tsx --env-file=../../.env src/cli.ts"
+    "content": "tsx --env-file=../../.env src/cli.ts",
+    "tts": "tsx --env-file=../../.env src/generate-voices.ts"
   },
   "dependencies": {
     "@langplot/shared": "workspace:*",

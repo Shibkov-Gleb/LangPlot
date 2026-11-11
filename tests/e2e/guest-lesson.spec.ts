@@ -49,6 +49,24 @@ test('с главной можно пройти полный первый уро
     await expect(btn('Завершить урок')).toBeDisabled();
     await page.getByRole('textbox', { name: 'Сообщение Мэй' }).fill('My ticket says 6:10 PM.');
     await btn('Отправить сообщение').click();
+    await expect
+      .poll(
+        () =>
+          db.chatExchange.count({
+            where: { playthroughId: run.id, status: { in: ['completed', 'failed'] } },
+          }),
+        { timeout: 40000 },
+      )
+      .toBe(1);
+    if (await db.chatExchange.findFirst({ where: { playthroughId: run.id, status: 'failed' } })) {
+      await btn('Повторить отправку').click();
+      await expect
+        .poll(
+          () => db.chatExchange.count({ where: { playthroughId: run.id, status: 'completed' } }),
+          { timeout: 40000 },
+        )
+        .toBe(1);
+    }
     await btn('Завершить урок').click();
     await expect(signUp).toBeVisible();
     await page.reload();

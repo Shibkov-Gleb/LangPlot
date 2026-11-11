@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { CheckCheck, LoaderCircle, Radio, Send, Signal } from 'lucide-react';
-import { ChatResponse, MessagesResponse, type Exchange } from '@langplot/shared';
+import { CheckCheck, Clock3, LoaderCircle, Radio, Send, Signal } from 'lucide-react';
+import { ChatResponse, MessagesResponse, OkResponse, type Exchange } from '@langplot/shared';
 import { api, body, errorText } from '@/lib/api';
 interface Props {
   playId: string;
@@ -9,61 +9,168 @@ interface Props {
   onReady: (ready: boolean) => void;
   contact?: { name: string; role: string; context: string };
 }
+const replyLines = (message: Exchange) =>
+  message.replies.length ? message.replies : message.reply ? [message.reply] : [];
+const failureText: Record<string, string> = {
+  TIMEOUT: 'Собеседник не успел ответить. Попробуйте ещё раз.',
+  RATE_LIMITED: 'Собеседник пока занят. Повторите чуть позже.',
+  INTERRUPTED: 'Ответ прервался. Можно отправить сообщение повторно.',
+  CANCELLED: 'Ожидание остановлено.',
+};
 export function MaePhone({ playId, readOnly, onReady, contact }: Props) {
   const name = contact?.name ?? 'Мэй';
-  const [opening, setOpening] = useState(''),
-    [messages, setMessages] = useState<Exchange[]>([]),
-    [text, setText] = useState(''),
-    [error, setError] = useState(''),
-    [busy, setBusy] = useState(false),
-    [reload, setReload] = useState(0);
-  const lock = useRef(false),
-    pending = useRef<{ id: string; text: string } | null>(null),
-    log = useRef<HTMLDivElement>(null);
+  const [opening, setOpening] = useState('');
+  const [messages, setMessages] = useState<Exchange[]>([]);
+  const [text, setText] = useState('');
+  const [error, setError] = useState('');
+  const [busy, setBusy] = useState(false);
+  const [reload, setReload] = useState(0);
+  const [revealing, setRevealing] = useState<{ id: string; count: number } | null>(null);
+  const lock = useRef(false);
+  const request = useRef<AbortController | null>(null);
+  const log = useRef<HTMLDivElement>(null);
+  const input = useRef<HTMLTextAreaElement>(null);
+  const pending = messages.find((m) => m.status === 'pending');
+  const typing = busy || !!pending || !!revealing;
   useEffect(() => {
-    let live = true;
+    const controller = new AbortController();
     setError('');
-    onReady(false);
-    api('/plays/' + playId + '/messages', MessagesResponse)
+    api('/plays/' + playId + '/messages', MessagesResponse, { signal: controller.signal })
       .then((r) => {
-        if (!live) return;
         setOpening(r.opening ?? '');
         setMessages(r.messages);
-        onReady(r.messages.some((m) => m.status === 'completed'));
       })
       .catch((e) => {
-        if (live) setError(errorText(e));
+        if (!controller.signal.aborted) setError(errorText(e));
       });
+    return () => controller.abort();
+  }, [playId, reload]);
+  useEffect(() => () => request.current?.abort(), [playId]);
+  useEffect(() => {
+    onReady(messages.some((m) => m.status === 'completed'));
+  }, [messages, onReady]);
+  useEffect(() => {
+    if (!pending || busy) return;
+    const controller = new AbortController();
+    let polling = false;
+    const timer = setInterval(async () => {
+      if (polling) return;
+      polling = true;
+      try {
+        const r = await api('/plays/' + playId + '/messages', MessagesResponse, {
+          signal: controller.signal,
+        });
+        if (controller.signal.aborted) return;
+        setMessages(r.messages);
+        const completed = r.messages.find(
+          (m) => m.requestId === pending.requestId && m.status === 'completed',
+        );
+        if (completed) setRevealing({ id: completed.id, count: 0 });
+        setError('');
+      } catch (e) {
+        if (!controller.signal.aborted) setError(errorText(e));
+      } finally {
+        polling = false;
+      }
+    }, 1800);
     return () => {
-      live = false;
+      controller.abort();
+      clearInterval(timer);
     };
-  }, [playId, reload, onReady]);
+  }, [pending?.requestId, busy, playId]);
+  useEffect(() => {
+    if (!revealing) return;
+    const message = messages.find((m) => m.id === revealing.id);
+    const lines = message ? replyLines(message) : [];
+    if (revealing.count >= lines.length) {
+      setRevealing(null);
+      return;
+    }
+    const reduced =
+      matchMedia('(prefers-reduced-motion: reduce)').matches ||
+      document.documentElement.dataset.reducedMotion === 'true';
+    const timer = setTimeout(
+      () => setRevealing((current) => (current ? { ...current, count: current.count + 1 } : null)),
+      reduced ? 100 : Math.min(900, 250 + (lines[revealing.count]?.length ?? 0) * 7),
+    );
+    return () => clearTimeout(timer);
+  }, [revealing, messages]);
   useEffect(() => {
     if (log.current) log.current.scrollTop = log.current.scrollHeight;
-  }, [messages]);
-  async function send() {
-    const value = text.trim();
-    if (!value || lock.current || readOnly) return;
+  }, [messages, revealing, busy]);
+  useEffect(() => {
+    if (input.current) {
+      input.current.style.height = 'auto';
+      input.current.style.height = Math.min(96, input.current.scrollHeight) + 'px';
+    }
+  }, [text]);
+  function update(message: Exchange) {
+    setMessages((previous) =>
+      previous.some((m) => m.requestId === message.requestId)
+        ? previous.map((m) => (m.requestId === message.requestId ? message : m))
+        : [...previous, message],
+    );
+  }
+  async function send(previous?: Exchange) {
+    const value = (previous?.text ?? text).trim();
+    if (!value || lock.current || typing || readOnly) return;
     lock.current = true;
     setBusy(true);
     setError('');
-    const request =
-      pending.current?.text === value ? pending.current : { id: crypto.randomUUID(), text: value };
-    pending.current = request;
+    const controller = new AbortController();
+    request.current = controller;
+    const message: Exchange = {
+      id: previous?.id ?? crypto.randomUUID(),
+      requestId: previous?.requestId ?? crypto.randomUUID(),
+      text: value,
+      reply: null,
+      replies: [],
+      status: 'pending',
+      errorCode: null,
+      createdAt: previous?.createdAt ?? new Date().toISOString(),
+    };
+    update(message);
+    if (!previous) setText('');
     try {
       const result = await api('/plays/' + playId + '/messages', ChatResponse, {
         method: 'POST',
-        body: body({ requestId: request.id, text: value }),
+        body: body({ requestId: message.requestId, text: value }),
+        signal: controller.signal,
       });
-      setMessages((prev) => [...prev.filter((x) => x.requestId !== request.id), result.exchange]);
-      setText('');
-      pending.current = null;
-      onReady(result.exchange.status === 'completed');
+      if (controller.signal.aborted) return;
+      update(result.exchange);
+      if (result.exchange.status === 'completed')
+        setRevealing({ id: result.exchange.id, count: 0 });
+    } catch (e) {
+      if (!controller.signal.aborted) {
+        update({ ...message, status: 'failed', errorCode: 'NETWORK_ERROR' });
+        setError(errorText(e));
+      }
+    } finally {
+      if (request.current === controller) {
+        request.current = null;
+        lock.current = false;
+        setBusy(false);
+      }
+    }
+  }
+  async function cancel() {
+    if (!pending) return;
+    try {
+      await api('/plays/' + playId + '/messages/' + pending.requestId + '/cancel', OkResponse, {
+        method: 'POST',
+        body: '{}',
+      });
+      request.current?.abort();
+      const current = await api('/plays/' + playId + '/messages', MessagesResponse);
+      setMessages(current.messages);
+      const completed = current.messages.find(
+        (m) => m.requestId === pending.requestId && m.status === 'completed',
+      );
+      if (completed) setRevealing({ id: completed.id, count: 0 });
+      setError('');
     } catch (e) {
       setError(errorText(e));
-    } finally {
-      lock.current = false;
-      setBusy(false);
     }
   }
   return (
@@ -97,16 +204,47 @@ export function MaePhone({ playId, readOnly, onReady, contact }: Props) {
         {messages.map((m) => (
           <div key={m.id}>
             <p className="lr-bubble outgoing" lang="en">
-              {m.text}
-              <CheckCheck size={12} />
+              <span>{m.text}</span>
+              <span className="lr-message-meta">
+                <time dateTime={m.createdAt}>
+                  {new Date(m.createdAt).toLocaleTimeString('ru-RU', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                  })}
+                </time>
+                {m.status === 'completed' ? (
+                  <CheckCheck size={12} aria-label="Доставлено" />
+                ) : m.status === 'pending' ? (
+                  <Clock3 size={11} aria-label="Ожидание ответа" />
+                ) : null}
+              </span>
             </p>
-            {m.reply && (
-              <p className="lr-bubble incoming" lang="en">
-                {m.reply}
-              </p>
+            {replyLines(m)
+              .slice(0, revealing?.id === m.id ? revealing.count : undefined)
+              .map((line, i) => (
+                <p className="lr-bubble incoming" key={i} lang="en">
+                  {line}
+                </p>
+              ))}
+            {(m.status === 'failed' || m.status === 'cancelled') && (
+              <div className="lr-message-failure">
+                <span>{failureText[m.errorCode ?? ''] ?? 'Не удалось получить ответ.'}</span>
+                {!readOnly && (
+                  <button type="button" disabled={typing} onClick={() => void send(m)}>
+                    Повторить отправку
+                  </button>
+                )}
+              </div>
             )}
           </div>
         ))}
+        {typing && (
+          <div className="lr-typing" role="status" aria-label={name + ' печатает'}>
+            <span />
+            <span />
+            <span />
+          </div>
+        )}
       </div>
       {error && (
         <div className="lr-error" role="alert">
@@ -114,25 +252,40 @@ export function MaePhone({ playId, readOnly, onReady, contact }: Props) {
         </div>
       )}
       {!readOnly && (
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            void send();
-          }}
-        >
-          <input
-            aria-label={contact ? 'Сообщение — ' + name : 'Сообщение Мэй'}
-            lang="en"
-            placeholder={contact ? 'Написать сообщение…' : 'Сообщение Мэй…'}
-            maxLength={2000}
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-            disabled={busy || !opening}
-          />
-          <button aria-label="Отправить сообщение" disabled={busy || !text.trim() || !opening}>
-            {busy ? <LoaderCircle size={16} className="spin" /> : <Send size={17} />}
-          </button>
-        </form>
+        <>
+          {pending && (
+            <button className="lr-stop-reply" type="button" onClick={() => void cancel()}>
+              Остановить ожидание
+            </button>
+          )}
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              void send();
+            }}
+          >
+            <textarea
+              ref={input}
+              rows={1}
+              aria-label={contact ? 'Сообщение — ' + name : 'Сообщение Мэй'}
+              lang="en"
+              placeholder="Написать сообщение…"
+              maxLength={2000}
+              value={text}
+              onChange={(e) => setText(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault();
+                  void send();
+                }
+              }}
+              disabled={!opening}
+            />
+            <button aria-label="Отправить сообщение" disabled={typing || !text.trim() || !opening}>
+              {busy ? <LoaderCircle size={16} className="spin" /> : <Send size={17} />}
+            </button>
+          </form>
+        </>
       )}
     </section>
   );

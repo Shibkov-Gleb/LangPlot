@@ -178,6 +178,16 @@ export function registerChatRoutes() {
         }
       });
     } catch (error) {
+      const reason =
+        error instanceof Error &&
+        ['INVALID_MODEL_RESPONSE', 'MODEL_RATE_LIMITED', 'PROVIDER_UNAVAILABLE'].includes(
+          error.message,
+        )
+          ? error.message
+          : error instanceof Error
+            ? error.name
+            : 'UNKNOWN';
+      console.warn('CHARACTER_CHAT_FAILURE', { provider: config.CHAT_PROVIDER, reason });
       const code = signal.aborted
         ? controller.signal.aborted
           ? 'CANCELLED'

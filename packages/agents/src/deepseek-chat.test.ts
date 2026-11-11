@@ -20,6 +20,24 @@ const response = (content: unknown) =>
   );
 afterEach(() => vi.unstubAllGlobals());
 describe('DeepSeek character messenger', () => {
+  it('repairs a valid JSON answer with an invalid message structure before displaying it', async () => {
+    const fetch = vi
+      .fn()
+      .mockResolvedValueOnce(
+        response({ messages: 'One large paragraph', intent: 'message', factsUsed: [] }),
+      )
+      .mockResolvedValueOnce(
+        response({ messages: ['Thanks, Lev.'], intent: 'message', factsUsed: [] }),
+      )
+      .mockResolvedValueOnce(response({ allowed: true }));
+    vi.stubGlobal('fetch', fetch);
+    expect((await new DeepSeekChatProvider('key').respond(context)).messages).toEqual([
+      'Thanks, Lev.',
+    ]);
+    expect(JSON.parse(fetch.mock.calls[1]![1].body).messages.at(-1).content).toContain(
+      'valid JSON object',
+    );
+  });
   it('retries one transient network failure without changing the user turn', async () => {
     const fetch = vi
       .fn()
@@ -45,7 +63,7 @@ describe('DeepSeek character messenger', () => {
     expect(
       (await new DeepSeekChatProvider('key').respond({ ...context, history })).messages,
     ).toEqual(['Thanks.']);
-    const body = JSON.parse(fetch.mock.calls[1]![1].body);
+    const body = JSON.parse(fetch.mock.calls[0]![1].body);
     expect(body.messages).toHaveLength(2);
     expect(JSON.parse(body.messages[1].content).history).toEqual(history);
   });

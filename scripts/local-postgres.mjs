@@ -64,7 +64,7 @@ function stop() {
 process.on('SIGINT', stop);
 process.on('SIGTERM', stop);
 let ready = false;
-for (let i = 0; i < 40; i++) {
+for (let i = 0; i < 480; i++) {
   try {
     await db.$queryRawUnsafe('SELECT 1');
     ready = true;

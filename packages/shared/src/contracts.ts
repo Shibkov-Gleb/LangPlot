@@ -122,6 +122,7 @@ export const Observation = z.object({
 export const ChatResult = z
   .object({
     reply: z.string().min(1).max(4000),
+    messages: z.array(z.string().trim().min(1).max(500)).min(1).max(4).optional(),
     intent: z.enum(['greeting', 'message', 'question']),
     observations: z.array(Observation).max(10),
     suggestedFlags: z.record(z.boolean()),
@@ -133,6 +134,7 @@ export const Exchange = z.object({
   requestId: z.string().uuid(),
   text: z.string(),
   reply: z.string().nullable(),
+  replies: z.array(z.string()).max(4).default([]),
   status: z.enum(['pending', 'completed', 'failed', 'cancelled']),
   errorCode: z.string().nullable(),
   createdAt: z.string(),

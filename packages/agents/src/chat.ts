@@ -8,6 +8,11 @@ export interface ChatContext {
   history: { text: string; reply: string }[];
   text: string;
   retry: boolean;
+  level?: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
+  character?: { id: string; name: string; role: string };
+  opening?: string;
+  topic?: string;
+  referenceReply?: string;
 }
 export interface ChatProvider {
   readonly name: string;
@@ -19,6 +24,14 @@ export class LocalChatProvider implements ChatProvider {
     await delay(context.text === '/timeout' && !context.retry ? 15000 : 650, undefined, { signal });
     if (context.text === '/error' && !context.retry) throw new Error('PROVIDER_UNAVAILABLE');
     const greeting = /^(hi|hello|hey|hallo|guten tag)[!.\s]*$/i.test(context.text);
+    if (context.referenceReply)
+      return {
+        reply: context.referenceReply,
+        messages: [context.referenceReply],
+        intent: greeting ? 'greeting' : 'message',
+        observations: [],
+        suggestedFlags: {},
+      };
     return {
       reply:
         context.language === 'de'

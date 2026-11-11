@@ -87,8 +87,14 @@ export function registerStudioRoutes() {
         integrations: [
           {
             name: 'Переписка · LangChain',
-            status: config.CHAT_PROVIDER === 'local' ? 'Локальный провайдер' : 'Не настроено',
-            detail: 'Предсказуемые тестовые ответы',
+            status:
+              config.CHAT_PROVIDER === 'deepseek' &&
+              (process.env.DEEPSEEK_API_KEY || process.env.DEEPSEEK_API)
+                ? 'DeepSeek'
+                : config.CHAT_PROVIDER === 'local'
+                  ? 'Локальный провайдер'
+                  : 'Не настроено',
+            detail: 'Персонажи, контекст сцены и уровень языка',
           },
           {
             name: 'Курсы · LangGraph',

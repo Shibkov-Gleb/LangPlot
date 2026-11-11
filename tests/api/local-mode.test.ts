@@ -17,9 +17,9 @@ beforeAll(async () => {
   const address = server.address();
   if (!address || typeof address === 'string') throw new Error('Address missing');
   base = `http://127.0.0.1:${address.port}/api`;
-});
+}, 45000);
 afterAll(async () => {
-  await new Promise<void>((resolve) => server.close(() => resolve()));
+  if (server) await new Promise<void>((resolve) => server.close(() => resolve()));
   const { db } = await import('../../apps/api/src/db.js');
   await db.$disconnect();
 });

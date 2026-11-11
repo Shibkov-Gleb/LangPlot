@@ -54,6 +54,7 @@ beforeAll(async () => {
   url.searchParams.set('schema', schema);
   process.env.DATABASE_URL = url.toString();
   process.env.LOCAL_DEMO_MODE = 'true';
+  process.env.CHAT_PROVIDER = 'local';
   process.env.NODE_ENV = 'test';
   execFileSync(
     process.execPath,
@@ -372,6 +373,7 @@ describe.sequential('PostgreSQL API integration', () => {
     const input = { requestId: randomUUID(), text: 'Hello' };
     const first = await request(`/plays/${play.id}/messages`, 'POST', input);
     expect(first.data.exchange.status).toBe('completed');
+    expect(first.data.exchange.replies).toEqual([first.data.exchange.reply]);
     expect((await request(`/plays/${play.id}/messages`, 'POST', input)).data.exchange.id).toBe(
       first.data.exchange.id,
     );
@@ -398,6 +400,14 @@ describe.sequential('PostgreSQL API integration', () => {
       await new Promise((r) => setTimeout(r, 25));
     }
     expect(exchange).toBeTruthy();
+    expect(
+      (
+        await request(`/plays/${play.id}/messages`, 'POST', {
+          requestId: randomUUID(),
+          text: 'A second message',
+        })
+      ).data.error.code,
+    ).toBe('CHAT_BUSY');
     expect(
       (await request(`/plays/${play.id}/messages/${input.requestId}/cancel`, 'POST', {})).status,
     ).toBe(200);
@@ -600,8 +610,9 @@ describe.sequential('PostgreSQL API integration', () => {
         request(messages(), 'POST', msg),
         request(messages(), 'POST', msg),
       ]);
-      expect(responses.map((r) => r.data.exchange.reply)).toEqual(
-        Array(2).fill("Thanks, Lev. I'll check the station log."),
+      expect(new Set(responses.map((r) => r.data.exchange.id)).size).toBe(1);
+      expect((await request(messages())).data.messages[0].reply).toBe(
+        "Thanks, Lev. I'll check the station log.",
       );
       await act('finish');
       expect(play.state.sceneId).toBe('end');

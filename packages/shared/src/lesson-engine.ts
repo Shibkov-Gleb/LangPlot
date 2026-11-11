@@ -16,6 +16,7 @@ export function lessonContact(content: PlayablePackage, state: GameState) {
       : undefined;
   return variant
     ? {
+        id: variant.contact,
         name: content.characters.find((c) => c.id === variant.contact)!.name,
         role: variant.role,
         context: variant.context,
@@ -23,6 +24,7 @@ export function lessonContact(content: PlayablePackage, state: GameState) {
         reply: variant.reply,
       }
     : {
+        id: content.lesson.contact,
         name: content.characters.find((c) => c.id === content.lesson.contact)!.name,
         role: content.lesson.contactRole,
         context: content.lesson.phoneContext,

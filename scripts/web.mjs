@@ -4,13 +4,15 @@ import path from 'node:path';
 const require = createRequire(path.resolve('package.json'));
 const command = process.argv[2];
 if (!['dev', 'build', 'start'].includes(command)) throw new Error('Unknown Next command');
-const port = new URL(process.env.WEB_ORIGIN ?? 'http://localhost:3000').port || '3000';
+const port =
+  process.env.WEB_PORT || new URL(process.env.WEB_ORIGIN ?? 'http://localhost:3000').port || '3000';
+const hostname = process.env.WEB_HOST || '127.0.0.1';
 const child = spawn(
   process.execPath,
   [
     require.resolve('next/dist/bin/next'),
     command,
-    ...(command === 'build' ? [] : ['--hostname', '127.0.0.1', '--port', port]),
+    ...(command === 'build' ? [] : ['--hostname', hostname, '--port', port]),
   ],
   { stdio: 'inherit', windowsHide: true },
 );

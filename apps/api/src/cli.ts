@@ -22,7 +22,7 @@ try {
       throw new Error(
         'Для импорта укажите LANGPLOT_ADMIN_EMAIL и LANGPLOT_ADMIN_PASSWORD в окружении.',
       );
-    const base = 'http://' + config.HOST + ':' + config.PORT + '/api';
+    const base = 'http://127.0.0.1:' + config.PORT + '/api';
     const headers = { 'Content-Type': 'application/json', Origin: config.WEB_ORIGIN };
     const login = await fetch(base + '/session/login', {
       method: 'POST',

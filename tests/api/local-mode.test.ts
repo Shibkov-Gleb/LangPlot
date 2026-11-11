@@ -6,6 +6,8 @@ let server: Server;
 let base = '';
 beforeAll(async () => {
   Object.assign(process.env, parseEnv(readFileSync('.env', 'utf8')));
+  if (process.env.TEST_DATABASE_URL) process.env.DATABASE_URL = process.env.TEST_DATABASE_URL;
+  process.env.WEB_ORIGIN = 'https://localhost:3000';
   process.env.LOCAL_DEMO_MODE = 'true';
   process.env.NODE_ENV = 'production';
   const { app, finishRoutes } = await import('../../apps/api/src/app.js');

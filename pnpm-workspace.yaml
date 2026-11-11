@@ -1,11 +1,6 @@
 packages:
   - apps/*
   - packages/*
-allowBuilds:
-  '@prisma/client': set this to true or false
-  '@prisma/engines': set this to true or false
-  esbuild: set this to true or false
-  prisma: set this to true or false
 minimumReleaseAgeExclude:
   - '@langchain/langgraph-sdk@1.12.10'
   - '@langchain/langgraph@1.6.1'

@@ -1,0 +1,149 @@
+name: langplot-production
+x-logging: &logging
+  driver: json-file
+  options:
+    max-size: '10m'
+    max-file: '3'
+x-api-image: &api-image
+  image: langplot-api:${APP_TAG:-latest}
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-langplot}
+      POSTGRES_DB: ${POSTGRES_DB:-langplot}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Generate .env.production first}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks: [database]
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+    restart: unless-stopped
+    logging: *logging
+  migrate:
+    <<: *api-image
+    command:
+      [
+        'node',
+        'apps/api/node_modules/prisma/build/index.js',
+        'migrate',
+        'deploy',
+        '--schema=apps/api/prisma/schema.prisma',
+      ]
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-langplot}:${POSTGRES_PASSWORD:?Generate .env.production first}@postgres:5432/${POSTGRES_DB:-langplot}?schema=public
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks: [database]
+    read_only: true
+    tmpfs: [/tmp]
+    init: true
+    security_opt: ['no-new-privileges:true']
+    restart: 'no'
+    logging: *logging
+  api:
+    <<: *api-image
+    build:
+      context: .
+      target: api
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-langplot}:${POSTGRES_PASSWORD:?Generate .env.production first}@postgres:5432/${POSTGRES_DB:-langplot}?schema=public
+      WEB_ORIGIN: ${WEB_ORIGIN:?Set the public HTTPS origin}
+      TRUST_PROXY: '1'
+      LOCAL_DEMO_MODE: 'false'
+      UI_VARIANT: original
+      PAYMENTS_ENABLED: 'false'
+      CHAT_PROVIDER: ${CHAT_PROVIDER:-deepseek}
+      DEEPSEEK_API_KEY: ${DEEPSEEK_API_KEY:-}
+      DEEPSEEK_MODEL: ${DEEPSEEK_MODEL:-deepseek-flash}
+      COURSE_PROVIDER: ${COURSE_PROVIDER:-local}
+      TTS_PROVIDER: none
+      LANGSMITH_TRACING: 'false'
+      LANGCHAIN_TRACING_V2: 'false'
+    volumes:
+      - api-data:/app/var
+    networks: [frontend, database]
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "fetch('http://127.0.0.1:4000/api/health',{signal:AbortSignal.timeout(3000)}).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    read_only: true
+    tmpfs: [/tmp]
+    init: true
+    security_opt: ['no-new-privileges:true']
+    stop_grace_period: 45s
+    restart: unless-stopped
+    logging: *logging
+  web:
+    image: langplot-web:${APP_TAG:-latest}
+    build:
+      context: .
+      target: web
+    volumes:
+      - web-cache:/app/apps/web/.next/cache
+    networks: [frontend]
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test:
+        [
+          'CMD',
+          'node',
+          '-e',
+          "fetch('http://127.0.0.1:3000/',{method:'HEAD',signal:AbortSignal.timeout(3000)}).then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+    read_only: true
+    tmpfs: [/tmp]
+    init: true
+    security_opt: ['no-new-privileges:true']
+    restart: unless-stopped
+    logging: *logging
+  caddy:
+    image: caddy:2-alpine
+    environment:
+      DOMAIN: ${DOMAIN:?Set the public domain}
+    ports:
+      - '80:80'
+      - '443:443'
+      - '443:443/udp'
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    networks: [frontend]
+    depends_on:
+      web:
+        condition: service_healthy
+    restart: unless-stopped
+    logging: *logging
+volumes:
+  postgres-data:
+  api-data:
+  web-cache:
+  caddy-data:
+  caddy-config:
+networks:
+  frontend:
+  database:
+    internal: true

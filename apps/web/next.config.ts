@@ -1,5 +1,8 @@
 import type { NextConfig } from 'next';
+import path from 'node:path';
 const config: NextConfig = {
+  output: process.env.NEXT_STANDALONE === '1' ? 'standalone' : undefined,
+  outputFileTracingRoot: path.resolve(__dirname, '../..'),
   poweredByHeader: false,
   devIndicators: false,
   images: { qualities: [75, 90] },

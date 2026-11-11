@@ -1,0 +1,17 @@
+.git
+.local
+**/node_modules
+**/.next
+**/dist
+**/.pnpm-store
+**/*.tsbuildinfo
+**/.env
+**/.env.*
+**/*.log
+output
+backups
+test-results
+playwright-report
+coverage
+**/.generation-lock
+**/*.tmp

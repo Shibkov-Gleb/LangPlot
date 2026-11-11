@@ -27,6 +27,7 @@
     "tts": "pnpm --filter @langplot/api tts"
   },
   "devDependencies": {
+    "esbuild": "0.27.7",
     "@playwright/test": "1.58.2",
     "@types/node": "22.19.11",
     "concurrently": "9.2.1",

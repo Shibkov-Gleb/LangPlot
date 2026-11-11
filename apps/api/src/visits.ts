@@ -3,7 +3,7 @@ import type { Request, Response } from 'express';
 import type { Prisma, User } from '@prisma/client';
 import { z } from 'zod';
 import { db } from './db.js';
-import { config } from './config.js';
+import { config, isQaRequest } from './config.js';
 export const variant = config.UI_VARIANT;
 export const visitCookie = 'langplot_visit_' + variant;
 export function visitKey(req: Request) {
@@ -32,7 +32,7 @@ export async function ensureVisit(req: Request, res: Response) {
       id,
       source: source.toLowerCase(),
       variant,
-      excluded: !!req.user || req.headers['x-langplot-qa'] === '1',
+      excluded: !!req.user || isQaRequest(req),
     },
   });
   res.cookie(visitCookie, token, {

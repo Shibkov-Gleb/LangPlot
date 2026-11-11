@@ -19,10 +19,25 @@ server.on('error', (error) => {
   console.error('Не удалось запустить LangPlot API:', error.message);
   void db.$disconnect().finally(() => process.exit(1));
 });
-async function shutdown() {
-  server.close();
-  await db.$disconnect();
-  process.exit(0);
+let stopping = false;
+function shutdown() {
+  if (stopping) return;
+  stopping = true;
+  const deadline = setTimeout(() => {
+    server.closeAllConnections();
+    void db.$disconnect().finally(() => process.exit(1));
+  }, 40000);
+  deadline.unref();
+  server.close(async (error) => {
+    try {
+      await db.$disconnect();
+      clearTimeout(deadline);
+      process.exit(error ? 1 : 0);
+    } catch {
+      process.exit(1);
+    }
+  });
+  server.closeIdleConnections();
 }
 process.on('SIGTERM', shutdown);
 process.on('SIGINT', shutdown);

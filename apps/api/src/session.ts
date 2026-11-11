@@ -10,7 +10,7 @@ import {
   ProfileResponse,
   GuestSessionResponse,
 } from '@langplot/shared';
-import { config } from './config.js';
+import { config, isQaRequest } from './config.js';
 import { db } from './db.js';
 import { ApiError } from './errors.js';
 declare global {
@@ -132,7 +132,7 @@ export async function startGuest(req: Request, res: Response) {
         name: 'Гость',
         language: 'en',
         level: 'A2',
-        excludedFromAnalytics: req.headers['x-langplot-qa'] === '1',
+        excludedFromAnalytics: isQaRequest(req),
       },
     });
     await tx.productVisit.updateMany({
@@ -168,8 +168,7 @@ export async function createAccount(req: Request, res: Response, owner = false) 
         name: input.name,
         email: input.email,
         passwordHash,
-        excludedFromAnalytics:
-          req.headers['x-langplot-qa'] === '1' || input.email.endsWith('.invalid'),
+        excludedFromAnalytics: isQaRequest(req) || input.email.endsWith('.invalid'),
         role: owner ? 'SUPERADMIN' : 'USER',
         level: 'A2',
         lastLoginAt: new Date(),

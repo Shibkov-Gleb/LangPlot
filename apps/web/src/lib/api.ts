@@ -25,7 +25,7 @@ export async function api<T extends z.ZodTypeAny>(
     if (error instanceof Error && error.name === 'AbortError') throw error;
     throw new ClientError(
       'NETWORK_ERROR',
-      'Нет связи с локальным сервером. Проверьте, что база и приложение запущены.',
+      'Нет связи с сервером. Проверьте подключение к интернету и попробуйте ещё раз.',
       0,
     );
   }

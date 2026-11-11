@@ -1,5 +1,7 @@
 import { randomBytes, createHash } from 'node:crypto';
 import { mkdir, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { db } from './db.js';
 import { config } from './config.js';
 try {
@@ -15,15 +17,16 @@ try {
     create: { id: 'initial', ...invitation },
     update: invitation,
   });
-  const dir = new URL('../../../.local/', import.meta.url);
-  await mkdir(dir, { recursive: true });
-  await writeFile(
-    new URL('admin-invite.txt', dir),
-    config.WEB_ORIGIN + '/login#owner=' + token + '\n',
-    { mode: 0o600 },
+  const file = path.resolve(
+    config.OWNER_INVITE_FILE ??
+      fileURLToPath(new URL('../../../.local/admin-invite.txt', import.meta.url)),
   );
+  await mkdir(path.dirname(file), { recursive: true });
+  await writeFile(file, config.WEB_ORIGIN + '/login#owner=' + token + '\n', { mode: 0o600 });
   console.log(
-    'Ссылка для регистрации главного администратора записана в .local/admin-invite.txt. Действует 24 часа и принимается один раз.',
+    'Ссылка для регистрации главного администратора записана в ' +
+      file +
+      '. Действует 24 часа и принимается один раз.',
   );
 } catch (error) {
   console.error(error instanceof Error ? error.message : 'Не удалось создать приглашение.');

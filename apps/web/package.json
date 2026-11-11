@@ -2,9 +2,9 @@
   "name": "@langplot/web",
   "private": true,
   "scripts": {
-    "dev": "node --env-file=../../.env ../../scripts/web.mjs dev",
-    "build": "node --env-file=../../.env ../../scripts/web.mjs build",
-    "start": "node --env-file=../../.env ../../scripts/web.mjs start",
+    "dev": "node --env-file-if-exists=../../.env ../../scripts/web.mjs dev",
+    "build": "node --env-file-if-exists=../../.env ../../scripts/web.mjs build",
+    "start": "node --env-file-if-exists=../../.env ../../scripts/web.mjs start",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

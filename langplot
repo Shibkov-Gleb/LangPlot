@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+set -euo pipefail
+cd -- "$(dirname -- "${BASH_SOURCE[0]}")"
+task="${1:-help}"
+if [[ "$task" == help || "$task" == --help ]]; then
+  cat <<'HELP'
+LangPlot — управление сервером (Linux, Docker Compose v2, Git)
+  ./langplot init example.ru  — создать серверный .env, затем добавьте DeepSeek-ключ
+  ./langplot deploy           — собрать и запустить; перед обновлением создаётся архив
+  ./langplot update           — git pull --ff-only и deploy
+  ./langplot backup           — архив базы, постоянных файлов и контрольных сумм
+  ./langplot transfer         — остановить запись и создать финальный архив переноса
+  ./langplot restore FILE     — восстановить архив на чистом сервере и запустить
+  ./langplot resume           — возобновить работу после отменённого переноса
+  ./langplot status           — состояние контейнеров и последней операции
+  ./langplot logs             — последние журналы
+  ./langplot owner            — создать первоначальное приглашение владельца
+LANGPLOT_ENV_FILE выбирает другой файл окружения; существующий .env.production поддерживается.
+HELP
+  exit 0
+fi
+command -v docker >/dev/null || { echo 'Установите Docker Engine с Compose v2.' >&2; exit 1; }
+docker info >/dev/null 2>&1 || { echo 'Нет доступа к Docker. Запустите его и проверьте права пользователя.' >&2; exit 1; }
+docker compose version >/dev/null
+command -v flock >/dev/null || { echo 'Нужен flock (пакет util-linux).' >&2; exit 1; }
+mkdir -p .local
+if [[ "${LANGPLOT_LOCK_HELD:-0}" != 1 ]]; then
+  exec 9>.local/langplot-manager.lock
+  flock -n 9 || { echo 'Уже выполняется другая серверная операция.' >&2; exit 1; }
+  export LANGPLOT_LOCK_HELD=1
+fi
+if [[ "$task" == update ]]; then
+  command -v git >/dev/null || { echo 'Для update нужен Git; для скопированного кода используйте deploy.' >&2; exit 1; }
+  [[ -z "$(git status --porcelain)" ]] || { echo 'Есть незакоммиченные изменения; update не будет их перезаписывать.' >&2; exit 1; }
+  git pull --ff-only
+  # Run the wrapper from the updated release, including changes to this script itself.
+  exec bash ./langplot deploy
+fi
+endpoint="${DOCKER_HOST:-$(docker context inspect --format '{{.Endpoints.docker.Host}}')}"
+case "$endpoint" in
+  unix://*) socket="${endpoint#unix://}" ;;
+  *) echo 'Запускайте эту команду на самом Linux-сервере с локальным Docker Engine.' >&2; exit 1 ;;
+esac
+[[ -S "$socket" ]] || { echo 'Не найден локальный Docker socket.' >&2; exit 1; }
+name="${LANGPLOT_MANAGER_NAME:-langplot-manager}"
+[[ "$name" =~ ^[a-z0-9][a-z0-9_-]*$ ]] || { echo 'Некорректное имя manager.' >&2; exit 1; }
+docker build --quiet -t langplot-manager:local -f deploy/manager.Dockerfile . >/dev/null
+commit="unknown"
+if command -v git >/dev/null; then commit="$(git rev-parse HEAD 2>/dev/null || echo unknown)"; fi
+options=(--rm --init --name "$name" --network host --user "$(id -u):$(id -g)"
+  --group-add "$(stat -c %g "$socket")" --env HOME=/tmp
+  --mount "type=bind,source=$PWD,target=$PWD"
+  --mount "type=bind,source=$socket,target=/var/run/docker.sock"
+  --workdir "$PWD" --env "LANGPLOT_COMMIT=$commit")
+for key in LANGPLOT_ENV_FILE LANGPLOT_COMPOSE_OVERRIDE; do
+  if [[ -n "${!key:-}" ]]; then options+=(--env "$key=${!key}"); fi
+done
+exec docker run "${options[@]}" langplot-manager:local scripts/server.mjs "$@"
